@@ -62,6 +62,7 @@ export default {
         minHeight: "315px",
         "&:before, &:after": {
           content: "' '",
+          display: "none",
           width: "100%",
           height: "12px",
           backgroundColor: stylesConfig.colors.primary.spectrum500,
@@ -91,7 +92,7 @@ export default {
       },
       "& .answer-text": {
         color: answerImageTextColor,
-        paddingBottom: "26px",
+        paddingBottom: "15px",
         paddingTop: "26px",
         paddingRight: "30px",
         zIndex: 1,
@@ -145,7 +146,7 @@ export default {
       fontSize: answerTextFontSize,
       alignItems: "flex-end",
       justifyContent: "center",
-      paddingBottom: "26px",
+      paddingBottom: "15px",
       paddingTop: "26px",
       paddingRight: "30px",
       zIndex: 1,
@@ -352,7 +353,7 @@ export default {
     },
     [`&.${AnswerAnimationStyleClass.ZOOM_IN}`]: {
       "&.has-image .answer-content::before": {
-        opacity: "1",
+        opacity: "0",
         transform: "translate3d(0, 12px, 0)",
         transition: "transform 0.3s",
       },

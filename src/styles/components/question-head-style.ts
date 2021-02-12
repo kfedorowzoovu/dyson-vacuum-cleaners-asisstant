@@ -2,17 +2,15 @@ import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 import infoTextTrigger from "../partials/info-text-trigger";
 
-const imageQuestionHeadingFontColor = stylesConfig.colors.secondaryFontColor;
 const questionHeadingFontSize = {
   $lg: stylesConfig.typography.fontSize(1.9),
   $xs: stylesConfig.typography.fontSize(1.2),
 };
-const questionHeadingFontColor = stylesConfig.colors.primaryFontColor;
 
 export default {
   container: {
     "& > p": {
-      color: questionHeadingFontColor,
+      color: "#656565",
       textAlign: "center",
       width: "100%",
       fontSize: questionHeadingFontSize.$lg,
@@ -28,13 +26,13 @@ export default {
     "& .question-type-hint": {
       display: "block",
       textAlign: "center",
-      fontSize: stylesConfig.typography.fontSize(0.875),
-      color: globals.colors.black,
+      fontSize: "16px",
+      color: "#656565",
       fontWeight: 400,
       letterSpacing: ".25px",
-      marginBottom: "10px",
+      marginBottom: "20px",
       [`@media (${globals.breakpoints.$xs})`]: {
-        fontSize: stylesConfig.typography.fontSize(0.75),
+        fontSize: "16px",
         letterSpacing: ".21px",
         lineHeight: "1em",
       },
@@ -68,7 +66,7 @@ export default {
         top: 0,
       },
       "& p": {
-        color: imageQuestionHeadingFontColor,
+        color: "#656565",
         position: "relative",
         textAlign: "center",
         left: "50%",

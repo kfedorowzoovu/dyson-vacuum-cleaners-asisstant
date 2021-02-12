@@ -171,47 +171,22 @@ export const ButtonStartOver = {
 };
 
 export const ButtonNextInProgress = {
-  ...Button,
-  backgroundColor: buttonBackgroundColors.next.default,
-  border: (configuration: ResolvedComponentsConfiguration): string =>
-    `1px solid ${nextButtonBorderColor(configuration)}`,
-  color: buttonBackgroundColors.next.default,
-  marginRight: 0,
-  transition: "none",
-  [mediaQuery.hover]: {
-    "&:hover": {
-      backgroundColor: buttonBackgroundColors.next.default,
-      color: buttonBackgroundColors.next.default,
-    },
-  },
-  "&:active": {
-    color: buttonBackgroundColors.next.default,
-    background: buttonBackgroundColors.next.default,
-  },
+  color: "transparent",
   "&:after": {
-    top: "50%",
-    left: "50%",
-    content: "''",
+    content: "' '",
     position: "absolute",
     width: "24px",
     height: "24px",
+    top: "50%",
+    left: "50%",
     borderStyle: "solid",
-    borderWidth: "1px",
-    borderLeftColor: (configuration: ResolvedComponentsConfiguration): string =>
-      `${nextButtonTextColor(configuration)}`,
-    borderRightColor: (configuration: ResolvedComponentsConfiguration): string =>
-      `${nextButtonTextColor(configuration)}`,
-    borderBottomColor: (configuration: ResolvedComponentsConfiguration): string =>
-      `${nextButtonTextColor(configuration)}`,
+    borderWidth: "2px",
+    borderLeftColor: "#303030",
+    borderRightColor: "#303030",
+    borderBottomColor: "#303030",
     borderTopColor: "transparent",
-    "border-radius": "50%",
+    borderRadius: "50%",
     transform: "rotate(90deg)",
     animation: "$navigationSpinner 1s linear infinite",
-  },
-  [`@media (${globals.breakpoints.$xs})`]: {
-    order: 2,
-    width: "calc(50% - 5px)",
-    paddingLeft: 0,
-    paddingRight: 0,
   },
 };

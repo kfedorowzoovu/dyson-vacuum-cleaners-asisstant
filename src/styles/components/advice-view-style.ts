@@ -15,11 +15,7 @@ const productsHeaderColor = stylesConfig.colors.primaryFontColor;
 export default {
   container: {
     position: "relative",
-    paddingTop: "25px",
-
-    [`@media (${globals.breakpoints.$md})`]: {
-      paddingTop: "70px",
-    },
+    color: "#303030",
     "& .advice-recommended": {
       position: "relative",
       display: "flex",
@@ -66,10 +62,9 @@ export default {
       },
     },
     "& h3": {
-      margin: ["25px", 0],
+      margin: "25px 0 40px 0",
       fontSize: productsHeaderSize.$lg,
       fontWeight: 400,
-      color: productsHeaderColor,
       textAlign: "center",
       minHeight: "1em",
       [`@media (${globals.breakpoints.$xs})`]: {
@@ -80,7 +75,6 @@ export default {
       margin: ["25px", 0],
       fontSize: productsSubheaderSize.$lg,
       fontWeight: 400,
-      color: productsHeaderColor,
       textAlign: "center",
       [`@media (${globals.breakpoints.$md})`]: {
         margin: [0, "0", "30px"],

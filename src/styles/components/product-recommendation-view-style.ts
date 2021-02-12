@@ -27,7 +27,6 @@ export default {
     ...productRecommendationBaseStyles(globals),
     border: "1px solid",
     borderColor: stylesConfig.colors.secondary.spectrum100,
-    padding: "45px 20px 20px",
     transition: "box-shadow .5s",
     [mediaQuery.hover]: {
       "&:hover": {
@@ -35,6 +34,8 @@ export default {
       },
     },
     "& .product-details": {
+      color: "#303030",
+      padding: "10px",
       display: "flex",
       flexFlow: "wrap column",
     },
@@ -62,14 +63,15 @@ export default {
     },
     "& a.product-name": {
       textDecoration: "none",
-      fontWeight: 700,
-      textAlign: "center",
       fontSize: productNameFontSize,
-      color: productNameFontColor,
+      color: "#303030",
       lineHeight: 1.2,
+      textAlign: "left",
       width: "100%",
       display: "block",
-      minHeight: "60px",
+      [`@media (${globals.breakpoints.$xs})`]: {
+        margin: "10px 0",
+      },
       "&:focus": {
         outlineColor: stylesConfig.colors.primary.spectrum400,
       },
@@ -127,18 +129,17 @@ export default {
     },
     "& .properties-title": {
       fontSize: stylesConfig.typography.fontSize(),
-      color: stylesConfig.colors.primaryFontColor,
+      color: "#303030",
       marginTop: "1.2em",
       marginBottom: 0,
       padding: "0 8px",
     },
     "& .product-properties": {
       padding: "0 8px",
-      order: 3,
       listStyle: "none",
       margin: ["5px", 0, 0, 0],
       overflow: "hidden",
-      color: productPropertiesFontColor,
+      color: "#303030",
       wordWrap: "break-word",
       maxWidth: "100%",
       "& > li": {
@@ -153,16 +154,13 @@ export default {
       },
 
       "& .positive-property": {
-        color: productPropertiesFontColor.default,
         "& i": {
           position: "relative",
           top: "3px",
-          background: (configuration: ResolvedComponentsConfiguration): string =>
-            `${globals.customerSprite2(configuration)} no-repeat 0 -70px`,
+          background: `url("//d3smx8fpgq4j0l.cloudfront.net/zoovu/3d2f2e3c-8eab-4f23-a76f-eb683109d3ba") 0% 0% / 14px no-repeat`,
         },
       },
       "& .negative-property": {
-        color: productPropertiesFontColor.default,
         "& i": {
           position: "relative",
           top: "3px",
@@ -171,7 +169,6 @@ export default {
         },
       },
       "& .neutral-property": {
-        color: productPropertiesFontColor.default,
         "& i": {
           background: (configuration: ResolvedComponentsConfiguration): string =>
             `${globals.customerSprite2(configuration)} no-repeat -20px -70px`,
@@ -179,12 +176,10 @@ export default {
       },
     },
     "& .product-attributes-toggle": {
-      order: 4,
       display: "block",
       width: "100%",
       fontSize: stylesConfig.typography.fontSize(0.9),
       fontFamily: stylesConfig.typography.fontFamily,
-      color: productButtonBackground.border,
       textDecoration: "underline",
       padding: "6px 10px",
       textTransform: "uppercase",
@@ -194,51 +189,41 @@ export default {
       border: "none",
       cursor: "pointer",
       backgroundColor: "transparent",
+      color: "#303030",
       "&:focus": {
-        outlineColor: focusOutlineColor,
+        outlineColor: "#303030",
       },
     },
     "& .price-compare-wrapper": {
-      textAlign: "center",
-      "& .price": {
-        order: 1,
+      padding: "8px",
+      textAlign: "left",
+      "& .product-price": {
+        margin: "10px 0",
         fontWeight: "600",
-        color: productPriceFontColor,
-        fontSize: productPriceFontSize,
-        padding: [0, 0, "5px"],
+        color: "#303030",
+        fontSize: "24px",
       },
     },
     "& .product-footer": {
-      display: "flex",
-      flexFlow: "column",
-      order: 5,
-      position: "relative",
-      marginTop: "auto",
-    },
-    "& .product-button": {
-      order: 3,
-      cursor: "pointer",
-      display: "block",
       width: "100%",
-      fontSize: stylesConfig.typography.fontSize(0.9),
-      color: compareButtonFontColor,
-      padding: "11px 10px",
-      textTransform: "uppercase",
-      fontWeight: 400,
-      margin: "15px auto 0",
-      textAlign: "center",
-      textDecoration: "none",
-      border: "1px solid",
-      borderColor: productButtonBackground.border,
-      backgroundColor: productButtonBackground.border,
-      transition: "background .3s ease",
-      [mediaQuery.hover]: {
-        "&:hover": {
-          backgroundColor: productButtonBackground.hover,
-        },
+      display: "flex",
+      "& .product-button": {
+        cursor: "pointer",
+        fontSize: "16px",
+        color: "#303030",
+        flex: 1,
+        background: "#E0DEDE",
+        padding: "10px",
+        fontWeight: "bold",
+        textAlign: "center",
+        display: "block",
+        textDecoration: "none",
+        transition: "background .3s ease",
       },
-      "&:focus": {
-        outlineColor: focusOutlineColor,
+      "& .add-to-cart-button": {
+        color: "white",
+        background: "#1bac11",
+        border: "none",
       },
     },
   },

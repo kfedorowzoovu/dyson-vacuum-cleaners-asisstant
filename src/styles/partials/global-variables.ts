@@ -1,8 +1,8 @@
 import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
-import * as spriteUrl from "../../assets/images/sprite-best.svg";
-import * as customerSpriteUrl from "../../assets/images/sprite.svg";
-import * as customerSpriteUrl2 from "../../assets/images/sprite_blue-design-theme.svg";
-import * as loaderGifUrl from "../../assets/images/loader.gif";
+import spriteUrl from "../../assets/images/sprite-best.svg";
+import customerSpriteUrl from "../../assets/images/sprite.svg";
+import customerSpriteUrl2 from "../../assets/images/sprite_blue-design-theme.svg";
+import loaderGifUrl from "../../assets/images/loader.gif";
 
 export default {
   sprite2: ({ webDesignContextPath }: ResolvedComponentsConfiguration): string =>
@@ -28,6 +28,11 @@ export default {
     red: "#d0392a",
     redLighter: "#df4318",
     violet: "#9e78c5",
+    gray1: "#303030",
+    gray2: "#848484",
+    whiteDark: "#c0c0c0",
+    whiteDarker: "#fafafa",
+    whiteAlmost: "#fcfcfc",
   },
   breakpoints: {
     $xxs: "max-width: 575px",

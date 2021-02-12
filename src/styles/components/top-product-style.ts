@@ -27,54 +27,41 @@ export default {
     ...productAdditionalPriceTextBaseStyles,
     marginTop: "10px",
     marginBottom: "30px",
-    paddingTop: "30px",
-    paddingBottom: "60px",
     width: "100%",
     position: "relative",
     display: "flex",
     alignItems: "flex-start",
-    borderBottom: "1px solid",
-    borderColor: stylesConfig.colors.secondary.spectrum100,
     "&:first-of-type": {
-      borderTop: "1px solid",
-      borderColor: stylesConfig.colors.secondary.spectrum100,
-    },
-    [`@media (max-width: 767px)`]: {
-      padding: "45px 20px 20px",
+      border: "1px solid #303030",
     },
     [`@media (${globals.breakpoints.$xs})`]: {
       flexWrap: "wrap",
       marginTop: 0,
-      paddingBottom: "30px",
     },
     "& .image-wrapper": {
-      width: "40%",
-      [`@media (${globals.breakpoints.$xs})`]: {
-        width: "100%",
-      },
-      [`@media (min-width: 768px)`]: {
-        width: "50%",
+      padding: "10px",
+      "& .product-top-tile": {
+        fontSize: "13px",
+        top: "-16px",
+        color: "white",
+        background: "#303030  ",
       },
     },
     "& .product-details": {
-      width: "60%",
+      padding: "10px",
       display: "flex",
       flexFlow: "wrap column",
       textAlign: "center",
-      [`@media (${globals.breakpoints.$xs})`]: {
-        width: "100%",
-      },
       [`@media (min-width: 768px)`]: {
         margin: "auto",
         textAlign: "left",
       },
       "& .product-attributes-toggle": {
-        order: 4,
         display: "block",
         width: "100%",
+        color: "#303030",
         fontSize: stylesConfig.typography.fontSize(0.9),
         fontFamily: stylesConfig.typography.fontFamily,
-        color: productButtonBackground.border,
         textDecoration: "underline",
         padding: ["6px", "10px", "6px", 0],
         textTransform: "uppercase",
@@ -148,31 +135,23 @@ export default {
       },
     },
     "& .product-price": {
-      textAlign: "center",
-      fontWeight: "400",
-      color: productPriceFontColor,
-      fontSize: productPriceFontSize,
+      color: "#303030",
+      textAlign: "left",
+      fontSize: "24px",
+      fontWeight: "600",
       padding: [0, 0, "5px"],
       marginTop: "10px",
-      [`@media (${globals.breakpoints.$xs})`]: {
-        fontSize: "19.2px",
-        fontWeight: "600",
-      },
-      [`@media (min-width: 768px)`]: {
-        textAlign: "left",
-      },
     },
     "& a.product-name": {
       textDecoration: "none",
-      fontWeight: 700,
       fontSize: productNameFontSize,
-      color: productNameFontColor,
+      color: "#303030",
       lineHeight: 1.2,
+      textAlign: "left",
       width: "100%",
       display: "block",
       [`@media (${globals.breakpoints.$xs})`]: {
-        marginTop: "50px",
-        marginBottom: "20px",
+        margin: "10px 0",
       },
       "&:focus": {
         outlineColor: stylesConfig.colors.primary.spectrum400,
@@ -180,7 +159,6 @@ export default {
     },
     "& .compare-wrapper": {
       padding: "0",
-      order: 5,
       [`@media (${globals.breakpoints.$xs})`]: {
         display: "none",
       },
@@ -218,7 +196,6 @@ export default {
     },
     "& .rating-wrapper": {
       margin: "10px 0",
-      textAlign: "center",
       "& .rating-image": {
         background: (configuration: ResolvedComponentsConfiguration): string =>
           `${globals.customerSprite2(configuration)} no-repeat 0 -238px`,
@@ -234,7 +211,7 @@ export default {
     },
     "& .properties-title": {
       fontSize: stylesConfig.typography.fontSize(),
-      color: stylesConfig.colors.primaryFontColor,
+      color: "#303030",
       marginTop: "25px",
       marginBottom: 0,
       padding: "0 0 20px",
@@ -243,11 +220,10 @@ export default {
       display: "flex",
       flexFlow: "wrap",
       padding: "0",
-      order: 3,
       listStyle: "none",
       margin: ["5px", 0, 0, 0],
       overflow: "hidden",
-      color: productPropertiesFontColor,
+      color: "#303030",
       wordWrap: "break-word",
       maxWidth: "100%",
       textAlign: "left",
@@ -262,21 +238,17 @@ export default {
       "& i": {
         height: "14px",
         width: "15px",
-        display: "inline-block",
         marginRight: "7px",
+        display: "inline-block",
       },
-
       "& .positive-property": {
-        color: productPropertiesFontColor.default,
         "& i": {
           position: "relative",
-          top: "3px",
-          background: (configuration: ResolvedComponentsConfiguration): string =>
-            `${globals.customerSprite2(configuration)} no-repeat 0 -70px`,
+          top: "2px",
+          background: `url("//d3smx8fpgq4j0l.cloudfront.net/zoovu/3d2f2e3c-8eab-4f23-a76f-eb683109d3ba") 0% 0% / 14px no-repeat`,
         },
       },
       "& .negative-property": {
-        color: productPropertiesFontColor.default,
         "& i": {
           position: "relative",
           top: "3px",
@@ -285,7 +257,6 @@ export default {
         },
       },
       "& .neutral-property": {
-        color: productPropertiesFontColor.default,
         "& i": {
           background: (configuration: ResolvedComponentsConfiguration): string =>
             `${globals.customerSprite2(configuration)} no-repeat -20px -70px`,
@@ -293,42 +264,29 @@ export default {
       },
     },
     "& .product-footer": {
-      // display: "flex",
-      order: 5,
-      position: "relative",
-      marginTop: "auto",
-      [`@media (min-width: 768px)`]: {
-        width: "60%",
-        maxWidth: "320px",
-        margin: ["auto", "auto", "auto", 0],
+      width: "100%",
+      display: "flex",
+      "& .product-button": {
+        cursor: "pointer",
+        fontSize: "16px",
+        color: "#303030",
+        flex: 1,
+        background: "#E0DEDE",
+        padding: "10px",
+        fontWeight: "bold",
+        textAlign: "center",
         display: "block",
+        textDecoration: "none",
+        transition: "background .3s ease",
+      },
+      "& .add-to-cart-button": {
+        color: "white",
+        background: "#1bac11",
+        border: "none",
       },
     },
-    "& .product-button": {
-      order: 3,
-      cursor: "pointer",
-      width: "100%",
-      display: "inline-block",
-      fontSize: stylesConfig.typography.fontSize(0.9),
-      color: compareButtonFontColor,
-      padding: "11px",
-      textTransform: "uppercase",
-      fontWeight: 400,
-      margin: "25px 0 0 0",
-      textAlign: "center",
-      textDecoration: "none",
-      border: "1px solid",
-      borderColor: productButtonBackground.border,
-      backgroundColor: productButtonBackground.border,
-      transition: "background .3s ease",
-      [mediaQuery.hover]: {
-        "&:hover": {
-          backgroundColor: productButtonBackground.hover,
-        },
-      },
-      "&:focus": {
-        outlineColor: focusOutlineColor,
-      },
+    "& .product__rating": {
+      display: "flex",
     },
   },
 };

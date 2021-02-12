@@ -10,6 +10,7 @@ const dropDownQuestionHeaderSize = {
 
 export default {
   container: {
+    color: "#656565",
     extend: pageTransitions,
     "& .page-title, & .page-submit-success-headline": {
       color: dropDownHeadingColor,
