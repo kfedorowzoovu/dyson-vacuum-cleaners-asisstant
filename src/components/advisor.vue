@@ -1,54 +1,46 @@
 <template>
-  <div :id="advisor.mid" :class="componentStyle.container">
-    <component :is="questionnaireView" :advisor="advisor" />
-    <component :is="resultsSectionView" :advisor="advisor" />
+  <div :id="advisor.mid" :class="[componentStyle.container]">
+    <component
+      :is="questionnaireView"
+      :advisor="advisor"
+      :show-page-selector-between-navigation-buttons="false"
+      :show-page-selector-above-main-section="true"
+    />
+    <component :is="resultsSectionView" :advisor="advisor" :show-top-product="true" :show-page-selector="true" />
     <component :is="comparisonView" :comparison-manager="advisor.comparisonManager" />
+    <component :is="pdfContentView" v-if="isPdfMarkupShown" v-show="false" :advisor="advisor" />
   </div>
 </template>
 
 <script lang="ts">
+import { ComponentConfig, Component, ComponentStyle, ComponentStyleDefinition } from "@zoovu/runner-browser-api";
 import {
-  Component,
-  ComponentConfig,
-  ComponentStyle,
-  ComponentStyleDefinition,
-  InjectComponent,
-} from "@zoovu/runner-browser-api";
-import {
-  AdvisorView as AdvisorViewBase,
-  AnimationsAndTransitionsConfiguration,
+  AdvisorView,
   ColorsConfiguration,
-  CustomCSSConfiguration,
-  FontsConfiguration,
-  ProductButtonConfiguration,
-  StandardTextsConfiguration,
   TopProductConfiguration,
+  FontsConfiguration,
+  CustomCSSConfiguration,
 } from "@zoovu/runner-web-design-base";
+import CustomizedStandardTextsConfiguration from "../configuration/customized-standard-texts";
 
-@Component
-export default class AdvisorView extends AdvisorViewBase {
+@Component({})
+export default class AdvisorViewExtended extends AdvisorView {
   @ComponentStyle()
-  componentStyle!: ComponentStyleDefinition;
+  componentStyle: ComponentStyleDefinition;
 
   @ComponentConfig(ColorsConfiguration)
-  colors!: ColorsConfiguration;
+  colors: ColorsConfiguration;
 
   @ComponentConfig(FontsConfiguration)
-  fonts!: FontsConfiguration;
+  fonts: FontsConfiguration;
 
-  @ComponentConfig(StandardTextsConfiguration)
-  standardTexts!: StandardTextsConfiguration;
+  @ComponentConfig(CustomizedStandardTextsConfiguration)
+  standardTexts: CustomizedStandardTextsConfiguration;
 
   @ComponentConfig(CustomCSSConfiguration)
-  customCssConfiguration!: CustomCSSConfiguration;
+  customCSSConfiguration: CustomCSSConfiguration;
 
   @ComponentConfig(TopProductConfiguration)
-  topProductConfiguration!: TopProductConfiguration;
-
-  @ComponentConfig(ProductButtonConfiguration)
-  productButtonConfiguration!: ProductButtonConfiguration;
-
-  @ComponentConfig(AnimationsAndTransitionsConfiguration)
-  animationsAndTransitionsConfiguration!: AnimationsAndTransitionsConfiguration;
+  topProductConfiguration: TopProductConfiguration;
 }
 </script>

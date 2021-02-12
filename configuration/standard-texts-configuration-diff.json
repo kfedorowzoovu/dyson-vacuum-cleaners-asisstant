@@ -7,7 +7,6 @@
     "sections": [
       {
         "id": "default-section-general",
-        "name": "General",
         "messages": [
           {
             "id": "message-start-over",
@@ -109,11 +108,11 @@
               }
             ]
           }
-        ]
+        ],
+        "name": "General"
       },
       {
         "id": "default-section-result",
-        "name": "Result",
         "messages": [
           {
             "id": "message-result-first-cluster-header",
@@ -285,11 +284,11 @@
               }
             ]
           }
-        ]
+        ],
+        "name": "Result"
       },
       {
         "id": "default-section-compare",
-        "name": "Compare",
         "messages": [
           {
             "id": "message-compare-dialog-header",
@@ -313,11 +312,11 @@
           },
           {
             "id": "message-compare-selector-start",
-            "label": "Start compare",
+            "label": "Start Comparison",
             "localizations": [
               {
                 "locale": "base",
-                "value": "Start compare"
+                "value": "Start comparison"
               }
             ]
           },
@@ -361,11 +360,11 @@
               }
             ]
           }
-        ]
+        ],
+        "name": "Compare"
       },
       {
         "id": "default-section-lead-gen",
-        "name": "Lead Generation",
         "messages": [
           {
             "id": "message-invalid-email",
@@ -447,7 +446,8 @@
               }
             ]
           }
-        ]
+        ],
+        "name": "Lead Generation"
       },
       {
         "id": "default-section-filters",

@@ -17,7 +17,9 @@
     "deploy": "yarn build && zoovu-web-design deploy-to-s3"
   },
   "dependencies": {
-    "@zoovu/runner-browser-api": "^4.55.0"
+    "@zoovu/runner-browser-api": "^4.55.0",
+    "tippy.js": "^6.2.7",
+    "vuebar": "^0.0.20"
   },
   "devDependencies": {
     "@types/webpack-env": "^1.15.1",
