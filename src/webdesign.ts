@@ -1,10 +1,10 @@
-import { BasicStyleRegistry, ComponentStylesDefinitions, CreateWebDesignClass } from "@zoovu/runner-browser-api";
+import { BasicStyleRegistry, CreateWebDesignClass, ComponentStylesDefinitions } from "@zoovu/runner-browser-api";
 import { ComponentRegistryFactory, StyleRegistryFactory } from "@zoovu/runner-web-design-base";
-import { AutoForwardPlugin } from "@zoovu/runner-web-design-base/src/plugins";
+import { AutoForwardPlugin, PreSelectionPlugin } from "@zoovu/runner-web-design-base/src/plugins";
 import styles from "./styles";
 
 const componentRegistry = ComponentRegistryFactory.createComponentRegistry();
-const context = require.context("./components", true, /\.vue$/);
+const context = require.context("./components", false, /\.vue$/);
 context.keys().forEach((key) => {
   const component = context(key).default;
   componentRegistry.addOrOverrideComponent(component.options.name.replace(/Extended$/, ""), component);
@@ -34,7 +34,7 @@ const WebDesignClass = CreateWebDesignClass({
   AdvisorView: componentRegistry.getComponent("AdvisorView"),
   componentRegistry,
   styleRegistry,
-  plugins: [AutoForwardPlugin],
+  plugins: [AutoForwardPlugin, PreSelectionPlugin],
   versionDescriptor: {
     version: __WEB_DESIGN__VERSION__,
     git: {
