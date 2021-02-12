@@ -21,53 +21,15 @@ export default {
       paddingTop: "30px",
       paddingBottom: "20px",
     },
-    "& button": {
-      position: "relative",
-      width: "auto",
-      height: "50px",
-      textAlign: "center",
-      borderBottom: "3px solid",
-      borderStyle: "none",
-      paddingRight: "16px",
-      flexGrow: 1,
-      textTransform: "uppercase",
-      backgroundColor: "transparent",
-      [`@media (${globals.breakpoints.$sm})`]: {
-        height: "25px",
-      },
-      "&:focus": {
-        outlineColor: focusOutlineColor,
-      },
-      "&.page-selector": {
-        borderColor: pageSelectorButtonBackground.border,
-      },
-      "&.visited": {
-        borderColor: pageSelectorButtonBackground.selected,
-        "&::after": {
-          backgroundColor: pageSelectorButtonBackground.selected,
-        },
-      },
-      "& i": {
-        display: "none",
-      },
-      "& span": {
-        display: "block",
-        color: stylesConfig.colors.primaryFontColor,
-        fontSize: stylesConfig.typography.fontSize(0.9),
-      },
-      "&::after": {
-        content: "' '",
-        position: "absolute",
-        width: "12px",
-        height: "12px",
-        backgroundColor: pageSelectorButtonBackground.border,
-        right: "0px",
-        bottom: "-7px",
-        borderRadius: "50%",
-      },
-      [`@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)`]: {
-        overflow: "visible",
-      },
+    "& button": {},
+    "& .progress-bar": {
+      background: "#131a22",
+      height: "4px",
+    },
+    "& .progress": {
+      background: "blue",
+      height: "100%",
+      transition: "width 0.5s",
     },
   },
 };
