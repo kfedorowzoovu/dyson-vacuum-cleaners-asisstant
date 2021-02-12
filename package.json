@@ -1,0 +1,31 @@
+{
+  "name": "@Dyson/dyson-demo-theme",
+  "webDesignName": "DysonDemoTheme",
+  "description": "Demo theme for Dyson",
+  "version": "0.0.1",
+  "license": "SEE LICENSE IN LICENSE",
+  "private": true,
+  "main": "build/dist/webdesign-bundle.min.js",
+  "files": [
+    "build/dist/**/*"
+  ],
+  "scripts": {
+    "clean": "rimraf build target package-lock.json && rimraf node_modules",
+    "serve": "zoovu-web-design package-dev && concurrently -r \"zoovu-web-design package-dev-watch\" \"zoovu-web-design browser-sync-serve\"",
+    "lint": "eslint --ext .js,.vue,.ts src --fix",
+    "build": "rimraf build/dist && zoovu-web-design package-prod && node ./scripts/append-missing-config-values.js && zoovu-web-design zip-package",
+    "deploy": "yarn build && zoovu-web-design deploy-to-s3"
+  },
+  "dependencies": {
+    "@zoovu/runner-browser-api": "^4.55.0"
+  },
+  "devDependencies": {
+    "@types/webpack-env": "^1.15.1",
+    "@zoovu/design-system": "^4.22.1",
+    "@zoovu/eslint-config-custom": "^1.1.0",
+    "@zoovu/runner-browser-test-utils": "^4.55.0",
+    "@zoovu/runner-web-design-base": "^4.47.0",
+    "change-case": "^4.1.1",
+    "typescript": "^3.9.7"
+  }
+}

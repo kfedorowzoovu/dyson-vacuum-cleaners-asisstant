@@ -1,0 +1,510 @@
+{
+  "standardTexts": {
+    "locales": [
+      "base"
+    ],
+    "defaultLocale": "base",
+    "sections": [
+      {
+        "id": "default-section-general",
+        "name": "General",
+        "messages": [
+          {
+            "id": "message-start-over",
+            "label": "Start over button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Restart"
+              }
+            ]
+          },
+          {
+            "id": "message-mandatory-answer",
+            "label": "Mandatory answer message",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Answer is required"
+              }
+            ]
+          },
+          {
+            "id": "message-mandatory-file-upload",
+            "label": "Mandatory file upload",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "File upload is required"
+              }
+            ]
+          },
+          {
+            "id": "message-questionnaire-back",
+            "label": "Questionnaire navigation: back",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Back"
+              }
+            ]
+          },
+          {
+            "id": "message-questionnaire-next",
+            "label": "Questionnaire navigation: next",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Next"
+              }
+            ]
+          },
+          {
+            "id": "message-questionnaire-submit",
+            "label": "Questionnaire navigation: submit",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Submit"
+              }
+            ]
+          },
+          {
+            "id": "message-radio-hint",
+            "label": "Questionnaire radio hint",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Please choose one"
+              }
+            ]
+          },
+          {
+            "id": "message-checkbox-hint",
+            "label": "Questionnaire checkbox hint",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Pick as many as you want"
+              }
+            ]
+          },
+          {
+            "id": "message-button-pdf-download",
+            "label": "PDF download button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "PDF Download"
+              }
+            ]
+          },
+          {
+            "id": "message-filename-pdf-download",
+            "label": "PDF download filename",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "digital-assistant-summary"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "default-section-result",
+        "name": "Result",
+        "messages": [
+          {
+            "id": "message-result-first-cluster-header",
+            "label": "Best matching products: header",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Let's see which products totally match your needs:"
+              }
+            ]
+          },
+          {
+            "id": "message-result-first-cluster-subheader",
+            "label": "Best matching products: subheader",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "message-result-first-cluster-header-alternatives",
+            "label": "Alternative products: header",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Here are some alternatives for you:"
+              }
+            ]
+          },
+          {
+            "id": "message-result-first-cluster-subheader-alternatives",
+            "label": "Alternative products: subheader",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "message-result-back",
+            "label": "Recommendations navigation: back",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Back"
+              }
+            ]
+          },
+          {
+            "id": "message-result-next",
+            "label": "Recommendations navigation: next",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Next"
+              }
+            ]
+          },
+          {
+            "id": "message-results-mode-button",
+            "label": "Results mode button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Results"
+              }
+            ]
+          },
+          {
+            "id": "message-result-go-to-product",
+            "label": "'Go to product' button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Go to product"
+              }
+            ]
+          },
+          {
+            "id": "message-result-add-to-cart",
+            "label": "'Add to cart' button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Add to cart"
+              }
+            ]
+          },
+          {
+            "id": "message-sort-by",
+            "label": "Sort by",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Sort by"
+              }
+            ]
+          },
+          {
+            "id": "message-sort-price-ascending",
+            "label": "Sort: price ascending",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Price ascending"
+              }
+            ]
+          },
+          {
+            "id": "message-sort-price-descending",
+            "label": "Sort: price descending",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Price descending"
+              }
+            ]
+          },
+          {
+            "id": "message-sort-not-specified",
+            "label": "Sort: Relevance",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Relevance"
+              }
+            ]
+          },
+          {
+            "id": "message-result-top-product-header",
+            "label": "Top products: header",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Our top recommendation for you:"
+              }
+            ]
+          },
+          {
+            "id": "message-result-top-product-subheader",
+            "label": "Top products: subheader",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "message-result-top-product-tile-title",
+            "label": "Best",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Best"
+              }
+            ]
+          },
+          {
+            "id": "message-result-top-product-tile-description",
+            "label": "Choice",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Choice"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "default-section-compare",
+        "name": "Compare",
+        "messages": [
+          {
+            "id": "message-compare-dialog-header",
+            "label": "Compare dialog- header",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Product Comparison"
+              }
+            ]
+          },
+          {
+            "id": "message-compare-selector-compare",
+            "label": "Compare selector - headline",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Compare"
+              }
+            ]
+          },
+          {
+            "id": "message-compare-selector-start",
+            "label": "Start compare",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Start compare"
+              }
+            ]
+          },
+          {
+            "id": "message-compare-show-more",
+            "label": "Show more attributes",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Show more"
+              }
+            ]
+          },
+          {
+            "id": "message-compare-show-less",
+            "label": "Show less attributes",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Show less"
+              }
+            ]
+          },
+          {
+            "id": "message-compare-selected-attributes",
+            "label": "Selected attributes",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Attributes according to your choices:"
+              }
+            ]
+          },
+          {
+            "id": "message-compare-alternatives-more",
+            "label": "Alternatives product header - expand",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Add more products: (click to open or close the alternative products)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "default-section-lead-gen",
+        "name": "Lead Generation",
+        "messages": [
+          {
+            "id": "message-invalid-email",
+            "label": "E-mail field validation failure message",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Please provide e-mail address"
+              }
+            ]
+          },
+          {
+            "id": "message-lead-submitted-headline",
+            "label": "Lead generation form success message title",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Thank you!"
+              }
+            ]
+          },
+          {
+            "id": "message-lead-submitted-subtitle",
+            "label": "Lead generation form success message",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Form has been successfully submitted."
+              }
+            ]
+          },
+          {
+            "id": "message-file-upload-question-select-files",
+            "label": "File upload question: 'select files' button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Select files"
+              }
+            ]
+          },
+          {
+            "id": "message-loading-status",
+            "label": "Loading status text",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Files loading..."
+              }
+            ]
+          },
+          {
+            "id": "message-file-upload-question-max-files",
+            "label": "File upload question: Max files limit ({fileLimit} is a placeholder for dynamic content)",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "You can upload up to {fileLimit} files"
+              }
+            ]
+          },
+          {
+            "id": "message-file-upload-question-max-filesize",
+            "label": "File upload question: Max filesize warning ({fileSizeMBLimit} is a placeholder for dynamic content)",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Files should not exceed limit of {fileSizeMBLimit}MB"
+              }
+            ]
+          },
+          {
+            "id": "message-file-upload-question-not-image",
+            "label": "File upload question: Accepted filetypes warning ({fileExtensionsAllowed} is a placeholder for dynamic content)",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Only {fileExtensionsAllowed} types are accepted"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "default-section-filters",
+        "name": "Filters",
+        "messages": [
+          {
+            "id": "message-filter-restart",
+            "label": "Restart all filters button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Clear all"
+              }
+            ]
+          },
+          {
+            "id": "message-filter-collapse-all",
+            "label": "Collapse all filters button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Collapse all"
+              }
+            ]
+          },
+          {
+            "id": "message-filter-expand-all",
+            "label": "Expand all filters button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Expand all"
+              }
+            ]
+          },
+          {
+            "id": "message-filter-more",
+            "label": "Show more options button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "More"
+              }
+            ]
+          },
+          {
+            "id": "message-filter-less",
+            "label": "Show fewer options button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Less"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
