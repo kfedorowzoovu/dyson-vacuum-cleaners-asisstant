@@ -13,8 +13,9 @@
         class="navigation-button"
         :class="previousButtonClassList"
         @click="onClickBack"
-        v-dompurify-html="$t('message-questionnaire-back')"
-      />
+      >
+        <IconChevronLeft /> {{ $t("message-questionnaire-back") }}
+      </button>
 
       <span class="page-number">
         <template v-if="currentNavigation.currentStepIndex + 1 !== currentNavigation.numberOfAvailableSteps">
@@ -48,9 +49,13 @@
 <script lang="ts">
 import { Vue, Component, SectionType, InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
 import { PageSelectorView } from "@zoovu/runner-web-design-base";
+import { IconChevronLeft } from "@/components/svgs";
 
 @Component({
   name: "PageSelectorView",
+  components: {
+    IconChevronLeft,
+  },
   mixins: [PageSelectorView],
 })
 export default class PageSelectorViewExtended extends Vue {

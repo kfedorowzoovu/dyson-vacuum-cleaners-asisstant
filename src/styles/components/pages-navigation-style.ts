@@ -10,9 +10,10 @@ export default {
     },
   },
   container: {
+    padding: "20px 0",
     display: "flex",
     flexFlow: "row wrap",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     width: "100%",
     ".top-navigation &": {
       flex: "1 1 auto",
@@ -23,7 +24,7 @@ export default {
     },
     "& .navigation-next-button, & .navigation-submit-button": {
       border: "none",
-      width: "100%",
+      minWidth: "150px",
       textAlign: "center",
       background: "#fafafa",
       cursor: "pointer",

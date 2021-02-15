@@ -11,7 +11,7 @@
       </component>
       <template v-if="shouldRenderProperties">
         <ul class="product-properties">
-          <template v-for="property in recommendation.properties">
+          <template v-for="property in properties">
             <li v-if="shouldRenderProperty(property)" :key="property.name" :class="resolveClass(property.marking)">
               <i></i>{{ property.displayValue }}
             </li>
@@ -55,10 +55,22 @@
 
 <script lang="ts">
 import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
-import { InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
+import {InjectComponent, Marking, ProductProperty, VueComponent} from "@zoovu/runner-browser-api";
 
 export default class ProductRecommendationViewExtended extends ProductRecommendationView {
   @InjectComponent("ProductPriceView")
   productPriceView: VueComponent;
+
+  get properties() {
+    return this.recommendation.properties.filter((property) => property.marking === Marking.POSITIVE);
+  }
+
+  public get shouldRenderProperties(): boolean {
+    return this.properties.length > 0;
+  }
+
+  get hasNeutralProperty() {
+    return this.properties.some((property: ProductProperty) => property.marking === Marking.NEUTRAL)
+  }
 }
 </script>

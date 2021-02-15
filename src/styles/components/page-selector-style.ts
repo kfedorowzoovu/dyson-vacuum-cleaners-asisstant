@@ -21,6 +21,9 @@ export default {
       marginBottom: "15px",
       position: "relative",
       "& .navigation-button": {
+        display: "flex",
+        alignItems: "center",
+        textTransform: "capitalize !important",
         marginLeft: 0,
         color: "#656565",
         cursor: "pointer",

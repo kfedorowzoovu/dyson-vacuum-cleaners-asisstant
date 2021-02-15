@@ -4,30 +4,15 @@ import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 import mediaQuery from "../abstract/media-query";
 
-const productNameFontSize = stylesConfig.typography.fontSize();
-const productNameFontColor = stylesConfig.colors.primaryFontColor;
-const productPriceFontColor = productNameFontColor;
-const productPriceFontSize = stylesConfig.typography.fontSize();
-const compareButtonFontColor = stylesConfig.colors.secondaryFontColor;
-const compareButtonHoverColor = stylesConfig.colors.primary.spectrum500;
-const productButtonBackground = {
-  border: stylesConfig.colors.primaryAccentColorVariants.default,
-  hover: stylesConfig.colors.primary.spectrum500,
-};
-const productPropertiesFontColor = {
-  default: stylesConfig.colors.primaryFontColor,
-  hover: stylesConfig.colors.primaryFontColor,
-  negative: stylesConfig.colors.negativeAttributeColor,
-  positive: stylesConfig.colors.positiveAttributeColor,
-};
-const focusOutlineColor = stylesConfig.colors.secondary.spectrum400;
-
 export default {
   container: {
     ...productRecommendationBaseStyles(globals),
     border: "1px solid",
     borderColor: stylesConfig.colors.secondary.spectrum100,
     transition: "box-shadow .5s",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
     [mediaQuery.hover]: {
       "&:hover": {
         boxShadow: "0 8px 18px rgba(0, 0, 0, 0.35)",
@@ -62,8 +47,9 @@ export default {
       },
     },
     "& a.product-name": {
+      marginBottom: "10px",
       textDecoration: "none",
-      fontSize: productNameFontSize,
+      fontSize: "28px",
       color: "#303030",
       lineHeight: 1.2,
       textAlign: "left",
@@ -92,20 +78,10 @@ export default {
       },
       "& label, & .start-compare-button": {
         padding: "10px 13px",
-        backgroundColor: stylesConfig.colors.primaryAccentColorVariants.default,
         fontSize: stylesConfig.typography.fontSize(0.9),
-        color: compareButtonFontColor,
         textTransform: "uppercase",
         display: "inline-block",
         transition: "background .3s ease",
-        [mediaQuery.hover]: {
-          "&:hover": {
-            backgroundColor: compareButtonHoverColor,
-          },
-        },
-        "&:focus": {
-          outlineColor: focusOutlineColor,
-        },
       },
       "& .start-compare-button": {
         marginTop: "5px",
@@ -222,7 +198,7 @@ export default {
       },
       "& .add-to-cart-button": {
         color: "white",
-        background: "#1bac11",
+        background: "#79b928",
         border: "none",
       },
     },

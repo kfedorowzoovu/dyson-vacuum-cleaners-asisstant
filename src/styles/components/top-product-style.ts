@@ -4,57 +4,24 @@ import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 import mediaQuery from "../abstract/media-query";
 
-const productNameFontSize = stylesConfig.typography.fontSize(1.8);
-const productNameFontColor = stylesConfig.colors.primaryFontColor;
-const productPriceFontColor = productNameFontColor;
-const productPriceFontSize = stylesConfig.typography.fontSize(1.9);
 const compareButtonFontColor = stylesConfig.colors.secondaryFontColor;
 const compareButtonHoverColor = stylesConfig.colors.primary.spectrum500;
-const productButtonBackground = {
-  border: stylesConfig.colors.primaryAccentColorVariants.default,
-  hover: stylesConfig.colors.primary.spectrum500,
-};
-const productPropertiesFontColor = {
-  default: stylesConfig.colors.primaryFontColor,
-  hover: stylesConfig.colors.primaryFontColor,
-  negative: stylesConfig.colors.negativeAttributeColor,
-  positive: stylesConfig.colors.positiveAttributeColor,
-};
 const focusOutlineColor = stylesConfig.colors.secondary.spectrum400;
 
 export default {
   container: {
-    ...productAdditionalPriceTextBaseStyles,
-    marginTop: "10px",
-    marginBottom: "30px",
-    width: "100%",
-    position: "relative",
-    display: "flex",
-    alignItems: "flex-start",
-    "&:first-of-type": {
-      border: "1px solid #303030",
-    },
-    [`@media (${globals.breakpoints.$xs})`]: {
-      flexWrap: "wrap",
-      marginTop: 0,
-    },
-    "& .image-wrapper": {
-      padding: "10px",
-      "& .product-top-tile": {
-        fontSize: "13px",
-        top: "-16px",
-        color: "white",
-        background: "#303030  ",
-      },
-    },
-    "& .product-details": {
-      padding: "10px",
+    "& .top-product__wrapper": {
+      ...productAdditionalPriceTextBaseStyles,
+      marginTop: "30px",
+      marginBottom: "30px",
+      width: "100%",
+      position: "relative",
       display: "flex",
-      flexFlow: "wrap column",
-      textAlign: "center",
-      [`@media (min-width: 768px)`]: {
-        margin: "auto",
-        textAlign: "left",
+      "&:first-of-type": {
+        border: "1px solid #303030",
+      },
+      [`@media (${globals.breakpoints.$xs})`]: {
+        flexWrap: "wrap",
       },
       "& .product-attributes-toggle": {
         display: "block",
@@ -78,6 +45,23 @@ export default {
           outlineColor: focusOutlineColor,
         },
       },
+    },
+    "& .image-wrapper": {
+      margin: "0 auto",
+      padding: "10px",
+      "& .product-top-tile": {
+        fontSize: "13px",
+        top: "-16px",
+        color: "white",
+        background: "#303030  ",
+      },
+    },
+    "& .product-details": {
+      padding: "10px",
+      display: "flex",
+      flexFlow: "wrap column",
+      textAlign: "center",
+      [`@media (min-width: 768px)`]: {},
     },
     "& .product-image": {
       display: "flex",
@@ -144,7 +128,7 @@ export default {
     },
     "& a.product-name": {
       textDecoration: "none",
-      fontSize: productNameFontSize,
+      fontSize: "28px",
       color: "#303030",
       lineHeight: 1.2,
       textAlign: "left",
@@ -165,7 +149,7 @@ export default {
       [`@media (min-width: 768px)`]: {
         width: "60%",
         maxWidth: "320px",
-        margin: ["auto", "auto", "auto", 0],
+        marginTop: "auto",
       },
       "& .product-compare-wrapper": {
         marginTop: "20px",
@@ -175,20 +159,10 @@ export default {
       },
       "& label, & .start-compare-button": {
         padding: "10px 13px",
-        backgroundColor: stylesConfig.colors.primaryAccentColorVariants.default,
         fontSize: stylesConfig.typography.fontSize(0.9),
-        color: compareButtonFontColor,
         textTransform: "uppercase",
         display: "inline-block",
         transition: "background .3s ease",
-        [mediaQuery.hover]: {
-          "&:hover": {
-            backgroundColor: compareButtonHoverColor,
-          },
-        },
-        "&:focus": {
-          outlineColor: focusOutlineColor,
-        },
       },
       "& .start-compare-button": {
         marginTop: "5px",
@@ -264,9 +238,16 @@ export default {
       },
     },
     "& .product-footer": {
-      width: "100%",
       display: "flex",
+      width: "100%",
+      textAlign: "center",
+      [`@media (min-width: 768px)`]: {
+        width: "auto",
+        padding: "10px",
+        alignItems: "flex-end",
+      },
       "& .product-button": {
+        minWidth: "150px",
         cursor: "pointer",
         fontSize: "16px",
         color: "#303030",
@@ -281,7 +262,7 @@ export default {
       },
       "& .add-to-cart-button": {
         color: "white",
-        background: "#1bac11",
+        background: "#79b928",
         border: "none",
       },
     },

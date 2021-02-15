@@ -1,5 +1,5 @@
 <template>
-  <span :class="[rootElementClass, componentStyle.container]" :key="isResultsSectionNext">
+  <div :class="[rootElementClass, componentStyle.container]" :key="isResultsSectionNext">
     <!-- info: key is necessary because of some strange approach within sections -->
     <!-- instead of rendering something in HTML it is changed to :key to force re-render of component -->
     <button
@@ -18,7 +18,7 @@
       type="button"
       v-dompurify-html="$t('message-questionnaire-submit')"
     ></button>
-  </span>
+  </div>
 </template>
 
 <script lang="ts">
