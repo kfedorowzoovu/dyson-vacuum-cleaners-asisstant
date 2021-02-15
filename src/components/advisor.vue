@@ -42,22 +42,5 @@ export default class AdvisorView extends BaseAdvisorView {
 
   @ComponentConfig(TopProductConfiguration)
   topProductConfiguration: TopProductConfiguration;
-
-  mounted() {
-    this.$root.componentsConfiguration.productRating.showProductRating.enabled = true;
-    this.$root.componentsConfiguration.productRating.showProductRating.rating = {
-      attribute: {
-        name: "ratings",
-      },
-    };
-
-    this.$root.componentsConfiguration.productRating.showProductRating.reviews = {
-      enabled: true,
-      attribute: {
-        name: "reviews",
-      },
-    };
-    this.$root.componentsConfiguration.productButtonConfiguration.showAddToCartButton.enabled = true;
-  }
 }
 </script>
