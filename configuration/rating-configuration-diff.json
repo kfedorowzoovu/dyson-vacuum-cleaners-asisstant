@@ -1,0 +1,22 @@
+{
+  "productRating": {
+    "showProductRating": {
+      "enabled": true,
+      "range": {
+        "min": 0,
+        "max": 5
+      },
+      "rating": {
+        "attribute": {
+          "name": "ratings"
+        }
+      },
+      "reviews": {
+        "enabled": true,
+        "attribute": {
+          "name": "reviews"
+        }
+      }
+    }
+  }
+}

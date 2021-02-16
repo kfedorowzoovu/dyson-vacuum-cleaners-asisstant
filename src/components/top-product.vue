@@ -77,7 +77,7 @@ import {
   Prop,
   VueComponent,
 } from "@zoovu/runner-browser-api";
-import {ProductButtonConfiguration, TopProductView} from "@zoovu/runner-web-design-base";
+import { ProductButtonConfiguration, TopProductView } from "@zoovu/runner-web-design-base";
 
 @Component({})
 export default class TopProductViewExtended extends TopProductView {
@@ -122,7 +122,7 @@ export default class TopProductViewExtended extends TopProductView {
   }
 
   get properties() {
-    return this.recommendation.properties.filter(property => property.marking === Marking.POSITIVE)
+    return this.recommendation.properties.filter((property) => property.marking === Marking.POSITIVE);
   }
 
   get hasNeutralProperty(): boolean {

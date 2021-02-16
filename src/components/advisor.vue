@@ -22,6 +22,8 @@ import {
   CustomCSSConfiguration,
 } from "@zoovu/runner-web-design-base";
 import CustomizedStandardTextsConfiguration from "../configuration/customized-standard-texts";
+import CustomizedRatingConfiguration from "../configuration/customized-rating-configuration";
+import CustomizedProductButtonConfiguration from "../configuration/customized-button-configuration";
 
 @Component({})
 export default class AdvisorView extends BaseAdvisorView {
@@ -36,6 +38,12 @@ export default class AdvisorView extends BaseAdvisorView {
 
   @ComponentConfig(CustomizedStandardTextsConfiguration)
   standardTexts: CustomizedStandardTextsConfiguration;
+
+  @ComponentConfig(CustomizedRatingConfiguration)
+  productRating: CustomizedRatingConfiguration;
+
+  @ComponentConfig(CustomizedProductButtonConfiguration)
+  productButtonConfiguration: CustomizedProductButtonConfiguration;
 
   @ComponentConfig(CustomCSSConfiguration)
   customCSSConfiguration: CustomCSSConfiguration;

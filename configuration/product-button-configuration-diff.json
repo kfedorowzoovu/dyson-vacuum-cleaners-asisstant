@@ -1,0 +1,18 @@
+{
+  "productButtonConfiguration": {
+    "showAddToCartButton": {
+      "enabled": true,
+      "option": "url",
+      "url": {
+        "attribute": {
+          "name": "offerurl"
+        }
+      },
+      "javascript": {
+        "code": "console.log('hello world')"
+      }
+    },
+    "showGoToProductButton": true,
+    "openProductLinkInNewTab": true
+  }
+}

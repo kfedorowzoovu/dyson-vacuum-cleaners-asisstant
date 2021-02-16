@@ -4,6 +4,9 @@ export default {
     "& .rating__star": {
       margin: "1px",
     },
+    "& .rating__reviews": {
+      fontSize: "12px",
+    },
   },
   iconStarEmpty: {
     "& .icon__fill": {

@@ -20,6 +20,7 @@ export default {
     },
     "& .product-details": {
       color: "#303030",
+      height: "100%",
       padding: "10px",
       display: "flex",
       flexFlow: "wrap column",
@@ -49,7 +50,7 @@ export default {
     "& a.product-name": {
       marginBottom: "10px",
       textDecoration: "none",
-      fontSize: "28px",
+      fontSize: "20px",
       color: "#303030",
       lineHeight: 1.2,
       textAlign: "left",
@@ -112,6 +113,7 @@ export default {
     },
     "& .product-properties": {
       padding: "0 8px",
+      marginBottom: "auto",
       listStyle: "none",
       margin: ["5px", 0, 0, 0],
       overflow: "hidden",
@@ -120,7 +122,7 @@ export default {
       maxWidth: "100%",
       "& > li": {
         marginBottom: "7px",
-        fontSize: stylesConfig.typography.fontSize(),
+        fontSize: "14px",
       },
       "& i": {
         height: "14px",
@@ -177,7 +179,7 @@ export default {
         margin: "10px 0",
         fontWeight: "600",
         color: "#303030",
-        fontSize: "24px",
+        fontSize: "20px",
       },
     },
     "& .product-footer": {
@@ -185,12 +187,12 @@ export default {
       display: "flex",
       "& .product-button": {
         cursor: "pointer",
-        fontSize: "16px",
+        fontSize: "14px",
         color: "#303030",
         flex: 1,
         background: "#E0DEDE",
         padding: "10px",
-        fontWeight: "bold",
+        fontWeight: 600,
         textAlign: "center",
         display: "block",
         textDecoration: "none",
