@@ -205,7 +205,14 @@ export default {
       "& > li": {
         marginBottom: "7px",
         fontSize: "14px",
+        display: "flex",
+        alignItems: "center",
         flex: "0 0 50%",
+        "& .property-icon": {
+          marginRight: "5px",
+          maxWidth: "16px",
+          maxHeight: "16px",
+        },
         [`@media (${globals.breakpoints.$xs})`]: {
           flex: "0 0 100%",
         },

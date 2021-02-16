@@ -5,7 +5,8 @@
         <template v-for="(property, index) in properties">
           <transition name="fade" :key="index">
             <li v-if="shouldRenderProperty(property)" :class="resolveClass(property.marking)">
-              <i></i>
+              <img class="property-icon" v-if="propertiesIcons[property.name]" :src="propertiesIcons[property.name]" :alt="property.name" />
+              <i v-else></i>
               {{ property.displayValue }}
             </li>
           </transition>
@@ -115,6 +116,10 @@ export default class TopProductViewExtended extends TopProductView {
       default:
         return "";
     }
+  }
+
+  get propertiesIcons(): { [key: string]: string } {
+    return this.$root.componentViewModel.flowStepsNavigation.flowSteps[0].questions[0].parameters.icons;
   }
 
   public onShowMoreClicked() {
