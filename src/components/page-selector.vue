@@ -1,14 +1,8 @@
 <template>
   <div :class="[rootElementClass, componentStyle.container]">
     <div class="page-selector__page-info">
-      <component
-        :is="startOverButtonView"
-        v-if="!isFirstStep && isResultPage"
-        class="navigation-button"
-        :advisor="advisor"
-      />
       <button
-        v-else
+        v-if="!isFirstStep"
         type="button"
         class="navigation-button"
         :class="previousButtonClassList"
@@ -17,14 +11,17 @@
         <IconChevronLeft /> {{ $t("message-questionnaire-back") }}
       </button>
 
-      <span class="page-number">
-        <template v-if="currentNavigation.currentStepIndex + 1 !== currentNavigation.numberOfAvailableSteps">
-          <b>{{ currentNavigation.currentStepIndex + 1 }}</b> / <b>{{ currentNavigation.numberOfAvailableSteps }}</b>
+      <span class="page-number" :class="{ 'results-header': isResultPage }">
+        <template v-if="!isResultPage">
+          <span>{{ currentNavigation.currentStepIndex + 1 }}</span> /
+          <span>{{ currentNavigation.numberOfAvailableSteps }}</span>
         </template>
         <template v-else>{{ $t("message-results-mode-button") }}</template>
       </span>
+      <component :is="startOverButtonView" v-if="!isFirstStep" class="navigation-button" :advisor="advisor" />
     </div>
-    <div class="page-selector__progress-bar" v-if="currentNavigation.numberOfAvailableSteps > 1">
+
+    <div v-if="currentNavigation.numberOfAvailableSteps > 1" class="page-selector__progress-bar">
       <button
         v-for="(n, index) in currentNavigation.numberOfAvailableSteps"
         :key="n"

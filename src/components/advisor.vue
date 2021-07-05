@@ -52,3 +52,6 @@ export default class AdvisorView extends BaseAdvisorView {
   topProductConfiguration: TopProductConfiguration;
 }
 </script>
+<style>
+@import url("../styles/partials/custom-fonts.css");
+</style>

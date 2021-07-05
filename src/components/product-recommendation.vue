@@ -55,7 +55,7 @@
 
 <script lang="ts">
 import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
-import {InjectComponent, Marking, ProductProperty, VueComponent} from "@zoovu/runner-browser-api";
+import { InjectComponent, Marking, ProductProperty, VueComponent } from "@zoovu/runner-browser-api";
 
 export default class ProductRecommendationViewExtended extends ProductRecommendationView {
   @InjectComponent("ProductPriceView")
@@ -70,7 +70,7 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   }
 
   get hasNeutralProperty() {
-    return this.properties.some((property: ProductProperty) => property.marking === Marking.NEUTRAL)
+    return this.properties.some((property: ProductProperty) => property.marking === Marking.NEUTRAL);
   }
 }
 </script>

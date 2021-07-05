@@ -3,22 +3,20 @@
     <template v-if="shouldRenderProperties">
       <ul class="product-properties">
         <template v-for="(property, index) in properties">
-          <transition name="fade" :key="index">
+          <transition :key="index" name="fade">
             <li v-if="shouldRenderProperty(property)" :class="resolveClass(property.marking)">
-              <img class="property-icon" v-if="propertiesIcons[property.name]" :src="propertiesIcons[property.name]" :alt="property.name" />
-              <i v-else></i>
               {{ property.displayValue }}
             </li>
           </transition>
         </template>
       </ul>
       <button
-        type="button"
         v-if="hasNeutralProperty"
+        v-dompurify-html="$t(attributesCollapsed ? 'message-compare-show-less' : 'message-compare-show-more')"
+        type="button"
         class="product-attributes-toggle"
         :class="{ collapsed: attributesCollapsed }"
         @click="onShowMoreClicked"
-        v-dompurify-html="$t(attributesCollapsed ? 'message-compare-show-less' : 'message-compare-show-more')"
       >
         <i></i>
       </button>
@@ -35,10 +33,10 @@
         </div>
       </div>
       <div class="product-details">
-        <component class="product-name" :is="productClickoutLinkView" :product="recommendation">
+        <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
           {{ recommendation.name }}
         </component>
-        <component class="product__rating" :is="productRatingView" :product="recommendation" />
+        <component :is="productRatingView" class="product__rating" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />
 
         <div class="compare-wrapper">
@@ -49,18 +47,18 @@
       </div>
       <div class="product-footer">
         <component
-          class="product-button add-to-cart-button"
           :is="productAddToCartLinkView"
           v-if="shouldShowAddToCartButton"
-          :product="recommendation"
           v-dompurify-html="$t('message-result-add-to-cart')"
+          class="product-button add-to-cart-button"
+          :product="recommendation"
         ></component>
         <component
-          class="product-button go-to-product-button"
           :is="productClickoutLinkView"
-          :product="recommendation"
           v-if="shouldShowGoToProductButton"
           v-dompurify-html="$t('message-result-go-to-product')"
+          class="product-button go-to-product-button"
+          :product="recommendation"
         ></component>
       </div>
     </div>
@@ -103,7 +101,7 @@ export default class TopProductViewExtended extends TopProductView {
   @InjectComponent("ProductAddToCartView")
   productAddToCartLinkView: VueComponent;
 
-  private attributesCollapsed: boolean = false;
+  private attributesCollapsed = false;
 
   public resolveClass(marking: Marking): string {
     switch (marking) {
@@ -116,10 +114,6 @@ export default class TopProductViewExtended extends TopProductView {
       default:
         return "";
     }
-  }
-
-  get propertiesIcons(): { [key: string]: string } {
-    return this.$root.componentViewModel.flowStepsNavigation.flowSteps[0].questions[0].parameters.icons;
   }
 
   public onShowMoreClicked() {

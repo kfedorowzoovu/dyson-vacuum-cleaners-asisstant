@@ -4,7 +4,7 @@ import globalStyles from "./partials/globals";
 import tooltips from "./partials/tooltips";
 
 const fontSize = stylesConfig.typography.fontSize();
-const { fontFamily } = stylesConfig.typography;
+const fontFamily = "DysonFutura, OpensSans, sans-serif";
 
 export default {
   container: {
@@ -12,7 +12,6 @@ export default {
     ...tooltips,
     maxWidth: globals.layout.maxContainerWidth,
     margin: [0, "auto"],
-    padding: "5px",
     fontFamily,
     fontSize,
     "& *": {

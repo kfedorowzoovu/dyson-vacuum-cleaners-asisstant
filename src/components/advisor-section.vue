@@ -1,13 +1,9 @@
 <template>
   <div v-if="isActiveSection" :id="advisor.advisorNavigation.currentSection.mid" :class="classList">
     <section class="top-navigation">
-      <slot name="header" />
-    </section>
-
-    <section>
       <component
-        v-if="showPageSelectorAboveMainSection"
         :is="pageSelectorView"
+        v-if="showPageSelectorAboveMainSection"
         :navigation="advisor.advisorNavigation"
       />
     </section>
@@ -18,10 +14,10 @@
 
     <section>
       <component
-        v-if="showNavigationBelowMainSection && isQuestionnaire"
         :is="pagesNavigationView"
+        v-if="showNavigationBelowMainSection && isQuestionnaire"
         :navigation="advisor.advisorNavigation"
-        :showPageSelector="showPageSelectorBetweenNavigationButtons"
+        :show-page-selector="showPageSelectorBetweenNavigationButtons"
       />
     </section>
 
@@ -32,14 +28,7 @@
 </template>
 
 <script lang="ts">
-import {
-  Advisor,
-  Component,
-  InjectComponent,
-  Prop,
-  SectionType,
-  VueComponent,
-} from "@zoovu/runner-browser-api";
+import { Advisor, Component, InjectComponent, Prop, SectionType, VueComponent } from "@zoovu/runner-browser-api";
 import { AdvisorSectionView } from "@zoovu/runner-web-design-base";
 
 @Component({})
@@ -68,7 +57,7 @@ export default class AdvisorSectionViewExtended extends AdvisorSectionView {
   @Prop({ default: true })
   showPageSelectorBetweenNavigationButtons: boolean;
 
-  @Prop({ default: false })
+  @Prop({ default: true })
   showPageSelectorAboveMainSection: boolean;
 
   @Prop()

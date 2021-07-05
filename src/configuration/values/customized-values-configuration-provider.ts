@@ -19,7 +19,8 @@ export default class CustomValuesConfigurationProvider extends ValuesConfigurati
       case ConfigurationValues.ProductRating:
         return mergeRightAllWithArrays(productRatingConfigurationValues, this.customConfigurationValues).productRating;
       case ConfigurationValues.ProductButtonSettings:
-        return mergeRightAllWithArrays(productButtonConfigurationValues, this.customConfigurationValues).productButtonConfiguration;
+        return mergeRightAllWithArrays(productButtonConfigurationValues, this.customConfigurationValues)
+          .productButtonConfiguration;
       default:
         return {};
     }

@@ -1,15 +1,15 @@
 <template>
-  <div class="rating" :class="componentStyle.container" v-if="showRating" :data-rating="currentRate">
+  <div v-if="showRating" class="rating" :class="componentStyle.container" :data-rating="currentRate">
     <span class="rating__stars">
       <template v-for="(rateIcon, index) in ratingRange">
         <span
+          :key="`${rateIcon.rated ? (rateIcon.half ? 'full' : 'half') : 'empty'}-star-${index}`"
           class="rating__star"
           :class="{
             'rating__star--full': rateIcon.rated && !rateIcon.half,
             'rating__star--half': rateIcon.rated && rateIcon.half,
             'rating__star--empty': !rateIcon.rated,
           }"
-          :key="`${rateIcon.rated ? (rateIcon.half ? 'full' : 'half') : 'empty'}-star-${index}`"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,22 +44,15 @@
         </span>
       </template>
     </span>
-    <span class="rating__reviews" v-if="showReviews"> ({{ currentReviews }}) </span>
+    <span v-if="showReviews" class="rating__reviews"> ({{ currentReviews }}) </span>
   </div>
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Prop,
-  ComponentConfig,
-  Product,
-  ProductRecommendation,
-  Watch,
-} from "@zoovu/runner-browser-api";
+import { Component, Prop, ComponentConfig, Product, ProductRecommendation, Watch } from "@zoovu/runner-browser-api";
 import { ProductRatingView, ProductRatingConfiguration } from "@zoovu/runner-web-design-base";
 
-const RATING_PRECISION: number = 0.25;
+const RATING_PRECISION = 0.25;
 
 @Component({})
 export default class ProductRatingViewExtended extends ProductRatingView {
@@ -69,7 +62,7 @@ export default class ProductRatingViewExtended extends ProductRatingView {
   @ComponentConfig(ProductRatingConfiguration)
   public componentConfiguration;
 
-  public enabled: boolean = false;
+  public enabled = false;
 
   protected mounted() {
     if (!this.ratingConfiguration) return;

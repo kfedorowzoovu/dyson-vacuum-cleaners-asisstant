@@ -16,11 +16,13 @@ export default {
   colors: {
     primaryColor: "#32374b",
     primaryColorLighter: "#2e3e4f",
-    gray: "#f2f2f2",
-    darkGray: "#c4c4c4",
-    darkerGray: "#727a86",
-    lightGray: "#dadada",
-    midGray: "#eaeaea",
+
+    gray_primary: "#333333",
+    gray_secondary: "#555555",
+    gray_tertiary: "#999999",
+    gray_disabled: "#EBEBEB",
+    gray_background: "#F3F3F3",
+
     blue: "#009bd4",
     black: "#000",
     contrastDark: "#000",
@@ -44,5 +46,6 @@ export default {
   },
   layout: {
     maxContainerWidth: "1420px",
+    globalPaddingDesktop: "7%",
   },
 };

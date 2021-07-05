@@ -146,25 +146,18 @@ export const ButtonPaginationNextBack = {
 
 export const ButtonStartOver = {
   ...ButtonReset,
-  fontSize: startOverButtonFontSize,
-  color: startOverButtonTextColor,
   display: "flex",
-  flexFlow: "wrap row",
   alignItems: "center",
-  justifyContent: "center",
-  textTransform: "uppercase",
-  background: buttonBackgroundColors.startOver.default,
-  padding: ["12px", "20px"],
-  minWidth: "139px", // 1px less than the other button because 320px device with 15px margin (+ body default margins) wont fit 2 buttons besides each other
-  transition: "background .3s ease, border .3s ease",
-  [mediaQuery.hover]: {
-    "&:hover": {
-      background: buttonBackgroundColors.startOver.hover,
-    },
-  },
-  "&:active": {
-    background: buttonBackgroundColors.startOver.active,
-  },
+  textTransform: "capitalize !important",
+  color: globals.colors.gray_primary,
+  cursor: "pointer",
+  fontSize: "16px",
+  padding: "10px",
+  minWidth: "unset",
+  fontWeight: "bold",
+  border: "none",
+  textDecoration: "underline",
+  background: "none",
   "&:focus": {
     outlineColor: outlineFocusColor,
   },
