@@ -77,7 +77,10 @@ export default class ChoiceQuestionViewExtended extends Vue {
   @Prop()
   question: ChoiceQuestion;
 
-  maxTextHeights = [];
+  public maxTextHeights = [];
+  public minAnswersPerRow = 1;
+  public answersPerRow = [];
+  public imageHeights = [];
 
   mounted(): void {
     this.clearAllHeights();

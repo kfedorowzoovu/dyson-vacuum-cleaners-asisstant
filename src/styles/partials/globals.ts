@@ -6,14 +6,14 @@ export default {
     transform: "scale(1.1)",
   },
   "& .expand-enter-active, & .expand-leave-active": {
-    transition: "all 0.5s ease",
+    transition: "all 00.1s ease",
   },
   "& .expand-enter, & .expand-leave": {
     height: 0,
     opacity: 0,
   },
   "& .fade-enter-active, & .expand-leave-active": {
-    transition: "opacity 0.5s ease",
+    transition: "opacity 00.1s ease",
   },
   "& .fade-enter, & .fade-leave-to, & .fade-leave-active": {
     opacity: 0,

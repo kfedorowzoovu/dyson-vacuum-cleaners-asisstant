@@ -4,7 +4,7 @@ import stylesConfig from "../styles.config";
 import mediaQuery from "../abstract/media-query";
 
 const bordersColor = stylesConfig.colors.secondary.spectrum100;
-const focusOutlineColor = stylesConfig.colors.primary.spectrum400;
+const focusOutlineColor = globals.colors.green;
 
 export default {
   container: {
@@ -88,7 +88,7 @@ export default {
         left: 0,
         width: "100%",
         overflow: "hidden",
-        transition: "max-height .3s ease-out,overflow-y .1s .5s",
+        transition: "max-height .3s ease-out,overflow-y .1s 0.1s",
         backgroundColor: globals.colors.white,
         "& .option": {
           cursor: "pointer",

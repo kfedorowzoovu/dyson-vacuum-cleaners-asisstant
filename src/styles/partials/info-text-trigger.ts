@@ -22,7 +22,7 @@ export default {
     cursor: "pointer",
     zIndex: 1,
     "&:focus": {
-      outlineColor: stylesConfig.colors.primary.spectrum400,
+      outlineColor: globals.colors.green,
     },
   },
 };

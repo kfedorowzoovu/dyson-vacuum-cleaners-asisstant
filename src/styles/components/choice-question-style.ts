@@ -2,15 +2,16 @@ import mediaQuery from "../abstract/media-query";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 
-const focusOutlineColor = stylesConfig.colors.primary.spectrum400;
+const focusOutlineColor = globals.colors.green;
 export default {
   container: {
     "& .answers-wrapper": {
       alignItems: "stretch",
       display: "flex",
       flexFlow: "wrap row",
-      justifyContent: "flex-start",
+      justifyContent: "center",
       margin: [0, 0, "48px", 0],
+      boxSizing: "border-box",
       "&:after": {
         content: "''",
         flex: "0 2 auto",
@@ -21,14 +22,27 @@ export default {
       },
       "& .answer": {
         position: "relative",
-        margin: "7px",
+        margin: "14px",
+        [`@media (${globals.breakpoints.$sm})`]: {
+          margin: "10px",
+          minWidth: "350px",
+        },
         [`@media (${globals.breakpoints.$xs})`]: {
+          margin: [0, 0, "16px", 0],
+
           width: "100% !important",
-          margin: [0, 0, "20px"],
         },
         [mediaQuery.hover]: {
           "&:hover": {
             boxShadow: "6px 3px 18px rgba(0, 0, 0, 0.47)",
+            border: "2px solid black",
+            transition: ".05s",
+            "&.is-selected": {
+              border: `3px solid ${globals.colors.green}`,
+            },
+            "& .answer-text": {
+              fontWeight: 400,
+            },
           },
         },
         "&:focus": {

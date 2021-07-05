@@ -36,8 +36,8 @@ const paginationSelectedButtonBackgroundColors = {
 
 const buttonFontSize = stylesConfig.typography.fontSize(1);
 
-const outlineFocusColor = stylesConfig.colors.primary.spectrum400;
-const outlineFocusSecondaryColor = stylesConfig.colors.secondary.spectrum400;
+const outlineFocusColor = globals.colors.green;
+const outlineFocusSecondaryColor = globals.colors.green;
 
 export const ButtonReset = {
   display: "inline-block",

@@ -7,21 +7,21 @@ import { choiceAnswerTransitions } from "../partials/transition";
 import stylesConfig from "../styles.config";
 
 const infoTextBackground = stylesConfig.colors.secondaryAccentColorVariants.transparent;
-const answerImageTextColor = stylesConfig.colors.secondaryFontColor;
-const answerTextColor = stylesConfig.colors.secondaryFontColor;
-const answerContentSelectedBackground = stylesConfig.colors.primary.spectrum900;
-const answerContentBackground = stylesConfig.colors.primary.spectrum500;
+const answerBackgroundGradient = "linear-gradient(180deg, rgba(0,0,0,0) 50%, #000000 150%)";
+const answerContentBackground = globals.colors.green;
 const infoTextTriggerFontColor = stylesConfig.colors.secondaryFontColor;
 
-const answerTextFontSize = stylesConfig.typography.fontSize(1.2);
-const answerInfoTextFontSize = stylesConfig.typography.fontSize(0.8);
 export default {
   container: {
     extend: choiceAnswerTransitions,
-    transition: "box-shadow .5s",
+    transition: "box-shadow .3s",
+    maxWidth: "358px",
+    [`@media (${globals.breakpoints.$xs})`]: {
+      maxWidth: "100%",
+    },
     "&.has-image": {
       "& label": {
-        minHeight: "315px",
+        minHeight: "190px",
         [`@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)`]: {
           display: "block",
           position: "relative",
@@ -51,7 +51,7 @@ export default {
       "& .answer-content": {
         position: "relative",
         bottom: 0,
-        background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.8) 100%)",
+        background: answerBackgroundGradient,
         width: "100%",
         height: "100%",
         alignItems: "flex-end",
@@ -59,7 +59,7 @@ export default {
           background: "transparent",
           position: "absolute,",
         },
-        minHeight: "315px",
+        minHeight: "190px",
         "&:before, &:after": {
           content: "' '",
           display: "none",
@@ -78,21 +78,21 @@ export default {
         },
         [`@media (${globals.breakpoints.$xs})`]: {
           width: "100%",
-          minHeight: "215px",
+          minHeight: "190",
         },
       },
       "& .fullRow": {
         "& .answer-content": {
-          minHeight: "160px",
+          minHeight: "190px",
           height: "auto",
           [`@media (${globals.breakpoints.$xs})`]: {
-            minHeight: "215px",
+            minHeight: "190px",
           },
         },
       },
       "& .answer-text": {
-        color: answerImageTextColor,
-        paddingBottom: "15px",
+        color: globals.colors.white,
+        paddingBottom: "8px",
         paddingTop: "26px",
         paddingRight: "30px",
         zIndex: 1,
@@ -142,11 +142,12 @@ export default {
     "& .answer-text": {
       display: "flex",
       paddingLeft: "5px",
-      color: answerTextColor,
-      fontSize: answerTextFontSize,
+      color: globals.colors.white,
+      fontSize: stylesConfig.typography.fontSize(1),
+      fontWeight: 300,
       alignItems: "flex-end",
       justifyContent: "center",
-      paddingBottom: "15px",
+      paddingBottom: "8px",
       paddingTop: "26px",
       paddingRight: "30px",
       zIndex: 1,
@@ -161,7 +162,7 @@ export default {
       padding: "10px",
       background: infoTextBackground,
       lineHeight: "1.5",
-      fontSize: answerInfoTextFontSize,
+      fontSize: stylesConfig.typography.fontSize(1),
       color: infoTextTriggerFontColor,
       pointerEvents: "none",
       textAlign: "center",
@@ -176,7 +177,7 @@ export default {
       flex: "0 2 auto",
       alignItems: "flex-end",
       minHeight: "75px",
-      padding: "0 15px",
+      padding: "0 20px",
       zIndex: 5,
       background: answerContentBackground,
       justifyContent: "flex-start",
@@ -191,8 +192,12 @@ export default {
       },
     },
     "&.is-selected": {
+      border: `3px solid ${globals.colors.green}`,
       "& .answer-content": {
-        background: answerContentSelectedBackground,
+        background: globals.colors.green,
+        "& .answer-text": {
+          fontWeight: 400,
+        }
       },
       "&.has-image": {
         "& .answer-content, & .answer-image": {
@@ -200,20 +205,20 @@ export default {
         },
         "& .answer-content:before": {
           opacity: 1,
-          backgroundColor: stylesConfig.colors.primary.spectrum900,
+          backgroundColor: globals.colors.green,
         },
         "& .answer-content:after": {
           opacity: 1,
-          backgroundColor: stylesConfig.colors.primary.spectrum900,
+          backgroundColor: globals.colors.green,
         },
         "& label": {
           "&:before": {
             opacity: 1,
-            backgroundColor: stylesConfig.colors.primary.spectrum900,
+            backgroundColor: globals.colors.green,
           },
           "&:after": {
             opacity: 1,
-            backgroundColor: stylesConfig.colors.primary.spectrum900,
+            backgroundColor: globals.colors.green,
           },
         },
       },
@@ -250,14 +255,14 @@ export default {
     [`@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)`]: {
       "&.has-image": {
         "& label": {
-          minHeight: "315px",
+          minHeight: "190px",
           [`@media (${globals.breakpoints.$xs})`]: {
             minHeight: "215px",
           },
         },
         "& .answer-content": {
           position: "absolute",
-          background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.8) 100%)",
+          background: answerBackgroundGradient,
         },
       },
       "&.is-selected": {
@@ -272,11 +277,12 @@ export default {
             borderTopColor: answerContentBackground,
             background: "transparent",
             "& .answer-text": {
-              paddingBottom: "14px",
+              paddingBottom: "8px",
+              fontWeight: 400,
             },
           },
           "& .answer-content": {
-            background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0.8) 100%)",
+            background: answerBackgroundGradient,
           },
         },
       },
@@ -284,21 +290,21 @@ export default {
     [`&.${AnswerAnimationStyleClass.DIAGONAL_SHADES}`]: {
       "& .answer-content": {
         transitionProperty: "background-color",
-        transitionDuration: "0.3s",
+        transitionDuration: "0.1s",
       },
       "&.has-image .answer-content::before": {
         opacity: "1",
         transform: "translate3d(0, 12px, 0)",
-        transition: "transform 0.3s",
+        transition: "transform 0.1s",
       },
       "& .answer-image": {
         transform: "scale3d(1.05, 1.05, 1)",
         transitionProperty: "transform",
-        transitionDuration: "0.3s",
-        backgroundColor: stylesConfig.colors.primary.spectrum400,
+        transitionDuration: "0.1s",
+        backgroundColor: globals.colors.green,
         "& .image-element": {
           transitionProperty: "opacity",
-          transitionDuration: "0.3s",
+          transitionDuration: "0.1s",
         },
         "&::before": {
           position: "absolute",
@@ -355,11 +361,11 @@ export default {
       "&.has-image .answer-content::before": {
         opacity: "0",
         transform: "translate3d(0, 12px, 0)",
-        transition: "transform 0.3s",
+        transition: "transform 0.1s",
       },
       "& .image-element": {
         transitionProperty: "transform, background-color",
-        transitionDuration: "0.3s",
+        transitionDuration: "0.1s",
         "&::before": {
           position: "absolute",
           content: "''",
@@ -372,7 +378,7 @@ export default {
       },
       "& .answer-text": {
         transitionProperty: "padding-bottom",
-        transitionDuration: "0.3s",
+        transitionDuration: "0.1s",
       },
       [mediaQuery.hover]: {
         "&:hover": {

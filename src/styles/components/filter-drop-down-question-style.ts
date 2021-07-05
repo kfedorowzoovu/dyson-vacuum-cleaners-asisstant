@@ -102,11 +102,11 @@ export default {
           width: "20px",
           height: "20px",
           transform: "translate(0, -50%)",
-          transition: "transform 0.3s",
+          transition: "transform 0.1s",
         },
       },
       "& .custom-select-panel": {
-        transition: "max-height .3s ease-out,overflow-y .1s .5s",
+        transition: "max-height .3s ease-out,overflow-y .1s 0.1s",
         backgroundColor: "transparent",
         borderLeft: "2px solid",
         borderRight: "2px solid",

@@ -22,11 +22,13 @@ export default {
     gray_tertiary: "#999999",
     gray_disabled: "#ababab",
     gray_background: "#F3F3F3",
+    white: "#fff",
+    green: "#79B928",
+
 
     blue: "#009bd4",
     black: "#000",
     contrastDark: "#000",
-    white: "#fff",
     red: "#d0392a",
     redLighter: "#df4318",
     violet: "#9e78c5",

@@ -9,7 +9,7 @@ export default {
     ...productRecommendationBaseStyles(globals),
     border: "1px solid",
     borderColor: stylesConfig.colors.secondary.spectrum100,
-    transition: "box-shadow .5s",
+    transition: "box-shadow 0.1s",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -37,7 +37,7 @@ export default {
         width: "100%",
         textAlign: "center",
         "&:focus": {
-          outlineColor: stylesConfig.colors.primary.spectrum400,
+          outlineColor: globals.colors.green,
         },
       },
       "& img": {
@@ -60,7 +60,7 @@ export default {
         margin: "10px 0",
       },
       "&:focus": {
-        outlineColor: stylesConfig.colors.primary.spectrum400,
+        outlineColor: globals.colors.green,
       },
     },
     "& .product-compare-wrapper": {

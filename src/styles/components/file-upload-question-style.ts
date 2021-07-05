@@ -34,7 +34,7 @@ export default {
         display: "inline-block",
         maxWidth: "calc(12% - 10px)",
         boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-        transition: "transition: all 0.3s cubic-bezier(.25,.8,.25,1)",
+        transition: "transition: all 0.1s cubic-bezier(.25,.8,.25,1)",
       },
       "& .file-question__status": {
         display: "flex",
@@ -64,7 +64,7 @@ export default {
     "& .file-question__validation-message": {
       padding: "5px",
       background: globals.colors.red,
-      borderColor: stylesConfig.colors.primary.spectrum400,
+      borderColor: globals.colors.green,
       color: globals.colors.white,
       fontSize: stylesConfig.typography.fontSize(0.9),
     },

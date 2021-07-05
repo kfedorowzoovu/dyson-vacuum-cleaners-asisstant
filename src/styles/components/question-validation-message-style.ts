@@ -19,7 +19,7 @@ export default {
     "& .question-validation-message": {
       padding: "5px",
       background: globals.colors.red,
-      borderColor: stylesConfig.colors.primary.spectrum400,
+      borderColor: globals.colors.green,
       color: globals.colors.white,
       fontSize: stylesConfig.typography.fontSize(1),
     },

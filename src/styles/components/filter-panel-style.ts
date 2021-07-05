@@ -71,7 +71,7 @@ export default {
       marginTop: "12px",
       [mediaQuery.hover]: {
         "&:hover": {
-          backgroundColor: stylesConfig.colors.secondary.spectrum400,
+          backgroundColor: globals.colors.green,
         },
       },
     },

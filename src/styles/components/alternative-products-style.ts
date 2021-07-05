@@ -35,7 +35,7 @@ export default {
       height: "242px",
       "&.fade-out": {
         height: 0,
-        transition: "height .5s ease",
+        transition: "height 0.1s ease",
       },
     },
     "& .alternative-product-row": {

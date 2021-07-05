@@ -113,7 +113,7 @@ export default {
         left: 0,
         width: "100%",
         maxHeight: "0",
-        transition: "max-height .3s ease-out,overflow-y .1s .5s",
+        transition: "max-height .3s ease-out,overflow-y .1s 0.1s",
         backgroundColor: globals.colors.white,
         "& .option": {
           cursor: "pointer",

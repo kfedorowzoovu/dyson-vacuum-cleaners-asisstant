@@ -11,7 +11,7 @@ export default {
     ...productAdditionalPriceTextBaseStyles,
     height: "60vh",
     overflow: "auto",
-    transition: "height .5s ease",
+    transition: "height 0.1s ease",
     "& .product-header": {
       "& .remove-button-container": {
         position: "relative",

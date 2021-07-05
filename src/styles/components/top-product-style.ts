@@ -6,7 +6,7 @@ import mediaQuery from "../abstract/media-query";
 
 const compareButtonFontColor = stylesConfig.colors.secondaryFontColor;
 const compareButtonHoverColor = stylesConfig.colors.primary.spectrum500;
-const focusOutlineColor = stylesConfig.colors.secondary.spectrum400;
+const focusOutlineColor = globals.colors.green;
 
 export default {
   container: {
@@ -80,7 +80,7 @@ export default {
         top: 0,
         left: "10px",
         padding: "6px",
-        background: stylesConfig.colors.primary.spectrum400,
+        background: globals.colors.green,
         "& h4": {
           margin: 0,
           fontSize: stylesConfig.typography.fontSize(1),
@@ -108,7 +108,7 @@ export default {
       "& a": {
         maxWidth: "350px",
         "&:focus": {
-          outlineColor: stylesConfig.colors.primary.spectrum400,
+          outlineColor: globals.colors.green,
         },
       },
       "& img": {
@@ -139,7 +139,7 @@ export default {
         margin: "10px 0",
       },
       "&:focus": {
-        outlineColor: stylesConfig.colors.primary.spectrum400,
+        outlineColor: globals.colors.green,
       },
     },
     "& .compare-wrapper": {

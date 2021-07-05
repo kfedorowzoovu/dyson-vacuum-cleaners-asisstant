@@ -3,7 +3,7 @@ export default {
     "&.alternative-products-shown": {
       "& .shown-products-table": {
         height: "calc(70vh - 242px)",
-        transition: "height .5s ease",
+        transition: "height 0.1s ease",
       },
     },
     "& .product-image": {
