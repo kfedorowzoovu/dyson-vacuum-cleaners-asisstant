@@ -26,11 +26,6 @@ const nextButtonTextColor = stylesConfig.colors.secondaryFontColor;
 const nextButtonBorderColor = stylesConfig.colors.primaryAccentColorVariants.default;
 const previousButtonBorderColor = stylesConfig.colors.primaryAccentColorVariants.default;
 
-const paginationButtonBackgroundColors = {
-  hover: globals.colors.gray,
-  active: globals.colors.gray,
-};
-
 const paginationButtonBorderColor = stylesConfig.colors.advisorBackgroundVariants.dark;
 const paginationSelectedButtonBorderColor = stylesConfig.colors.primaryAccentColorVariants.default;
 const paginationSelectedButtonBackgroundColors = {
@@ -39,9 +34,7 @@ const paginationSelectedButtonBackgroundColors = {
   active: stylesConfig.colors.primaryAccentColorVariants.default, // TODO ADJUST
 };
 
-const buttonFontSize = stylesConfig.typography.fontSize(0.9);
-const startOverButtonFontSize = stylesConfig.typography.fontSize(0.9);
-const startOverButtonTextColor = stylesConfig.colors.primaryFontColor;
+const buttonFontSize = stylesConfig.typography.fontSize(1);
 
 const outlineFocusColor = stylesConfig.colors.primary.spectrum400;
 const outlineFocusSecondaryColor = stylesConfig.colors.secondary.spectrum400;
@@ -113,14 +106,6 @@ export const ButtonPagination = {
   "&:last-child": {
     marginRight: 0,
   },
-  [mediaQuery.hover]: {
-    "&:hover": {
-      background: paginationButtonBackgroundColors.hover,
-    },
-  },
-  "&:active": {
-    background: paginationButtonBackgroundColors.active,
-  },
 };
 export const ButtonPaginationSelected = {
   ...ButtonPagination,
@@ -141,7 +126,23 @@ export const ButtonPaginationSelected = {
 export const ButtonPaginationNextBack = {
   paddingLeft: "10px",
   paddingRight: "10px",
-  fontWeight: 600,
+  fontWeight: 700,
+  height: "64px",
+  width: "320px",
+  backgroundColor: globals.colors.gray_background,
+  border: "none",
+  color: globals.colors.gray_disabled,
+  margin: "auto",
+  fontSize: stylesConfig.typography.fontSize(1),
+  [`@media (${globals.breakpoints.$sm})`]: {
+    height: "56px",
+  },
+  [`@media (${globals.breakpoints.$xs})`]: {
+    width: "100%",
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+  },
 };
 
 export const ButtonStartOver = {

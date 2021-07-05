@@ -20,7 +20,7 @@ export default {
     gray_primary: "#333333",
     gray_secondary: "#555555",
     gray_tertiary: "#999999",
-    gray_disabled: "#EBEBEB",
+    gray_disabled: "#ababab",
     gray_background: "#F3F3F3",
 
     blue: "#009bd4",
@@ -39,7 +39,7 @@ export default {
   breakpoints: {
     $xxs: "max-width: 575px",
     $xs: "max-width: 767px",
-    $sm: "max-width: 920px",
+    $sm: "max-width: 1024px",
     $md: "min-width: 1120px",
     $minMd: "min-width: 1300px",
     $lg: "min-width: 1400px",

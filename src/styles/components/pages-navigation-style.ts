@@ -1,4 +1,5 @@
 import { ButtonNextInProgress } from "../partials/buttons";
+import { ButtonPaginationNextBack } from "../partials/buttons";
 
 export default {
   "@keyframes navigationSpinner": {
@@ -10,7 +11,7 @@ export default {
     },
   },
   container: {
-    padding: "20px 0",
+    padding: [0, 0, "20px", 0],
     display: "flex",
     flexFlow: "row wrap",
     justifyContent: "flex-end",
@@ -23,16 +24,7 @@ export default {
       order: -1,
     },
     "& .navigation-next-button, & .navigation-submit-button": {
-      border: "none",
-      minWidth: "150px",
-      textAlign: "center",
-      background: "#fafafa",
-      cursor: "pointer",
-      padding: "15px",
-      fontSize: "16px",
-      color: "#c0c0c0",
-      fontWeight: "bold",
-      position: "relative",
+      ...ButtonPaginationNextBack,
     },
     "& .navigation-next-button.navigation-next-in-progress": {
       ...ButtonNextInProgress,

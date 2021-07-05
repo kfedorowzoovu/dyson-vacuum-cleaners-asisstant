@@ -10,14 +10,14 @@ export default {
       display: "flex",
       flexFlow: "wrap row",
       justifyContent: "flex-start",
-      margin: [0, "-7px", "75px", "-7px"],
+      margin: [0, 0, "48px", 0],
       "&:after": {
         content: "''",
         flex: "0 2 auto",
       },
       [`@media (${globals.breakpoints.$xs})`]: {
         flexFlow: "wrap column",
-        marginBottom: "15px",
+        marginBottom: "40px",
       },
       "& .answer": {
         position: "relative",

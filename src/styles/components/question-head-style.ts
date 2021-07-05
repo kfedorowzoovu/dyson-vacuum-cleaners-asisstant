@@ -2,39 +2,39 @@ import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 import infoTextTrigger from "../partials/info-text-trigger";
 
-const questionHeadingFontSize = {
-  $lg: stylesConfig.typography.fontSize(1.9),
-  $xs: stylesConfig.typography.fontSize(1.2),
-};
-
 export default {
   container: {
     "& > p": {
-      color: "#656565",
+      color: globals.colors.gray_primary,
       textAlign: "center",
       width: "100%",
-      fontSize: questionHeadingFontSize.$lg,
-      margin: [0, 0, "70px"],
-
+      fontSize: stylesConfig.typography.fontSize(2),
+      fontWeight: 300,
+      margin: [0, 0, "24px"],
       [`@media (${globals.breakpoints.$sm})`]: {
-        margin: ["15px", 0, "30px"],
-        fontSize: questionHeadingFontSize.$xs,
-        fontWeight: 600,
+        margin: [0, 0, "20px"],
+        fontSize: stylesConfig.typography.fontSize(2),
+      },
+      [`@media (${globals.breakpoints.$xs})`]: {
+        margin: [0, 0, "16px"],
+        fontSize: stylesConfig.typography.fontSize(1.5),
       },
     },
     ...infoTextTrigger,
     "& .question-type-hint": {
       display: "block",
       textAlign: "center",
-      fontSize: "16px",
-      color: "#656565",
+      fontSize: stylesConfig.typography.fontSize(1.1),
+      color: globals.colors.gray_secondary,
       fontWeight: 400,
-      letterSpacing: ".25px",
-      marginBottom: "20px",
+      margin: [0, 0, "24px"],
+      [`@media (${globals.breakpoints.$sm})`]: {
+        fontSize: stylesConfig.typography.fontSize(1.15),
+        margin: [0, 0, "20px"],
+      },
       [`@media (${globals.breakpoints.$xs})`]: {
-        fontSize: "16px",
-        letterSpacing: ".21px",
-        lineHeight: "1em",
+        fontSize: stylesConfig.typography.fontSize(1),
+        margin: [0, 0, "16px"],
       },
     },
     "& .question-image": {
