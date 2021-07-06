@@ -13,9 +13,9 @@
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="15"
-            height="14"
-            viewBox="0 0 15 14"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
             class="icon icon--star"
             :class="{
               [componentStyle.iconStarFilled]: rateIcon.rated && !rateIcon.half,
@@ -23,28 +23,15 @@
               [componentStyle.iconStarEmpty]: !rateIcon.rated,
             }"
           >
-            <path
-              class="icon__fill icon__fill--full"
-              :fill="rateIcon.rated ? '#febf02' : 'none'"
-              d="M7.5 11.25l-4.408 2.318.842-4.91L.367 5.183l4.929-.716L7.5 0l2.204 4.466 4.929.716-3.567 3.477.842 4.909z"
-            />
-            <path
-              class="icon__fill icon__fill--half"
-              :fill="rateIcon.rated ? '#febf02' : 'none'"
-              d="M 7.5,11.25 3.092,13.568 3.934,8.658 0.367,5.183 5.296,4.467 7.5,4e-7 Z"
-            />
-            <path
-              class="icon__stroke"
-              fill="none"
-              stroke="#bb944f"
-              stroke-miterlimit="50"
-              d="M7.5 11.25v0l-4.408 2.318v0l.842-4.91v0L.367 5.183v0l4.929-.716v0L7.5 0v0l2.204 4.466v0l4.929.716v0L11.066 8.66v0l.842 4.909v0z"
+            <polygon
+              points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78"
+              :fill="rateIcon.rated ? '#FFCC00' : 'none'"
             />
           </svg>
         </span>
       </template>
     </span>
-    <span v-if="showReviews" class="rating__reviews"> ({{ currentReviews }}) </span>
+    <span v-if="showReviews" class="rating__reviews"> {{ currentReviews }} {{ $t("message-reviews") }} </span>
   </div>
 </template>
 

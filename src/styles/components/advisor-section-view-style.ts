@@ -2,6 +2,9 @@ import globals from "@/styles/partials/global-variables";
 
 export default {
   container: {
+    "&.section-type--results_page": {
+      backgroundColor: globals.colors.whiteAlmost,
+    },
     "& .top-navigation": {
       display: "flex",
       flexFlow: "row wrap",

@@ -17,9 +17,10 @@ export default {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      margin: "4px 0",
+      margin: "4px auto",
       position: "relative",
-      padding: `0 ${globals.layout.globalPaddingDesktop}`,
+      maxWidth: globals.layout.maxContainerWidth,
+      width: "100%",
       fontSize: stylesConfig.typography.fontSize(1),
       [`@media (${globals.breakpoints.$sm})`]: {
         fontSize: stylesConfig.typography.fontSize(0.9),

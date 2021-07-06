@@ -22,12 +22,14 @@ export default {
     gray_tertiary: "#999999",
     gray_disabled: "#ababab",
     gray_background: "#F3F3F3",
+    gray_product_border: "#EBEBEB",
     white: "#fff",
+    whiteAlmost: "#fcfcfc",
     green: "#79B928",
-
+    black: "#000",
 
     blue: "#009bd4",
-    black: "#000",
+
     contrastDark: "#000",
     red: "#d0392a",
     redLighter: "#df4318",
@@ -36,7 +38,6 @@ export default {
     gray2: "#848484",
     whiteDark: "#c0c0c0",
     whiteDarker: "#fafafa",
-    whiteAlmost: "#fcfcfc",
   },
   breakpoints: {
     $xxs: "max-width: 575px",
@@ -47,7 +48,7 @@ export default {
     $lg: "min-width: 1400px",
   },
   layout: {
-    maxContainerWidth: "1420px",
+    maxContainerWidth: "1124px",
     globalPaddingDesktop: "7%",
   },
 };

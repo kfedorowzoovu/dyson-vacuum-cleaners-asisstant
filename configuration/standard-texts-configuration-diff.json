@@ -140,7 +140,7 @@
             "localizations": [
               {
                 "locale": "base",
-                "value": "Here are some alternatives for you:"
+                "value": "Alternative options:"
               }
             ]
           },
@@ -281,6 +281,16 @@
               {
                 "locale": "base",
                 "value": "Choice"
+              }
+            ]
+          },
+          {
+            "id": "message-reviews",
+            "label": "Reviews",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "reviews"
               }
             ]
           }

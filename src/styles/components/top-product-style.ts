@@ -2,24 +2,18 @@ import { productAdditionalPriceTextBaseStyles } from "@zoovu/runner-web-design-b
 import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
-import mediaQuery from "../abstract/media-query";
-
-const compareButtonFontColor = stylesConfig.colors.secondaryFontColor;
-const compareButtonHoverColor = stylesConfig.colors.primary.spectrum500;
 const focusOutlineColor = globals.colors.green;
 
 export default {
   container: {
     "& .top-product__wrapper": {
       ...productAdditionalPriceTextBaseStyles,
-      marginTop: "30px",
-      marginBottom: "30px",
+      padding: "30px 24px 24px 24px",
       width: "100%",
       position: "relative",
       display: "flex",
-      "&:first-of-type": {
-        border: "1px solid #303030",
-      },
+      border: `1px solid ${globals.colors.gray_product_border}`,
+      backgroundColor: globals.colors.white,
       [`@media (${globals.breakpoints.$xs})`]: {
         flexWrap: "wrap",
       },
@@ -48,38 +42,36 @@ export default {
     },
     "& .image-wrapper": {
       margin: "0 auto",
-      padding: "10px",
+      width: "50%",
       "& .product-top-tile": {
-        fontSize: "13px",
+        fontSize: stylesConfig.typography.fontSize(0.85),
         top: "-16px",
         color: "white",
-        background: "#303030  ",
+        background: "#303030",
       },
     },
     "& .product-details": {
       height: "100%",
-      padding: "10px",
       display: "flex",
       flexFlow: "wrap column",
       textAlign: "center",
+      width: "50%",
+      "& > p": {
+        textAlign: "left",
+        fontSize: stylesConfig.typography.fontSize(1),
+      },
       [`@media (min-width: 768px)`]: {},
     },
     "& .product-image": {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      padding: "0 25px",
-      margin: "0 0 20px",
-      minHeight: "250px",
-      maxWidth: "100%",
-      [`@media (${globals.breakpoints.$xs})`]: {
-        margin: "0 0 10px",
-      },
+      width: "100%",
+      display: "block",
+      textAlign: "center",
       "& .product-top-tile": {
         position: "absolute",
         top: 0,
-        left: "10px",
-        padding: "6px",
+        left: "24px",
+        padding: "6px 14px",
+        textAlign: "center",
         background: globals.colors.green,
         "& h4": {
           margin: 0,
@@ -111,13 +103,6 @@ export default {
           outlineColor: globals.colors.green,
         },
       },
-      "& img": {
-        display: "block",
-        maxWidth: "100%",
-        maxHeight: "350px",
-        width: "auto",
-        height: "auto",
-      },
     },
     "& .product-price": {
       color: "#303030",
@@ -129,7 +114,7 @@ export default {
     },
     "& a.product-name": {
       textDecoration: "none",
-      fontSize: "20px",
+      fontSize: stylesConfig.typography.fontSize(1.5),
       color: "#303030",
       lineHeight: 1.2,
       textAlign: "left",

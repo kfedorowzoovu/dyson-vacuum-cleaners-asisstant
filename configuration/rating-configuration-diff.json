@@ -8,13 +8,13 @@
       },
       "rating": {
         "attribute": {
-          "name": "ratings"
+          "name": "Bvrating"
         }
       },
       "reviews": {
         "enabled": true,
         "attribute": {
-          "name": "reviews"
+          "name": "Bvnumber"
         }
       }
     }

@@ -1,27 +1,42 @@
 <template>
   <div class="top-product" :class="componentStyle.container">
-    <template v-if="shouldRenderProperties">
-      <ul class="product-properties">
-        <template v-for="(property, index) in properties">
-          <transition :key="index" name="fade">
-            <li v-if="shouldRenderProperty(property)" :class="resolveClass(property.marking)">
-              {{ property.displayValue }}
-            </li>
-          </transition>
-        </template>
-      </ul>
-      <button
-        v-if="hasNeutralProperty"
-        v-dompurify-html="$t(attributesCollapsed ? 'message-compare-show-less' : 'message-compare-show-more')"
-        type="button"
-        class="product-attributes-toggle"
-        :class="{ collapsed: attributesCollapsed }"
-        @click="onShowMoreClicked"
-      >
-        <i></i>
-      </button>
-    </template>
     <div class="top-product__wrapper">
+      <div class="product-details">
+        <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
+          {{ recommendation.name }}
+        </component>
+        <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_SUBTITLE_COLUMN)"></p>
+        <template v-if="shouldRenderProperties">
+          <ul class="product-properties">
+            <template v-for="(property, index) in recommendation.properties">
+              <transition :key="index" name="fade">
+                <li v-if="shouldRenderProperty(property)" :class="resolveClass(property.marking)">
+                  <i></i>
+                  {{ property.displayValue }}
+                </li>
+              </transition>
+            </template>
+          </ul>
+        </template>
+        <component :is="productRatingView" class="product__rating" :product="recommendation" />
+        <component :is="productPriceView" :recommendation="recommendation" />
+        <div class="product-footer">
+          <component
+            :is="productAddToCartLinkView"
+            v-if="shouldShowAddToCartButton"
+            v-dompurify-html="$t('message-result-add-to-cart')"
+            class="product-button add-to-cart-button"
+            :product="recommendation"
+          ></component>
+          <component
+            :is="productClickoutLinkView"
+            v-if="shouldShowGoToProductButton"
+            v-dompurify-html="$t('message-result-go-to-product')"
+            class="product-button go-to-product-button"
+            :product="recommendation"
+          ></component>
+        </div>
+      </div>
       <div class="image-wrapper">
         <div class="product-image">
           <component :is="productClickoutLinkView" :product="recommendation">
@@ -32,116 +47,24 @@
           </span>
         </div>
       </div>
-      <div class="product-details">
-        <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
-          {{ recommendation.name }}
-        </component>
-        <component :is="productRatingView" class="product__rating" :product="recommendation" />
-        <component :is="productPriceView" :recommendation="recommendation" />
-
-        <div class="compare-wrapper">
-          <div class="compare-button">
-            <component :is="productComparisonSelectorView" :recommendation="recommendation" />
-          </div>
-        </div>
-      </div>
-      <div class="product-footer">
-        <component
-          :is="productAddToCartLinkView"
-          v-if="shouldShowAddToCartButton"
-          v-dompurify-html="$t('message-result-add-to-cart')"
-          class="product-button add-to-cart-button"
-          :product="recommendation"
-        ></component>
-        <component
-          :is="productClickoutLinkView"
-          v-if="shouldShowGoToProductButton"
-          v-dompurify-html="$t('message-result-go-to-product')"
-          class="product-button go-to-product-button"
-          :product="recommendation"
-        ></component>
-      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  ComponentConfig,
-  InjectComponent,
-  Marking,
-  ProductProperty,
-  ProductRecommendation,
-  Prop,
-  VueComponent,
-} from "@zoovu/runner-browser-api";
-import { ProductButtonConfiguration, TopProductView } from "@zoovu/runner-web-design-base";
+import { Component, , ProductProperty } from "@zoovu/runner-browser-api";
+import { TopProductView } from "@zoovu/runner-web-design-base";
+import getPropertyValue from "@/helpers/getPropertyValue";
+import { ProductAttributes } from "../configuration/common-configuration";
 
 @Component({})
 export default class TopProductViewExtended extends TopProductView {
-  @Prop()
-  private recommendation: ProductRecommendation;
+  getPropertyValue = getPropertyValue;
 
-  @ComponentConfig(ProductButtonConfiguration)
-  private productButtonConfiguration;
-
-  @InjectComponent("ProductRatingView")
-  productRatingView: VueComponent;
-
-  @InjectComponent("ProductPriceView")
-  productPriceView: VueComponent;
-
-  @InjectComponent("ProductComparisonSelectorView")
-  productComparisonSelectorView: VueComponent;
-
-  @InjectComponent("ProductClickoutLinkView")
-  productClickoutLinkView: VueComponent;
-
-  @InjectComponent("ProductAddToCartView")
-  productAddToCartLinkView: VueComponent;
-
-  private attributesCollapsed = false;
-
-  public resolveClass(marking: Marking): string {
-    switch (marking) {
-      case Marking.POSITIVE:
-        return "positive-property";
-      case Marking.NEGATIVE:
-        return "negative-property";
-      case Marking.NEUTRAL:
-        return "neutral-property";
-      default:
-        return "";
-    }
-  }
-
-  public onShowMoreClicked() {
-    this.attributesCollapsed = !this.attributesCollapsed;
-  }
-
-  get properties() {
-    return this.recommendation.properties.filter((property) => property.marking === Marking.POSITIVE);
-  }
-
-  get hasNeutralProperty(): boolean {
-    return this.properties.some((property: ProductProperty) => property.marking === Marking.NEUTRAL);
-  }
-
-  public get shouldRenderProperties(): boolean {
-    return this.properties.length > 0;
-  }
+  ProductAttributes = ProductAttributes;
 
   public shouldRenderProperty(property: ProductProperty) {
-    return this.attributesCollapsed || property.marking !== Marking.NEUTRAL;
-  }
-
-  public get shouldShowGoToProductButton(): boolean {
-    return this.productButtonConfiguration ? this.productButtonConfiguration.showGoToProductButton : true;
-  }
-
-  public get shouldShowAddToCartButton(): boolean {
-    return this.productButtonConfiguration ? this.productButtonConfiguration.showAddToCartButton.enabled : false;
+    return true;
   }
 }
 </script>

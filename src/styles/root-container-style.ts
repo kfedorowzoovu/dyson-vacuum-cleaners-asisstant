@@ -10,7 +10,6 @@ export default {
   container: {
     ...globalStyles,
     ...tooltips,
-    maxWidth: globals.layout.maxContainerWidth,
     margin: [0, "auto"],
     fontFamily,
     fontSize,
@@ -36,6 +35,6 @@ export default {
       padding: 0,
       border: 0,
       zIndex: "-1",
-    },
+    }
   },
 };
