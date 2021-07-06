@@ -90,6 +90,9 @@ export default class PagesNavigationViewExtended extends PagesNavigationView {
       {
         "is-hidden": this.nextButtonIsHidden,
       },
+      {
+        "is-disabled": this.currentFlowStep.questions.some((q) => q.isMandatory && q.isUnanswered),
+      },
     ];
   }
 

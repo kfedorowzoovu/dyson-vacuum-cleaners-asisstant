@@ -43,7 +43,6 @@
             :key="`sort-${cluster.clusterNumber}`"
             :class="clusterWrapperClass(index)"
           >
-            <component :is="sortView" v-if="index === indexOfFirstClusterWithProducts" />
             <div :id="cluster.mid" class="cluster" :class="cluster.classList">
               <h3 v-dompurify-html="cluster.clusterHeadline" class="cluster-headline"></h3>
               <h4

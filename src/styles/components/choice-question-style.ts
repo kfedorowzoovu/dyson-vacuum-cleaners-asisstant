@@ -37,7 +37,7 @@ export default {
             boxShadow: "6px 3px 18px rgba(0, 0, 0, 0.47)",
             transition: ".05s",
             "& .answer-content": {
-              boxShadow: "inset 0px 0px 0px 2px black",
+              boxShadow: `inset 0px 0px 0px 2px ${globals.colors.black}`,
               "& .answer-text": {
                 fontWeight: 400,
               },

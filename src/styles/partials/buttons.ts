@@ -129,11 +129,15 @@ export const ButtonPaginationNextBack = {
   fontWeight: 700,
   height: "64px",
   width: "320px",
-  backgroundColor: globals.colors.gray_background,
   border: "none",
-  color: globals.colors.gray_disabled,
+  backgroundColor: globals.colors.green,
+  color: globals.colors.black,
   margin: "auto",
   fontSize: stylesConfig.typography.fontSize(1),
+  "&.is-disabled": {
+    color: globals.colors.gray_disabled,
+    backgroundColor: globals.colors.gray_background,
+  },
   [`@media (${globals.breakpoints.$sm})`]: {
     height: "56px",
   },
@@ -143,6 +147,9 @@ export const ButtonPaginationNextBack = {
     bottom: 0,
     left: 0,
   },
+  "&:hover": {
+    cursor: "pointer"
+  }
 };
 
 export const ButtonStartOver = {
