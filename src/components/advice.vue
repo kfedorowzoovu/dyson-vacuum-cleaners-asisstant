@@ -85,7 +85,9 @@ import {
   Watch,
   FlowStep,
 } from "@zoovu/runner-browser-api";
-import { RecommendationConfiguration, TopProductConfiguration, AdviceView } from "@zoovu/runner-web-design-base";
+import { TopProductConfiguration, AdviceView } from "@zoovu/runner-web-design-base";
+
+import CustomizedRecommendationConfiguration from "@/configuration/customized-recommendation-configuration";
 
 interface AdditionalClusterData {
   classList: string;
@@ -127,8 +129,8 @@ export default class AdviceViewExtended extends Vue {
   @InjectComponent("AdviceFiltersView")
   adviceFiltersView: VueComponent;
 
-  @ComponentConfig(RecommendationConfiguration)
-  configuration: RecommendationConfiguration;
+  @ComponentConfig(CustomizedRecommendationConfiguration)
+  configuration: CustomizedRecommendationConfiguration;
 
   @ComponentConfig(TopProductConfiguration)
   topProductConfiguration: TopProductConfiguration;

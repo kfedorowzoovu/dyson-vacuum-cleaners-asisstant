@@ -1,12 +1,21 @@
 import { productRecommendationBaseStyles } from "@zoovu/runner-web-design-base";
 import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
+import { setProductWidth } from "@zoovu/runner-web-design-base/src/utils/set-product-width";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 import mediaQuery from "../abstract/media-query";
+import * as recommendationConfigurationDiffValues from "../../../configuration/recommendation-configuration-diff.json";
+
+const MARGIN = 30;
 
 export default {
   container: {
     ...productRecommendationBaseStyles(globals),
+    width: () =>
+      setProductWidth(
+        recommendationConfigurationDiffValues.recommendationSettings.numberOfProductsPerResultsRow,
+        MARGIN
+      ),
     border: "1px solid",
     borderColor: stylesConfig.colors.secondary.spectrum100,
     transition: "box-shadow 0.1s",

@@ -4,6 +4,7 @@ import {
   standardTextsConfigurationValues,
   productRatingConfigurationValues,
   productButtonConfigurationValues,
+  recommendationConfigurationValues,
   ValuesConfigurationProvider,
 } from "@zoovu/runner-web-design-base";
 
@@ -21,6 +22,9 @@ export default class CustomValuesConfigurationProvider extends ValuesConfigurati
       case ConfigurationValues.ProductButtonSettings:
         return mergeRightAllWithArrays(productButtonConfigurationValues, this.customConfigurationValues)
           .productButtonConfiguration;
+      case ConfigurationValues.Recommendation:
+        return mergeRightAllWithArrays(recommendationConfigurationValues, this.customConfigurationValues)
+          .recommendationSettings;
       default:
         return {};
     }

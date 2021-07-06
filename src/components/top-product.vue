@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { Component, , ProductProperty } from "@zoovu/runner-browser-api";
+import { Component, ProductProperty } from "@zoovu/runner-browser-api";
 import { TopProductView } from "@zoovu/runner-web-design-base";
 import getPropertyValue from "@/helpers/getPropertyValue";
 import { ProductAttributes } from "../configuration/common-configuration";
