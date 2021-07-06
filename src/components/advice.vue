@@ -61,7 +61,6 @@
             </div>
           </div>
         </template>
-        <component :is="adviceNavigationView" :advice="advice" :section-type="sectionType" />
       </div>
     </div>
   </div>

@@ -29,7 +29,6 @@
         </button>
       </template>
       <div class="price-compare-wrapper">
-        <component :is="productComparisonSelectorView" :recommendation="recommendation" />
         <component :is="productRatingView" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />
       </div>
