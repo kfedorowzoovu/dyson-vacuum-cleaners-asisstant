@@ -35,13 +35,17 @@ export default {
         [mediaQuery.hover]: {
           "&:hover": {
             boxShadow: "6px 3px 18px rgba(0, 0, 0, 0.47)",
-            border: "2px solid black",
             transition: ".05s",
-            "&.is-selected": {
-              border: `3px solid ${globals.colors.green}`,
+            "& .answer-content": {
+              boxShadow: "inset 0px 0px 0px 2px black",
+              "& .answer-text": {
+                fontWeight: 400,
+              },
             },
-            "& .answer-text": {
-              fontWeight: 400,
+            "&.is-selected": {
+              "& .answer-content": {
+                boxShadow: `6px 3px 18px rgba(0, 0, 0, 0.47), inset 0px 0px 0px 3px ${globals.colors.green}`,
+              },
             },
           },
         },

@@ -192,12 +192,12 @@ export default {
       },
     },
     "&.is-selected": {
-      border: `3px solid ${globals.colors.green}`,
       "& .answer-content": {
         background: globals.colors.green,
+        boxShadow: `6px 3px 18px rgba(0, 0, 0, 0.47), inset 0px 0px 0px 3px ${globals.colors.green}`,
         "& .answer-text": {
           fontWeight: 400,
-        }
+        },
       },
       "&.has-image": {
         "& .answer-content, & .answer-image": {
@@ -276,6 +276,7 @@ export default {
             borderTopStyle: "solid",
             borderTopColor: answerContentBackground,
             background: "transparent",
+            boxShadow: `6px 3px 18px rgba(0, 0, 0, 0.47), inset 0px 0px 0px 3px ${globals.colors.green}`,
             "& .answer-text": {
               paddingBottom: "8px",
               fontWeight: 400,
