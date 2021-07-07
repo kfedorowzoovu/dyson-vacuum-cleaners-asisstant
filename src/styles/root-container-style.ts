@@ -35,6 +35,6 @@ export default {
       padding: 0,
       border: 0,
       zIndex: "-1",
-    }
+    },
   },
 };

@@ -45,17 +45,15 @@ export default {
     },
     "& .cluster-wrapper, & .advice-top-products": {
       position: "relative",
+      marginBottom: "48px",
     },
     "& .products-wrapper": {
       display: "flex",
       flexFlow: "wrap row",
+      maxWidth: "100%",
       "&::after": {
         content: "''",
         flex: "auto",
-      },
-      [`@media (${globals.breakpoints.$lg})`]: {
-        marginLeft: "-10px",
-        marginRight: "-10px",
       },
     },
     "& .first-cluster-with-products h3": {
@@ -66,7 +64,7 @@ export default {
     "& h3": {
       margin: "0px 0px 38px",
       fontSize: productsHeaderSize.$lg,
-      fontWeight: 400,
+      fontWeight: 300,
       textAlign: "center",
       minHeight: "1em",
       [`@media (${globals.breakpoints.$xs})`]: {

@@ -1,6 +1,6 @@
 <template>
   <button type="button" :class="[rootElementClass, componentStyle.container]" @click="startOver">
-{{ $t("message-start-over") }}
+    {{ $t("message-start-over") }}
   </button>
 </template>
 

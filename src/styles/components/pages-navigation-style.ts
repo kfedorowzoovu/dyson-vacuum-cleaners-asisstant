@@ -1,5 +1,4 @@
-import { ButtonNextInProgress } from "../partials/buttons";
-import { ButtonPaginationNextBack } from "../partials/buttons";
+import { ButtonNextInProgress, ButtonPaginationNextBack } from "../partials/buttons";
 
 export default {
   "@keyframes navigationSpinner": {

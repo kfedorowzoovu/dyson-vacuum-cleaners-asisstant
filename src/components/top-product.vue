@@ -10,9 +10,11 @@
           <ul class="product-properties">
             <template v-for="(property, index) in recommendation.properties">
               <transition :key="index" name="fade">
-                <li v-if="shouldRenderProperty(property)" :class="resolveClass(property.marking)">
-                  <i></i>
-                  {{ property.displayValue }}
+                <li v-if="shouldRenderProperty(property) && index % 2 === 0" :class="resolveClass(property.marking)">
+                  <span><b>&#10003;</b>{{ property.displayValue }}</span>
+                  <span v-if="recommendation.properties[index + 1]">
+                    {{ recommendation.properties[index + 1].displayValue }}
+                  </span>
                 </li>
               </transition>
             </template>

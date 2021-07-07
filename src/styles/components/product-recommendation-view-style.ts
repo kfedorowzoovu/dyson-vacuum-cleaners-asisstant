@@ -5,8 +5,9 @@ import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 import mediaQuery from "../abstract/media-query";
 import * as recommendationConfigurationDiffValues from "../../../configuration/recommendation-configuration-diff.json";
+import { ProductButton } from "../partials/buttons";
 
-const MARGIN = 30;
+const MARGIN = 14;
 
 export default {
   container: {
@@ -16,30 +17,30 @@ export default {
         recommendationConfigurationDiffValues.recommendationSettings.numberOfProductsPerResultsRow,
         MARGIN
       ),
-    border: "1px solid",
-    borderColor: stylesConfig.colors.secondary.spectrum100,
+    border: `1px solid ${globals.colors.gray_product_border}`,
+    backgroundColor: globals.colors.white,
     transition: "box-shadow 0.1s",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    [mediaQuery.hover]: {
-      "&:hover": {
-        boxShadow: "0 8px 18px rgba(0, 0, 0, 0.35)",
-      },
+    padding: "24px",
+    marginRight: "0",
+    marginLeft: "0",
+    marginBottom: "28px",
+    "&:nth-child(odd)": {
+      marginRight: "28px",
     },
     "& .product-details": {
-      color: "#303030",
+      color: globals.colors.gray_primary,
       height: "100%",
-      padding: "10px",
       display: "flex",
       flexFlow: "wrap column",
+      width: "100%",
     },
     "& .product-image": {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      margin: "15px 0 20px",
-      height: "200px",
       maxWidth: "100%",
       "& a": {
         display: "block",
@@ -50,17 +51,16 @@ export default {
         },
       },
       "& img": {
-        maxWidth: "200px",
         height: "auto",
-        width: "100%",
-        maxHeight: "200px",
+        width: "auto",
+        maxHeight: "260px",
       },
     },
     "& a.product-name": {
-      marginBottom: "10px",
+      marginBottom: "20px",
       textDecoration: "none",
-      fontSize: "20px",
-      color: "#303030",
+      fontSize: stylesConfig.typography.fontSize(1.5),
+      color: globals.colors.gray_primary,
       lineHeight: 1.2,
       textAlign: "left",
       width: "100%",
@@ -97,21 +97,8 @@ export default {
         marginTop: "5px",
       },
     },
-    "& .rating-wrapper": {
-      margin: "10px 0",
-      textAlign: "center",
-      "& .rating-image": {
-        background: (configuration: ResolvedComponentsConfiguration): string =>
-          `${globals.customerSprite2(configuration)} no-repeat 0 -238px`,
-        width: "88px",
-        height: "16px",
-        margin: "0 auto",
-        "& .rating-image-over": {
-          background: (configuration: ResolvedComponentsConfiguration): string =>
-            `${globals.customerSprite2(configuration)} no-repeat 0 -207px`,
-          height: "16px",
-        },
-      },
+    "& .rating": {
+      display: "flex",
     },
     "& .properties-title": {
       fontSize: stylesConfig.typography.fontSize(),
@@ -129,9 +116,38 @@ export default {
       color: "#303030",
       wordWrap: "break-word",
       maxWidth: "100%",
+      display: "flex",
+      flexFlow: "wrap",
       "& > li": {
-        marginBottom: "7px",
-        fontSize: "14px",
+        marginBottom: "14px",
+        fontSize: stylesConfig.typography.fontSize(1),
+        lineHeight: "24px",
+        alignItems: "center",
+        flex: "0 0 50%",
+        paddingLeft: "24px",
+        "&:nth-child(odd)": {
+          paddingRight: "30px",
+        },
+        "& span": {
+          display: "block",
+          position: "relative",
+          "&:nth-child(odd)": {
+            fontWeight: 700,
+          },
+          "& b": {
+            position: "absolute",
+            left: "-24px",
+            top: 0,
+          },
+        },
+        "& .property-icon": {
+          marginRight: "5px",
+          maxWidth: "16px",
+          maxHeight: "16px",
+        },
+        [`@media (${globals.breakpoints.$xs})`]: {
+          flex: "0 0 100%",
+        },
       },
       "& i": {
         height: "14px",
@@ -182,35 +198,25 @@ export default {
       },
     },
     "& .price-compare-wrapper": {
-      padding: "8px",
       textAlign: "left",
       "& .product-price": {
-        margin: "10px 0",
         fontWeight: "600",
-        color: "#303030",
-        fontSize: "20px",
+        color: globals.colors.gray_primary,
+        fontSize: stylesConfig.typography.fontSize(1.5),
       },
     },
     "& .product-footer": {
       width: "100%",
       display: "flex",
+      marginTop: "16px",
       "& .product-button": {
-        cursor: "pointer",
-        fontSize: "14px",
-        color: "#303030",
-        flex: 1,
-        background: "#E0DEDE",
-        padding: "10px",
-        fontWeight: 600,
-        textAlign: "center",
-        display: "block",
-        textDecoration: "none",
-        transition: "background .3s ease",
+        ...ProductButton,
+        minWidth: "240px",
       },
       "& .add-to-cart-button": {
-        color: "white",
-        background: "#79b928",
+        background: globals.colors.green,
         border: "none",
+        marginRight: "12px",
       },
     },
   },

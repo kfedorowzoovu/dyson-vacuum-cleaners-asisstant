@@ -120,7 +120,7 @@
             "localizations": [
               {
                 "locale": "base",
-                "value": "Let's see which products totally match your needs:"
+                "value": "Alternative options"
               }
             ]
           },
@@ -190,7 +190,7 @@
             "localizations": [
               {
                 "locale": "base",
-                "value": "Go to product"
+                "value": "See details"
               }
             ]
           },
@@ -200,7 +200,7 @@
             "localizations": [
               {
                 "locale": "base",
-                "value": "Add to cart"
+                "value": "Add to basket"
               }
             ]
           },
@@ -250,7 +250,7 @@
             "localizations": [
               {
                 "locale": "base",
-                "value": "Recommendation for you"
+                "value": "Recommended for you"
               }
             ]
           },

@@ -2,6 +2,8 @@ import { productAdditionalPriceTextBaseStyles } from "@zoovu/runner-web-design-b
 import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
+import { ProductButton } from "../partials/buttons";
+
 const focusOutlineColor = globals.colors.green;
 
 export default {
@@ -43,6 +45,7 @@ export default {
     "& .image-wrapper": {
       margin: "0 auto",
       width: "50%",
+      paddingLeft: "24px",
       "& .product-top-tile": {
         fontSize: stylesConfig.typography.fontSize(0.85),
         top: "-16px",
@@ -56,9 +59,11 @@ export default {
       flexFlow: "wrap column",
       textAlign: "center",
       width: "50%",
+      paddingRight: "24px",
       "& > p": {
         textAlign: "left",
-        fontSize: stylesConfig.typography.fontSize(1),
+        fontSize: stylesConfig.typography.fontSize(1.1),
+        margin: "0 0 28px 0",
       },
       [`@media (min-width: 768px)`]: {},
     },
@@ -66,6 +71,7 @@ export default {
       width: "100%",
       display: "block",
       textAlign: "center",
+      height: "100%",
       "& .product-top-tile": {
         position: "absolute",
         top: 0,
@@ -99,6 +105,14 @@ export default {
       },
       "& a": {
         maxWidth: "350px",
+        display: "flex",
+        justifyContent: "center",
+        margin: "auto",
+        height: "100%",
+        "& img": {
+          width: "auto",
+          maxHeight: "550px",
+        },
         "&:focus": {
           outlineColor: globals.colors.green,
         },
@@ -107,10 +121,10 @@ export default {
     "& .product-price": {
       color: "#303030",
       textAlign: "left",
-      fontSize: "20px",
-      fontWeight: "600",
+      fontWeight: 700,
       padding: [0, 0, "5px"],
-      marginTop: "10px",
+      margin: "16px 0",
+      fontSize: stylesConfig.typography.fontSize(2.2),
     },
     "& a.product-name": {
       textDecoration: "none",
@@ -120,6 +134,7 @@ export default {
       textAlign: "left",
       width: "100%",
       display: "block",
+      margin: "0 0 14px 0",
       [`@media (${globals.breakpoints.$xs})`]: {
         margin: "10px 0",
       },
@@ -188,11 +203,27 @@ export default {
       maxWidth: "100%",
       textAlign: "left",
       "& > li": {
-        marginBottom: "7px",
-        fontSize: "14px",
-        display: "flex",
+        marginBottom: "14px",
+        fontSize: stylesConfig.typography.fontSize(1),
+        lineHeight: "24px",
         alignItems: "center",
         flex: "0 0 50%",
+        paddingLeft: "24px",
+        "&:nth-child(odd)": {
+          paddingRight: "30px",
+        },
+        "& span": {
+          display: "block",
+          position: "relative",
+          "&:nth-child(odd)": {
+            fontWeight: 700,
+          },
+          "& b": {
+            position: "absolute",
+            left: "-24px",
+            top: 0,
+          },
+        },
         "& .property-icon": {
           marginRight: "5px",
           maxWidth: "16px",
@@ -234,28 +265,17 @@ export default {
       display: "flex",
       width: "100%",
       textAlign: "center",
+      marginTop: "16px",
       [`@media (min-width: 768px)`]: {
         width: "auto",
-        padding: "10px",
         alignItems: "flex-end",
       },
       "& .product-button": {
-        minWidth: "150px",
-        cursor: "pointer",
-        fontSize: "14px",
-        color: "#303030",
-        flex: 1,
-        background: "#E0DEDE",
-        padding: "10px",
-        fontWeight: 600,
-        textAlign: "center",
-        display: "block",
-        textDecoration: "none",
-        transition: "background .3s ease",
+        ...ProductButton,
+        marginRight: "24px",
       },
       "& .add-to-cart-button": {
-        color: "white",
-        background: "#79b928",
+        background: globals.colors.green,
         border: "none",
       },
     },

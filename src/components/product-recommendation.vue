@@ -11,22 +11,19 @@
       </component>
       <template v-if="shouldRenderProperties">
         <ul class="product-properties">
-          <template v-for="property in properties">
-            <li v-if="shouldRenderProperty(property)" :key="property.name" :class="resolveClass(property.marking)">
-              <i></i>{{ property.displayValue }}
+          <template v-for="(property, index) in recommendation.properties">
+            <li
+              v-if="index % 2 === 0"
+              :key="index"
+              :class="resolveClass(property.marking)"
+            >
+              <span><b>&#10003;</b>{{ property.displayValue }}</span>
+              <span v-if="recommendation.properties[index + 1]">
+                {{ recommendation.properties[index + 1].displayValue }}
+              </span>
             </li>
           </template>
         </ul>
-        <button
-          v-show="hasNeutralProperty"
-          v-dompurify-html="attributesCollapsed ? $t('message-compare-show-less') : $t('message-compare-show-more')"
-          class="product-attributes-toggle"
-          :class="{ collapsed: attributesCollapsed }"
-          type="button"
-          @click="onShowMoreClicked"
-        >
-          <i></i>
-        </button>
       </template>
       <div class="price-compare-wrapper">
         <component :is="productRatingView" :product="recommendation" />
@@ -60,16 +57,12 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   @InjectComponent("ProductPriceView")
   productPriceView: VueComponent;
 
-  get properties() {
-    return this.recommendation.properties.filter((property) => property.marking === Marking.POSITIVE);
-  }
-
-  public get shouldRenderProperties(): boolean {
-    return this.properties.length > 0;
+  public shouldRenderProperty(property: ProductProperty) {
+    return true;
   }
 
   get hasNeutralProperty() {
-    return this.properties.some((property: ProductProperty) => property.marking === Marking.NEUTRAL);
+    return this.recommendation.properties.some((property: ProductProperty) => property.marking === Marking.NEUTRAL);
   }
 }
 </script>

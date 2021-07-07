@@ -148,8 +148,8 @@ export const ButtonPaginationNextBack = {
     left: 0,
   },
   "&:hover": {
-    cursor: "pointer"
-  }
+    cursor: "pointer",
+  },
 };
 
 export const ButtonStartOver = {
@@ -190,4 +190,19 @@ export const ButtonNextInProgress = {
     transform: "rotate(90deg)",
     animation: "$navigationSpinner 1s linear infinite",
   },
+};
+
+export const ProductButton = {
+  minWidth: "250px",
+  cursor: "pointer",
+  fontSize: stylesConfig.typography.fontSize(1.1),
+  color: globals.colors.black,
+  flex: 1,
+  background: "#E0DEDE",
+  padding: "23px",
+  fontWeight: 600,
+  textAlign: "center",
+  display: "block",
+  textDecoration: "none",
+  transition: "background .3s ease",
 };

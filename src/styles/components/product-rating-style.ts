@@ -3,7 +3,8 @@ import globals from "../partials/global-variables";
 
 export default {
   container: {
-    marginTop: "13px",
+    marginTop: "10px",
+    marginBottom: "24px",
     "& .rating__star": {
       position: "relative",
       width: "22px",
