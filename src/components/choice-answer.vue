@@ -16,6 +16,7 @@
       @keyup.enter="enterPressed"
     >
       <label ref="choiceAnswerLabel" :data-info-text="answer.infoText" :for="answer.mid">
+
         <div
           v-if="areImagesAvailable() && doesSomeAnswerHaveImage"
           ref="imageBoxElement"
@@ -31,7 +32,6 @@
             class="answer-info-text"
             :text="infoTextContent"
           />
-
           <input
             :id="answer.mid"
             :type="inputType"
@@ -53,6 +53,8 @@
             tabindex="0"
             @click.stop.prevent="onInfoTextTriggerClick"
           ></i>
+
+          <IconTick></IconTick>
         </div>
       </label>
       <component
@@ -93,8 +95,10 @@ import { getTransitionName } from "../styles/abstract/transition";
 import { TooltipConfiguration, whitelistedAttributes } from "../types";
 import { hideHorizontalOverflow, restoreHorizontalOverflow } from "../services/overflow-service";
 import InvisibleWrapper from "./invisible-wrapper.vue";
+import { IconTick } from "./svgs";
 
 @Component({
+  components: { IconTick },
   directives: {
     tooltip: vTooltip.directives.tooltip,
   },

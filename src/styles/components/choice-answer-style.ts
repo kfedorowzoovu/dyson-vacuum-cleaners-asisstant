@@ -80,6 +80,16 @@ export default {
           width: "100%",
           minHeight: "190",
         },
+        "& svg": {
+          background: globals.colors.green,
+          position: "absolute",
+          top: "16px",
+          right: "16px",
+          borderRadius: "100%",
+          height: "32px",
+          width: "32px",
+          display: "none",
+        },
       },
       "& .fullRow": {
         "& .answer-content": {
@@ -198,6 +208,9 @@ export default {
         "& .answer-text": {
           fontWeight: 400,
         },
+        "& svg": {
+          display: "block!important",
+        },
       },
       "&.has-image": {
         "& .answer-content, & .answer-image": {
@@ -284,6 +297,9 @@ export default {
           },
           "& .answer-content": {
             background: answerBackgroundGradient,
+            "& svg": {
+              display: "block"
+            },
           },
         },
       },
