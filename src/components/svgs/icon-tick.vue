@@ -1,7 +1,16 @@
 <template>
-  <BaseSvg class="icon" :height="28" :width="28" :y="-4" :name="'icon-tick'">
+  <BaseSvg class="icon" :height="450" :width="450" :name="'icon-tick'">
     <g>
-      <polygon points="47.293,6.94 14,40.232 2.707,28.94 1.293,30.353 14,43.06 48.707,8.353  "/>
+      <defs>
+        <polygon
+          id="SVGID_23_"
+          points="372.05,79.08 158.74,293.32 77.95,212.27 39.35,251 158.61,370.92 410.65,117.81    "
+        />
+      </defs>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#SVGID_23_" style="overflow: visible" />
+      <clipPath id="SVGID_2_">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#SVGID_23_" style="overflow: visible" />
+      </clipPath>
     </g>
   </BaseSvg>
 </template>

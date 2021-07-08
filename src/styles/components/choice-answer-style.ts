@@ -80,15 +80,21 @@ export default {
           width: "100%",
           minHeight: "190",
         },
-        "& svg": {
-          background: globals.colors.green,
-          position: "absolute",
-          top: "16px",
-          right: "16px",
-          borderRadius: "100%",
+        "& .icon-container": {
           height: "32px",
           width: "32px",
-          display: "none",
+          background: globals.colors.green,
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          borderRadius: "100%",
+          "& svg": {
+            height: "32px",
+            width: "32px",
+            padding: "3px",
+            display: "none",
+            fill: globals.colors.white,
+          },
         },
       },
       "& .fullRow": {
@@ -204,7 +210,7 @@ export default {
     "&.is-selected": {
       "& .answer-content": {
         background: globals.colors.green,
-        boxShadow: `6px 3px 18px rgba(0, 0, 0, 0.47), inset 0px 0px 0px 3px ${globals.colors.green}`,
+        boxShadow: `inset 0px 0px 0px 3px ${globals.colors.green}`,
         "& .answer-text": {
           fontWeight: 400,
         },
@@ -289,7 +295,7 @@ export default {
             borderTopStyle: "solid",
             borderTopColor: answerContentBackground,
             background: "transparent",
-            boxShadow: `6px 3px 18px rgba(0, 0, 0, 0.47), inset 0px 0px 0px 3px ${globals.colors.green}`,
+            boxShadow: `inset 0px 0px 0px 3px ${globals.colors.green}`,
             "& .answer-text": {
               paddingBottom: "8px",
               fontWeight: 400,
@@ -298,7 +304,7 @@ export default {
           "& .answer-content": {
             background: answerBackgroundGradient,
             "& svg": {
-              display: "block"
+              display: "block",
             },
           },
         },

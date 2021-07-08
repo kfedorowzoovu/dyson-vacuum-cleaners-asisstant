@@ -17,7 +17,7 @@
               :key="index"
               :class="resolveClass(property.marking)"
             >
-              <span><b>&#10003;</b>{{ property.displayValue }}</span>
+              <IconTick></IconTick><span>{{ property.displayValue }}</span>
               <span v-if="recommendation.properties[index + 1]">
                 {{ recommendation.properties[index + 1].displayValue }}
               </span>
@@ -51,8 +51,12 @@
 
 <script lang="ts">
 import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
-import { InjectComponent, Marking, ProductProperty, VueComponent } from "@zoovu/runner-browser-api";
+import {Component, InjectComponent, Marking, ProductProperty, VueComponent} from "@zoovu/runner-browser-api";
+import { IconTick } from "./svgs";
 
+@Component({
+  components: { IconTick },
+})
 export default class ProductRecommendationViewExtended extends ProductRecommendationView {
   @InjectComponent("ProductPriceView")
   productPriceView: VueComponent;

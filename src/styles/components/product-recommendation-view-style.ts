@@ -29,6 +29,9 @@ export default {
     marginBottom: "28px",
     "&:nth-child(odd)": {
       marginRight: "28px",
+      [`@media (${globals.breakpoints.$xs})`]: {
+        marginRight: "0px",
+      },
     },
     "& .product-details": {
       color: globals.colors.gray_primary,
@@ -54,6 +57,7 @@ export default {
         height: "auto",
         width: "auto",
         maxHeight: "260px",
+        maxWidth: "100%",
       },
     },
     "& a.product-name": {
@@ -109,9 +113,7 @@ export default {
     },
     "& .product-properties": {
       padding: "0 8px",
-      marginBottom: "auto",
       listStyle: "none",
-      margin: ["5px", 0, 0, 0],
       overflow: "hidden",
       color: "#303030",
       wordWrap: "break-word",
@@ -127,10 +129,14 @@ export default {
         lineHeight: "24px",
         alignItems: "center",
         flex: "0 0 50%",
-        paddingLeft: "24px",
+        paddingLeft: "30px",
+        position: "relative",
         [`@media (${globals.breakpoints.$sm})`]: {
           fontSize: stylesConfig.typography.fontSize(0.9),
           lineHeight: "20px",
+        },
+        [`@media (${globals.breakpoints.$xs})`]: {
+          flex: "0 0 100%",
         },
         "&:nth-child(odd)": {
           paddingRight: "30px",
@@ -147,61 +153,15 @@ export default {
             top: 0,
           },
         },
-        "& .property-icon": {
-          marginRight: "5px",
-          maxWidth: "16px",
-          maxHeight: "16px",
+        "& svg": {
+          position: "absolute",
+          left: "0",
+          top: "4px",
+          margin: "auto",
+          height: "16px",
+          width: "16px",
+          fill: globals.colors.gray_primary,
         },
-        [`@media (${globals.breakpoints.$xs})`]: {
-          flex: "0 0 100%",
-        },
-      },
-      "& i": {
-        height: "14px",
-        width: "15px",
-        display: "inline-block",
-        marginRight: "7px",
-      },
-
-      "& .positive-property": {
-        "& i": {
-          position: "relative",
-          top: "3px",
-          background: `url("//d3smx8fpgq4j0l.cloudfront.net/zoovu/3d2f2e3c-8eab-4f23-a76f-eb683109d3ba") 0% 0% / 14px no-repeat`,
-        },
-      },
-      "& .negative-property": {
-        "& i": {
-          position: "relative",
-          top: "3px",
-          background: (configuration: ResolvedComponentsConfiguration): string =>
-            `${globals.customerSprite2(configuration)} no-repeat -43px -70px`,
-        },
-      },
-      "& .neutral-property": {
-        "& i": {
-          background: (configuration: ResolvedComponentsConfiguration): string =>
-            `${globals.customerSprite2(configuration)} no-repeat -20px -70px`,
-        },
-      },
-    },
-    "& .product-attributes-toggle": {
-      display: "block",
-      width: "100%",
-      fontSize: stylesConfig.typography.fontSize(0.9),
-      fontFamily: stylesConfig.typography.fontFamily,
-      textDecoration: "underline",
-      padding: "6px 10px",
-      textTransform: "uppercase",
-      fontWeight: 600,
-      margin: "5px auto 0",
-      textAlign: "center",
-      border: "none",
-      cursor: "pointer",
-      backgroundColor: "transparent",
-      color: "#303030",
-      "&:focus": {
-        outlineColor: "#303030",
       },
     },
     "& .price-compare-wrapper": {
@@ -210,6 +170,13 @@ export default {
         fontWeight: "600",
         color: globals.colors.gray_primary,
         fontSize: stylesConfig.typography.fontSize(1.5),
+        margin: "24px 0",
+        [`@media (${globals.breakpoints.$sm})`]: {
+          margin: "20px 0",
+        },
+        [`@media (${globals.breakpoints.$xs})`]: {
+          margin: "16px 0",
+        },
         "& .price-regular": {
           color: globals.colors.blue,
         },
@@ -218,10 +185,12 @@ export default {
     "& .product-footer": {
       width: "100%",
       display: "flex",
-      marginTop: "16px",
       "& .product-button": {
         ...ProductButton,
         minWidth: "240px",
+        [`@media (${globals.breakpoints.$xs})`]: {
+          minWidth: "auto",
+        },
       },
       "& .add-to-cart-button": {
         background: globals.colors.green,

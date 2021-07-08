@@ -34,7 +34,6 @@ export default {
         },
         [mediaQuery.hover]: {
           "&:hover": {
-            boxShadow: "6px 3px 18px rgba(0, 0, 0, 0.47)",
             transition: ".05s",
             "& .answer-content": {
               boxShadow: `inset 0px 0px 0px 2px ${globals.colors.black}`,
@@ -44,14 +43,13 @@ export default {
             },
             "&.is-selected": {
               "& .answer-content": {
-                boxShadow: `6px 3px 18px rgba(0, 0, 0, 0.47), inset 0px 0px 0px 3px ${globals.colors.green}`,
+                boxShadow: `inset 0px 0px 0px 3px ${globals.colors.green}`,
               },
             },
           },
         },
         "&:focus": {
           outlineColor: focusOutlineColor,
-          boxShadow: "6px 3px 18px rgba(0, 0, 0, 0.47)",
         },
       },
       "& .answer-image": {

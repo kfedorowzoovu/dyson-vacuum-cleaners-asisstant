@@ -53,8 +53,7 @@
             tabindex="0"
             @click.stop.prevent="onInfoTextTriggerClick"
           ></i>
-
-          <IconTick></IconTick>
+          <div class="icon-container"><IconTick></IconTick></div>
         </div>
       </label>
       <component
