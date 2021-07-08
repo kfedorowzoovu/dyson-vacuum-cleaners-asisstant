@@ -11,6 +11,7 @@ export default {
       alignItems: "flex-start",
       width: "100%",
       marginBottom: "48px",
+      backgroundColor: globals.colors.white,
       [`@media (${globals.breakpoints.$sm})`]: {
         marginBottom: "40px",
       },

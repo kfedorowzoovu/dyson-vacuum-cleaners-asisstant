@@ -118,6 +118,9 @@ export default {
       maxWidth: "100%",
       display: "flex",
       flexFlow: "wrap",
+      [`@media (${globals.breakpoints.$sm})`]: {
+        flexDirection: "column",
+      },
       "& > li": {
         marginBottom: "14px",
         fontSize: stylesConfig.typography.fontSize(1),
@@ -125,6 +128,10 @@ export default {
         alignItems: "center",
         flex: "0 0 50%",
         paddingLeft: "24px",
+        [`@media (${globals.breakpoints.$sm})`]: {
+          fontSize: stylesConfig.typography.fontSize(0.9),
+          lineHeight: "20px",
+        },
         "&:nth-child(odd)": {
           paddingRight: "30px",
         },
@@ -203,6 +210,9 @@ export default {
         fontWeight: "600",
         color: globals.colors.gray_primary,
         fontSize: stylesConfig.typography.fontSize(1.5),
+        "& .price-regular": {
+          color: globals.colors.blue,
+        },
       },
     },
     "& .product-footer": {

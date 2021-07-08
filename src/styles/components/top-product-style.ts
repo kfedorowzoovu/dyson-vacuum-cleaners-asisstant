@@ -17,7 +17,7 @@ export default {
       border: `1px solid ${globals.colors.gray_product_border}`,
       backgroundColor: globals.colors.white,
       [`@media (${globals.breakpoints.$xs})`]: {
-        flexWrap: "wrap",
+        flexFlow: "column",
       },
       "& .product-attributes-toggle": {
         display: "block",
@@ -46,11 +46,8 @@ export default {
       margin: "0 auto",
       width: "50%",
       paddingLeft: "24px",
-      "& .product-top-tile": {
-        fontSize: stylesConfig.typography.fontSize(0.85),
-        top: "-16px",
-        color: "white",
-        background: "#303030",
+      [`@media (${globals.breakpoints.$xs})`]: {
+        order: 1,
       },
     },
     "& .product-details": {
@@ -60,12 +57,39 @@ export default {
       textAlign: "center",
       width: "50%",
       paddingRight: "24px",
+      [`@media (${globals.breakpoints.$xs})`]: {
+        order: 2,
+        width: "100%",
+      },
+      "& a.product-name": {
+        textDecoration: "none",
+        fontSize: stylesConfig.typography.fontSize(1.5),
+        color: "#303030",
+        textAlign: "left",
+        width: "100%",
+        display: "block",
+        margin: "0 0 14px 0",
+        lineHeight: "24px",
+        [`@media (${globals.breakpoints.$sm})`]: {
+          fontSize: stylesConfig.typography.fontSize(1.4),
+        },
+        [`@media (${globals.breakpoints.$xs})`]: {
+          fontSize: stylesConfig.typography.fontSize(1.3),
+        },
+        "&:focus": {
+          outlineColor: globals.colors.green,
+        },
+      },
       "& > p": {
         textAlign: "left",
         fontSize: stylesConfig.typography.fontSize(1.1),
         margin: "0 0 28px 0",
+
+        lineHeight: "24px",
+        [`@media (${globals.breakpoints.$sm})`]: {
+          fontSize: stylesConfig.typography.fontSize(1),
+        },
       },
-      [`@media (min-width: 768px)`]: {},
     },
     "& .product-image": {
       width: "100%",
@@ -74,33 +98,17 @@ export default {
       height: "100%",
       "& .product-top-tile": {
         position: "absolute",
-        top: 0,
         left: "24px",
         padding: "6px 14px",
         textAlign: "center",
-        background: globals.colors.green,
-        "& h4": {
-          margin: 0,
-          fontSize: stylesConfig.typography.fontSize(1),
-          fontWeight: 600,
-          color: globals.colors.white,
-          textAlign: "center",
-          lineHeight: 1,
-        },
-        "& p": {
-          margin: 0,
-          fontSize: stylesConfig.typography.fontSize(0.69),
-          fontWeight: 400,
-          color: globals.colors.white,
-          textAlign: "center",
-        },
-        "& .top-tile-icon": {
-          display: "block",
-          margin: "10px auto 9px",
-          width: "14px",
-          height: "10px",
-          background: (configuration: ResolvedComponentsConfiguration): string =>
-            `${globals.sprite2(configuration)} no-repeat -22px -96px`,
+        background: globals.colors.gray_primary,
+        fontSize: stylesConfig.typography.fontSize(0.85),
+        top: "-16px",
+        color: globals.colors.white,
+        [`@media (${globals.breakpoints.$sm})`]: {
+          fontSize: stylesConfig.typography.fontSize(0.8),
+          padding: "4px 14px",
+          top: "-14px",
         },
       },
       "& a": {
@@ -119,27 +127,21 @@ export default {
       },
     },
     "& .product-price": {
-      color: "#303030",
+      color: globals.colors.gray_primary,
       textAlign: "left",
       fontWeight: 700,
       padding: [0, 0, "5px"],
       margin: "16px 0",
       fontSize: stylesConfig.typography.fontSize(2.2),
-    },
-    "& a.product-name": {
-      textDecoration: "none",
-      fontSize: stylesConfig.typography.fontSize(1.5),
-      color: "#303030",
-      lineHeight: 1.2,
-      textAlign: "left",
-      width: "100%",
-      display: "block",
-      margin: "0 0 14px 0",
-      [`@media (${globals.breakpoints.$xs})`]: {
-        margin: "10px 0",
+      [`@media (${globals.breakpoints.$sm})`]: {
+        fontSize: stylesConfig.typography.fontSize(2),
       },
-      "&:focus": {
-        outlineColor: globals.colors.green,
+      [`@media (${globals.breakpoints.$xs})`]: {
+        fontSize: stylesConfig.typography.fontSize(1.5),
+        margin: "0",
+      },
+      "& .price-regular": {
+        color: globals.colors.blue,
       },
     },
     "& .compare-wrapper": {
@@ -209,6 +211,10 @@ export default {
         alignItems: "center",
         flex: "0 0 50%",
         paddingLeft: "24px",
+        [`@media (${globals.breakpoints.$sm})`]: {
+          fontSize: stylesConfig.typography.fontSize(0.9),
+          lineHeight: "20px",
+        },
         "&:nth-child(odd)": {
           paddingRight: "30px",
         },
@@ -273,6 +279,9 @@ export default {
       "& .product-button": {
         ...ProductButton,
         marginRight: "24px",
+        [`@media (${globals.breakpoints.$xs})`]: {
+          minWidth: "auto",
+        },
       },
       "& .add-to-cart-button": {
         background: globals.colors.green,

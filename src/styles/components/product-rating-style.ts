@@ -29,9 +29,11 @@ export default {
     "& .rating__reviews": {
       fontSize: stylesConfig.typography.fontSize(1),
       color: globals.colors.gray_primary,
-      textDecoration: "underline",
       lineHeight: "27px",
       marginLeft: "3px",
+      [`@media (${globals.breakpoints.$sm})`]: {
+        fontSize: stylesConfig.typography.fontSize(0.9),
+      },
     },
   },
   iconStarEmpty: {

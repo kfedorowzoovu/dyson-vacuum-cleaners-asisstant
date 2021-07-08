@@ -146,6 +146,7 @@ export const ButtonPaginationNextBack = {
     position: "fixed",
     bottom: 0,
     left: 0,
+    zIndex: 999,
   },
   "&:hover": {
     cursor: "pointer",
@@ -205,4 +206,9 @@ export const ProductButton = {
   display: "block",
   textDecoration: "none",
   transition: "background .3s ease",
+  [`@media (${globals.breakpoints.$sm})`]: {
+    fontSize: stylesConfig.typography.fontSize(1),
+    padding: "18px",
+    minWidth: "180px",
+  },
 };
