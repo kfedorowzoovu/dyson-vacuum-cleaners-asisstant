@@ -13,7 +13,7 @@ const bordersColor = stylesConfig.colors.secondary.spectrum500;
 
 const answerTextFontSize = {
   $lg: stylesConfig.typography.fontSize(1),
-  $xs: stylesConfig.typography.fontSize(0.9),
+  $xs: stylesConfig.typography.fontSize(0.875),
 };
 
 export default {

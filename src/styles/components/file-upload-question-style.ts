@@ -66,7 +66,7 @@ export default {
       background: globals.colors.red,
       borderColor: globals.colors.green,
       color: globals.colors.white,
-      fontSize: stylesConfig.typography.fontSize(0.9),
+      fontSize: stylesConfig.typography.fontSize(0.875),
     },
     "& .file-question__image-remove": {
       background: "none",

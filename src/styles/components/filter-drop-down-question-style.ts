@@ -6,7 +6,7 @@ import mediaQuery from "../abstract/media-query";
 const bordersColor = stylesConfig.colors.secondary.spectrum500;
 const dropdownTextSize = {
   $lg: stylesConfig.typography.fontSize(1),
-  $xs: stylesConfig.typography.fontSize(0.9),
+  $xs: stylesConfig.typography.fontSize(0.875),
 };
 const dropDownInputFontSize = stylesConfig.typography.fontSize();
 const dropDownTextColor = stylesConfig.colors.primaryFontColor;

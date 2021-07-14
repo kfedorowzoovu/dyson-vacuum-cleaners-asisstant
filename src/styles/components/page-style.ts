@@ -100,7 +100,7 @@ export default {
         },
       },
       "& .question-validation-message": {
-        fontSize: stylesConfig.typography.fontSize(0.9),
+        fontSize: stylesConfig.typography.fontSize(0.875),
       },
     },
     "& .questions-wrapper.multi-answer.page-submit-in-progress div": {

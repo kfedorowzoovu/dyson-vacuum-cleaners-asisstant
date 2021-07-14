@@ -42,6 +42,7 @@ export default {
       display: "flex",
       flexFlow: "wrap row",
       maxWidth: "100%",
+      justifyContent: "space-between",
       "&::after": {
         content: "''",
         flex: "auto",
@@ -72,5 +73,10 @@ export default {
         margin: [0, "0", "30px"],
       },
     },
+    "& .caveat": {
+      fontSize: stylesConfig.typography.fontSize(0.875),
+      margin: "-50px 0 16px 0",
+
+    }
   },
 };

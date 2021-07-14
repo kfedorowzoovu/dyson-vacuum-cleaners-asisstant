@@ -23,7 +23,7 @@ export default {
         display: "block",
         width: "100%",
         color: "#303030",
-        fontSize: stylesConfig.typography.fontSize(0.9),
+        fontSize: stylesConfig.typography.fontSize(0.875),
         fontFamily: stylesConfig.typography.fontFamily,
         textDecoration: "underline",
         padding: ["6px", "10px", "6px", 0],
@@ -191,7 +191,7 @@ export default {
       },
       "& label, & .start-compare-button": {
         padding: "10px 13px",
-        fontSize: stylesConfig.typography.fontSize(0.9),
+        fontSize: stylesConfig.typography.fontSize(0.875),
         textTransform: "uppercase",
         display: "inline-block",
         transition: "background .3s ease",
@@ -243,7 +243,7 @@ export default {
         position: "relative",
         fontWeight: 700,
         [`@media (${globals.breakpoints.$sm})`]: {
-          fontSize: stylesConfig.typography.fontSize(0.9),
+          fontSize: stylesConfig.typography.fontSize(0.875),
           lineHeight: "20px",
         },
         [`@media (${globals.breakpoints.$xs})`]: {

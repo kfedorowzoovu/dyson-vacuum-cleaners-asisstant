@@ -11,7 +11,7 @@ const bordersColor = stylesConfig.colors.secondary.spectrum500;
 const textColor = stylesConfig.colors.primaryFontColor;
 const textSizes = {
   $lg: stylesConfig.typography.fontSize(1),
-  $xs: stylesConfig.typography.fontSize(0.9),
+  $xs: stylesConfig.typography.fontSize(0.875),
 };
 
 export default {

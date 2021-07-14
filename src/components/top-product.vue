@@ -5,7 +5,7 @@
         <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
           {{ recommendation.name }}
         </component>
-        <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_SUBTITLE_COLUMN)"></p>
+        <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"></p>
         <template v-if="shouldRenderProperties">
           <ul class="product-properties">
             <template v-for="(property, index) in recommendation.properties">
@@ -53,7 +53,7 @@
 <script lang="ts">
 import {Component, Marking, ProductProperty} from "@zoovu/runner-browser-api";
 import { TopProductView } from "@zoovu/runner-web-design-base";
-import { formatPrice, getPropertyValue } from "@/helpers";
+import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "../configuration/common-configuration";
 import { IconTick } from "./svgs";
 

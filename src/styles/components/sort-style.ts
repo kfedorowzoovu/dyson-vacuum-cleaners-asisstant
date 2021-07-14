@@ -63,7 +63,7 @@ export default {
         borderColor: bordersColor,
         backgroundColor: globals.colors.white,
         cursor: "pointer",
-        fontSize: stylesConfig.typography.fontSize(0.9),
+        fontSize: stylesConfig.typography.fontSize(0.875),
         fontWeight: 400,
         color: stylesConfig.colors.primaryFontColor,
         textAlign: "center",
@@ -92,7 +92,7 @@ export default {
         backgroundColor: globals.colors.white,
         "& .option": {
           cursor: "pointer",
-          fontSize: stylesConfig.typography.fontSize(0.9),
+          fontSize: stylesConfig.typography.fontSize(0.875),
           fontWeight: 400,
           color: stylesConfig.colors.primaryFontColor,
           textAlign: "center",

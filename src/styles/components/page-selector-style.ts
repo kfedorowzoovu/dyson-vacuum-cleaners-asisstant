@@ -23,7 +23,7 @@ export default {
       width: "100%",
       fontSize: stylesConfig.typography.fontSize(1),
       [`@media (${globals.breakpoints.$sm})`]: {
-        fontSize: stylesConfig.typography.fontSize(0.9),
+        fontSize: stylesConfig.typography.fontSize(0.875),
         margin: "3px 0",
       },
       "& .navigation-button": {
@@ -93,7 +93,7 @@ export default {
         "& span": {
           display: "block",
           color: stylesConfig.colors.secondary.spectrum200,
-          fontSize: stylesConfig.typography.fontSize(0.9),
+          fontSize: stylesConfig.typography.fontSize(0.875),
           fontWeight: 400,
         },
       },

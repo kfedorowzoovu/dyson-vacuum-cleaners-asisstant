@@ -31,7 +31,7 @@ export default {
       lineHeight: "27px",
       marginLeft: "3px",
       [`@media (${globals.breakpoints.$sm})`]: {
-        fontSize: stylesConfig.typography.fontSize(0.9),
+        fontSize: stylesConfig.typography.fontSize(0.875),
       },
     },
   },

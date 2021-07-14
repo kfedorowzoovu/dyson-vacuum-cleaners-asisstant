@@ -11,7 +11,7 @@ const nameColor = stylesConfig.colors.primaryFontColor;
 const priceColor = stylesConfig.colors.primaryFontColor;
 
 const alternativeProductHeadingFontSize = stylesConfig.typography.fontSize(0.8);
-const productNameFontSize = stylesConfig.typography.fontSize(0.9);
+const productNameFontSize = stylesConfig.typography.fontSize(0.875);
 const productPriceFontSize = stylesConfig.typography.fontSize(0.8);
 
 export default {
