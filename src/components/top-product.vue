@@ -10,11 +10,8 @@
           <ul class="product-properties">
             <template v-for="(property, index) in recommendation.properties">
               <transition :key="index" name="fade">
-                <li v-if="shouldRenderProperty(property) && index % 2 === 0" :class="resolveClass(property.marking)">
-                  <IconTick></IconTick><span>{{ property.displayValue }}</span>
-                  <span v-if="recommendation.properties[index + 1]">
-                    {{ recommendation.properties[index + 1].displayValue }}
-                  </span>
+                <li v-if="shouldRenderProperty(property)" :class="resolveClass(property.marking)">
+                  <IconTick v-if="property.marking === Marking.POSITIVE"></IconTick><span>{{ property.displayValue }}</span>
                 </li>
               </transition>
             </template>
@@ -54,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { Component, ProductProperty } from "@zoovu/runner-browser-api";
+import {Component, Marking, ProductProperty} from "@zoovu/runner-browser-api";
 import { TopProductView } from "@zoovu/runner-web-design-base";
 import getPropertyValue from "@/helpers/getPropertyValue";
 import { ProductAttributes } from "../configuration/common-configuration";
@@ -68,8 +65,10 @@ export default class TopProductViewExtended extends TopProductView {
 
   ProductAttributes = ProductAttributes;
 
+  Marking = Marking;
+
   public shouldRenderProperty(property: ProductProperty) {
-    return true;
+    return this.attributesCollapsed || property.marking !== Marking.NEGATIVE;
   }
 }
 </script>

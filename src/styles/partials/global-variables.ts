@@ -26,6 +26,7 @@ export default {
     white: "#fff",
     whiteAlmost: "#fcfcfc",
     green: "#79B928",
+    green_darker: "#537D1C",
     black: "#000",
     blue: "#0066CC",
 

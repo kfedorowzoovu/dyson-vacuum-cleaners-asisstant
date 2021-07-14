@@ -223,6 +223,7 @@ export default {
         flex: "0 0 50%",
         paddingLeft: "30px",
         position: "relative",
+        fontWeight: 700,
         [`@media (${globals.breakpoints.$sm})`]: {
           fontSize: stylesConfig.typography.fontSize(0.9),
           lineHeight: "20px",
@@ -236,9 +237,9 @@ export default {
         "& span": {
           display: "block",
           position: "relative",
-          "&:nth-child(odd)": {
-            fontWeight: 700,
-          },
+          /* "&:nth-child(odd)": {
+              fontWeight: 700,
+            }, */
         },
         "& svg": {
           position: "absolute",
@@ -247,7 +248,7 @@ export default {
           margin: "auto",
           height: "16px",
           width: "16px",
-          fill: globals.colors.gray_primary,
+          fill: globals.colors.green_darker,
         },
       },
     },

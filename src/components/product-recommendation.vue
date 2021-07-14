@@ -12,15 +12,10 @@
       <template v-if="shouldRenderProperties">
         <ul class="product-properties">
           <template v-for="(property, index) in recommendation.properties">
-            <li
-              v-if="index % 2 === 0"
-              :key="index"
-              :class="resolveClass(property.marking)"
-            >
-              <IconTick></IconTick><span>{{ property.displayValue }}</span>
-              <span v-if="recommendation.properties[index + 1]">
-                {{ recommendation.properties[index + 1].displayValue }}
-              </span>
+            <li v-if="shouldRenderProperty(property)" :key="index" :class="resolveClass(property.marking)">
+              <IconTick v-if="property.marking === Marking.POSITIVE"></IconTick>
+
+              <span>{{ property.displayValue }}</span>
             </li>
           </template>
         </ul>
@@ -51,7 +46,7 @@
 
 <script lang="ts">
 import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
-import {Component, InjectComponent, Marking, ProductProperty, VueComponent} from "@zoovu/runner-browser-api";
+import { Component, InjectComponent, Marking, ProductProperty, VueComponent } from "@zoovu/runner-browser-api";
 import { IconTick } from "./svgs";
 
 @Component({
@@ -61,8 +56,10 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   @InjectComponent("ProductPriceView")
   productPriceView: VueComponent;
 
+  Marking = Marking;
+
   public shouldRenderProperty(property: ProductProperty) {
-    return true;
+    return this.attributesCollapsed || property.marking !== Marking.NEGATIVE;
   }
 
   get hasNeutralProperty() {

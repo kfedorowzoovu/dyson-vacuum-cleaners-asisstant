@@ -88,11 +88,11 @@ export default {
           top: "10px",
           right: "10px",
           borderRadius: "100%",
+          display: "none",
           "& svg": {
             height: "32px",
             width: "32px",
             padding: "3px",
-            display: "none",
             fill: globals.colors.white,
           },
         },
@@ -214,7 +214,7 @@ export default {
         "& .answer-text": {
           fontWeight: 400,
         },
-        "& svg": {
+        "& .icon-container": {
           display: "block!important",
         },
       },

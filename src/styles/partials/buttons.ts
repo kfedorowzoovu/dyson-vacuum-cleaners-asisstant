@@ -209,6 +209,6 @@ export const ProductButton = {
   [`@media (${globals.breakpoints.$sm})`]: {
     fontSize: stylesConfig.typography.fontSize(1),
     padding: "18px",
-    minWidth: "180px",
+    minWidth: "140px",
   },
 };
