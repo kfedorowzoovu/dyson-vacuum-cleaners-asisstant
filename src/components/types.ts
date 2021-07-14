@@ -9,13 +9,6 @@ export enum FiltersSettings {
   EXPAND_ALL_BY_DEFAULT = "expandAllByDefault",
 }
 
-export interface PriceComplementaryText {
-  [Placement.TOP]?: PriceComplementaryTextContent;
-  [Placement.RIGHT]?: PriceComplementaryTextContent;
-  [Placement.BOTTOM]?: PriceComplementaryTextContent;
-  [Placement.LEFT]?: PriceComplementaryTextContent;
-}
-
 export interface PriceComplementaryTextContent {
   placement: Placement;
   staticText?: string;
@@ -24,11 +17,6 @@ export interface PriceComplementaryTextContent {
     value: string;
   };
   isReversed?: boolean;
-}
-
-export interface LocalizationSettings {
-  currencyCode: string;
-  locale: string;
 }
 
 export interface FileUploadImage {

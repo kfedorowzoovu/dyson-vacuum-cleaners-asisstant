@@ -53,7 +53,7 @@
 <script lang="ts">
 import {Component, Marking, ProductProperty} from "@zoovu/runner-browser-api";
 import { TopProductView } from "@zoovu/runner-web-design-base";
-import getPropertyValue from "@/helpers/getPropertyValue";
+import { formatPrice, getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "../configuration/common-configuration";
 import { IconTick } from "./svgs";
 
@@ -67,7 +67,7 @@ export default class TopProductViewExtended extends TopProductView {
 
   Marking = Marking;
 
-  public shouldRenderProperty(property: ProductProperty) {
+  public shouldRenderProperty(property: ProductProperty): boolean {
     return this.attributesCollapsed || property.marking !== Marking.NEGATIVE;
   }
 }

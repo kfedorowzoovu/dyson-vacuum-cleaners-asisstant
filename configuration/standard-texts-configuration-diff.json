@@ -293,6 +293,26 @@
                 "value": "reviews"
               }
             ]
+          },
+          {
+            "id": "message-price-was",
+            "label": "WAS price before original price",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Was"
+              }
+            ]
+          },
+          {
+            "id": "message-price-now",
+            "label": "SAVE word before savings for discounted price",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Save"
+              }
+            ]
           }
         ],
         "name": "Result"

@@ -59,19 +59,3 @@ export function scrollToElement(element: Element, scrollDuration = 300): void {
     scrollTo(elementY, scrollDuration);
   }
 }
-
-export function formatNumberAsCurrency(
-  value: number,
-  localizationSettings: LocalizationSettings = { currencyCode: "", locale: "" }
-): string {
-  const { locale, currencyCode } = localizationSettings;
-  const parsedValue = Number(value);
-  if (Number.isNaN(parsedValue) || !locale || !currencyCode) {
-    return value.toString();
-  }
-
-  return new Intl.NumberFormat(locale, {
-    style: "currency",
-    currency: currencyCode,
-  }).format(parsedValue);
-}

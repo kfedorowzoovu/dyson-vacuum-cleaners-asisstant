@@ -168,9 +168,7 @@ export default {
     "& .price-compare-wrapper": {
       textAlign: "left",
       "& .product-price": {
-        fontWeight: "600",
-        color: globals.colors.gray_primary,
-        fontSize: stylesConfig.typography.fontSize(1.5),
+        fontWeight: 400,
         margin: "24px 0",
         [`@media (${globals.breakpoints.$sm})`]: {
           margin: "20px 0",
@@ -178,8 +176,26 @@ export default {
         [`@media (${globals.breakpoints.$xs})`]: {
           margin: "16px 0",
         },
-        "& .price-regular": {
-          color: globals.colors.blue,
+        "&>span": {
+          fontSize: stylesConfig.typography.fontSize(1),
+          color: globals.colors.gray_primary,
+          display: "block",
+          [`@media (${globals.breakpoints.$sm})`]: {
+            fontSize: stylesConfig.typography.fontSize(0.875),
+          },
+          "&.price-was": {
+            textDecoration: "line-through",
+          },
+          "&.price-current": {
+            fontSize: stylesConfig.typography.fontSize(1.5),
+            fontWeight: 700,
+            color: globals.colors.blue,
+            padding: "2px 0",
+            [`@media (${globals.breakpoints.$sm})`]: {
+              fontSize: stylesConfig.typography.fontSize(1.375),
+              padding: "0",
+            },
+          },
         },
       },
     },
