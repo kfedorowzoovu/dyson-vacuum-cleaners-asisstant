@@ -62,7 +62,11 @@
           </div>
         </template>
 
-        <div class="caveat" v-text="getPropertyValue(topProducts[0], ProductAttributes.CAVEAT)"></div>
+        <div
+          v-if="topProducts[0]"
+          class="caveat"
+          v-text="getPropertyValue(topProducts[0], ProductAttributes.CAVEAT)"
+        ></div>
       </div>
     </div>
   </div>
