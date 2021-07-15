@@ -1,6 +1,5 @@
 <template>
   <BaseSvg class="icon" :height="25" :width="25" :name="'icon-tick-attributes'">
-
     <g id="DXPE-42527-Errors---Additional-Scenarios">
       <g id="Group" transform="translate(-4.000000, -3.500000)">
         <g id="Icon">

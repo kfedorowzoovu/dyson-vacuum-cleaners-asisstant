@@ -76,7 +76,6 @@ export default {
     "& .caveat": {
       fontSize: stylesConfig.typography.fontSize(0.875),
       margin: "-50px 0 16px 0",
-
-    }
+    },
   },
 };

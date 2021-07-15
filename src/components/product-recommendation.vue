@@ -46,14 +46,9 @@
 
 <script lang="ts">
 import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
-import {
-  Component,
-  InjectComponent,
-  Marking,
-  ProductProperty,
-  VueComponent,
-} from "@zoovu/runner-browser-api";
+import { Component, InjectComponent, Marking, ProductProperty, VueComponent } from "@zoovu/runner-browser-api";
 import { IconTick } from "./svgs";
+
 @Component({
   components: { IconTick },
 })
@@ -70,6 +65,5 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   get hasNeutralProperty(): boolean {
     return this.recommendation.properties.some((property: ProductProperty) => property.marking === Marking.NEUTRAL);
   }
-
 }
 </script>

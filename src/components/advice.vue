@@ -92,9 +92,8 @@ import {
 } from "@zoovu/runner-browser-api";
 import { TopProductConfiguration, AdviceView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
-import { ProductAttributes } from "../configuration/common-configuration";
-
 import CustomizedRecommendationConfiguration from "@/configuration/customized-recommendation-configuration";
+import { ProductAttributes } from "../configuration/common-configuration";
 
 interface AdditionalClusterData {
   classList: string;

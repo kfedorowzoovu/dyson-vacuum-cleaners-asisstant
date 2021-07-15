@@ -16,7 +16,6 @@
       @keyup.enter="enterPressed"
     >
       <label ref="choiceAnswerLabel" :data-info-text="answer.infoText" :for="answer.mid">
-
         <div
           v-if="areImagesAvailable() && doesSomeAnswerHaveImage"
           ref="imageBoxElement"

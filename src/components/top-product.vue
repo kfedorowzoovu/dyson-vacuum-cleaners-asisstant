@@ -11,7 +11,8 @@
             <template v-for="(property, index) in recommendation.properties">
               <transition :key="index" name="fade">
                 <li v-if="shouldRenderProperty(property)" :class="resolveClass(property.marking)">
-                  <IconTick v-if="property.marking === Marking.POSITIVE"></IconTick><span>{{ property.displayValue }}</span>
+                  <IconTick v-if="property.marking === Marking.POSITIVE"></IconTick
+                  ><span>{{ property.displayValue }}</span>
                 </li>
               </transition>
             </template>
@@ -51,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Marking, ProductProperty} from "@zoovu/runner-browser-api";
+import { Component, Marking, ProductProperty } from "@zoovu/runner-browser-api";
 import { TopProductView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "../configuration/common-configuration";

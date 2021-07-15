@@ -4,4 +4,9 @@ export enum ProductAttributes {
   REDUCED_PRICE = "reducedPrice",
   PRODUCT_CLAIM = "topdescription",
   CAVEAT = "topcaveat",
+  RATING_COUNT = "Bvnumber",
+  RATING_AVERAGE = "Bvrating",
+  STOCK_STATUS = "stockBand",
+  BADGE_THEME = "badgeThemeCode",
+  BADGE_TEXT = "badgeText",
 }

@@ -1,14 +1,12 @@
 <template>
   <div class="product-price">
     <span v-if="pricing.showWasPrice" class="price-was">
-      {{ $t("message-price-was")}} {{ pricing.originalPrice }}
+      {{ $t("message-price-was") }} {{ pricing.originalPrice }}
     </span>
     <span class="price-current">
       {{ pricing.showWasPrice ? pricing.reducedPrice : pricing.originalPrice }}
     </span>
-    <span v-if="pricing.showWasPrice" class="price-savings">
-      {{ $t("message-price-now")}} {{ pricing.savings }}
-    </span>
+    <span v-if="pricing.showWasPrice" class="price-savings"> {{ $t("message-price-now") }} {{ pricing.savings }} </span>
   </div>
 </template>
 

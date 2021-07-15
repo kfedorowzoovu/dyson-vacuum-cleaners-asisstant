@@ -1,6 +1,7 @@
 import { BasicStyleRegistry, CreateWebDesignClass, ComponentStylesDefinitions } from "@zoovu/runner-browser-api";
 import { ComponentRegistryFactory, StyleRegistryFactory } from "@zoovu/runner-web-design-base";
 import { AutoForwardPlugin, PreSelectionPlugin } from "@zoovu/runner-web-design-base/src/plugins";
+import { DatalayerTrackingPlugin } from "./plugins";
 import styles from "./styles";
 
 const componentRegistry = ComponentRegistryFactory.createComponentRegistry();
@@ -34,7 +35,7 @@ const WebDesignClass = CreateWebDesignClass({
   AdvisorView: componentRegistry.getComponent("AdvisorView"),
   componentRegistry,
   styleRegistry,
-  plugins: [AutoForwardPlugin, PreSelectionPlugin],
+  plugins: [AutoForwardPlugin, PreSelectionPlugin, DatalayerTrackingPlugin],
   versionDescriptor: {
     version: __WEB_DESIGN__VERSION__,
     git: {
