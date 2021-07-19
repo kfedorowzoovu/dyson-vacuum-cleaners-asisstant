@@ -233,7 +233,7 @@ export default {
       maxWidth: "100%",
       textAlign: "left",
       margin: 0,
-      "& > li": {
+      "& .product-property": {
         marginBottom: "20px",
         fontSize: stylesConfig.typography.fontSize(1),
         lineHeight: "24px",
@@ -241,7 +241,7 @@ export default {
         flex: "0 0 50%",
         paddingLeft: "30px",
         position: "relative",
-        fontWeight: 700,
+        fontWeight: 400,
         [`@media (${globals.breakpoints.$sm})`]: {
           fontSize: stylesConfig.typography.fontSize(0.875),
           lineHeight: "20px",

@@ -1,9 +1,7 @@
 import { productRecommendationBaseStyles } from "@zoovu/runner-web-design-base";
-import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
 import { setProductWidth } from "@zoovu/runner-web-design-base/src/utils/set-product-width";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
-import mediaQuery from "../abstract/media-query";
 import * as recommendationConfigurationDiffValues from "../../../configuration/recommendation-configuration-diff.json";
 import { ProductButton } from "../partials/buttons";
 
@@ -123,7 +121,7 @@ export default {
       [`@media (${globals.breakpoints.$sm})`]: {
         flexDirection: "column",
       },
-      "& > li": {
+      "& .product-property": {
         marginBottom: "14px",
         fontSize: stylesConfig.typography.fontSize(1),
         lineHeight: "24px",
@@ -131,7 +129,7 @@ export default {
         flex: "0 0 50%",
         paddingLeft: "30px",
         position: "relative",
-        fontWeight: 700,
+        fontWeight: 400,
         [`@media (${globals.breakpoints.$sm})`]: {
           fontSize: stylesConfig.typography.fontSize(0.875),
           lineHeight: "20px",

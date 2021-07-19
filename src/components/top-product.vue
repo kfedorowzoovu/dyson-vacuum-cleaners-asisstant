@@ -10,7 +10,7 @@
           <ul class="product-properties">
             <template v-for="(property, index) in recommendation.properties">
               <transition :key="index" name="fade">
-                <li v-if="shouldRenderProperty(property)" :class="resolveClass(property.marking)">
+                <li v-if="shouldRenderProperty(property)" class="product-property" :class="resolveClass(property.marking)">
                   <IconTick></IconTick
                   ><span>{{ property.displayValue }}</span>
                 </li>
@@ -55,7 +55,7 @@
 import { Component, Marking, ProductProperty } from "@zoovu/runner-browser-api";
 import { TopProductView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
-import { ProductAttributes } from "../configuration/common-configuration";
+import { ProductAttributes } from "@/configuration/common-configuration";
 import { IconTick } from "./svgs";
 
 @Component({
