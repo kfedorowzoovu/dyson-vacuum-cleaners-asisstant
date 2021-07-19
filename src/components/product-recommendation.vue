@@ -13,8 +13,7 @@
         <ul class="product-properties">
           <template v-for="(property, index) in recommendation.properties">
             <li v-if="shouldRenderProperty(property)" :key="index" :class="resolveClass(property.marking)">
-              <IconTick v-if="property.marking === Marking.POSITIVE"></IconTick>
-
+              <IconTick></IconTick>
               <span>{{ property.displayValue }}</span>
             </li>
           </template>

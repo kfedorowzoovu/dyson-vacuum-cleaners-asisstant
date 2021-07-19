@@ -11,7 +11,7 @@
             <template v-for="(property, index) in recommendation.properties">
               <transition :key="index" name="fade">
                 <li v-if="shouldRenderProperty(property)" :class="resolveClass(property.marking)">
-                  <IconTick v-if="property.marking === Marking.POSITIVE"></IconTick
+                  <IconTick></IconTick
                   ><span>{{ property.displayValue }}</span>
                 </li>
               </transition>
