@@ -10,3 +10,7 @@ export enum ProductAttributes {
   BADGE_THEME = "badgeThemeCode",
   BADGE_TEXT = "badgeText",
 }
+
+export enum ProductAttributesWithOnlyValueDisplayed {
+  INCLUDED = "Attachments",
+}

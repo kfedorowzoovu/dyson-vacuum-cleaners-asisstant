@@ -6,18 +6,10 @@
           {{ recommendation.name }}
         </component>
         <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"></p>
-        <template v-if="shouldRenderProperties">
-          <ul class="product-properties">
-            <template v-for="(property, index) in recommendation.properties">
-              <transition :key="index" name="fade">
-                <li v-if="shouldRenderProperty(property)" class="product-property" :class="resolveClass(property.marking)">
-                  <IconTick></IconTick
-                  ><span>{{ property.displayValue }}</span>
-                </li>
-              </transition>
-            </template>
-          </ul>
-        </template>
+        <ProductProperties
+          v-if="shouldRenderProperties"
+          :recommendation="recommendation"
+        />
         <component :is="productRatingView" class="product__rating" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />
         <div class="product-footer">
@@ -52,24 +44,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Marking, ProductProperty } from "@zoovu/runner-browser-api";
+import { Component } from "@zoovu/runner-browser-api";
 import { TopProductView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "@/configuration/common-configuration";
+import ProductProperties from "@/components/product-properties.vue";
 import { IconTick } from "./svgs";
 
 @Component({
-  components: { IconTick },
+  components: { IconTick, ProductProperties },
 })
 export default class TopProductViewExtended extends TopProductView {
   getPropertyValue = getPropertyValue;
 
   ProductAttributes = ProductAttributes;
-
-  Marking = Marking;
-
-  public shouldRenderProperty(property: ProductProperty): boolean {
-    return this.attributesCollapsed || property.marking !== Marking.NEGATIVE;
-  }
 }
 </script>

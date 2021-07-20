@@ -44,5 +44,5 @@ export interface ProductObject {
   review_count: string;
   review_average: string;
   stock_status: string;
-  badge: Record<string, unknown>
+  badge: Record<string, unknown>;
 }
