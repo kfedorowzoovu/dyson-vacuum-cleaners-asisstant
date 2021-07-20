@@ -21,7 +21,7 @@ export default {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    padding: "24px",
+    padding: "22px",
     marginRight: "0",
     marginLeft: "0",
     marginBottom: "28px",

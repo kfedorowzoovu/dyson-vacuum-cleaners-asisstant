@@ -208,7 +208,7 @@ export const ProductButton = {
   transition: "background .3s ease",
   [`@media (${globals.breakpoints.$sm})`]: {
     fontSize: stylesConfig.typography.fontSize(1),
-    padding: "18px",
+    padding: "18px 4px",
     minWidth: "140px",
   },
 };
