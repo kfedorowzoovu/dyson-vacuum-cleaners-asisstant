@@ -1,7 +1,7 @@
 <template>
   <li v-if="shouldRenderProperty(property)" :class="className">
     <IconTick />
-    {{ property.displayValue }}
+    {{ displayPropertyValueOnly ? property.rawValue.value : property.displayValue }}
   </li>
 </template>
 
@@ -16,6 +16,7 @@ import {
   Vue,
 } from "@zoovu/runner-browser-api";
 import { IconTick } from "@/components/svgs";
+import { ProductAttributesWithOnlyValueDisplayed } from "@/configuration/common-configuration";
 
 @Component({
   components: { IconTick },
@@ -34,6 +35,10 @@ export default class Property extends Vue {
 
   get className(): string[] {
     return [this.rootElementClass, this.componentStyle.container];
+  }
+
+  get displayPropertyValueOnly(): boolean {
+    return Object.values(ProductAttributesWithOnlyValueDisplayed).includes(this.property.name);
   }
 
   private shouldRenderProperty(property: ProductProperty) {

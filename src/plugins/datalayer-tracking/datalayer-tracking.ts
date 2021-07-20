@@ -9,9 +9,9 @@ import {
   QuestionTypeChecker,
   SectionType,
 } from "@zoovu/runner-browser-api";
+import { ProductAttributes } from "@/configuration/common-configuration";
 import { AdviceEvent, BackEvent, NextEvent, RestartEvent, ResultsEvent, StepEvent } from "./events";
 import { AdviceObject, BaseObject, ProductObject } from "./tracking-objects";
-import { ProductAttributes } from "@/configuration/common-configuration";
 
 export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
   private _debug = false;
