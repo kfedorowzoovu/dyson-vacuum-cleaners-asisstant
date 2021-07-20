@@ -194,19 +194,19 @@ export const ButtonNextInProgress = {
 };
 
 export const ProductButton = {
-  minWidth: "250px",
+  minWidth: "200px",
   cursor: "pointer",
   fontSize: stylesConfig.typography.fontSize(1.1),
   color: globals.colors.black,
   flex: 1,
   background: "#E0DEDE",
-  padding: "23px",
+  padding: "18px 4px",
   fontWeight: 600,
   textAlign: "center",
   display: "block",
   textDecoration: "none",
   transition: "background .3s ease",
-  [`@media (${globals.breakpoints.$sm})`]: {
+  [`@media (${globals.breakpoints.$xs})`]: {
     fontSize: stylesConfig.typography.fontSize(1),
     padding: "18px 4px",
     minWidth: "140px",

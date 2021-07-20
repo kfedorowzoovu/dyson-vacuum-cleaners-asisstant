@@ -156,7 +156,7 @@ export default {
       display: "flex",
       "& .product-button": {
         ...ProductButton,
-        minWidth: "240px",
+        minWidth: "calc(50% - 12px)",
         [`@media (${globals.breakpoints.$xs})`]: {
           minWidth: "auto",
         },
