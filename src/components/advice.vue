@@ -76,19 +76,6 @@
 import {
   Component,
   ComponentConfig,
-  ComponentStyle,
-  ComponentStyleDefinition,
-  InjectComponent,
-  ProductRecommendation,
-  Prop,
-  Recommendation,
-  RecommendationCluster,
-  RecommendationSettingsBuilder,
-  SectionType,
-  Vue,
-  VueComponent,
-  Watch,
-  FlowStep,
 } from "@zoovu/runner-browser-api";
 import { TopProductConfiguration, AdviceView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
@@ -101,12 +88,8 @@ interface AdditionalClusterData {
   clusterSubHeadline: string;
 }
 
-type RecommendationClusterExtended = RecommendationCluster & AdditionalClusterData;
-
-@Component({
-})
+@Component
 export default class AdviceViewExtended extends AdviceView {
-
   @ComponentConfig(CustomizedRecommendationConfiguration)
   configuration: CustomizedRecommendationConfiguration;
 
@@ -132,6 +115,6 @@ export default class AdviceViewExtended extends AdviceView {
 
   get areTopProductsAvailable(): boolean {
     return this.topProducts.length && this.advice.currentPage.pageNumber === 0;
-  };
+  }
 }
 </script>

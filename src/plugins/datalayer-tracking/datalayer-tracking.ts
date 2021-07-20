@@ -11,7 +11,7 @@ import {
 } from "@zoovu/runner-browser-api";
 import { AdviceEvent, BackEvent, NextEvent, RestartEvent, ResultsEvent, StepEvent } from "./events";
 import { AdviceObject, BaseObject, ProductObject } from "./tracking-objects";
-import {ProductAttributes} from "../../configuration/common-configuration"
+import { ProductAttributes } from "@/configuration/common-configuration";
 
 export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
   private _debug = false;
@@ -128,7 +128,7 @@ export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
         const allProductsFromCurrentPage = advice.currentPage.clusters.reduce((accumulator, currentCluster) => {
           return [...accumulator, ...currentCluster.products];
         }, []);
-        const allSelectedAnswers = this._getAllChoiceAnswers().filter((answer) => answer.selected === true);
+        const allSelectedAnswers = this._getAllChoiceAnswers().filter((answer) => answer.selected);
 
         this._sendTrackingEvent(
           new ResultsEvent(
