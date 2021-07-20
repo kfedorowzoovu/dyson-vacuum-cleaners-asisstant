@@ -9,7 +9,6 @@
         <ProductProperties
           v-if="shouldRenderProperties"
           :recommendation="recommendation"
-          :attributes-collapsed="attributesCollapsed"
         />
         <component :is="productRatingView" class="product__rating" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />

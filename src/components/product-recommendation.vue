@@ -12,7 +12,6 @@
       <ProductProperties
         v-if="shouldRenderProperties"
         :recommendation="recommendation"
-        :attributes-collapsed="attributesCollapsed"
       />
       <div class="price-compare-wrapper">
         <component :is="productRatingView" :product="recommendation" />

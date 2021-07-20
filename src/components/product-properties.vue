@@ -2,7 +2,7 @@
   <ul class="product-properties" :class="componentStyle.container">
     <template v-for="property in propertiesWithExplicitValue">
       <transition :key="property.name" name="fade">
-        <Property :key="property.name" :property="property" :attributes-collapsed="attributesCollapsed" />
+        <Property :key="property.name" :property="property" />
       </transition>
     </template>
   </ul>
@@ -32,9 +32,6 @@ export default class ProductProperties extends Vue {
 
   @Prop()
   recommendation!: ProductRecommendation;
-
-  @Prop()
-  attributesCollapsed!: boolean;
 
   get productRelatedProperties(): ReadonlyArray<ProductProperty> {
     return this.visibleProperties.filter((property) => !Object.values(ProductAttributes).includes(property.name));

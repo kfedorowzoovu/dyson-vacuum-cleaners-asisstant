@@ -1,5 +1,5 @@
 <template>
-  <li v-if="shouldRenderProperty(property)" :class="className">
+  <li class = "property" :class="this.componentStyle.container">
     <IconTick />
     {{ displayPropertyValueOnly ? property.rawValue.value : property.displayValue }}
   </li>
@@ -10,7 +10,6 @@ import {
   Component,
   ComponentStyle,
   ComponentStyleDefinition,
-  Marking,
   ProductProperty,
   Prop,
   Vue,
@@ -28,21 +27,8 @@ export default class Property extends Vue {
   @Prop()
   property!: ProductProperty;
 
-  @Prop()
-  attributesCollapsed!: boolean;
-
-  rootElementClass = "property";
-
-  get className(): string[] {
-    return [this.rootElementClass, this.componentStyle.container];
-  }
-
   get displayPropertyValueOnly(): boolean {
     return Object.values(ProductAttributesWithOnlyValueDisplayed).includes(this.property.name);
-  }
-
-  private shouldRenderProperty(property: ProductProperty) {
-    return !this.attributesCollapsed || property.marking !== Marking.NEUTRAL;
   }
 }
 </script>
