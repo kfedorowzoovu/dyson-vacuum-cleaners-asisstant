@@ -29,15 +29,8 @@ export default {
     green_darker: "#537D1C",
     black: "#000",
     blue: "#0066CC",
-
-    contrastDark: "#000",
     red: "#d0392a",
-    redLighter: "#df4318",
     violet: "#9e78c5",
-    gray1: "#303030",
-    gray2: "#848484",
-    whiteDark: "#c0c0c0",
-    whiteDarker: "#fafafa",
   },
   breakpoints: {
     $xxs: "max-width: 575px",

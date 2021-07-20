@@ -97,6 +97,13 @@ export default class AdviceViewExtended extends AdviceView {
 
   ProductAttributes = ProductAttributes;
 
+  mounted() {
+
+      window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
+      window.KlarnaOnsiteService.push({ eventName: 'refresh-placements' })
+
+  }
+
   clusterWrapperClass(index: number): Record<string, unknown> {
     return {
       "cluster-wrapper": true,
