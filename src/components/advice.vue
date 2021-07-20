@@ -73,11 +73,12 @@
 </template>
 
 <script lang="ts">
-import { Component, ComponentConfig } from "@zoovu/runner-browser-api";
+import {Component, ComponentConfig, InjectComponent, ProductRecommendation} from "@zoovu/runner-browser-api";
 import { TopProductConfiguration, AdviceView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
 import CustomizedRecommendationConfiguration from "@/configuration/customized-recommendation-configuration";
 import { ProductAttributes } from "@/configuration/common-configuration";
+import AdviceFiltersView from "@/components/advice-filters.vue";
 
 interface AdditionalClusterData {
   classList: string;
@@ -88,10 +89,13 @@ interface AdditionalClusterData {
 @Component
 export default class AdviceViewExtended extends AdviceView {
   @ComponentConfig(CustomizedRecommendationConfiguration)
-  configuration: CustomizedRecommendationConfiguration;
+  configuration!: CustomizedRecommendationConfiguration;
 
   @ComponentConfig(TopProductConfiguration)
-  topProductConfiguration: TopProductConfiguration;
+  topProductConfiguration!: TopProductConfiguration;
+
+  @InjectComponent("AdviceFiltersView")
+  adviceFiltersView!: AdviceFiltersView;
 
   getPropertyValue = getPropertyValue;
 
@@ -111,7 +115,20 @@ export default class AdviceViewExtended extends AdviceView {
   }
 
   get areTopProductsAvailable(): boolean {
-    return this.topProducts.length && this.advice.currentPage.pageNumber === 0;
+    return Boolean(this.topProducts.length && this.advice.currentPage.pageNumber === 0);
+  }
+
+  get topProducts(): ProductRecommendation[] {
+    const currentPage = this.advice.currentPage;
+    const clusters = (currentPage && currentPage.pageNumber === 0 && currentPage.clusters) || [];
+    const fullMatchesCluster = clusters.find(c => c.clusterNumber === 0);
+    const fullMatches = fullMatchesCluster ? fullMatchesCluster.products : [];
+    return fullMatches.filter((product: ProductRecommendation) => !this.isEmpty(product)).slice(0, this.currentTopProductsNumber);
+  }
+
+  isEmpty = (recommendation: ProductRecommendation) => {
+    for (const key in recommendation) return false;
+    return true;
   }
 }
 </script>
