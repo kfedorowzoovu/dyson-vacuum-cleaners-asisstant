@@ -66,6 +66,7 @@ export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
       const windowObject = window as any;
 
       this._sendTrackingEvent(new RestartEvent(this._advisor));
+      console.log(windowObject.dataLayer.zoovuData.smartAssistant.events)
       windowObject.dataLayer.zoovuData.smartAssistant.events = []; // clear events after restart (requested by customer)
       this._getAllQuestions().forEach((question) =>
         question.setCustomQuestionSessionState({ wasQuestionAlreadyAnswered: false })
@@ -150,6 +151,13 @@ export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
     this._advisor.onGlobalEvent("AdvisorNavigationModel.goToPreviousSection:beforeActionSession", () => {
       if (this._advisor.advisorNavigation.currentSection.type === SectionType.RESULTS_PAGE) {
         this._sendTrackingEvent(new BackEvent(this._advisor));
+      //  this._sendTrackingEvent(new StepEvent(this._advisor, this._productsList));
+      }
+    });
+
+    this._advisor.onGlobalEvent("AdvisorNavigationModel.reduceSectionIndex:after", () => {
+      if (this._advisor.advisorNavigation.currentSection.type === SectionType.QUESTIONNAIRE) {
+        this._sendTrackingEvent(new StepEvent(this._advisor, this._productsList));
       }
     });
 
@@ -278,5 +286,6 @@ export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
   private _updateEventsList(event) {
     const windowObject = window as any;
     windowObject.dataLayer.zoovuData.smartAssistant.events.unshift(event);
+    console.log(windowObject.dataLayer.zoovuData.smartAssistant.events)
   }
 }
