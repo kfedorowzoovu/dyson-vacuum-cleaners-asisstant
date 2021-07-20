@@ -23,6 +23,7 @@ export default {
     gray_disabled: "#ababab",
     gray_background: "#F3F3F3",
     gray_product_border: "#EBEBEB",
+    gray_klarna: "#fbfbfb",
     white: "#fff",
     whiteAlmost: "#fcfcfc",
     green: "#79B928",

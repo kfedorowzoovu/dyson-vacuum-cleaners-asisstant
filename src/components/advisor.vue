@@ -51,20 +51,6 @@ export default class AdvisorView extends BaseAdvisorView {
   @ComponentConfig(TopProductConfiguration)
   topProductConfiguration: TopProductConfiguration;
 
-  mounted(): void {
-    /* append klarna widget script for local dev only,
-    otherwise use version from client's website
-    since klarna version & credentials may change in the future without notice */
-    if (window.location.origin.indexOf("localhost")) this.appendKlarnaScript();
-  }
-
-  appendKlarnaScript(): void {
-    const script = document.createElement("script");
-    script.setAttribute("client-id", "e8f4b540-4ca3-5a94-8bd0-5424a217d713");
-    script.src = "https://eu-library.klarnaservices.com/lib.js";
-    script.async = true;
-    document.head.appendChild(script);
-  }
 }
 </script>
 <style>

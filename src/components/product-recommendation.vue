@@ -58,6 +58,11 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   @InjectComponent("ProductPriceView")
   productPriceView: VueComponent;
 
+  mounted(): void {
+    window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
+    window.KlarnaOnsiteService.push({ eventName: "refresh-placements" });
+  }
+
   get locale(): string {
     return this.$root.componentViewModel.localizationSettings.locale
   }

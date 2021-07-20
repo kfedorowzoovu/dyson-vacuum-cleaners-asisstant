@@ -227,7 +227,14 @@ export default {
       marginBottom: 0,
       padding: "0 0 20px",
     },
-
+    "& .klarna-message": {
+      border: `1px solid ${globals.colors.gray_product_border}`,
+      padding: ".5rem",
+      backgroundColor: globals.colors.gray_klarna,
+      display: "inline-block",
+      width: "100%",
+      marginBottom: "16px",
+    },
     "& .product-footer": {
       display: "flex",
       width: "100%",
