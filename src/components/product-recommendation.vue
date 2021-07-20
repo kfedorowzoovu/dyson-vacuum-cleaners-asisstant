@@ -9,16 +9,10 @@
       <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
         {{ recommendation.name }}
       </component>
-      <template v-if="shouldRenderProperties">
-        <ul class="product-properties">
-          <template v-for="(property, index) in recommendation.properties">
-            <li v-if="shouldRenderProperty(property)" :key="index" class="product-property" :class="resolveClass(property.marking)">
-              <IconTick></IconTick>
-              <span>{{ property.displayValue }}</span>
-            </li>
-          </template>
-        </ul>
-      </template>
+      <ProductProperties
+        v-if="shouldRenderProperties"
+        :recommendation="recommendation"
+      />
       <div class="price-compare-wrapper">
         <component :is="productRatingView" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />
@@ -45,24 +39,14 @@
 
 <script lang="ts">
 import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
-import { Component, InjectComponent, Marking, ProductProperty, VueComponent } from "@zoovu/runner-browser-api";
-import { IconTick } from "./svgs";
+import { Component, InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
+import ProductProperties from "@/components/product-properties.vue";
 
 @Component({
-  components: { IconTick },
+  components: { ProductProperties },
 })
 export default class ProductRecommendationViewExtended extends ProductRecommendationView {
   @InjectComponent("ProductPriceView")
   productPriceView: VueComponent;
-
-  Marking = Marking;
-
-  public shouldRenderProperty(property: ProductProperty): boolean {
-    return this.attributesCollapsed || property.marking !== Marking.NEGATIVE;
-  }
-
-  get hasNeutralProperty(): boolean {
-    return this.recommendation.properties.some((property: ProductProperty) => property.marking === Marking.NEUTRAL);
-  }
 }
 </script>

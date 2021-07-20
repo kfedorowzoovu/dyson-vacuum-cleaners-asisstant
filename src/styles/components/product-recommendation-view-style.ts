@@ -109,60 +109,6 @@ export default {
       marginBottom: 0,
       padding: "0 8px",
     },
-    "& .product-properties": {
-      padding: "0 8px",
-      listStyle: "none",
-      overflow: "hidden",
-      color: "#303030",
-      wordWrap: "break-word",
-      maxWidth: "100%",
-      display: "flex",
-      flexFlow: "wrap",
-      [`@media (${globals.breakpoints.$sm})`]: {
-        flexDirection: "column",
-      },
-      "& .product-property": {
-        marginBottom: "14px",
-        fontSize: stylesConfig.typography.fontSize(1),
-        lineHeight: "24px",
-        alignItems: "center",
-        flex: "0 0 50%",
-        paddingLeft: "30px",
-        position: "relative",
-        fontWeight: 400,
-        [`@media (${globals.breakpoints.$sm})`]: {
-          fontSize: stylesConfig.typography.fontSize(0.875),
-          lineHeight: "20px",
-        },
-        [`@media (${globals.breakpoints.$xs})`]: {
-          flex: "0 0 100%",
-        },
-        "&:nth-child(odd)": {
-          paddingRight: "30px",
-        },
-        "& span": {
-          display: "block",
-          position: "relative",
-          /* "&:nth-child(odd)": {
-            fontWeight: 700,
-          }, */
-          "& b": {
-            position: "absolute",
-            left: "-24px",
-            top: 0,
-          },
-        },
-        "& svg": {
-          position: "absolute",
-          left: "0",
-          top: "4px",
-          margin: "auto",
-          height: "16px",
-          width: "16px",
-          fill: globals.colors.green_darker,
-        },
-      },
-    },
     "& .price-compare-wrapper": {
       textAlign: "left",
       "& .product-price": {

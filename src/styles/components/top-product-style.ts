@@ -227,54 +227,7 @@ export default {
       marginBottom: 0,
       padding: "0 0 20px",
     },
-    "& .product-properties": {
-      display: "flex",
-      flexFlow: "wrap",
-      padding: "0",
-      listStyle: "none",
-      overflow: "hidden",
-      color: "#303030",
-      wordWrap: "break-word",
-      maxWidth: "100%",
-      textAlign: "left",
-      margin: 0,
-      "& .product-property": {
-        marginBottom: "20px",
-        fontSize: stylesConfig.typography.fontSize(1),
-        lineHeight: "24px",
-        alignItems: "center",
-        flex: "0 0 50%",
-        paddingLeft: "30px",
-        position: "relative",
-        fontWeight: 400,
-        [`@media (${globals.breakpoints.$sm})`]: {
-          fontSize: stylesConfig.typography.fontSize(0.875),
-          lineHeight: "20px",
-        },
-        [`@media (${globals.breakpoints.$xs})`]: {
-          flex: "0 0 100%",
-        },
-        "&:nth-child(odd)": {
-          paddingRight: "30px",
-        },
-        "& span": {
-          display: "block",
-          position: "relative",
-          /* "&:nth-child(odd)": {
-              fontWeight: 700,
-            }, */
-        },
-        "& svg": {
-          position: "absolute",
-          left: "0",
-          top: "4px",
-          margin: "auto",
-          height: "16px",
-          width: "16px",
-          fill: globals.colors.green_darker,
-        },
-      },
-    },
+
     "& .product-footer": {
       display: "flex",
       width: "100%",
