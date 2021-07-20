@@ -12,6 +12,13 @@
         />
         <component :is="productRatingView" class="product__rating" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />
+        <div class="klarna-message">
+          <klarna-placement
+            data-key="credit-promotion-small"
+            :data-locale="locale"
+            :data-purchase-amount="currentPrice"
+          ></klarna-placement>
+        </div>
         <div class="product-footer">
           <component
             :is="productAddToCartLinkView"
@@ -44,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { Component } from "@zoovu/runner-browser-api";
+import { Component, Marking, ProductProperty } from "@zoovu/runner-browser-api";
 import { TopProductView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "@/configuration/common-configuration";
@@ -58,5 +65,20 @@ export default class TopProductViewExtended extends TopProductView {
   getPropertyValue = getPropertyValue;
 
   ProductAttributes = ProductAttributes;
+
+  mounted(): void {
+    window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
+    window.KlarnaOnsiteService.push({ eventName: "refresh-placements" });
+  }
+
+  get locale(): string {
+    return this.$root.componentViewModel.localizationSettings.locale;
+  }
+
+  get currentPrice(): number {
+    const reducedPrice = getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE);
+    const regularPrice = this.recommendation.price.rawValue.value;
+    return (reducedPrice || regularPrice) * 100;
+  }
 }
 </script>

@@ -18,6 +18,13 @@
         <component :is="productPriceView" :recommendation="recommendation" />
       </div>
     </div>
+    <div class="klarna-message">
+      <klarna-placement
+        data-key="credit-promotion-small"
+        :data-locale="locale"
+        :data-purchase-amount="currentPrice"
+      ></klarna-placement>
+    </div>
     <div class="product-footer">
       <component
         :is="productAddToCartLinkView"
@@ -41,6 +48,8 @@
 import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
 import { Component, InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
 import ProductProperties from "@/components/product-properties.vue";
+import { getPropertyValue } from "@/helpers";
+import { ProductAttributes } from "@/configuration/common-configuration";
 
 @Component({
   components: { ProductProperties },
@@ -48,5 +57,20 @@ import ProductProperties from "@/components/product-properties.vue";
 export default class ProductRecommendationViewExtended extends ProductRecommendationView {
   @InjectComponent("ProductPriceView")
   productPriceView: VueComponent;
+
+  mounted(): void {
+    window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
+    window.KlarnaOnsiteService.push({ eventName: "refresh-placements" });
+  }
+
+  get locale(): string {
+    return this.$root.componentViewModel.localizationSettings.locale;
+  }
+
+  get currentPrice(): number {
+    const reducedPrice = getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE);
+    const regularPrice = this.recommendation.price.rawValue.value;
+    return (reducedPrice || regularPrice) * 100;
+  }
 }
 </script>
