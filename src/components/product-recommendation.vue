@@ -9,10 +9,7 @@
       <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
         {{ recommendation.name }}
       </component>
-      <ProductProperties
-        v-if="shouldRenderProperties"
-        :recommendation="recommendation"
-      />
+      <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
       <div class="price-compare-wrapper">
         <component :is="productRatingView" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />
@@ -49,7 +46,7 @@ import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
 import { Component, InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
 import ProductProperties from "@/components/product-properties.vue";
 import { getPropertyValue } from "@/helpers";
-import {ProductAttributes} from "@/configuration/common-configuration";
+import { ProductAttributes } from "@/configuration/common-configuration";
 
 @Component({
   components: { ProductProperties },
@@ -64,12 +61,12 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   }
 
   get locale(): string {
-    return this.$root.componentViewModel.localizationSettings.locale
+    return this.$root.componentViewModel.localizationSettings.locale;
   }
 
   get currentPrice(): number {
-    const reducedPrice = getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE)
-    const regularPrice = this.recommendation.price.rawValue.value
+    const reducedPrice = getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE);
+    const regularPrice = this.recommendation.price.rawValue.value;
     return (reducedPrice || regularPrice) * 100;
   }
 }

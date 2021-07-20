@@ -50,7 +50,6 @@ export default class AdvisorView extends BaseAdvisorView {
 
   @ComponentConfig(TopProductConfiguration)
   topProductConfiguration: TopProductConfiguration;
-
 }
 </script>
 <style>

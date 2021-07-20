@@ -6,10 +6,7 @@
           {{ recommendation.name }}
         </component>
         <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"></p>
-        <ProductProperties
-          v-if="shouldRenderProperties"
-          :recommendation="recommendation"
-        />
+        <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
         <component :is="productRatingView" class="product__rating" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />
         <div class="klarna-message">
@@ -72,12 +69,12 @@ export default class TopProductViewExtended extends TopProductView {
   }
 
   get locale(): string {
-    return this.$root.componentViewModel.localizationSettings.locale
+    return this.$root.componentViewModel.localizationSettings.locale;
   }
 
   get currentPrice(): number {
-    const reducedPrice = getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE)
-    const regularPrice = this.recommendation.price.rawValue.value
+    const reducedPrice = getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE);
+    const regularPrice = this.recommendation.price.rawValue.value;
     return (reducedPrice || regularPrice) * 100;
   }
 }
