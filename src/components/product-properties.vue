@@ -34,17 +34,16 @@ export default class ProductProperties extends Vue {
   recommendation!: ProductRecommendation;
 
   get productRelatedProperties(): ReadonlyArray<ProductProperty> {
-    return this.visibleProperties.filter((property) => !Object.values(ProductAttributes).includes(property.name));
+    return this.allProperties.filter((property) => !Object.values(ProductAttributes).includes(property.name));
   }
 
   get propertiesWithExplicitValue(): ReadonlyArray<ProductProperty> {
     return this.productRelatedProperties.filter(
-      (property) =>
-        !(property.marking === Marking.NEUTRAL && property.rawValue.propertyType === "BLN" && !property.rawValue.value)
+      (property) => !(property.marking === Marking.NEUTRAL && !property.rawValue.value)
     );
   }
 
-  get visibleProperties(): ReadonlyArray<ProductProperty> {
+  get allProperties(): ReadonlyArray<ProductProperty> {
     return this.recommendation.properties;
   }
 }

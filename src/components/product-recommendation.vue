@@ -9,7 +9,10 @@
       <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
         {{ recommendation.name }}
       </component>
-      <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
+      <ProductProperties
+        v-if="shouldRenderProperties"
+        :recommendation="recommendation"
+      />
       <div class="price-compare-wrapper">
         <component :is="productRatingView" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />

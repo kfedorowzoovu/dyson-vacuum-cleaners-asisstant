@@ -1,3 +1,5 @@
+import globals from "../partials/global-variables";
+
 export default {
   container: {
     "&.product-properties": {
@@ -6,7 +8,7 @@ export default {
       padding: "0",
       listStyle: "none",
       overflow: "hidden",
-      color: "#303030",
+      color: globals.colors.gray1,
       wordWrap: "break-word",
       maxWidth: "100%",
       textAlign: "left",

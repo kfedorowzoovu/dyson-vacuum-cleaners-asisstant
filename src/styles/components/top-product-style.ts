@@ -11,7 +11,7 @@ export default {
     "& .top-product__wrapper": {
       ...productAdditionalPriceTextBaseStyles,
       borderColor: globals.colors.gray_secondary,
-      padding: "30px 24px 24px 24px",
+      padding: "30px 22px 22px 22px",
       width: "100%",
       position: "relative",
       display: "flex",

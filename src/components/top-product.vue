@@ -6,7 +6,10 @@
           {{ recommendation.name }}
         </component>
         <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"></p>
-        <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
+        <ProductProperties
+          v-if="shouldRenderProperties"
+          :recommendation="recommendation"
+        />
         <component :is="productRatingView" class="product__rating" :product="recommendation" />
         <component :is="productPriceView" :recommendation="recommendation" />
         <div class="klarna-message">

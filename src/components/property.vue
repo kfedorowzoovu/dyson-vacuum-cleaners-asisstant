@@ -1,5 +1,5 @@
 <template>
-  <li class="property" :class="this.componentStyle.container">
+  <li class="property" :class="componentStyle.container">
     <IconTick />
     {{ displayPropertyValueOnly ? property.rawValue.value : property.displayValue }}
   </li>
