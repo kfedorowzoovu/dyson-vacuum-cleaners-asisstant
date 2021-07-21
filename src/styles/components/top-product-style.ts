@@ -252,7 +252,13 @@ export default {
       "& .add-to-cart-button": {
         background: globals.colors.green,
         border: "none",
-        marginRight: "12px",
+        marginRight: "28px",
+        [`@media (${globals.breakpoints.$sm})`]: {
+          marginRight: "20px",
+        },
+        [`@media (${globals.breakpoints.$xs})`]: {
+          marginRight: "10px",
+        },
       },
     },
     "& .product__rating": {
