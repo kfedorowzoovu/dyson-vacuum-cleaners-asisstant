@@ -120,9 +120,8 @@ export default {
         textAlign: "center",
         top: "-14px",
         [`@media (${globals.breakpoints.$sm})`]: {
-          fontSize: stylesConfig.typography.fontSize(0.8),
+          fontSize: stylesConfig.typography.fontSize(0.75),
           padding: "4px 14px",
-          top: "-14px",
         },
       },
       "& a": {
