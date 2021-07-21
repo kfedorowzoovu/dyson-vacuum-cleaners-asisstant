@@ -156,7 +156,7 @@ export default {
       display: "flex",
       "& .product-button": {
         ...ProductButton,
-        minWidth: "calc(50% - 12px)",
+        minWidth: "calc(50% - 8px)",
         [`@media (${globals.breakpoints.$xs})`]: {
           minWidth: "auto",
         },
@@ -165,6 +165,12 @@ export default {
         background: globals.colors.green,
         border: "none",
         marginRight: "12px",
+        [`@media (${globals.breakpoints.$sm})`]: {
+          marginRight: "8px",
+        },
+        [`@media (${globals.breakpoints.$xs})`]: {
+          marginRight: "10px",
+        },
       },
     },
   },
