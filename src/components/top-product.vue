@@ -6,34 +6,33 @@
           {{ recommendation.name }}
         </component>
         <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"></p>
-        <ProductProperties
-          v-if="shouldRenderProperties"
-          :recommendation="recommendation"
-        />
-        <component :is="productRatingView" class="product__rating" :product="recommendation" />
-        <component :is="productPriceView" :recommendation="recommendation" />
-        <div class="klarna-message">
-          <klarna-placement
-            data-key="credit-promotion-small"
-            :data-locale="locale"
-            :data-purchase-amount="currentPrice"
-          ></klarna-placement>
-        </div>
-        <div class="product-footer">
-          <component
-            :is="productAddToCartLinkView"
-            v-if="shouldShowAddToCartButton"
-            v-dompurify-html="$t('message-result-add-to-cart')"
-            class="product-button add-to-cart-button"
-            :product="recommendation"
-          ></component>
-          <component
-            :is="productClickoutLinkView"
-            v-if="shouldShowGoToProductButton"
-            v-dompurify-html="$t('message-result-go-to-product')"
-            class="product-button go-to-product-button"
-            :product="recommendation"
-          ></component>
+        <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
+        <div class="top-product__cta-group">
+          <component :is="productRatingView" class="product__rating" :product="recommendation" />
+          <component :is="productPriceView" :recommendation="recommendation" />
+          <div class="klarna-message">
+            <klarna-placement
+              data-key="credit-promotion-small"
+              :data-locale="locale"
+              :data-purchase-amount="currentPrice"
+            ></klarna-placement>
+          </div>
+          <div class="product-footer">
+            <component
+              :is="productAddToCartLinkView"
+              v-if="shouldShowAddToCartButton"
+              v-dompurify-html="$t('message-result-add-to-cart')"
+              class="product-button add-to-cart-button"
+              :product="recommendation"
+            ></component>
+            <component
+              :is="productClickoutLinkView"
+              v-if="shouldShowGoToProductButton"
+              v-dompurify-html="$t('message-result-go-to-product')"
+              class="product-button go-to-product-button"
+              :product="recommendation"
+            ></component>
+          </div>
         </div>
       </div>
       <div class="image-wrapper">
