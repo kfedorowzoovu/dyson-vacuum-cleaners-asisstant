@@ -73,7 +73,7 @@
 </template>
 
 <script lang="ts">
-import {Component, ComponentConfig, InjectComponent, ProductRecommendation} from "@zoovu/runner-browser-api";
+import { Component, ComponentConfig, InjectComponent, ProductRecommendation } from "@zoovu/runner-browser-api";
 import { TopProductConfiguration, AdviceView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
 import CustomizedRecommendationConfiguration from "@/configuration/customized-recommendation-configuration";
@@ -119,16 +119,18 @@ export default class AdviceViewExtended extends AdviceView {
   }
 
   get topProducts(): ProductRecommendation[] {
-    const currentPage = this.advice.currentPage;
+    const { currentPage } = this.advice;
     const clusters = (currentPage && currentPage.pageNumber === 0 && currentPage.clusters) || [];
-    const fullMatchesCluster = clusters.find(c => c.clusterNumber === 0);
+    const fullMatchesCluster = clusters.find((c) => c.clusterNumber === 0);
     const fullMatches = fullMatchesCluster ? fullMatchesCluster.products : [];
-    return fullMatches.filter((product: ProductRecommendation) => !this.isEmpty(product)).slice(0, this.currentTopProductsNumber);
+    return fullMatches
+      .filter((product: ProductRecommendation) => !this.isEmpty(product))
+      .slice(0, this.currentTopProductsNumber);
   }
 
   isEmpty = (recommendation: ProductRecommendation) => {
     for (const key in recommendation) return false;
     return true;
-  }
+  };
 }
 </script>

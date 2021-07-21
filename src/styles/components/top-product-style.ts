@@ -1,8 +1,7 @@
 import { productAdditionalPriceTextBaseStyles } from "@zoovu/runner-web-design-base";
-import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
+import { ctaGroup } from "@/styles/partials/cta";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
-import { ProductButton } from "../partials/buttons";
 
 const focusOutlineColor = globals.colors.green;
 
@@ -11,14 +10,18 @@ export default {
     "& .top-product__wrapper": {
       ...productAdditionalPriceTextBaseStyles,
       borderColor: globals.colors.gray_secondary,
-      padding: "30px 22px 22px 22px",
+      padding: "30px 24px 24px 24px",
       width: "100%",
       position: "relative",
       display: "flex",
       border: `1px solid ${globals.colors.gray_product_border}`,
       backgroundColor: globals.colors.white,
+      [`@media (${globals.breakpoints.$sm})`]: {
+         padding: "30px 20px 20px 20px",
+      },
       [`@media (${globals.breakpoints.$xs})`]: {
         flexFlow: "column",
+        padding: "30px 22px 22px 22px",
       },
       "& .product-attributes-toggle": {
         display: "block",
@@ -142,43 +145,6 @@ export default {
         },
       },
     },
-    "& .product-price": {
-      color: globals.colors.gray_primary,
-      textAlign: "left",
-      fontWeight: 400,
-      padding: [0, 0, "5px"],
-      margin: "24px 0",
-      [`@media (${globals.breakpoints.$sm})`]: {
-        margin: "20px 0",
-      },
-      [`@media (${globals.breakpoints.$xs})`]: {
-        margin: "16px 0",
-      },
-      "&>span": {
-        fontSize: stylesConfig.typography.fontSize(1),
-        color: globals.colors.gray_primary,
-        display: "block",
-        [`@media (${globals.breakpoints.$sm})`]: {
-          fontSize: stylesConfig.typography.fontSize(0.875),
-        },
-        "&.price-was": {
-          textDecoration: "line-through",
-        },
-        "&.price-current": {
-          fontSize: stylesConfig.typography.fontSize(2.2),
-          fontWeight: 700,
-          color: globals.colors.blue,
-          margin: "-2px 0",
-          [`@media (${globals.breakpoints.$sm})`]: {
-            fontSize: stylesConfig.typography.fontSize(2),
-            margin: "0",
-          },
-          [`@media (${globals.breakpoints.$xs})`]: {
-            fontSize: stylesConfig.typography.fontSize(1.5),
-          },
-        },
-      },
-    },
     "& .compare-wrapper": {
       padding: "0",
       [`@media (${globals.breakpoints.$xs})`]: {
@@ -206,21 +172,6 @@ export default {
         marginTop: "5px",
       },
     },
-    "& .rating-wrapper": {
-      margin: "10px 0",
-      "& .rating-image": {
-        background: (configuration: ResolvedComponentsConfiguration): string =>
-          `${globals.customerSprite2(configuration)} no-repeat 0 -238px`,
-        width: "88px",
-        height: "16px",
-        margin: "0 auto",
-        "& .rating-image-over": {
-          background: (configuration: ResolvedComponentsConfiguration): string =>
-            `${globals.customerSprite2(configuration)} no-repeat 0 -207px`,
-          height: "16px",
-        },
-      },
-    },
     "& .properties-title": {
       fontSize: stylesConfig.typography.fontSize(),
       color: "#303030",
@@ -228,43 +179,41 @@ export default {
       marginBottom: 0,
       padding: "0 0 20px",
     },
-    "& .klarna-message": {
-      border: `1px solid ${globals.colors.gray_product_border}`,
-      padding: ".5rem",
-      backgroundColor: globals.colors.gray_klarna,
-      display: "inline-block",
-      width: "100%",
-      marginBottom: "16px",
-    },
-    "& .product-footer": {
-      display: "flex",
-      width: "100%",
-      textAlign: "center",
-      [`@media (min-width: 768px)`]: {
-        width: "auto",
-        alignItems: "flex-end",
-      },
-      "& .product-button": {
-        ...ProductButton,
-        [`@media (${globals.breakpoints.$xs})`]: {
-          minWidth: "auto",
+    "& .top-product__cta-group": {
+      extend: ctaGroup,
+      "& .product-price": {
+        color: globals.colors.gray_primary,
+        padding: [0, 0, "5px"],
+        "&>span": {
+          "&.price-current": {
+            fontSize: stylesConfig.typography.fontSize(2.2),
+            margin: "-2px 0",
+            [`@media (${globals.breakpoints.$sm})`]: {
+              fontSize: stylesConfig.typography.fontSize(2),
+              margin: "0",
+            },
+            [`@media (${globals.breakpoints.$xs})`]: {
+              fontSize: stylesConfig.typography.fontSize(1.5),
+            },
+          },
         },
       },
-      "& .add-to-cart-button": {
-        background: globals.colors.green,
-        border: "none",
-        marginRight: "28px",
-        [`@media (${globals.breakpoints.$sm})`]: {
-          marginRight: "20px",
+      "& .product-footer": {
+        "& .product-button": {
+          [`@media (${globals.breakpoints.$xs})`]: {
+            minWidth: "auto",
+          },
         },
-        [`@media (${globals.breakpoints.$xs})`]: {
-          marginRight: "10px",
+        "& .add-to-cart-button": {
+          marginRight: "28px",
+          [`@media (${globals.breakpoints.$sm})`]: {
+            marginRight: "20px",
+          },
+          [`@media (${globals.breakpoints.$xs})`]: {
+            marginRight: "10px",
+          },
         },
       },
-    },
-    "& .product__rating": {
-      display: "flex",
-      marginTop: "4px",
     },
   },
 };
