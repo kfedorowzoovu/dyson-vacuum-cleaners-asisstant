@@ -73,7 +73,13 @@
 </template>
 
 <script lang="ts">
-import { Component, ComponentConfig, InjectComponent, ProductRecommendation } from "@zoovu/runner-browser-api";
+import {
+  Component,
+  ComponentConfig,
+  InjectComponent,
+  ProductRecommendation,
+  RecommendationCluster
+} from "@zoovu/runner-browser-api";
 import { TopProductConfiguration, AdviceView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
 import CustomizedRecommendationConfiguration from "@/configuration/customized-recommendation-configuration";
@@ -122,10 +128,44 @@ export default class AdviceViewExtended extends AdviceView {
     const { currentPage } = this.advice;
     const clusters = (currentPage && currentPage.pageNumber === 0 && currentPage.clusters) || [];
     const fullMatchesCluster = clusters.find((c) => c.clusterNumber === 0);
-    const fullMatches = fullMatchesCluster ? fullMatchesCluster.products : [];
+    const fullMatches = fullMatchesCluster ? this.notEmptyUnique(fullMatchesCluster.products) : [];
     return fullMatches
-      .filter((product: ProductRecommendation) => !this.isEmpty(product))
       .slice(0, this.currentTopProductsNumber);
+  }
+
+  get currentPageClusters(): ReadonlyArray<RecommendationCluster> {
+    if (!this.currentTopProductsNumber || this.advice.currentPage.pageNumber !== 0) {
+      return this.advice.currentPage.clusters;
+    }
+
+    const topProductsNumber: number = this.currentTopProductsNumber;
+    let bestProductCount: number = 0;
+    let allProductCount: number = 0;
+
+
+    return this.advice.currentPage.clusters.reduce((clusters, currentCluster) => {
+      if (!currentCluster.products.length) return clusters;
+      const uniqueProducts = this.notEmptyUnique(currentCluster.products);
+      if (currentCluster.clusterNumber === 0) bestProductCount += uniqueProducts.length;
+      allProductCount += uniqueProducts.length;
+      if (topProductsNumber >= allProductCount) {
+        const topProducts = this.topProducts && this.topProducts.map((product) => product.mid);
+        const filteredProducts = uniqueProducts.filter((product) => !topProducts.includes(product.mid));
+        clusters.push({...currentCluster, products: filteredProducts});
+      }
+      if (allProductCount > topProductsNumber) {
+        const sliceCount = allProductCount - Math.min(topProductsNumber, bestProductCount);
+        const newProductsList: ReadonlyArray<ProductRecommendation> = uniqueProducts.filter((product, index, products) => index >= products.length - sliceCount);
+        clusters.push({...currentCluster, products: newProductsList});
+      }
+      return clusters;
+    }, []);
+  }
+
+  notEmptyUnique(products: ReadonlyArray<ProductRecommendation>): ReadonlyArray<ProductRecommendation> {
+    const notEmpty = products.filter(product => !this.isEmpty(product));
+    const uniqueProducts = new Set(notEmpty);
+    return Array.from(uniqueProducts);
   }
 
   isEmpty = (recommendation: ProductRecommendation) => {
