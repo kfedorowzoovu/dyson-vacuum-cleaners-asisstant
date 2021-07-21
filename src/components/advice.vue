@@ -164,8 +164,12 @@ export default class AdviceViewExtended extends AdviceView {
 
   notEmptyUnique(products: ReadonlyArray<ProductRecommendation>): ReadonlyArray<ProductRecommendation> {
     const notEmpty = products.filter(product => !this.isEmpty(product));
-    const uniqueProducts = new Set(notEmpty);
-    return Array.from(uniqueProducts);
+    return notEmpty.reduce(
+      (allProducts: ReadonlyArray<ProductRecommendation>, currentProduct: ProductRecommendation) =>
+        allProducts.some(product => product.sku === currentProduct.sku)
+          ? [...allProducts]
+          : [...allProducts, currentProduct]
+      , []);
   }
 
   isEmpty = (recommendation: ProductRecommendation) => {
