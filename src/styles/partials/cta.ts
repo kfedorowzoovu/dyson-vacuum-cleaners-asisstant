@@ -53,6 +53,10 @@ export const ctaGroup = {
     },
     "& .product-button": {
       ...ProductButton,
+      "&>a": {
+        color: globals.colors.black,
+        textDecoration: "none",
+      }
     },
     "& .add-to-cart-button": {
       background: globals.colors.green,

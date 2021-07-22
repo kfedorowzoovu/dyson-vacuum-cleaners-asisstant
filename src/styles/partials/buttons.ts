@@ -206,6 +206,8 @@ export const ProductButton = {
   display: "block",
   textDecoration: "none",
   transition: "background .3s ease",
+  outline: "none",
+  border: "none",
   [`@media (${globals.breakpoints.$xs})`]: {
     fontSize: stylesConfig.typography.fontSize(1),
     padding: "18px 4px",
