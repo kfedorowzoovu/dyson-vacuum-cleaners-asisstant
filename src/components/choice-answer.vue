@@ -16,15 +16,15 @@
       @keyup.enter="enterPressed"
     >
       <label ref="choiceAnswerLabel" :data-info-text="answer.infoText" :for="answer.mid">
-        <div
+        <span
           v-if="areImagesAvailable() && doesSomeAnswerHaveImage"
           ref="imageBoxElement"
           class="answer-image"
           :style="{ height: `${imageHeight}` }"
         >
-          <i v-if="showImage" class="image-element" :style="{ backgroundImage: `url(${answer.images[0]})` }"></i>
-        </div>
-        <div class="answer-content">
+          <span v-if="showImage" class="image-element" :style="{ backgroundImage: `url(${answer.images[0]})` }" role="presentation"/>
+        </span>
+        <span class="answer-content">
           <component
             :is="infoText"
             v-if="answer.hasInfoText && infoTextShown && !isMobile"
@@ -52,8 +52,8 @@
             tabindex="0"
             @click.stop.prevent="onInfoTextTriggerClick"
           ></i>
-          <div class="icon-container"><IconTick></IconTick></div>
-        </div>
+          <span class="icon-container"><IconTick></IconTick></span>
+        </span>
       </label>
       <component
         :is="modal"
@@ -88,10 +88,10 @@ import {
 import { vTooltip } from "@zoovu/design-system/src/plugins";
 import { isMobile } from "@zoovu/design-system/src/helpers";
 import { sanitize } from "dompurify";
-import { AnswerAnimationStyleClass, getAnimationClass } from "../styles/abstract/animation";
-import { getTransitionName } from "../styles/abstract/transition";
-import { TooltipConfiguration, whitelistedAttributes } from "../types";
-import { hideHorizontalOverflow, restoreHorizontalOverflow } from "../services/overflow-service";
+import { AnswerAnimationStyleClass, getAnimationClass } from "@/styles/abstract/animation";
+import { getTransitionName } from "@/styles/abstract/transition";
+import { TooltipConfiguration, whitelistedAttributes } from "@/types";
+import { hideHorizontalOverflow, restoreHorizontalOverflow } from "@/services/overflow-service";
 import InvisibleWrapper from "./invisible-wrapper.vue";
 import { IconTick } from "./svgs";
 
