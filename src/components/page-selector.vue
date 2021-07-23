@@ -13,8 +13,11 @@
 
       <span class="page-number" :class="{ 'results-header': isResultPage }">
         <template v-if="!isResultPage">
-          <span>{{ currentNavigation.currentStepIndex + 1 }}</span> /
-          <span>{{ currentNavigation.numberOfAvailableSteps }}</span>
+          <span class="hidden-description">{{
+              `Step: ${currentNavigation.currentStepIndex + 1} of ${currentNavigation.numberOfAvailableSteps}`
+            }}</span>
+          <span aria-hidden="true">{{ currentNavigation.currentStepIndex + 1 }}</span> /
+          <span aria-hidden="true">{{ currentNavigation.numberOfAvailableSteps }}</span>
         </template>
         <template v-else>{{ $t("message-results-mode-button") }}</template>
       </span>
@@ -35,16 +38,21 @@
         type="button"
         @click="goTo(index)"
       >
-        <section>
-          <span></span>
-        </section>
+        <span class="hidden-description">{{hiddenDescription(currentNavigation, index)}}</span>
       </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, SectionType, InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
+import {
+  Vue,
+  Component,
+  SectionType,
+  InjectComponent,
+  VueComponent,
+  QAFlowStepsNavigation
+} from "@zoovu/runner-browser-api";
 import { PageSelectorView } from "@zoovu/runner-web-design-base";
 import { IconChevronLeft } from "@/components/svgs";
 
@@ -82,5 +90,19 @@ export default class PageSelectorViewExtended extends Vue {
   get isFirstStep(): boolean {
     return this.advisor.flowStepsNavigation.currentStepIndex === 0;
   }
+
+  hiddenDescription = (
+    navigation: QAFlowStepsNavigation,
+    stepNumber: number
+  ): string => {
+    const currentStepIndex = stepNumber + 1;
+    if (stepNumber < navigation.currentStepIndex) {
+      return `Completed: Step ${currentStepIndex}: ${navigation.flowSteps[stepNumber].stepHeadline}`;
+    }
+    if (stepNumber === navigation.currentStepIndex) {
+      return `Current: Step ${currentStepIndex}: ${navigation.flowSteps[stepNumber].stepHeadline}`;
+    }
+    return `Not Completed: Step ${currentStepIndex}: ${navigation.flowSteps[stepNumber].stepHeadline}`;
+  };
 }
 </script>
