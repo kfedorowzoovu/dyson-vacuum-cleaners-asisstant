@@ -1,6 +1,5 @@
 import mediaQuery from "../abstract/media-query";
 import globals from "../partials/global-variables";
-import stylesConfig from "../styles.config";
 
 const focusOutlineColor = globals.colors.green;
 export default {
@@ -12,6 +11,7 @@ export default {
       justifyContent: "center",
       margin: [0, 0, "48px", 0],
       boxSizing: "border-box",
+      listStyle: "none",
       "&:after": {
         content: "''",
         flex: "0 2 auto",

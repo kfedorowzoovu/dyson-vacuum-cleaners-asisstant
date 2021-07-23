@@ -2,7 +2,7 @@
   <div :id="question.mid" :class="[componentStyle.container, componentStateClasses]" class="single-question-wrapper">
     <component :is="questionHeadView" :question="question"></component>
     <template v-if="question.questionType === QuestionType.CHECKBOX">
-      <div class="answers-wrapper answer-checkbox-type">
+      <ul class="answers-wrapper answer-checkbox-type">
         <component
           :is="checkboxAnswerView"
           v-for="(answer, index) in question.answers"
@@ -14,10 +14,10 @@
           :image-height="imageHeights[answersPerRow[index]]"
           :answer-text-height="getTextHeight(index, 'answerTextHeight')"
         />
-      </div>
+      </ul>
     </template>
     <template v-else-if="question.questionType === QuestionType.RADIO">
-      <div class="answers-wrapper answer-radio-type">
+      <ul class="answers-wrapper answer-radio-type">
         <component
           :is="radioButtonAnswerView"
           v-for="(answer, index) in question.answers"
@@ -30,7 +30,7 @@
           :answer-text-height="getTextHeight(index, 'answerTextHeight')"
         >
         </component>
-      </div>
+      </ul>
     </template>
     <template v-else>
       <h4><i>This question type is not supported yet</i></h4>

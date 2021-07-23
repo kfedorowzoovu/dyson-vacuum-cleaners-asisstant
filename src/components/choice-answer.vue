@@ -6,7 +6,7 @@
     @beforeEnter="onBeforeEnter"
     @afterEnter="onAfterEnter"
   >
-    <div
+    <li
       v-if="answer && (!answer.disabled || componentConfiguration.showDisabled)"
       :id="answer.mid + '-wrapper'"
       :class="[componentStyle.container, componentStateClasses, answerWrapperClass, animationClass]"
@@ -70,7 +70,7 @@
         <span slot="header" v-dompurify-html="answer.answerText"></span>
         <span slot="body" v-dompurify-html="answer.infoText"></span>
       </component>
-    </div>
+    </li>
   </component>
 </template>
 
