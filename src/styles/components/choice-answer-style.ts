@@ -5,6 +5,7 @@ import globals from "../partials/global-variables";
 import infoTextTrigger from "../partials/info-text-trigger";
 import { choiceAnswerTransitions } from "../partials/transition";
 import stylesConfig from "../styles.config";
+import {visuallyHiddenElement} from "@/styles/partials/accessibility";
 
 const infoTextBackground = stylesConfig.colors.secondaryAccentColorVariants.transparent;
 const answerBackgroundGradient = "linear-gradient(180deg, rgba(0,0,0,0) 50%, #000000 150%)";
@@ -55,11 +56,11 @@ export default {
         width: "100%",
         height: "100%",
         alignItems: "flex-end",
+        minHeight: "190px",
         [`@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)`]: {
           background: "transparent",
           position: "absolute,",
         },
-        minHeight: "190px",
         "&:before, &:after": {
           content: "' '",
           display: "none",
@@ -79,6 +80,9 @@ export default {
         [`@media (${globals.breakpoints.$xs})`]: {
           width: "100%",
           minHeight: "190",
+        },
+        "& .hidden-description": {
+          extend: visuallyHiddenElement,
         },
         "& .icon-container": {
           height: "32px",

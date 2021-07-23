@@ -39,12 +39,16 @@
             @click="$emit('answer-select')"
           />
           <span class="answer-selection-button"></span>
+          <span class="hidden-description">{{
+              hiddenDescription(answer)
+            }}</span>
           <span
             ref="answerTextElement"
             v-dompurify-html="answer.answerText"
             class="answer-text"
+            aria-hidden="true"
             :style="{ height: `${answerTextHeight}` }"
-          ></span>
+          />
           <i
             v-if="answer.hasInfoText"
             v-tooltip="infoTextTooltipConfiguration"
@@ -52,7 +56,7 @@
             tabindex="0"
             @click.stop.prevent="onInfoTextTriggerClick"
           ></i>
-          <span class="icon-container"><IconTick></IconTick></span>
+          <span class="icon-container"><IconTick /></span>
         </span>
       </label>
       <component
@@ -191,6 +195,10 @@ export default class ChoiceAnswerViewExtended extends Vue {
       return getTransitionName(this.selectedTransitionStyle);
     }
     return "";
+  }
+
+  hiddenDescription(answer: Answer): string {
+    return `Answer ${answer.selected ? "selected" : ""}: ${answer.answerText}`;
   }
 
   disableTransitionDelay(): void {

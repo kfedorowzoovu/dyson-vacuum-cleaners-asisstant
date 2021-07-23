@@ -13,8 +13,7 @@
           :is-last-answer="isLastAnswer(index)"
           :image-height="imageHeights[answersPerRow[index]]"
           :answer-text-height="getTextHeight(index, 'answerTextHeight')"
-        >
-        </component>
+        />
       </div>
     </template>
     <template v-else-if="question.questionType === QuestionType.RADIO">

@@ -1,5 +1,5 @@
 <template>
-  <BaseSvg class="icon" :height="450" :width="450" :name="'icon-tick'">
+  <BaseSvg class="icon" :height="450" :width="450" :name="'icon-tick'" alt="" role="presentation">
     <g>
       <polygon
         id="SVGID_23_"
