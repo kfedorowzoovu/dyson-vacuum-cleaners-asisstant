@@ -6,9 +6,11 @@
           <img :src="recommendation.picture" :alt="recommendation.name" />
         </component>
       </div>
-      <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
-        {{ recommendation.name }}
-      </component>
+      <h4 class="product-name">
+        <component :is="productClickoutLinkView" :product="recommendation">
+          {{ recommendation.name }}
+        </component>
+      </h4>
       <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
     </div>
     <div class="product__cta-group">

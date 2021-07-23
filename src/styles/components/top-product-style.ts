@@ -2,6 +2,7 @@ import { productAdditionalPriceTextBaseStyles } from "@zoovu/runner-web-design-b
 import { ctaGroup } from "@/styles/partials/cta";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
+import {productName} from "@/styles/partials/text";
 
 const focusOutlineColor = globals.colors.green;
 
@@ -71,23 +72,14 @@ export default {
         order: 2,
         width: "100%",
       },
-      "& a.product-name": {
-        textDecoration: "none",
+      "& .product-name": {
+        extend: productName,
         fontSize: stylesConfig.typography.fontSize(1.5),
-        color: "#303030",
-        textAlign: "left",
-        width: "100%",
-        display: "block",
-        margin: "0 0 14px 0",
-        lineHeight: "24px",
         [`@media (${globals.breakpoints.$sm})`]: {
           fontSize: stylesConfig.typography.fontSize(1.4),
         },
         [`@media (${globals.breakpoints.$xs})`]: {
           fontSize: stylesConfig.typography.fontSize(1.3),
-        },
-        "&:focus": {
-          outlineColor: globals.colors.green,
         },
       },
       "& > p": {

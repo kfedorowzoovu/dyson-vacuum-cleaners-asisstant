@@ -2,9 +2,11 @@
   <div class="top-product" :class="componentStyle.container">
     <div class="top-product__wrapper">
       <div class="product-details">
-        <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
+        <h4 class="product-name">
+        <component :is="productClickoutLinkView" :product="recommendation">
           {{ recommendation.name }}
         </component>
+        </h4>
         <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"></p>
         <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
         <div class="top-product__cta-group">
