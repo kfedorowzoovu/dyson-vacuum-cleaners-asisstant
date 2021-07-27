@@ -14,7 +14,7 @@
       <span class="page-number" :class="{ 'results-header': isResultPage }">
         <template v-if="!isResultPage">
           <span class="hidden-description">{{
-              `Step: ${currentNavigation.currentStepIndex + 1} of ${currentNavigation.numberOfAvailableSteps}`
+              `Question: ${currentNavigation.currentStepIndex + 1} out of ${currentNavigation.numberOfAvailableSteps}`
             }}</span>
           <span aria-hidden="true">{{ currentNavigation.currentStepIndex + 1 }}</span> /
           <span aria-hidden="true">{{ currentNavigation.numberOfAvailableSteps }}</span>

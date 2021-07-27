@@ -16,6 +16,9 @@ export default {
     width: "100%",
     "& .hidden-description": {
       extend: visuallyHiddenElement,
+      left: 0,
+      top: 0,
+      width: "100px",
     },
     "& .page-selector__page-info": {
       display: "flex",
@@ -46,8 +49,9 @@ export default {
       },
       "& .page-number": {
         color: globals.colors.gray_tertiary,
-        padding: "12px",
         margin: "auto",
+        padding: "12px 35px",
+        position: "relative",
         "&.results-header": {
           color: globals.colors.gray_primary,
           fontWeight: "bold",
