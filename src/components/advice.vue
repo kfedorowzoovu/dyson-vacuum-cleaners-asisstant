@@ -37,30 +37,32 @@
           </div>
         </div>
 
-        <template v-for="(cluster, index) in currentPageClustersExtended">
+        <div
+          v-if="currentPageClustersExtended[0].products.length"
+          :key="`sort-${currentPageClustersExtended[0].clusterNumber}`"
+          :class="clusterWrapperClass(0)"
+        >
           <div
-            v-if="cluster.products.length"
-            :key="`sort-${cluster.clusterNumber}`"
-            :class="clusterWrapperClass(index)"
+            :id="currentPageClustersExtended[0].mid"
+            class="cluster"
+            :class="currentPageClustersExtended[0].classList"
           >
-            <div :id="cluster.mid" class="cluster" :class="cluster.classList">
-              <h3 v-dompurify-html="cluster.clusterHeadline" class="cluster-headline"></h3>
-              <h4
-                v-if="cluster.clusterSubHeadline"
-                v-dompurify-html="cluster.clusterSubHeadline"
-                class="cluster-sub-headline"
-              ></h4>
-              <div class="products-wrapper">
-                <component
-                  :is="productRecommendationView"
-                  v-for="recommendation in cluster.products"
-                  :key="recommendation.mid"
-                  :recommendation="recommendation"
-                />
-              </div>
+            <h3 v-dompurify-html="currentPageClustersExtended[0].clusterHeadline" class="cluster-headline"></h3>
+            <h4
+              v-if="currentPageClustersExtended[0].clusterSubHeadline"
+              v-dompurify-html="currentPageClustersExtended[0].clusterSubHeadline"
+              class="cluster-sub-headline"
+            ></h4>
+            <div class="products-wrapper">
+              <component
+                :is="productRecommendationView"
+                v-for="recommendation in allAlternativeProducts"
+                :key="recommendation.mid"
+                :recommendation="recommendation"
+              />
             </div>
           </div>
-        </template>
+        </div>
 
         <div
           v-if="areTopProductsAvailable"
@@ -78,7 +80,7 @@ import {
   ComponentConfig,
   InjectComponent,
   ProductRecommendation,
-  RecommendationCluster
+  RecommendationCluster,
 } from "@zoovu/runner-browser-api";
 import { TopProductConfiguration, AdviceView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
@@ -129,8 +131,7 @@ export default class AdviceViewExtended extends AdviceView {
     const clusters = (currentPage && currentPage.pageNumber === 0 && currentPage.clusters) || [];
     const fullMatchesCluster = clusters.find((c) => c.clusterNumber === 0);
     const fullMatches = fullMatchesCluster ? this.notEmptyUnique(fullMatchesCluster.products) : [];
-    return fullMatches
-      .slice(0, this.currentTopProductsNumber);
+    return fullMatches.slice(0, this.currentTopProductsNumber);
   }
 
   get currentPageClusters(): ReadonlyArray<RecommendationCluster> {
@@ -139,9 +140,8 @@ export default class AdviceViewExtended extends AdviceView {
     }
 
     const topProductsNumber: number = this.currentTopProductsNumber;
-    let bestProductCount: number = 0;
-    let allProductCount: number = 0;
-
+    let bestProductCount = 0;
+    let allProductCount = 0;
 
     return this.advice.currentPage.clusters.reduce((clusters, currentCluster) => {
       if (!currentCluster.products.length) return clusters;
@@ -151,25 +151,36 @@ export default class AdviceViewExtended extends AdviceView {
       if (topProductsNumber >= allProductCount) {
         const topProducts = this.topProducts && this.topProducts.map((product) => product.mid);
         const filteredProducts = uniqueProducts.filter((product) => !topProducts.includes(product.mid));
-        clusters.push({...currentCluster, products: filteredProducts});
+        clusters.push({ ...currentCluster, products: filteredProducts });
       }
       if (allProductCount > topProductsNumber) {
         const sliceCount = allProductCount - Math.min(topProductsNumber, bestProductCount);
-        const newProductsList: ReadonlyArray<ProductRecommendation> = uniqueProducts.filter((product, index, products) => index >= products.length - sliceCount);
-        clusters.push({...currentCluster, products: newProductsList});
+        const newProductsList: ReadonlyArray<ProductRecommendation> = uniqueProducts.filter(
+          (product, index, products) => index >= products.length - sliceCount
+        );
+        clusters.push({ ...currentCluster, products: newProductsList });
       }
       return clusters;
     }, []);
   }
 
+  get allAlternativeProducts(): ReadonlyArray[ProductRecommendation] {
+    return this.currentPageClustersExtended
+      .reduce((products, currentCluster) => {
+        return products.concat(currentCluster.products);
+      }, [])
+      .slice(0, this.configuration.numberOfProductsPerResultsPage);
+  }
+
   notEmptyUnique(products: ReadonlyArray<ProductRecommendation>): ReadonlyArray<ProductRecommendation> {
-    const notEmpty = products.filter(product => !this.isEmpty(product));
+    const notEmpty = products.filter((product) => !this.isEmpty(product));
     return notEmpty.reduce(
       (allProducts: ReadonlyArray<ProductRecommendation>, currentProduct: ProductRecommendation) =>
-        allProducts.some(product => product.sku === currentProduct.sku)
+        allProducts.some((product) => product.sku === currentProduct.sku)
           ? [...allProducts]
-          : [...allProducts, currentProduct]
-      , []);
+          : [...allProducts, currentProduct],
+      []
+    );
   }
 
   isEmpty = (recommendation: ProductRecommendation) => {

@@ -1,7 +1,7 @@
 {
   "recommendationSettings": {
     "showInitialRecommendation": false,
-    "numberOfRecommendationPagesInQuestionnaireSection": 1,
+    "numberOfRecommendationPagesInQuestionnaireSection": 0,
     "numberOfProductsPerQuestionnairePage": 0,
     "numberOfRecommendationPagesInResultsSection": 6,
     "numberOfProductsPerResultsPage": 2,
