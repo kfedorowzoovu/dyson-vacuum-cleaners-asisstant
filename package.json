@@ -1,8 +1,8 @@
 {
-  "name": "@dyson/dyson-theme",
-  "webDesignName": "DysonDemoTheme",
+  "name": "@dyson/dyson-theme-ada",
+  "webDesignName": "DysonAdaDemoTheme",
   "description": "Demo theme for Dyson",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "main": "build/dist/webdesign-bundle.min.js",
