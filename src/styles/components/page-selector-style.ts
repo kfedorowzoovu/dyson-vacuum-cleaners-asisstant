@@ -16,9 +16,6 @@ export default {
     width: "100%",
     "& .hidden-description": {
       extend: visuallyHiddenElement,
-      left: 0,
-      top: 0,
-      width: "100px",
     },
     "& .page-selector__page-info": {
       display: "flex",
@@ -56,6 +53,11 @@ export default {
           color: globals.colors.gray_primary,
           fontWeight: "bold",
         },
+        "& .hidden-description": {
+          left: 0,
+          top: "5px",
+          width: "100px",
+        },
         "& span": {
           color: globals.colors.gray_primary,
         },
@@ -82,6 +84,11 @@ export default {
         "&:focus": {},
         "&.page-selector": {
           borderColor: globals.colors.gray_background,
+          "& .hidden-description": {
+            height: "15px",
+            top: "-7px",
+            width: "100%",
+          }
         },
         "&.visited": {
           borderColor: globals.colors.gray_secondary,
