@@ -9,8 +9,10 @@
       :style="nextButtonStyle"
       @click="onClickNext"
       type="button"
-      v-dompurify-html="isResultsSectionNext ? $t('message-results-mode-button') : $t('message-questionnaire-next')"
-    ></button>
+    >
+      {{ isResultsSectionNext ? $t('message-results-mode-button') : $t('message-questionnaire-next') }}
+      <span class="hidden-description">{{hiddenDescription()}}</span>
+    </button>
     <button
       v-else
       class="navigation-submit-button"
@@ -39,27 +41,27 @@ import {
   Vue,
   VueComponent,
 } from "@zoovu/runner-browser-api";
-import { AnswersConfiguration, PagesNavigationView, PagesNavigationAction } from "@zoovu/runner-web-design-base";
+import { AnswersConfiguration, PagesNavigationView as PagesNavigationViewBase, PagesNavigationAction } from "@zoovu/runner-web-design-base";
 import { scrollToElement } from "./utils";
 import { isScrollingDisabledThroughDataAttribute } from "@zoovu/runner-web-design-base/src/plugins/data-attributes-reader/webdesign-context";
 
-@Component({})
-export default class PagesNavigationViewExtended extends PagesNavigationView {
+@Component
+export default class PagesNavigationView extends PagesNavigationViewBase {
   @InjectComponent("PageSelectorView")
-  pageSelectorView: VueComponent;
+  pageSelectorView!: VueComponent;
 
   @ComponentConfig(AnswersConfiguration)
-  answersConfiguration: AnswersConfiguration;
+  answersConfiguration!: AnswersConfiguration;
 
   @Prop()
-  navigation: AdvisorNavigation;
+  navigation!: AdvisorNavigation;
 
   @Prop({ default: true })
-  showPageSelector: boolean;
+  showPageSelector!: boolean;
 
   pagesNavigationAction = PagesNavigationAction;
 
-  currentAction: PagesNavigationAction | null;
+  currentAction!: PagesNavigationAction | null;
 
   get rootElementClass(): string {
     return "pages-navigation-wrapper";
@@ -75,6 +77,14 @@ export default class PagesNavigationViewExtended extends PagesNavigationView {
 
   get previousButtonStyle(): Record<string, unknown> | null {
     return !this.navigation.hasPrevious ? { visibility: "hidden" } : null;
+  }
+
+  get currentNavigation(): QAFlowStepsNavigation {
+    return this.navigation.currentSection.navigation as QAFlowStepsNavigation
+  }
+
+  get nextStepIndex(): number {
+    return this.currentNavigation.currentStepIndex + 1;
   }
 
   get nextButtonIsHidden(): boolean {
@@ -205,6 +215,16 @@ export default class PagesNavigationViewExtended extends PagesNavigationView {
       }
     });
   }
+
+  hiddenDescription(): string {
+    const currentStepIndex = this.nextStepIndex + 1;
+
+    if (this.isResultsSectionNext) {
+      return `Button which leads to Results page`;
+    } else {
+      return `Button which leads to question ${currentStepIndex} ${this.currentNavigation.flowSteps[this.nextStepIndex].stepHeadline}`;
+    }
+  };
 
   triggerAction(): void {
     if (this.currentAction === PagesNavigationAction.SUBMIT) {

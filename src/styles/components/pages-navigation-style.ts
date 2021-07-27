@@ -1,4 +1,5 @@
 import { ButtonNextInProgress, ButtonPaginationNextBack } from "../partials/buttons";
+import {visuallyHiddenElement} from "@/styles/partials/accessibility";
 
 export default {
   "@keyframes navigationSpinner": {
@@ -27,6 +28,11 @@ export default {
     },
     "& .navigation-next-button.navigation-next-in-progress": {
       ...ButtonNextInProgress,
+    },
+    "& .hidden-description": {
+      extend: visuallyHiddenElement,
+      left: 0,
+      top: "16px",
     },
   },
 };

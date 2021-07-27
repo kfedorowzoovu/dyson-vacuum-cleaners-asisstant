@@ -134,6 +134,7 @@ export const ButtonPaginationNextBack = {
   color: globals.colors.black,
   margin: "auto",
   fontSize: stylesConfig.typography.fontSize(1),
+  position: "relative",
   "&.is-disabled": {
     color: globals.colors.gray_disabled,
     backgroundColor: globals.colors.gray_background,
