@@ -56,7 +56,7 @@ export const ctaGroup = {
       "&>a": {
         color: globals.colors.black,
         textDecoration: "none",
-      }
+      },
     },
     "& .add-to-cart-button": {
       background: globals.colors.green,

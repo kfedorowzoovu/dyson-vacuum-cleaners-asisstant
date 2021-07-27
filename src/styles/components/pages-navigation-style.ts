@@ -1,5 +1,5 @@
+import { visuallyHiddenElement } from "@/styles/partials/accessibility";
 import { ButtonNextInProgress, ButtonPaginationNextBack } from "../partials/buttons";
-import {visuallyHiddenElement} from "@/styles/partials/accessibility";
 
 export default {
   "@keyframes navigationSpinner": {

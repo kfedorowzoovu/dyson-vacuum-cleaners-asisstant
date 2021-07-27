@@ -12,5 +12,5 @@ export const productName = {
   "& a": {
     color: "#303030",
     textDecoration: "none",
-  }
-}
+  },
+};

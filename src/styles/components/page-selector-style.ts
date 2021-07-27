@@ -1,6 +1,6 @@
+import { visuallyHiddenElement } from "@/styles/partials/accessibility";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
-import {visuallyHiddenElement} from "@/styles/partials/accessibility";
 
 const pageSelectorButtonBackground = {
   default: stylesConfig.colors.advisorBackgroundVariants,
@@ -88,7 +88,7 @@ export default {
             height: "15px",
             top: "-7px",
             width: "100%",
-          }
+          },
         },
         "&.visited": {
           borderColor: globals.colors.gray_secondary,

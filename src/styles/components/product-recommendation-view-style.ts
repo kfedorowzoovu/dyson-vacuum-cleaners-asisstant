@@ -1,10 +1,10 @@
 import { productRecommendationBaseStyles } from "@zoovu/runner-web-design-base";
 import { setProductWidth } from "@zoovu/runner-web-design-base/src/utils/set-product-width";
 import { ctaGroup } from "@/styles/partials/cta";
+import { productName } from "@/styles/partials/text";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 import * as recommendationConfigurationDiffValues from "../../../configuration/recommendation-configuration-diff.json";
-import {productName} from "@/styles/partials/text";
 
 const MARGIN = 14;
 

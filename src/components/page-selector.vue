@@ -14,8 +14,8 @@
       <span class="page-number" :class="{ 'results-header': isResultPage }">
         <template v-if="!isResultPage">
           <span class="hidden-description">{{
-              `Question: ${currentNavigation.currentStepIndex + 1} out of ${currentNavigation.numberOfAvailableSteps}`
-            }}</span>
+            `Question: ${currentNavigation.currentStepIndex + 1} out of ${currentNavigation.numberOfAvailableSteps}`
+          }}</span>
           <span aria-hidden="true">{{ currentNavigation.currentStepIndex + 1 }}</span> /
           <span aria-hidden="true">{{ currentNavigation.numberOfAvailableSteps }}</span>
         </template>
@@ -38,7 +38,7 @@
         type="button"
         @click="goTo(index)"
       >
-        <span class="hidden-description">{{hiddenDescription(currentNavigation, index)}}</span>
+        <span class="hidden-description">{{ hiddenDescription(currentNavigation, index) }}</span>
       </button>
     </div>
   </div>
@@ -51,7 +51,7 @@ import {
   SectionType,
   InjectComponent,
   VueComponent,
-  QAFlowStepsNavigation
+  QAFlowStepsNavigation,
 } from "@zoovu/runner-browser-api";
 import { PageSelectorView } from "@zoovu/runner-web-design-base";
 import { IconChevronLeft } from "@/components/svgs";
@@ -91,10 +91,7 @@ export default class PageSelectorViewExtended extends Vue {
     return this.advisor.flowStepsNavigation.currentStepIndex === 0;
   }
 
-  hiddenDescription = (
-    navigation: QAFlowStepsNavigation,
-    stepNumber: number
-  ): string => {
+  hiddenDescription = (navigation: QAFlowStepsNavigation, stepNumber: number): string => {
     const currentStepIndex = stepNumber + 1;
     if (stepNumber < navigation.currentStepIndex) {
       return `Completed: Step ${currentStepIndex}: ${navigation.flowSteps[stepNumber].stepHeadline}`;

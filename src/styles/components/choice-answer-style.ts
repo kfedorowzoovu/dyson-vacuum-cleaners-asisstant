@@ -1,11 +1,11 @@
 import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
+import { visuallyHiddenElement } from "@/styles/partials/accessibility";
 import { AnswerAnimationStyleClass } from "../abstract/animation";
 import mediaQuery from "../abstract/media-query";
 import globals from "../partials/global-variables";
 import infoTextTrigger from "../partials/info-text-trigger";
 import { choiceAnswerTransitions } from "../partials/transition";
 import stylesConfig from "../styles.config";
-import {visuallyHiddenElement} from "@/styles/partials/accessibility";
 
 const infoTextBackground = stylesConfig.colors.secondaryAccentColorVariants.transparent;
 const answerBackgroundGradient = "linear-gradient(180deg, rgba(0,0,0,0) 50%, #000000 150%)";

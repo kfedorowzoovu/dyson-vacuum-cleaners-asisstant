@@ -1,8 +1,8 @@
 import { productAdditionalPriceTextBaseStyles } from "@zoovu/runner-web-design-base";
 import { ctaGroup } from "@/styles/partials/cta";
+import { productName } from "@/styles/partials/text";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
-import {productName} from "@/styles/partials/text";
 
 const focusOutlineColor = globals.colors.green;
 
@@ -18,7 +18,7 @@ export default {
       border: `1px solid ${globals.colors.gray_product_border}`,
       backgroundColor: globals.colors.white,
       [`@media (${globals.breakpoints.$sm})`]: {
-         padding: "30px 20px 20px 20px",
+        padding: "30px 20px 20px 20px",
       },
       [`@media (${globals.breakpoints.$xs})`]: {
         flexFlow: "column",

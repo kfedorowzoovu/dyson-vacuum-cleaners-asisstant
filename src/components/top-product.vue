@@ -3,9 +3,9 @@
     <div class="top-product__wrapper">
       <div class="product-details">
         <h4 class="product-name">
-        <component :is="productClickoutLinkView" :product="recommendation">
-          {{ recommendation.name }}
-        </component>
+          <component :is="productClickoutLinkView" :product="recommendation">
+            {{ recommendation.name }}
+          </component>
         </h4>
         <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"></p>
         <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
