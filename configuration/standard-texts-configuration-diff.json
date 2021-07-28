@@ -107,6 +107,96 @@
                 "value": "digital-assistant-summary"
               }
             ]
+          },
+          {
+            "id": "message-ada-question-number",
+            "label": "ADA: Announce question number ({currentStep}, {allSteps} are placeholders for dynamic content)",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Question: {currentStep} out of {allSteps}"
+              }
+            ]
+          },
+          {
+            "id": "message-ada-question-number-with-text",
+            "label": "ADA: Announce question number with question text ({currentStep}, {allSteps}, {questionText} are placeholders for dynamic content)",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Question {currentStep} out of {allSteps}: {questionText}"
+              }
+            ]
+          },
+          {
+            "id": "message-ada-button",
+            "label": "ADA: Button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Button"
+              }
+            ]
+          },
+          {
+            "id": "message-ada-button-disabled",
+            "label": "ADA: Disabled state of button",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Button disabled"
+              }
+            ]
+          },
+          {
+            "id": "message-ada-answer",
+            "label": "ADA: Answer",
+            "localizations": [
+              {
+                     "locale": "base",
+                "value": "Answer"
+              }
+            ]
+          },
+          {
+            "id": "message-ada-answer-selected",
+            "label": "ADA: Answer selected",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Answer selected"
+              }
+            ]
+          },
+          {
+            "id": "message-ada-where-to-go-next",
+            "label": "ADA: Announce where to go after clicking on the Next button ({buttonState}, {currentStep}, {questionText} are placeholders for dynamic content)",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "{buttonState} which leads to question {currentStep}: {questionText}"
+              }
+            ]
+          },
+          {
+            "id": "message-ada-where-to-go-results",
+            "label": "ADA: Announce where to go after clicking on the Results button ({buttonState} is a placeholder for dynamic content)",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "{buttonState} which leads to Results page"
+              }
+            ]
+          },
+          {
+            "id": "message-ada-answer-text",
+            "label": "ADA: Announce answer text ({answerState}, {answerText} are placeholders for dynamic content)",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "{answerState}: {answerText}"
+              }
+            ]
           }
         ],
         "name": "General"

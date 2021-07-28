@@ -14,7 +14,10 @@
       <span class="page-number" :class="{ 'results-header': isResultPage }">
         <template v-if="!isResultPage">
           <span class="hidden-description">{{
-            `Question: ${currentNavigation.currentStepIndex + 1} out of ${currentNavigation.numberOfAvailableSteps}`
+            $t('message-ada-question-number', {
+                    currentStep: currentNavigation.currentStepIndex + 1,
+                    allSteps: currentNavigation.numberOfAvailableSteps,
+                })
           }}</span>
           <span aria-hidden="true">{{ currentNavigation.currentStepIndex + 1 }}</span> /
           <span aria-hidden="true">{{ currentNavigation.numberOfAvailableSteps }}</span>
@@ -32,7 +35,13 @@
           :class="stepButtonClassList(index)"
           class="page-selector"
         >
-          <span class="hidden-description">{{ hiddenDescription(index) }}</span>
+          <span class="hidden-description">{{
+           $t('message-ada-question-number-with-text', {
+                currentStep: index + 1,
+                allSteps: currentNavigation.numberOfAvailableSteps,
+                questionText: currentNavigation.flowSteps[index].stepHeadline
+              })
+            }}</span>
         </button>
         <span
           v-else
@@ -83,11 +92,6 @@ export default class PageSelectorView extends PageSelectorViewBase {
 
   get isFirstStep(): boolean {
     return this.advisor.flowStepsNavigation.currentStepIndex === 0;
-  }
-
-  hiddenDescription(stepNumber: number): string {
-    const currentStepIndex = stepNumber + 1;
-    return `Question ${currentStepIndex} of ${this.currentNavigation.numberOfAvailableSteps}: ${this.currentNavigation.flowSteps[stepNumber].stepHeadline}`;
   }
 
   onClickBack(): void {

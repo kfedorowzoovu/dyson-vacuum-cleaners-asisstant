@@ -224,11 +224,18 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
 
   hiddenDescription(): string {
     const currentStepIndex = this.nextStepIndex + 1;
+    const buttonDisabledText = this.buttonDisabled ? this.$t("message-ada-button-disabled") : this.$t("message-ada-button");
 
     if (this.isResultsSectionNext) {
-      return `Button which leads to Results page`;
+      return this.$t("message-ada-where-to-go-results", {
+        buttonState: `${buttonDisabledText}`
+      });
     } else {
-      return `Button ${this.buttonDisabled ? "Disabled" : ""} which leads to question ${currentStepIndex} ${this.currentNavigation.flowSteps[this.nextStepIndex].stepHeadline}`;
+      return this.$t("message-ada-where-to-go-next", {
+        buttonState: `${buttonDisabledText}`,
+        currentStep: currentStepIndex,
+        questionText: this.currentNavigation.flowSteps[this.nextStepIndex].stepHeadline
+      });
     }
   };
 

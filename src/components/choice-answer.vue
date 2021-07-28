@@ -201,7 +201,13 @@ export default class ChoiceAnswerViewExtended extends Vue {
   }
 
   hiddenDescription(answer: Answer): string {
-    return `Answer ${answer.selected ? "selected" : ""}: ${answer.answerText}`;
+    const answerState = answer.selected ? this.$t("message-ada-answer-selected") : this.$t("message-ada-answer");
+    const { answerText } = answer;
+
+    return this.$t("message-ada-answer-text", {
+      answerState,
+      answerText
+    })
   }
 
   disableTransitionDelay(): void {
