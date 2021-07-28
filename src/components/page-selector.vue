@@ -29,25 +29,15 @@
         <button
           v-if="currentNavigation.currentStepIndex === index"
           :key="n"
-          :class="{
-            'is-selected': currentNavigation.currentStepIndex === index,
-            visited: index <= currentNavigation.currentStepIndex,
-          }"
+          :class="stepButtonClassList(index)"
           class="page-selector"
-          :data-step="currentNavigation.currentStepIndex"
-          :data-index="index"
-          type="button"
-          @click="goTo(index)"
         >
-          <span class="hidden-description">{{ hiddenDescription(currentNavigation, index) }}</span>
+          <span class="hidden-description">{{ hiddenDescription(index) }}</span>
         </button>
         <span
           v-else
           :key="n"
-          :class="{
-            'is-selected': currentNavigation.currentStepIndex === index,
-            visited: index <= currentNavigation.currentStepIndex,
-          }"
+          :class="stepButtonClassList(index)"
           class="page-selector"
         >
         </span>
@@ -63,7 +53,6 @@ import {
   SectionType,
   InjectComponent,
   VueComponent,
-  QAFlowStepsNavigation,
 } from "@zoovu/runner-browser-api";
 import { PageSelectorView } from "@zoovu/runner-web-design-base";
 import { IconChevronLeft } from "@/components/svgs";
@@ -91,10 +80,6 @@ export default class PageSelectorViewExtended extends Vue {
     return this.$root.componentViewModel;
   }
 
-  onClickBack(): void {
-    this.navigation.back();
-  }
-
   get isResultPage(): boolean {
     return this.advisor.advisorNavigation.currentSection.type === SectionType.RESULTS_PAGE;
   }
@@ -103,9 +88,21 @@ export default class PageSelectorViewExtended extends Vue {
     return this.advisor.flowStepsNavigation.currentStepIndex === 0;
   }
 
-  hiddenDescription = (navigation: QAFlowStepsNavigation, stepNumber: number): string => {
+  hiddenDescription(stepNumber: number): string {
     const currentStepIndex = stepNumber + 1;
-    return `Question ${currentStepIndex} ${navigation.flowSteps[stepNumber].stepHeadline}`;
-  };
+    return `Question ${currentStepIndex} of ${this.currentNavigation.numberOfAvailableSteps}: ${this.currentNavigation.flowSteps[stepNumber].stepHeadline}`;
+  }
+
+  onClickBack(): void {
+    this.navigation.back();
+  }
+
+  stepButtonClassList(index: number): Record<string, boolean> {
+    const { currentStepIndex } = this.currentNavigation;
+    return {
+      'is-selected': currentStepIndex === index,
+      visited: index <= currentStepIndex,
+    }
+  }
 }
 </script>
