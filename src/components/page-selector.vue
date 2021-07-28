@@ -48,25 +48,22 @@
 
 <script lang="ts">
 import {
-  Vue,
   Component,
   SectionType,
   InjectComponent,
   VueComponent,
 } from "@zoovu/runner-browser-api";
-import { PageSelectorView } from "@zoovu/runner-web-design-base";
+import { PageSelectorView as PageSelectorViewBase } from "@zoovu/runner-web-design-base";
 import { IconChevronLeft } from "@/components/svgs";
 
 @Component({
-  name: "PageSelectorView",
   components: {
     IconChevronLeft,
   },
-  mixins: [PageSelectorView],
 })
-export default class PageSelectorViewExtended extends Vue {
+export default class PageSelectorView extends PageSelectorViewBase {
   @InjectComponent("StartOverButtonView")
-  startOverButtonView: VueComponent;
+  startOverButtonView!: VueComponent;
 
   get previousButtonClassList(): ReadonlyArray<Record<string, unknown>> {
     return [
