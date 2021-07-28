@@ -94,6 +94,10 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
     );
   }
 
+  get buttonDisabled(): boolean {
+    return this.currentFlowStep.questions.some((q) => q.isMandatory && q.isUnanswered);
+  }
+
   get nextButtonClassList(): ReadonlyArray<string | Record<string, unknown>> {
     return [
       this.navigation.isFetching ? "navigation-next-in-progress" : "",
@@ -101,7 +105,7 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
         "is-hidden": this.nextButtonIsHidden,
       },
       {
-        "is-disabled": this.currentFlowStep.questions.some((q) => q.isMandatory && q.isUnanswered),
+        "is-disabled": this.buttonDisabled,
       },
     ];
   }
@@ -222,7 +226,7 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
     if (this.isResultsSectionNext) {
       return `Button which leads to Results page`;
     } else {
-      return `Button which leads to question ${currentStepIndex} ${this.currentNavigation.flowSteps[this.nextStepIndex].stepHeadline}`;
+      return `Button ${this.buttonDisabled ? "Disabled" : ""} which leads to question ${currentStepIndex} ${this.currentNavigation.flowSteps[this.nextStepIndex].stepHeadline}`;
     }
   };
 
