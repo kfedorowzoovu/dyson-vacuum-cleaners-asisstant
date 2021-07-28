@@ -63,6 +63,8 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
 
   currentAction!: PagesNavigationAction | null;
 
+  fileUploadQuestionsCount = 0;
+
   get rootElementClass(): string {
     return "pages-navigation-wrapper";
   }
@@ -243,8 +245,6 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
       (question) => question.selectedFiles.length > 0 && !question.fileUrls.length
     );
   }
-
-  fileUploadQuestionsCount = 0;
 
   handleFileUpload(): void {
     this.answeredFileUploadQuestions.forEach((question) => {

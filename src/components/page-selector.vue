@@ -27,7 +27,7 @@
     <div v-if="currentNavigation.numberOfAvailableSteps > 1" class="page-selector__progress-bar">
       <template v-for="(n, index) in currentNavigation.numberOfAvailableSteps">
         <button
-          v-if="currentNavigation.currentStepIndex === index"
+          v-if="currentNavigation.currentStepIndex === index && !isResultPage"
           :key="n"
           :class="stepButtonClassList(index)"
           class="page-selector"
