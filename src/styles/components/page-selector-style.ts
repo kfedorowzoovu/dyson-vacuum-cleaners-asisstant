@@ -65,8 +65,7 @@ export default {
     },
     "& .page-selector__progress-bar": {
       display: "flex",
-      "& button": {
-        cursor: "pointer",
+      "& .page-selector": {
         position: "relative",
         width: "auto",
         height: 0,
@@ -89,6 +88,9 @@ export default {
             top: "-7px",
             width: "100%",
           },
+        },
+        "&button": {
+          cursor: "pointer",
         },
         "&.visited": {
           borderColor: globals.colors.gray_secondary,

@@ -25,21 +25,33 @@
     </div>
 
     <div v-if="currentNavigation.numberOfAvailableSteps > 1" class="page-selector__progress-bar">
-      <button
-        v-for="(n, index) in currentNavigation.numberOfAvailableSteps"
-        :key="n"
-        :class="{
-          'is-selected': currentNavigation.currentStepIndex === index,
-          visited: index <= currentNavigation.currentStepIndex,
-        }"
-        class="page-selector"
-        :data-step="currentNavigation.currentStepIndex"
-        :data-index="index"
-        type="button"
-        @click="goTo(index)"
-      >
-        <span class="hidden-description">{{ hiddenDescription(currentNavigation, index) }}</span>
-      </button>
+      <template v-for="(n, index) in currentNavigation.numberOfAvailableSteps">
+        <button
+          v-if="currentNavigation.currentStepIndex === index"
+          :key="n"
+          :class="{
+            'is-selected': currentNavigation.currentStepIndex === index,
+            visited: index <= currentNavigation.currentStepIndex,
+          }"
+          class="page-selector"
+          :data-step="currentNavigation.currentStepIndex"
+          :data-index="index"
+          type="button"
+          @click="goTo(index)"
+        >
+          <span class="hidden-description">{{ hiddenDescription(currentNavigation, index) }}</span>
+        </button>
+        <span
+          v-else
+          :key="n"
+          :class="{
+            'is-selected': currentNavigation.currentStepIndex === index,
+            visited: index <= currentNavigation.currentStepIndex,
+          }"
+          class="page-selector"
+        >
+        </span>
+      </template>
     </div>
   </div>
 </template>
@@ -93,13 +105,7 @@ export default class PageSelectorViewExtended extends Vue {
 
   hiddenDescription = (navigation: QAFlowStepsNavigation, stepNumber: number): string => {
     const currentStepIndex = stepNumber + 1;
-    if (stepNumber < navigation.currentStepIndex) {
-      return `Completed: Step ${currentStepIndex}: ${navigation.flowSteps[stepNumber].stepHeadline}`;
-    }
-    if (stepNumber === navigation.currentStepIndex) {
-      return `Current: Step ${currentStepIndex}: ${navigation.flowSteps[stepNumber].stepHeadline}`;
-    }
-    return `Not Completed: Step ${currentStepIndex}: ${navigation.flowSteps[stepNumber].stepHeadline}`;
+    return `Question ${currentStepIndex} ${navigation.flowSteps[stepNumber].stepHeadline}`;
   };
 }
 </script>
