@@ -9,8 +9,10 @@
       :style="nextButtonStyle"
       @click="onClickNext"
       type="button"
-      v-dompurify-html="isResultsSectionNext ? $t('message-results-mode-button') : $t('message-questionnaire-next')"
-    ></button>
+    >
+      {{ isResultsSectionNext ? $t('message-results-mode-button') : $t('message-questionnaire-next') }}
+      <span class="hidden-description">{{hiddenDescription()}}</span>
+    </button>
     <button
       v-else
       class="navigation-submit-button"
@@ -39,27 +41,29 @@ import {
   Vue,
   VueComponent,
 } from "@zoovu/runner-browser-api";
-import { AnswersConfiguration, PagesNavigationView, PagesNavigationAction } from "@zoovu/runner-web-design-base";
+import { AnswersConfiguration, PagesNavigationView as PagesNavigationViewBase, PagesNavigationAction } from "@zoovu/runner-web-design-base";
 import { scrollToElement } from "./utils";
 import { isScrollingDisabledThroughDataAttribute } from "@zoovu/runner-web-design-base/src/plugins/data-attributes-reader/webdesign-context";
 
-@Component({})
-export default class PagesNavigationViewExtended extends PagesNavigationView {
+@Component
+export default class PagesNavigationView extends PagesNavigationViewBase {
   @InjectComponent("PageSelectorView")
-  pageSelectorView: VueComponent;
+  pageSelectorView!: VueComponent;
 
   @ComponentConfig(AnswersConfiguration)
-  answersConfiguration: AnswersConfiguration;
+  answersConfiguration!: AnswersConfiguration;
 
   @Prop()
-  navigation: AdvisorNavigation;
+  navigation!: AdvisorNavigation;
 
   @Prop({ default: true })
-  showPageSelector: boolean;
+  showPageSelector!: boolean;
 
   pagesNavigationAction = PagesNavigationAction;
 
-  currentAction: PagesNavigationAction | null;
+  currentAction!: PagesNavigationAction | null;
+
+  fileUploadQuestionsCount = 0;
 
   get rootElementClass(): string {
     return "pages-navigation-wrapper";
@@ -77,11 +81,23 @@ export default class PagesNavigationViewExtended extends PagesNavigationView {
     return !this.navigation.hasPrevious ? { visibility: "hidden" } : null;
   }
 
+  get currentNavigation(): QAFlowStepsNavigation {
+    return this.navigation.currentSection.navigation as QAFlowStepsNavigation
+  }
+
+  get nextStepIndex(): number {
+    return this.currentNavigation.currentStepIndex + 1;
+  }
+
   get nextButtonIsHidden(): boolean {
     return (
       !this.navigation.hasNext ||
       (this.isResultsSectionNext && (this.submitIsInProgress || this.wouldNotPassValidation))
     );
+  }
+
+  get buttonDisabled(): boolean {
+    return this.currentFlowStep.questions.some((q) => q.isMandatory && q.isUnanswered);
   }
 
   get nextButtonClassList(): ReadonlyArray<string | Record<string, unknown>> {
@@ -91,7 +107,7 @@ export default class PagesNavigationViewExtended extends PagesNavigationView {
         "is-hidden": this.nextButtonIsHidden,
       },
       {
-        "is-disabled": this.currentFlowStep.questions.some((q) => q.isMandatory && q.isUnanswered),
+        "is-disabled": this.buttonDisabled,
       },
     ];
   }
@@ -206,6 +222,23 @@ export default class PagesNavigationViewExtended extends PagesNavigationView {
     });
   }
 
+  hiddenDescription(): string {
+    const currentStepIndex = this.nextStepIndex + 1;
+    const buttonDisabledText = this.buttonDisabled ? this.$t("message-ada-button-disabled") : this.$t("message-ada-button");
+
+    if (this.isResultsSectionNext) {
+      return this.$t("message-ada-where-to-go-results", {
+        buttonState: `${buttonDisabledText}`
+      });
+    } else {
+      return this.$t("message-ada-where-to-go-next", {
+        buttonState: `${buttonDisabledText}`,
+        currentStep: currentStepIndex,
+        questionText: this.currentNavigation.flowSteps[this.nextStepIndex].stepHeadline
+      });
+    }
+  };
+
   triggerAction(): void {
     if (this.currentAction === PagesNavigationAction.SUBMIT) {
       this.onClickRealSubmit();
@@ -219,8 +252,6 @@ export default class PagesNavigationViewExtended extends PagesNavigationView {
       (question) => question.selectedFiles.length > 0 && !question.fileUrls.length
     );
   }
-
-  fileUploadQuestionsCount = 0;
 
   handleFileUpload(): void {
     this.answeredFileUploadQuestions.forEach((question) => {

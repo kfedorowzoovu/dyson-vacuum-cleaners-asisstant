@@ -29,7 +29,6 @@ export default {
         },
         [`@media (${globals.breakpoints.$xs})`]: {
           margin: [0, 0, "16px", 0],
-
           width: "100% !important",
         },
         [mediaQuery.hover]: {

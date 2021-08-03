@@ -1,6 +1,6 @@
+import { visuallyHiddenElement } from "@/styles/partials/accessibility";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
-import {visuallyHiddenElement} from "@/styles/partials/accessibility";
 
 const pageSelectorButtonBackground = {
   default: stylesConfig.colors.advisorBackgroundVariants,
@@ -46,11 +46,17 @@ export default {
       },
       "& .page-number": {
         color: globals.colors.gray_tertiary,
-        padding: "12px",
         margin: "auto",
+        padding: "12px 35px",
+        position: "relative",
         "&.results-header": {
           color: globals.colors.gray_primary,
           fontWeight: "bold",
+        },
+        "& .hidden-description": {
+          left: 0,
+          top: "5px",
+          width: "100px",
         },
         "& span": {
           color: globals.colors.gray_primary,
@@ -59,8 +65,7 @@ export default {
     },
     "& .page-selector__progress-bar": {
       display: "flex",
-      "& button": {
-        cursor: "pointer",
+      "& .page-selector": {
         position: "relative",
         width: "auto",
         height: 0,
@@ -78,6 +83,14 @@ export default {
         "&:focus": {},
         "&.page-selector": {
           borderColor: globals.colors.gray_background,
+          "& .hidden-description": {
+            height: "15px",
+            top: "-7px",
+            width: "100%",
+          },
+        },
+        "&button": {
+          cursor: "pointer",
         },
         "&.visited": {
           borderColor: globals.colors.gray_secondary,

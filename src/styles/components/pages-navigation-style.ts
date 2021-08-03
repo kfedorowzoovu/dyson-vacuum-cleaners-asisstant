@@ -1,3 +1,4 @@
+import { visuallyHiddenElement } from "@/styles/partials/accessibility";
 import { ButtonNextInProgress, ButtonPaginationNextBack } from "../partials/buttons";
 
 export default {
@@ -27,6 +28,11 @@ export default {
     },
     "& .navigation-next-button.navigation-next-in-progress": {
       ...ButtonNextInProgress,
+    },
+    "& .hidden-description": {
+      extend: visuallyHiddenElement,
+      left: 0,
+      top: "16px",
     },
   },
 };

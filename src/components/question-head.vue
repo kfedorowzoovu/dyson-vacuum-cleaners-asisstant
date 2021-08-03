@@ -24,13 +24,13 @@
       ></i>
     </h2>
 
-    <h4
+    <h3
       v-if="shouldShowHint"
       v-dompurify-html="
         question.questionType === QuestionType.CHECKBOX ? $t('message-checkbox-hint') : $t('message-radio-hint')
       "
       class="question-type-hint"
-    ></h4>
+    ></h3>
 
     <component :is="questionValidationMessageView" :question="question"> </component>
 

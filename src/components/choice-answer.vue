@@ -22,7 +22,12 @@
           class="answer-image"
           :style="{ height: `${imageHeight}` }"
         >
-          <span v-if="showImage" class="image-element" :style="{ backgroundImage: `url(${answer.images[0]})` }" role="presentation"/>
+          <span
+            v-if="showImage"
+            class="image-element"
+            :style="{ backgroundImage: `url(${answer.images[0]})` }"
+            role="presentation"
+          />
         </span>
         <span class="answer-content">
           <component
@@ -39,9 +44,7 @@
             @click="$emit('answer-select')"
           />
           <span class="answer-selection-button"></span>
-          <span class="hidden-description">{{
-              hiddenDescription(answer)
-            }}</span>
+          <span class="hidden-description">{{ hiddenDescription(answer) }}</span>
           <span
             ref="answerTextElement"
             v-dompurify-html="answer.answerText"
@@ -198,7 +201,13 @@ export default class ChoiceAnswerViewExtended extends Vue {
   }
 
   hiddenDescription(answer: Answer): string {
-    return `Answer ${answer.selected ? "selected" : ""}: ${answer.answerText}`;
+    const answerState = answer.selected ? this.$t("message-ada-answer-selected") : this.$t("message-ada-answer");
+    const { answerText } = answer;
+
+    return this.$t("message-ada-answer-text", {
+      answerState,
+      answerText
+    })
   }
 
   disableTransitionDelay(): void {

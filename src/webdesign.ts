@@ -31,7 +31,7 @@ const styleRegistry: BasicStyleRegistry = StyleRegistryFactory.createStyleRegist
 );
 
 const WebDesignClass = CreateWebDesignClass({
-  webDesignName: "DysonDemoTheme",
+  webDesignName: "DysonAdaDemoTheme",
   AdvisorView: componentRegistry.getComponent("AdvisorView"),
   componentRegistry,
   styleRegistry,
