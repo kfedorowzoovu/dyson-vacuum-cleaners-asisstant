@@ -4,8 +4,6 @@
     :width="`${width}px`"
     :height="`${width}px`"
     :viewBox="`${x} ${y} ${width} ${height}`"
-    :aria-label="name"
-    role="presentation"
     :class="`svg-${name}`"
   >
     <slot />

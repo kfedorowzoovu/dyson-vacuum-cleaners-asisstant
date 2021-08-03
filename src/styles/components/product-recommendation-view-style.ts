@@ -4,6 +4,7 @@ import { ctaGroup } from "@/styles/partials/cta";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 import * as recommendationConfigurationDiffValues from "../../../configuration/recommendation-configuration-diff.json";
+import {productName} from "@/styles/partials/text";
 
 const MARGIN = 14;
 
@@ -58,20 +59,14 @@ export default {
         maxWidth: "100%",
       },
     },
-    "& a.product-name": {
-      marginBottom: "20px",
-      textDecoration: "none",
+    "& .product-name": {
+      extend: productName,
       fontSize: stylesConfig.typography.fontSize(1.5),
-      color: globals.colors.gray_primary,
-      lineHeight: 1.2,
-      textAlign: "left",
-      width: "100%",
-      display: "block",
-      [`@media (${globals.breakpoints.$xs})`]: {
-        margin: "10px 0",
+      [`@media (${globals.breakpoints.$sm})`]: {
+        fontSize: stylesConfig.typography.fontSize(1.4),
       },
-      "&:focus": {
-        outlineColor: globals.colors.green,
+      [`@media (${globals.breakpoints.$xs})`]: {
+        fontSize: stylesConfig.typography.fontSize(1.3),
       },
     },
     "& .product-compare-wrapper": {

@@ -1,5 +1,6 @@
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
+import {visuallyHiddenElement} from "@/styles/partials/accessibility";
 
 const pageSelectorButtonBackground = {
   default: stylesConfig.colors.advisorBackgroundVariants,
@@ -13,6 +14,9 @@ export default {
     flexDirection: "column",
     justifyContent: "center",
     width: "100%",
+    "& .hidden-description": {
+      extend: visuallyHiddenElement,
+    },
     "& .page-selector__page-info": {
       display: "flex",
       alignItems: "center",

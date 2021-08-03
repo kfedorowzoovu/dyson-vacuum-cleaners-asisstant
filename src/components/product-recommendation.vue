@@ -6,9 +6,11 @@
           <img :src="recommendation.picture" :alt="recommendation.name" />
         </component>
       </div>
-      <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
-        {{ recommendation.name }}
-      </component>
+      <h4 class="product-name">
+        <component :is="productClickoutLinkView" :product="recommendation">
+          {{ recommendation.name }}
+        </component>
+      </h4>
       <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
     </div>
     <div class="product__cta-group">
@@ -29,13 +31,14 @@
           class="product-button add-to-cart-button"
           :product="recommendation"
         ></component>
-        <component
-          :is="productClickoutLinkView"
-          v-if="shouldShowGoToProductButton"
-          v-dompurify-html="$t('message-result-go-to-product')"
-          class="product-button go-to-product-button"
-          :product="recommendation"
-        ></component>
+        <button class="product-button go-to-product-button">
+          <component
+            :is="productClickoutLinkView"
+            v-if="shouldShowGoToProductButton"
+            v-dompurify-html="$t('message-result-go-to-product')"
+            :product="recommendation"
+          />
+        </button>
       </div>
     </div>
   </div>

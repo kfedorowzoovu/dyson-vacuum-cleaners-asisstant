@@ -2,7 +2,7 @@
   <section :class="[componentStyle.container]">
     <div v-if="showImage" class="question-image">
       <i v-if="showImage" class="image-element" :style="{ backgroundImage: 'url(' + question.images[0] + ')' }"></i>
-      <p>
+      <h2>
         <span v-dompurify-html="question.questionText" />
         <i
           v-if="question.infoText"
@@ -11,9 +11,9 @@
           tabindex="0"
           v-on="mobileInfoTextTrigger"
         ></i>
-      </p>
+      </h2>
     </div>
-    <p v-else>
+    <h2 v-else>
       <span v-dompurify-html="question.questionText" />
       <i
         v-if="question.infoText"
@@ -22,15 +22,15 @@
         tabindex="0"
         v-on="mobileInfoTextTrigger"
       ></i>
-    </p>
+    </h2>
 
-    <span
+    <h4
       v-if="shouldShowHint"
       v-dompurify-html="
         question.questionType === QuestionType.CHECKBOX ? $t('message-checkbox-hint') : $t('message-radio-hint')
       "
       class="question-type-hint"
-    ></span>
+    ></h4>
 
     <component :is="questionValidationMessageView" :question="question"> </component>
 
@@ -54,7 +54,7 @@ import { Component, InjectComponent, Prop, Question, Vue, VueComponent } from "@
 import { QuestionHeadView } from "@zoovu/runner-web-design-base";
 import { sanitize } from "dompurify";
 import { vTooltip } from "@zoovu/design-system/src/plugins";
-import { TooltipConfiguration, MobileInfoTextTrigger, whitelistedAttributes } from "../types";
+import { TooltipConfiguration, MobileInfoTextTrigger, whitelistedAttributes } from "@/types";
 
 @Component({
   name: "QuestionHeadView",

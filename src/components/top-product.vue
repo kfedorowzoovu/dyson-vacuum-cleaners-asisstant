@@ -2,9 +2,11 @@
   <div class="top-product" :class="componentStyle.container">
     <div class="top-product__wrapper">
       <div class="product-details">
-        <component :is="productClickoutLinkView" class="product-name" :product="recommendation">
+        <h4 class="product-name">
+        <component :is="productClickoutLinkView" :product="recommendation">
           {{ recommendation.name }}
         </component>
+        </h4>
         <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"></p>
         <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
         <div class="top-product__cta-group">
@@ -25,13 +27,14 @@
               class="product-button add-to-cart-button"
               :product="recommendation"
             ></component>
-            <component
-              :is="productClickoutLinkView"
-              v-if="shouldShowGoToProductButton"
-              v-dompurify-html="$t('message-result-go-to-product')"
-              class="product-button go-to-product-button"
-              :product="recommendation"
-            ></component>
+            <button class="product-button go-to-product-button">
+              <component
+                :is="productClickoutLinkView"
+                v-if="shouldShowGoToProductButton"
+                v-dompurify-html="$t('message-result-go-to-product')"
+                :product="recommendation"
+              />
+            </button>
           </div>
         </div>
       </div>
@@ -50,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Marking, ProductProperty } from "@zoovu/runner-browser-api";
+import { Component } from "@zoovu/runner-browser-api";
 import { TopProductView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "@/configuration/common-configuration";
