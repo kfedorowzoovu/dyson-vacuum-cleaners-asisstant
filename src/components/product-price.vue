@@ -1,12 +1,20 @@
 <template>
   <div class="product-price">
-    <span v-if="pricing.showWasPrice" class="price-was">
+    <span v-if="pricing.showWasPrice && pricing.reducedPrice !== 'n/a'" class="price-was">
       {{ $t("message-price-was") }} {{ pricing.originalPrice }}
     </span>
     <span class="price-current">
-      {{ pricing.showWasPrice ? pricing.reducedPrice : pricing.originalPrice }}
+      {{
+        pricing.reducedPrice !== "n/a"
+          ? pricing.showWasPrice
+            ? pricing.originalPrice
+            : pricing.reducedPrice
+          : pricing.originalPrice
+      }}
     </span>
-    <span v-if="pricing.showWasPrice" class="price-savings"> {{ $t("message-price-now") }} {{ pricing.savings }} </span>
+    <span v-if="pricing.showWasPrice && pricing.reducedPrice !== 'n/a'" class="price-savings">
+      {{ $t("message-price-now") }} {{ pricing.savings }}
+    </span>
   </div>
 </template>
 
@@ -24,9 +32,7 @@ export default class ProductPriceViewExtended extends ProductPriceView {
 
   get pricing(): Record<string, unknown> {
     return {
-      showWasPrice:
-        !getPropertyValue(this.recommendation, ProductAttributes.HIDE_WAS_PRICE) &&
-        getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE),
+      showWasPrice: !getPropertyValue(this.recommendation, ProductAttributes.HIDE_WAS_PRICE),
       originalPrice: this.recommendation.price.displayValue,
       reducedPrice: formatPrice(
         this.localizationSettings,
