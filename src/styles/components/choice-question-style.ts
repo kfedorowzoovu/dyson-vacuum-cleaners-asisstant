@@ -12,6 +12,7 @@ export default {
       margin: [0, 0, "48px", 0],
       boxSizing: "border-box",
       listStyle: "none",
+      padding: 0,
       "&:after": {
         content: "''",
         flex: "0 2 auto",

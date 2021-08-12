@@ -42,7 +42,7 @@ export default {
       display: "flex",
       flexFlow: "wrap row",
       maxWidth: "100%",
-      justifyContent: "space-between",
+      justifyContent: "center",
       "&::after": {
         content: "''",
         flex: "auto",
@@ -76,6 +76,7 @@ export default {
     "& .caveat": {
       fontSize: stylesConfig.typography.fontSize(0.875),
       margin: "-50px 0 16px 0",
+      padding: "0 22px",
     },
   },
 };

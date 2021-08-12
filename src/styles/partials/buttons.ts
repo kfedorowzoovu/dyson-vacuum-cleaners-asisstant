@@ -135,6 +135,18 @@ export const ButtonPaginationNextBack = {
   margin: "auto",
   fontSize: stylesConfig.typography.fontSize(1),
   position: "relative",
+  overflow: "hidden",
+  "&:after": {
+    content: "''",
+    position: "absolute",
+    inset: "0 0 0 0",
+    background: "rgba(0, 0, 0,.2)",
+    borderRadius: "50%",
+    width: 0,
+    height: 0,
+    margin: "auto",
+    transition: "0s",
+  },
   "&.is-disabled": {
     color: globals.colors.gray_disabled,
     backgroundColor: globals.colors.gray_background,
@@ -151,6 +163,12 @@ export const ButtonPaginationNextBack = {
   },
   "&:hover": {
     cursor: "pointer",
+    "&:not(.is-disabled):after": {
+      width: "768px",
+      height: "768px",
+      inset: "-50px -50px -50px -50px",
+      transition: ".7s",
+    },
   },
 };
 
@@ -209,6 +227,28 @@ export const ProductButton = {
   transition: "background .3s ease",
   outline: "none",
   border: "none",
+  position: "relative",
+  overflow: "hidden",
+  "&:after": {
+    content: "''",
+    position: "absolute",
+    inset: "0 0 0 0",
+    background: "rgba(0, 0, 0,.2)",
+    borderRadius: "50%",
+    width: 0,
+    height: 0,
+    margin: "auto",
+    transition: "0s",
+  },
+  "&:hover": {
+    cursor: "pointer",
+    "&:not(.is-disabled):after": {
+      width: "768px",
+      height: "768px",
+      inset: "-50px -50px -50px -50px",
+      transition: ".7s",
+    },
+  },
   [`@media (${globals.breakpoints.$xs})`]: {
     fontSize: stylesConfig.typography.fontSize(1),
     padding: "18px 4px",

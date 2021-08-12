@@ -66,7 +66,7 @@ export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
       const windowObject = window as any;
 
       this._sendTrackingEvent(new RestartEvent(this._advisor));
-      console.log(windowObject.dataLayer.zoovuData.smartAssistant.events);
+      if (this._debug) console.log(windowObject.dataLayer.zoovuData.smartAssistant.events);
       windowObject.dataLayer.zoovuData.smartAssistant.events = []; // clear events after restart (requested by customer)
       this._getAllQuestions().forEach((question) =>
         question.setCustomQuestionSessionState({ wasQuestionAlreadyAnswered: false })
@@ -286,6 +286,6 @@ export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
   private _updateEventsList(event) {
     const windowObject = window as any;
     windowObject.dataLayer.zoovuData.smartAssistant.events.unshift(event);
-    console.log(windowObject.dataLayer.zoovuData.smartAssistant.events);
+    if (this._debug) console.log(windowObject.dataLayer.zoovuData.smartAssistant.events);
   }
 }

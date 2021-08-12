@@ -33,7 +33,7 @@ export default {
         margin: "auto",
         height: "16px",
         width: "16px",
-        fill: globals.colors.green_darker,
+        fill: globals.colors.black,
       },
     },
   },

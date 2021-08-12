@@ -8,6 +8,9 @@ const focusOutlineColor = globals.colors.green;
 
 export default {
   container: {
+    [`@media (${globals.breakpoints.$sm})`]: {
+      margin: "auto",
+    },
     "& .top-product__wrapper": {
       ...productAdditionalPriceTextBaseStyles,
       borderColor: globals.colors.gray_secondary,
@@ -53,6 +56,8 @@ export default {
       paddingLeft: "24px",
       [`@media (${globals.breakpoints.$sm})`]: {
         width: "33%",
+        margin: 0,
+        padding: 0,
       },
       [`@media (${globals.breakpoints.$xs})`]: {
         width: "100%",
@@ -104,7 +109,6 @@ export default {
       "& .product-top-tile": {
         background: globals.colors.gray_primary,
         color: globals.colors.white,
-        fontFamily: stylesConfig.typography.fontFamily,
         fontSize: stylesConfig.typography.fontSize(0.875),
         fontWeight: 600,
         height: "28px",
@@ -129,8 +133,15 @@ export default {
         height: "100%",
         "& img": {
           width: "auto",
-          maxHeight: "550px",
+          maxHeight: "480px",
           maxWidth: "100%",
+          [`@media (${globals.breakpoints.$sm})`]: {
+            maxHeight: "80%",
+          },
+          [`@media (${globals.breakpoints.$xs})`]: {
+            maxWidth: "180px",
+            maxHeight: "320px",
+          },
         },
         "&:focus": {
           outlineColor: globals.colors.green,

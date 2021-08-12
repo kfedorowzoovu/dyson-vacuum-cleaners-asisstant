@@ -42,6 +42,15 @@ export const ctaGroup = {
     display: "inline-block",
     width: "100%",
     marginBottom: "16px",
+    border: "1px solid #ebebeb",
+    backgroundColor: "#fbfbfb",
+    [`@media (${globals.breakpoints.$xs})`]: {
+      border: " 1px solid #ebebeb",
+      padding: ".5rem",
+      display: "block",
+      width: "65%",
+      marginBottom: "20px",
+    },
   },
   "& .product-footer": {
     display: "flex",
