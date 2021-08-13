@@ -10,6 +10,12 @@ export default {
       height: "22px",
       display: "inline-block",
       marginRight: "6px",
+      "&.rating__star--half":{
+        "& .icon--star--stroke":{
+        zIndex: 999,
+        position:"absolute"
+        } 
+      },
       "&.rating__star--half:after": {
         content: "''",
         position: "absolute",

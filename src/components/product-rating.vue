@@ -35,9 +35,29 @@
               :fill="rateIcon.rated ? '#FFCC00' : 'none'"
             />
           </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            class="icon icon--star icon--star--stroke"
+          >
+            <path
+              style="
+                fill: none;
+                stroke: #ffcc00;
+                stroke-width: 1;
+                stroke-miterlimit: 4;
+                stroke-dasharray: none;
+                stroke-opacity: 1;
+              "
+              d="M 9.9003906,1.0996094 7.5136719,8.5800781 H 0 L 5.984375,13.367188 3.3007812,21.779297 9.9003906,16.5 16.5,21.779297 13.816406,13.367188 19.800781,8.5800781 h -7.513672 z"
+            />
+          </svg>
         </span>
       </template>
     </span>
+
     <span v-if="showReviews" class="rating__reviews">
       {{ currentReviews }} {{ $t("message-reviews") }}
     </span>
