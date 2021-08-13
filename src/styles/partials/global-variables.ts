@@ -39,6 +39,7 @@ export default {
     $md: "min-width: 1120px",
     $minMd: "min-width: 1300px",
     $lg: "min-width: 1400px",
+    $tabletOnly: "(min-width: 767px) and (max-width: 1023px)"
   },
   layout: {
     maxContainerWidth: "1124px",

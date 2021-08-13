@@ -8,11 +8,14 @@ export default {
       padding: "0",
       listStyle: "none",
       overflow: "hidden",
-      color: globals.colors.gray1,
+      color: globals.colors.primaryColor,
       wordWrap: "break-word",
       maxWidth: "100%",
       textAlign: "left",
       margin: 0,
+      [`@media ${globals.breakpoints.$tabletOnly}`]: {
+        display: "block",
+      },
     },
   },
 };

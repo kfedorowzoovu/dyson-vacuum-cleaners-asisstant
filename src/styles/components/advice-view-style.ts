@@ -46,6 +46,7 @@ export default {
       "&::after": {
         content: "''",
         flex: "auto",
+        display: "none",
       },
     },
     "& .first-cluster-with-products h3": {

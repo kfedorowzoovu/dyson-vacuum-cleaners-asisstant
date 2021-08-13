@@ -9,7 +9,7 @@ const focusOutlineColor = globals.colors.green;
 export default {
   container: {
     [`@media (${globals.breakpoints.$sm})`]: {
-      margin: "auto",
+      margin: "auto 15px",
     },
     "& .top-product__wrapper": {
       ...productAdditionalPriceTextBaseStyles,
@@ -141,6 +141,9 @@ export default {
           [`@media (${globals.breakpoints.$xs})`]: {
             maxWidth: "180px",
             maxHeight: "320px",
+          },
+          [`@media ${globals.breakpoints.$tabletOnly}`]: {
+            maxHeight: "80%",
           },
         },
         "&:focus": {

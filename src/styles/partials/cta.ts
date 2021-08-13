@@ -44,7 +44,7 @@ export const ctaGroup = {
     marginBottom: "16px",
     border: "1px solid #ebebeb",
     backgroundColor: "#fbfbfb",
-    [`@media (${globals.breakpoints.$xs})`]: {
+    [`@media (min-width: 767px)`]: {
       border: " 1px solid #ebebeb",
       padding: ".5rem",
       display: "block",
