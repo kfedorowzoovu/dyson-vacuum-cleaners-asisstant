@@ -403,6 +403,16 @@
                 "value": "Save"
               }
             ]
+          },
+          {
+            "id": "message-top-product-hint",
+            "label": "Top product hint",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Why is this vacuum good for you?"
+              }
+            ]
           }
         ],
         "name": "Result"
