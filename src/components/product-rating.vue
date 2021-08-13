@@ -1,16 +1,9 @@
 <template>
-  <div
-    v-if="showRating"
-    class="rating"
-    :class="componentStyle.container"
-    :data-rating="currentRate"
-  >
+  <div v-if="showRating" class="rating" :class="componentStyle.container" :data-rating="currentRate">
     <span class="rating__stars">
       <template v-for="(rateIcon, index) in ratingRange">
         <span
-          :key="`${
-            rateIcon.rated ? (rateIcon.half ? 'full' : 'half') : 'empty'
-          }-star-${index}`"
+          :key="`${rateIcon.rated ? (rateIcon.half ? 'full' : 'half') : 'empty'}-star-${index}`"
           class="rating__star"
           :class="{
             'rating__star--full': rateIcon.rated && !rateIcon.half,
@@ -58,25 +51,13 @@
       </template>
     </span>
 
-    <span v-if="showReviews" class="rating__reviews">
-      {{ currentReviews }} {{ $t("message-reviews") }}
-    </span>
+    <span v-if="showReviews" class="rating__reviews"> {{ currentReviews }} {{ $t("message-reviews") }} </span>
   </div>
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Prop,
-  ComponentConfig,
-  Product,
-  ProductRecommendation,
-  Watch,
-} from "@zoovu/runner-browser-api";
-import {
-  ProductRatingView,
-  ProductRatingConfiguration,
-} from "@zoovu/runner-web-design-base";
+import { Component, Prop, ComponentConfig, Product, ProductRecommendation, Watch } from "@zoovu/runner-browser-api";
+import { ProductRatingView, ProductRatingConfiguration } from "@zoovu/runner-web-design-base";
 
 const RATING_PRECISION = 0.31;
 
@@ -115,10 +96,7 @@ export default class ProductRatingViewExtended extends ProductRatingView {
   }
 
   public get showReviews(): boolean {
-    if (
-      !this.ratingConfiguration.reviews ||
-      !this.ratingConfiguration.reviews.enabled
-    ) {
+    if (!this.ratingConfiguration.reviews || !this.ratingConfiguration.reviews.enabled) {
       return false;
     }
 
@@ -143,9 +121,7 @@ export default class ProductRatingViewExtended extends ProductRatingView {
 
   public getPropertyValue(propertyName: string): any {
     if (!this.product.additionalProperties[propertyName]) {
-      const foundProperty = (
-        this.product as ProductRecommendation
-      ).properties.find(
+      const foundProperty = (this.product as ProductRecommendation).properties.find(
         (property) => property.rawValue.property === propertyName
       );
       if (!foundProperty) return null;
@@ -161,8 +137,7 @@ export default class ProductRatingViewExtended extends ProductRatingView {
 
   public get ratingRange(): { rated: boolean }[] {
     const rangeFromConfiguration = this.normalizeRangeValues();
-    const ratingLength =
-      rangeFromConfiguration.max - rangeFromConfiguration.min;
+    const ratingLength = rangeFromConfiguration.max - rangeFromConfiguration.min;
 
     return Array.apply(null, Array(ratingLength)).map((element, index) => {
       const stepValue = rangeFromConfiguration.min + index;
