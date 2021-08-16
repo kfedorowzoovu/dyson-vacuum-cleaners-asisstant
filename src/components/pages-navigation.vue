@@ -6,6 +6,7 @@
       v-if="!shouldRenderSubmitButton"
       :class="nextButtonClassList"
       class="navigation-next-button"
+      :style="nextButtonStyle"
       @click="onClickNext"
       type="button"
     >
@@ -111,6 +112,10 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
     ];
   }
 
+  get nextButtonStyle(): Record<string, unknown> | null {
+    return this.nextButtonIsHidden ? { display: "none" } : null;
+  }
+
   get shouldRenderSubmitButton(): boolean {
     if (this.isQaFlowStepsNavigation(this.currentSectionNavigation)) {
       return (
@@ -133,7 +138,7 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
   }
 
   get wouldNotPassValidation(): boolean {
-    if (this.isQaFlowStepsNavigation(this.currentSectionNavigation)) {
+    if (!this.currentFlowStep.questions[0].isUnanswered && this.isQaFlowStepsNavigation(this.currentSectionNavigation)) {
       return this.currentFlowStep.wouldNotPassValidation;
     } else {
       return false;
