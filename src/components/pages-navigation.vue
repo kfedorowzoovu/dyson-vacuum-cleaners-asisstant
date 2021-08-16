@@ -6,7 +6,6 @@
       v-if="!shouldRenderSubmitButton"
       :class="nextButtonClassList"
       class="navigation-next-button"
-      :style="nextButtonStyle"
       @click="onClickNext"
       type="button"
     >
@@ -110,10 +109,6 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
         "is-disabled": this.buttonDisabled,
       },
     ];
-  }
-
-  get nextButtonStyle(): Record<string, unknown> | null {
-    return this.nextButtonIsHidden ? { display: "none" } : null;
   }
 
   get shouldRenderSubmitButton(): boolean {
