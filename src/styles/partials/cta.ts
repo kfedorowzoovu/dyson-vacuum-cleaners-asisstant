@@ -1,6 +1,6 @@
 import globals from "@/styles/partials/global-variables";
 import stylesConfig from "@/styles/styles.config";
-import { ProductButton } from "@/styles/partials/buttons";
+import { ProductButton, ProductButtonHover } from "@/styles/partials/buttons";
 
 export const ctaGroup = {
   width: "100%",
@@ -63,13 +63,18 @@ export const ctaGroup = {
     "& .product-button": {
       ...ProductButton,
       "&>a": {
+        extend: ProductButtonHover,
         color: globals.colors.black,
+        display: "block",
+        padding: "18px 4px",
         textDecoration: "none",
       },
     },
     "& .add-to-cart-button": {
+      extend: ProductButtonHover,
       background: globals.colors.green,
       border: "none",
+      padding: "18px 4px",
     },
   },
 };

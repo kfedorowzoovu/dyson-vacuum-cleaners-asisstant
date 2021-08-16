@@ -28,13 +28,14 @@
               class="product-button add-to-cart-button"
               :product="recommendation"
             ></component>
-            <component
-              :is="productClickoutLinkView"
-              v-if="shouldShowGoToProductButton"
-              class="product-button go-to-product-button"
-              v-dompurify-html="$t('message-result-go-to-product')"
-              :product="recommendation"
-            />
+            <button class="product-button go-to-product-button">
+              <component
+                :is="productClickoutLinkView"
+                v-if="shouldShowGoToProductButton"
+                v-dompurify-html="$t('message-result-go-to-product')"
+                :product="recommendation"
+              />
+            </button>
           </div>
         </div>
       </div>

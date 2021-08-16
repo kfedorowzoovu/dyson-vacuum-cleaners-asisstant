@@ -219,7 +219,6 @@ export const ProductButton = {
   color: globals.colors.black,
   flex: 1,
   background: "#E0DEDE",
-  padding: "18px 4px",
   fontWeight: 600,
   textAlign: "center",
   display: "block",
@@ -229,6 +228,14 @@ export const ProductButton = {
   border: "none",
   position: "relative",
   overflow: "hidden",
+  [`@media (${globals.breakpoints.$xs})`]: {
+    fontSize: stylesConfig.typography.fontSize(1),
+    padding: "18px 4px",
+    minWidth: "140px",
+  },
+};
+
+export const ProductButtonHover = {
   "&:after": {
     content: "''",
     position: "absolute",
@@ -248,10 +255,5 @@ export const ProductButton = {
       inset: "-50px -50px -50px -50px",
       transition: ".7s",
     },
-  },
-  [`@media (${globals.breakpoints.$xs})`]: {
-    fontSize: stylesConfig.typography.fontSize(1),
-    padding: "18px 4px",
-    minWidth: "140px",
   },
 };
