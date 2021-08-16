@@ -138,7 +138,7 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
   }
 
   get wouldNotPassValidation(): boolean {
-    if (this.isQaFlowStepsNavigation(this.currentSectionNavigation)) {
+    if (!this.currentFlowStep.questions[0].isUnanswered && this.isQaFlowStepsNavigation(this.currentSectionNavigation)) {
       return this.currentFlowStep.wouldNotPassValidation;
     } else {
       return false;
