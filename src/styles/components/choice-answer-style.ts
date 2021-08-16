@@ -20,6 +20,14 @@ export default {
     [`@media (${globals.breakpoints.$xs})`]: {
       maxWidth: "100%",
     },
+    "&:focus-within": {
+      boxShadow: `${globals.colors.gray_primary} 0 0 5px`,
+    },
+    fallbacks: {
+      "&:focus": {
+        border: "2px solid red",
+      },
+    },
     "&.has-image": {
       "& label": {
         minHeight: "190px",
