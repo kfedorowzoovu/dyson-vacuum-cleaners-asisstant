@@ -152,10 +152,13 @@ export default class ChoiceAnswerViewExtended extends Vue {
     return AnswerAnimationStyleClass.NO_ANIMATION;
   }
 
+  get numberOfAnswers(): number {
+    return this.answer.question.answers.length;
+  }
+
   get answerWrapperWidth(): string {
-    const numberOfAnswers = this.answer.question.answers.length;
     const maxAllowedAnswersPerRow = 4;
-    const perRow = numberOfAnswers < maxAllowedAnswersPerRow ? numberOfAnswers : maxAllowedAnswersPerRow;
+    const perRow = this.numberOfAnswers < maxAllowedAnswersPerRow ? this.numberOfAnswers : maxAllowedAnswersPerRow;
     const gutter = 14;
     return `calc( ${100 / perRow}% - ${gutter}px )`;
   }
@@ -201,13 +204,16 @@ export default class ChoiceAnswerViewExtended extends Vue {
   }
 
   hiddenDescription(answer: Answer): string {
-    const answerState = answer.selected ? this.$t("message-ada-answer-selected") : this.$t("message-ada-answer");
+    const answerNumber = `${this.answerIndex + 1} of ${this.numberOfAnswers}`;
+    const answerState = answer.selected
+      ? `${this.$t("message-ada-answer-selected")} ${answerNumber}`
+      : `${this.$t("message-ada-answer")} ${answerNumber}`;
     const { answerText } = answer;
 
     return this.$t("message-ada-answer-text", {
       answerState,
-      answerText
-    })
+      answerText,
+    });
   }
 
   disableTransitionDelay(): void {
