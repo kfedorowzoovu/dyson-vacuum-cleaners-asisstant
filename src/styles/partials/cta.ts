@@ -61,7 +61,7 @@ export const ctaGroup = {
       alignItems: "flex-end",
     },
     "& .product-button": {
-      ...ProductButton,
+      extend: ProductButton,
       "&>a": {
         extend: ProductButtonHover,
         color: globals.colors.black,
