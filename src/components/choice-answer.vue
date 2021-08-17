@@ -22,12 +22,7 @@
           class="answer-image"
           :style="{ height: `${imageHeight}` }"
         >
-          <span
-            v-if="showImage"
-            class="image-element"
-            :style="{ backgroundImage: `url(${answer.images[0]})` }"
-            role="presentation"
-          />
+          <img v-if="showImage" class="image-element" :src="imageUrl(answer)" :alt="imageAltText(answer)" />
         </span>
         <span class="answer-content">
           <component
@@ -99,6 +94,7 @@ import { AnswerAnimationStyleClass, getAnimationClass } from "@/styles/abstract/
 import { getTransitionName } from "@/styles/abstract/transition";
 import { TooltipConfiguration, whitelistedAttributes } from "@/types";
 import { hideHorizontalOverflow, restoreHorizontalOverflow } from "@/services/overflow-service";
+import { AnswerParameter } from "@/components/types";
 import InvisibleWrapper from "./invisible-wrapper.vue";
 import { IconTick } from "./svgs";
 
@@ -133,6 +129,11 @@ export default class ChoiceAnswerViewExtended extends Vue {
   minAnswersPerRow = 1;
 
   transitionDelayEnabled = false;
+
+  imageAltText = (answer: Answer): string =>
+    answer?.parameters[AnswerParameter.AltName] || `${answer.answerText} image`;
+
+  imageUrl = (answer: Answer): string => `${answer.images[0]}`;
 
   get answerIndex(): number {
     return this.answer.question.answers.indexOf(this.answer);

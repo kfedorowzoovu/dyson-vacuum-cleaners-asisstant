@@ -23,3 +23,7 @@ export interface FileUploadImage {
   file: File;
   thumbnail?: string;
 }
+
+export enum AnswerParameter {
+  AltName = "altName",
+}
