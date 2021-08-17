@@ -27,3 +27,5 @@ export interface FileUploadImage {
 export enum AnswerParameter {
   AltName = "altName",
 }
+
+export type Nullable<T> = T | null;
