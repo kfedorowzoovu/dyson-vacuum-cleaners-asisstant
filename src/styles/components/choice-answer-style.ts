@@ -427,7 +427,9 @@ export default {
           },
           "& .image-element": {
             backgroundColor: "rgba(0, 0, 0, 0.3)",
+            objectFit: "cover",
             transform: "scale(1.2)",
+            width: "100%",
           },
           "&.is-selected": {
             "&.has-image .answer-content::before": {
