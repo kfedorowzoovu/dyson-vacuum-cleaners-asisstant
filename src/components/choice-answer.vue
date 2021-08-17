@@ -36,7 +36,7 @@
             :type="inputType"
             :checked="answer.selected"
             :disabled="answer.disabled"
-            @click="$emit('answer-select')"
+            @click="handleAnswerClick"
           />
           <span class="answer-selection-button"></span>
           <span class="hidden-description">{{ hiddenDescription(answer) }}</span>
@@ -94,7 +94,7 @@ import { AnswerAnimationStyleClass, getAnimationClass } from "@/styles/abstract/
 import { getTransitionName } from "@/styles/abstract/transition";
 import { TooltipConfiguration, whitelistedAttributes } from "@/types";
 import { hideHorizontalOverflow, restoreHorizontalOverflow } from "@/services/overflow-service";
-import { AnswerParameter } from "@/components/types";
+import { AnswerParameter, Nullable } from "@/components/types";
 import InvisibleWrapper from "./invisible-wrapper.vue";
 import { IconTick } from "./svgs";
 
@@ -252,6 +252,14 @@ export default class ChoiceAnswerViewExtended extends Vue {
 
   showInfoText(): void {
     this.infoTextShown = true;
+  }
+
+  handleAnswerClick(): void {
+    const nextButtonElement: Nullable<HTMLElement> = this.$root.$el.querySelector(".navigation-next-button");
+    this.$emit("answer-select");
+    if (nextButtonElement && this.inputType === "radio") {
+      nextButtonElement.focus();
+    }
   }
 }
 </script>
