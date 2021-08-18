@@ -28,4 +28,8 @@ export enum AnswerParameter {
   AltName = "altName",
 }
 
+export enum QuestionParameter {
+  HintText = "hintText",
+}
+
 export type Nullable<T> = T | null;
