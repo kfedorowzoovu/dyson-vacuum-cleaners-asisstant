@@ -254,8 +254,9 @@ export default class ChoiceAnswerViewExtended extends Vue {
     this.infoTextShown = true;
   }
 
-  handleAnswerClick(): void {
+  async handleAnswerClick(): void {
     const nextButtonElement: Nullable<HTMLElement> = this.$root.$el.querySelector(".navigation-next-button");
+    await this.$nextTick();
     this.$emit("answer-select");
     if (nextButtonElement && this.inputType === "radio") {
       nextButtonElement.focus();

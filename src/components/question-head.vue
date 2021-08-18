@@ -2,7 +2,7 @@
   <section :class="[componentStyle.container]">
     <div v-if="showImage" class="question-image">
       <i v-if="showImage" class="image-element" :style="{ backgroundImage: 'url(' + question.images[0] + ')' }"></i>
-      <h2>
+      <h2 class="question-title">
         <span v-dompurify-html="question.questionText" />
         <i
           v-if="question.infoText"
@@ -13,7 +13,7 @@
         ></i>
       </h2>
     </div>
-    <h2 v-else>
+    <h2 v-else class="question-title">
       <span v-dompurify-html="question.questionText" />
       <i
         v-if="question.infoText"
@@ -30,7 +30,7 @@
         question.questionType === QuestionType.CHECKBOX ? $t('message-checkbox-hint') : $t('message-radio-hint')
       "
       class="question-type-hint"
-    ></h3>
+    />
 
     <component :is="questionValidationMessageView" :question="question"> </component>
 
@@ -94,6 +94,13 @@ export default class QuestionHeadViewExtended extends Vue {
 
   get containerDivId(): string {
     return `#${this.$root.containerDivId} > div`;
+  }
+
+  mounted(): void {
+    Vue.nextTick(() => {
+      const progress = this.$root.$el.querySelector(".page-selector.is-selected");
+      progress.focus();
+    });
   }
 
   hideInfoText(): void {

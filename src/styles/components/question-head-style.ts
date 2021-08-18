@@ -4,7 +4,7 @@ import infoTextTrigger from "../partials/info-text-trigger";
 
 export default {
   container: {
-    "& > h2": {
+    "& .question-title": {
       color: globals.colors.gray_primary,
       textAlign: "center",
       width: "100%",
@@ -65,7 +65,7 @@ export default {
         backgroundPosition: "center",
         top: 0,
       },
-      "& h2": {
+      "& .question-title": {
         color: "#656565",
         position: "relative",
         textAlign: "center",
@@ -80,7 +80,7 @@ export default {
       },
     },
     ".multi-answer &": {
-      "& > h2": {
+      "& .question-title": {
         margin: "0 0 5px",
         textAlign: "left",
         fontSize: stylesConfig.typography.fontSize(),
