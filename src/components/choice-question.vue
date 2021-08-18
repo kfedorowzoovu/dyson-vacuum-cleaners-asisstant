@@ -1,5 +1,9 @@
 <template>
-  <div :id="question.mid" :class="[componentStyle.container, componentStateClasses]" class="single-question-wrapper">
+  <section
+    :id="question.mid"
+    :class="[componentStyle.container, componentStateClasses]"
+    class="single-question-wrapper"
+  >
     <component :is="questionHeadView" :question="question"></component>
     <template v-if="question.questionType === QuestionType.CHECKBOX">
       <ul class="answers-wrapper answer-checkbox-type">
@@ -35,7 +39,7 @@
     <template v-else>
       <h4><i>This question type is not supported yet</i></h4>
     </template>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">

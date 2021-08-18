@@ -9,6 +9,7 @@
       :style="nextButtonStyle"
       @click="onClickNext"
       type="button"
+      tabindex="0"
     >
       {{ isResultsSectionNext ? $t('message-results-mode-button') : $t('message-questionnaire-next') }}
       <span class="hidden-description">{{hiddenDescription()}}</span>
@@ -38,7 +39,6 @@ import {
   QAFlowStepsNavigation,
   QuestionType,
   SectionType,
-  Vue,
   VueComponent,
 } from "@zoovu/runner-browser-api";
 import { AnswersConfiguration, PagesNavigationView as PagesNavigationViewBase, PagesNavigationAction } from "@zoovu/runner-web-design-base";
