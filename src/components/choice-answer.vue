@@ -14,6 +14,7 @@
       tabindex="0"
       :style="answerWrapperStyle"
       @keyup.enter="enterPressed"
+      @focusin="cleanSelectionMessage"
     >
       <label ref="choiceAnswerLabel" :data-info-text="answer.infoText" :for="answer.mid">
         <span
@@ -39,7 +40,9 @@
             @click="handleAnswerClick"
           />
           <span class="answer-selection-button"></span>
+          <span ref="selectedInfo" role="region" aria-live="assertive" class="hidden-description"></span>
           <span class="hidden-description">{{ hiddenDescription(answer) }}</span>
+
           <span
             ref="answerTextElement"
             v-dompurify-html="answer.answerText"
@@ -255,12 +258,20 @@ export default class ChoiceAnswerViewExtended extends Vue {
   }
 
   async handleAnswerClick(): void {
+    const selectBehavior = this.answer.selected
+      ? `${this.$t("message-ada-deselecting-answer")}`
+      : `${this.$t("message-ada-selecting-answer")}`;
     const nextButtonElement: Nullable<HTMLElement> = this.$root.$el.querySelector(".navigation-next-button");
     await this.$nextTick();
+    this.$refs.selectedInfo.innerText = `${selectBehavior}: ${this.answer.answerText}`;
     this.$emit("answer-select");
     if (nextButtonElement && this.inputType === "radio") {
       nextButtonElement.focus();
     }
+  }
+
+  cleanSelectionMessage(): void {
+    this.$refs.selectedInfo.innerText = "";
   }
 }
 </script>

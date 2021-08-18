@@ -169,6 +169,26 @@
             ]
           },
           {
+            "id": "message-ada-selecting-answer",
+            "label": "ADA: Selecting answer",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Selecting answer"
+              }
+            ]
+          },
+          {
+            "id": "message-ada-deselecting-answer",
+            "label": "ADA: Deselecting answer",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Deselecting answer"
+              }
+            ]
+          },
+          {
             "id": "message-ada-where-to-go-next",
             "label": "ADA: Announce where to go after clicking on the Next button ({buttonState}, {currentStep}, {questionText} are placeholders for dynamic content)",
             "localizations": [
