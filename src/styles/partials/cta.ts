@@ -62,6 +62,7 @@ export const ctaGroup = {
     },
     "& .product-button": {
       extend: ProductButton,
+      padding: 0,
       "&>a": {
         extend: ProductButtonHover,
         color: globals.colors.black,
