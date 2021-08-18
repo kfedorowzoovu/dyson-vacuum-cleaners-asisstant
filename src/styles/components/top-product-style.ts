@@ -96,10 +96,12 @@ export default {
           marginBottom: "14px",
         },
         "&.top-product-hint": {
+          fontSize: stylesConfig.typography.fontSize(0.875),
           marginTop: "10px",
-          [`@media (${globals.breakpoints.$minSm})`]: {
-            fontSize: stylesConfig.typography.fontSize(0.875),
-            marginBottom: "12px",
+          marginBottom: "12px",
+          [`@media (${globals.breakpoints.$sm})`]: {
+            fontSize: stylesConfig.typography.fontSize(1.1),
+            marginBottom: "24px",
           },
         },
         [`@media (${globals.breakpoints.$sm})`]: {

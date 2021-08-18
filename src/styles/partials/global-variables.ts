@@ -36,7 +36,6 @@ export default {
     $xxs: "max-width: 575px",
     $xs: "max-width: 767px",
     $sm: "max-width: 1024px",
-    $minSm: "min-width: 1025px",
     $md: "min-width: 1120px",
     $minMd: "min-width: 1300px",
     $lg: "min-width: 1400px",
