@@ -92,6 +92,18 @@ export default {
         fontSize: stylesConfig.typography.fontSize(1.1),
         margin: "0 0 24px 0",
         lineHeight: "24px",
+        "&.top-product-claim": {
+          marginBottom: "14px",
+        },
+        "&.top-product-hint": {
+          fontSize: stylesConfig.typography.fontSize(0.875),
+          marginTop: "10px",
+          marginBottom: "12px",
+          [`@media (${globals.breakpoints.$sm})`]: {
+            fontSize: stylesConfig.typography.fontSize(1.1),
+            marginBottom: "24px",
+          },
+        },
         [`@media (${globals.breakpoints.$sm})`]: {
           margin: "0 0 20px 0",
           fontSize: stylesConfig.typography.fontSize(1),
