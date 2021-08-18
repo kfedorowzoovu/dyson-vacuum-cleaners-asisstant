@@ -7,8 +7,12 @@
             {{ recommendation.name }}
           </component>
         </h4>
-        <p v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"></p>
-        <p v-dompurify-html="$t('message-top-product-hint')"></p>
+        <p
+          class="top-product-claim"
+          v-if="shouldRenderProductClaim"
+          v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"
+        ></p>
+        <p v-dompurify-html="$t('message-top-product-hint')" class="top-product-hint"></p>
         <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
         <div class="top-product__cta-group">
           <component :is="productRatingView" class="product__rating" :product="recommendation" />
@@ -76,6 +80,10 @@ export default class TopProductViewExtended extends TopProductView {
 
   get locale(): string {
     return this.$root.componentViewModel.localizationSettings.locale;
+  }
+
+  get shouldRenderProductClaim(): boolean {
+    return Boolean(getPropertyValue(this.recommendation, ProductAttributes.PRODUCT_CLAIM));
   }
 
   get currentPrice(): number {
