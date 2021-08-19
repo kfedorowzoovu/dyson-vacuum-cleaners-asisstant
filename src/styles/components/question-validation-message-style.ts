@@ -1,3 +1,4 @@
+import { visuallyHiddenElement } from "@/styles/partials/accessibility";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 
@@ -22,6 +23,9 @@ export default {
       borderColor: globals.colors.green,
       color: globals.colors.white,
       fontSize: stylesConfig.typography.fontSize(1),
+    },
+    "& .hidden-description": {
+      extend: visuallyHiddenElement,
     },
   },
 };
