@@ -14,6 +14,7 @@
       tabindex="0"
       :style="answerWrapperStyle"
       @keyup.enter="enterPressed"
+      @keyup.space="enterPressed"
       @focusin="cleanSelectionMessage"
     >
       <label ref="choiceAnswerLabel" :data-info-text="answer.infoText" :for="answer.mid">
