@@ -136,6 +136,14 @@ export const ButtonPaginationNextBack = {
   fontSize: stylesConfig.typography.fontSize(1),
   position: "relative",
   overflow: "hidden",
+  "&:focus": {
+    boxShadow: `${globals.colors.gray_primary} 0 0 5px`,
+  },
+  fallbacks: {
+    "&:focus": {
+      border: `2px solid ${globals.colors.gray_primary}`,
+    },
+  },
   "&:after": {
     content: "''",
     position: "absolute",

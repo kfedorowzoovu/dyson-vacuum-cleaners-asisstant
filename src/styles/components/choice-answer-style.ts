@@ -25,7 +25,7 @@ export default {
     },
     fallbacks: {
       "&:focus": {
-        border: "2px solid red",
+        border: `2px solid ${globals.colors.gray_primary}`,
       },
     },
     "&.has-image": {
