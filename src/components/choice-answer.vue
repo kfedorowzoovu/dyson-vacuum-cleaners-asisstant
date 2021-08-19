@@ -259,9 +259,10 @@ export default class ChoiceAnswerViewExtended extends Vue {
   }
 
   async handleAnswerClick(): void {
-    const selectBehavior = this.answer.selected
-      ? `${this.$t("message-ada-deselecting-answer")}`
-      : `${this.$t("message-ada-selecting-answer")}`;
+    const selectBehavior =
+      this.answer.selected && this.inputType !== "radio"
+        ? `${this.$t("message-ada-deselecting-answer")}`
+        : `${this.$t("message-ada-selecting-answer")}`;
     const nextButtonElement: Nullable<HTMLElement> = this.$root.$el.querySelector(".navigation-next-button");
     await this.$nextTick();
     this.$refs.selectedInfo.innerText = `${selectBehavior}: ${this.answer.answerText}`;
