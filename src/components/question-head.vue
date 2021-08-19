@@ -26,9 +26,7 @@
 
     <h3
       v-if="shouldShowHint"
-      v-dompurify-html="
-        question.questionType === QuestionType.CHECKBOX ? $t('message-checkbox-hint') : $t('message-radio-hint')
-      "
+      v-dompurify-html="questionHintText"
       class="question-type-hint"
     />
 
@@ -50,11 +48,12 @@
 
 <script lang="ts">
 import { isMobile } from "@zoovu/design-system/src/helpers";
-import { Component, InjectComponent, Prop, Question, Vue, VueComponent } from "@zoovu/runner-browser-api";
+import { Component, InjectComponent, Prop, Question, QuestionType, Vue, VueComponent } from "@zoovu/runner-browser-api";
 import { QuestionHeadView } from "@zoovu/runner-web-design-base";
 import { sanitize } from "dompurify";
 import { vTooltip } from "@zoovu/design-system/src/plugins";
 import { TooltipConfiguration, MobileInfoTextTrigger, whitelistedAttributes } from "@/types";
+import { QuestionParameter } from "@/components/types";
 
 @Component({
   name: "QuestionHeadView",
@@ -94,6 +93,14 @@ export default class QuestionHeadViewExtended extends Vue {
 
   get containerDivId(): string {
     return `#${this.$root.containerDivId} > div`;
+  }
+
+  get questionHintText(): string {
+    const parameterQuestionHintText = this.question.parameters[QuestionParameter.HintText];
+    const defaultQuestionHintText = this.question.questionType === QuestionType.CHECKBOX
+      ? this.$t('message-checkbox-hint')
+      : this.$t('message-radio-hint');
+    return parameterQuestionHintText ?? defaultQuestionHintText;
   }
 
   mounted(): void {
