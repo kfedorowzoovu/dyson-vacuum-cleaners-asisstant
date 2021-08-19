@@ -80,6 +80,7 @@ export default {
       "& .product-name": {
         extend: productName,
         fontSize: stylesConfig.typography.fontSize(1.5),
+        fontWeight: "normal",
         [`@media (${globals.breakpoints.$sm})`]: {
           fontSize: stylesConfig.typography.fontSize(1.4),
         },
