@@ -234,7 +234,7 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
       return this.$t("message-ada-where-to-go-next", {
         buttonState: `${buttonDisabledText}`,
         currentStep: currentStepIndex,
-        questionText: this.currentNavigation.flowSteps[this.nextStepIndex].stepHeadline
+        questionText: this.currentNavigation.flowSteps[this.nextStepIndex].questions[0].questionText
       });
     }
   };
