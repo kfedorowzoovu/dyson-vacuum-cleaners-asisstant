@@ -10,26 +10,6 @@ export default {
       height: "22px",
       display: "inline-block",
       marginRight: "6px",
-      "&.rating__star--half": {
-        "& .icon--star--stroke": {
-          zIndex: 999,
-          position: "absolute",
-        },
-      },
-      "&.rating__star--half:after": {
-        content: "''",
-        position: "absolute",
-        right: 0,
-        top: 0,
-        height: "20px",
-        width: "11px",
-        backgroundColor: "white",
-      },
-      "& svg": {
-        position: "absolute",
-        top: 0,
-        left: 0,
-      },
     },
     "& .rating__reviews": {
       fontSize: stylesConfig.typography.fontSize(1),
@@ -39,38 +19,6 @@ export default {
       [`@media (${globals.breakpoints.$sm})`]: {
         fontSize: stylesConfig.typography.fontSize(0.875),
       },
-    },
-  },
-  iconStarEmpty: {
-    "& .icon__fill": {
-      display: "none",
-    },
-    "& .icon__stroke": {
-      stroke: "#bb944f",
-    },
-  },
-  iconStarFilled: {
-    extends: "iconStarEmpty",
-    "& .icon__fill.icon__fill--full": {
-      fill: "#febf02",
-    },
-    "& .icon__fill.icon__fill--half": {
-      display: "none",
-    },
-    "& .icon__stroke": {
-      stroke: "#bb944f",
-    },
-  },
-  iconStarHalf: {
-    extends: "iconStarEmpty",
-    "& .icon__fill.icon__fill--full": {
-      display: "none",
-    },
-    "& .icon__fill.icon__fill--half": {
-      fill: "#febf02",
-    },
-    "& .icon__stroke": {
-      stroke: "#bb944f",
     },
   },
 };
