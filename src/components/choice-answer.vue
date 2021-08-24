@@ -24,7 +24,13 @@
           class="answer-image"
           :style="{ height: `${imageHeight}` }"
         >
-          <img v-if="showImage" class="image-element" :src="imageUrl(answer)" :alt="imageAltText(answer)" />
+          <img
+            v-if="showImage"
+            class="image-element"
+            :src="imageUrl(answer)"
+            :alt="imageAltText(answer)"
+            aria-hidden="true"
+          />
         </span>
         <span class="answer-content">
           <component
