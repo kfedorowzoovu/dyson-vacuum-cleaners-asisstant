@@ -2,10 +2,16 @@ import { visuallyHiddenElement } from "@/styles/partials/accessibility";
 import globals from "../partials/global-variables";
 import stylesConfig from "../styles.config";
 
-const pageSelectorButtonBackground = {
-  default: stylesConfig.colors.advisorBackgroundVariants,
-  selected: stylesConfig.colors.primaryAccentColorVariants.default,
-  border: stylesConfig.colors.secondary.spectrum100,
+const progressBarStyle = {
+  backgroundColor: globals.colors.gray_background,
+  borderRadius: "2px",
+  borderStyle: "none",
+  flexBasis: "100%",
+  height: "4px",
+  margin: 0,
+  padding: 0,
+  position: "relative",
+  textAlign: "center",
 };
 
 export default {
@@ -54,64 +60,30 @@ export default {
           fontWeight: "bold",
         },
         "& .hidden-description": {
-          left: 0,
-          top: "5px",
-          width: "100px",
-        },
-        "& span": {
           color: globals.colors.gray_primary,
+          height: "44px",
+          left: 0,
+          top: "0px",
+          width: "100px",
         },
       },
     },
     "& .page-selector__progress-bar": {
       display: "flex",
-      "& .page-selector": {
-        position: "relative",
-        width: "auto",
-        height: 0,
-        margin: 0,
-        padding: 0,
-        textAlign: "center",
-        borderBottom: "3px solid",
-        borderStyle: "none",
-        flexGrow: 1,
-        backgroundColor: "transparent",
-        [`@media (${globals.breakpoints.$xs})`]: {
-          borderBottom: "4px solid",
+      "& .page-selector[value]": {
+        appearance: "none",
+        extend: progressBarStyle,
+        "&::-webkit-progress-bar": {
+          extend: progressBarStyle,
         },
-        [`@media (${globals.breakpoints.$sm})`]: {},
-        "&:focus": {},
-        "&.page-selector": {
-          borderColor: globals.colors.gray_background,
-          "& .hidden-description": {
-            height: "15px",
-            top: "-7px",
-            width: "100%",
-          },
+        "&::-webkit-progress-value": {
+          extend: progressBarStyle,
+          backgroundColor: globals.colors.primaryColor,
         },
-        "&button": {
-          cursor: "pointer",
-        },
-        "&.visited": {
-          borderColor: globals.colors.gray_secondary,
-          "& span": {
-            fontWeight: 700,
-            color: stylesConfig.colors.primaryFontColor,
-          },
-          "&.is-selected": {
-            "& span": {
-              color: pageSelectorButtonBackground.selected,
-            },
-          },
-        },
-        "& i": {
-          display: "none",
-        },
-        "& span": {
-          display: "block",
-          color: stylesConfig.colors.secondary.spectrum200,
-          fontSize: stylesConfig.typography.fontSize(0.875),
-          fontWeight: 400,
+        "&::-moz-progress-bar": {
+          extend: progressBarStyle,
+          appearance: "none",
+          backgroundColor: globals.colors.primaryColor,
         },
       },
     },

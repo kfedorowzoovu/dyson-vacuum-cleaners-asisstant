@@ -24,11 +24,7 @@
       ></i>
     </h2>
 
-    <h3
-      v-if="shouldShowHint"
-      v-dompurify-html="questionHintText"
-      class="question-type-hint"
-    />
+    <h3 v-if="shouldShowHint" v-dompurify-html="questionHintText" class="question-type-hint" />
 
     <component :is="questionValidationMessageView" :question="question"> </component>
 
@@ -97,15 +93,16 @@ export default class QuestionHeadViewExtended extends Vue {
 
   get questionHintText(): string {
     const parameterQuestionHintText = this.question.parameters[QuestionParameter.HintText];
-    const defaultQuestionHintText = this.question.questionType === QuestionType.CHECKBOX
-      ? this.$t('message-checkbox-hint')
-      : this.$t('message-radio-hint');
+    const defaultQuestionHintText =
+      this.question.questionType === QuestionType.CHECKBOX
+        ? this.$t("message-checkbox-hint")
+        : this.$t("message-radio-hint");
     return parameterQuestionHintText ?? defaultQuestionHintText;
   }
 
   mounted(): void {
     Vue.nextTick(() => {
-      const progress = this.$root.$el.querySelector(".page-selector.is-selected");
+      const progress = this.$root.$el.querySelector(".page-number");
       progress.focus();
     });
   }
