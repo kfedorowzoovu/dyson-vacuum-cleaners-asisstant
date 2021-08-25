@@ -1,5 +1,5 @@
 <template>
-  <div :class="[rootElementClass, componentStyle.container]">
+  <nav :class="[rootElementClass, componentStyle.container]">
     <div class="page-selector__page-info">
       <button
         v-if="!isFirstStep"
@@ -11,16 +11,10 @@
         <IconChevronLeft /> {{ $t("message-questionnaire-back") }}
       </button>
 
-      <span class="page-number" :class="{ 'results-header': isResultPage }">
+      <span class="page-number" :class="{ 'results-header': isResultPage }" tabindex="-1">
         <template v-if="!isResultPage">
-          <span class="hidden-description">{{
-            $t("message-ada-question-number", {
-              currentStep: currentNavigation.currentStepIndex + 1,
-              allSteps: currentNavigation.numberOfAvailableSteps,
-            })
-          }}</span>
-          <span aria-hidden="true">{{ currentNavigation.currentStepIndex + 1 }}</span> /
-          <span aria-hidden="true">{{ currentNavigation.numberOfAvailableSteps }}</span>
+          <span class="hidden-description">{{ currentStepInfo }}</span>
+          <span aria-hidden="true">{{ currentStep }} / {{ currentNavigation.numberOfAvailableSteps }}</span>
         </template>
         <template v-else>{{ $t("message-results-mode-button") }}</template>
       </span>
@@ -28,25 +22,14 @@
     </div>
 
     <div v-if="currentNavigation.numberOfAvailableSteps > 1" class="page-selector__progress-bar">
-      <template v-for="(n, index) in currentNavigation.numberOfAvailableSteps">
-        <button
-          v-if="currentNavigation.currentStepIndex === index && !isResultPage"
-          :key="n"
-          :class="stepButtonClassList(index)"
-          class="page-selector"
-        >
-          <span class="hidden-description">{{
-            $t("message-ada-question-number-with-text", {
-              currentStep: index + 1,
-              allSteps: currentNavigation.numberOfAvailableSteps,
-              questionText: currentNavigation.flowSteps[index].questions[0].questionText,
-            })
-          }}</span>
-        </button>
-        <span v-else :key="n" :class="stepButtonClassList(index)" class="page-selector"> </span>
-      </template>
+      <progress
+        v-if="!isResultPage"
+        :max="currentNavigation.numberOfAvailableSteps"
+        :value="currentStep"
+        class="page-selector"
+      />
     </div>
-  </div>
+  </nav>
 </template>
 
 <script lang="ts">
@@ -81,6 +64,19 @@ export default class PageSelectorView extends PageSelectorViewBase {
 
   get isFirstStep(): boolean {
     return this.advisor.flowStepsNavigation.currentStepIndex === 0;
+  }
+
+  get currentStepInfo(): string {
+    const { currentNavigation } = this;
+    return this.$t("message-ada-question-number-with-text", {
+      currentStep: this.currentStep,
+      allSteps: currentNavigation.numberOfAvailableSteps,
+      questionText: currentNavigation.flowSteps[currentNavigation.currentStepIndex].questions[0].questionText,
+    });
+  }
+
+  get currentStep(): number {
+    return this.currentNavigation.currentStepIndex + 1;
   }
 
   onClickBack(): void {
