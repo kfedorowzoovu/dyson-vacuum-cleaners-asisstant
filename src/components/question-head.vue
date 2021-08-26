@@ -24,7 +24,7 @@
       ></i>
     </h2>
 
-    <h3 v-if="shouldShowHint" v-dompurify-html="questionHintText" class="question-type-hint" />
+    <p v-if="shouldShowHint" v-dompurify-html="questionHintText" class="question-type-hint" />
 
     <component :is="questionValidationMessageView" :question="question"> </component>
 
