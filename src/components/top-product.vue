@@ -1,15 +1,18 @@
 <template>
-  <div class="top-product" :class="componentStyle.container">
+  <div class="top-product" role="region" :class="componentStyle.container" :aria-label="`${topTileContent}.`">
     <div class="top-product__wrapper">
       <div class="product-details">
         <h4 class="product-name">
+          <span class="product-top-tile">
+            {{ topTileContent }}
+          </span>
           <component :is="productClickoutLinkView" :product="recommendation">
             {{ recommendation.name }}
           </component>
         </h4>
         <p
-          class="top-product-claim"
           v-if="shouldRenderProductClaim"
+          class="top-product-claim"
           v-text="getPropertyValue(recommendation, ProductAttributes.PRODUCT_CLAIM)"
         ></p>
         <p v-dompurify-html="$t('message-top-product-hint')" class="top-product-hint"></p>
@@ -48,9 +51,6 @@
           <component :is="productClickoutLinkView" :product="recommendation">
             <img :src="recommendation.picture" :alt="recommendation.name" />
           </component>
-          <span class="product-top-tile">
-            {{ $t("message-result-top-product-tile-title") }} {{ $t("message-result-top-product-tile-description") }}
-          </span>
         </div>
       </div>
     </div>
@@ -90,6 +90,12 @@ export default class TopProductViewExtended extends TopProductView {
     const reducedPrice = getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE);
     const regularPrice = this.recommendation.price.rawValue.value;
     return (reducedPrice || regularPrice) * 100;
+  }
+
+  get topTileContent(): string {
+    return `${this.$t("message-result-top-product-tile-title")} ${this.$t(
+      "message-result-top-product-tile-description"
+    )}`;
   }
 }
 </script>
