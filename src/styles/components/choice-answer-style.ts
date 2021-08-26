@@ -1,5 +1,5 @@
 import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
-import { visuallyHiddenElement } from "@/styles/partials/accessibility";
+import { focusStyle, visuallyHiddenElement } from "@/styles/partials/accessibility";
 import { AnswerAnimationStyleClass } from "../abstract/animation";
 import mediaQuery from "../abstract/media-query";
 import globals from "../partials/global-variables";
@@ -14,19 +14,11 @@ const infoTextTriggerFontColor = stylesConfig.colors.secondaryFontColor;
 
 export default {
   container: {
-    extend: choiceAnswerTransitions,
+    extend: [choiceAnswerTransitions, focusStyle],
     transition: "box-shadow .3s",
     maxWidth: "358px",
     [`@media (${globals.breakpoints.$xs})`]: {
       maxWidth: "100%",
-    },
-    "&:focus-within": {
-      boxShadow: `${globals.colors.gray_primary} 0 0 5px`,
-    },
-    fallbacks: {
-      "&:focus": {
-        border: `2px solid ${globals.colors.gray_primary}`,
-      },
     },
     "&.has-image": {
       "& label": {

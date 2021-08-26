@@ -10,13 +10,13 @@ export default {
       paddingRight: 0,
     },
     "& .selected": {
-      ...ButtonPaginationSelected,
+      extend: ButtonPaginationSelected,
     },
     "& button": {
-      ...ButtonPagination,
+      extend: ButtonPagination,
     },
     "& .navigation-next-button, & .navigation-back-button": {
-      ...ButtonPaginationNextBack,
+      extend: ButtonPaginationNextBack,
     },
   },
 };
