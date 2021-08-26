@@ -1,4 +1,5 @@
 import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
+import { focusStyle } from "@/styles/partials/accessibility";
 import globals from "./global-variables";
 import stylesConfig from "../styles.config";
 import mediaQuery from "../abstract/media-query";
@@ -50,7 +51,7 @@ export const ButtonReset = {
 };
 
 export const Button = {
-  ...ButtonReset,
+  extend: ButtonReset,
   position: "relative",
   padding: ["11px", "10px"],
   minWidth: "140px",
@@ -79,7 +80,7 @@ export const Button = {
 };
 
 export const ButtonPrimary = {
-  ...Button,
+  extend: Button,
   background: buttonBackgroundColors.next.default,
   border: (configuration: ResolvedComponentsConfiguration): string =>
     `1px solid ${nextButtonBorderColor(configuration)}`,
@@ -95,7 +96,7 @@ export const ButtonPrimary = {
 };
 
 export const ButtonPagination = {
-  ...ButtonReset,
+  extend: ButtonReset,
   minWidth: "30px",
   minHeight: "30px",
   padding: ["8px", 0],
@@ -108,7 +109,7 @@ export const ButtonPagination = {
   },
 };
 export const ButtonPaginationSelected = {
-  ...ButtonPagination,
+  extend: ButtonPagination,
   background: paginationSelectedButtonBackgroundColors.default,
   color: globals.colors.white,
   border: (configuration: ResolvedComponentsConfiguration): string =>
@@ -124,6 +125,7 @@ export const ButtonPaginationSelected = {
 };
 
 export const ButtonPaginationNextBack = {
+  extend: focusStyle,
   paddingLeft: "10px",
   paddingRight: "10px",
   fontWeight: 700,
@@ -136,14 +138,6 @@ export const ButtonPaginationNextBack = {
   fontSize: stylesConfig.typography.fontSize(1),
   position: "relative",
   overflow: "hidden",
-  "&:focus": {
-    boxShadow: `${globals.colors.gray_primary} 0 0 5px`,
-  },
-  fallbacks: {
-    "&:focus": {
-      border: `2px solid ${globals.colors.gray_primary}`,
-    },
-  },
   "&:after": {
     content: "''",
     position: "absolute",
@@ -181,7 +175,7 @@ export const ButtonPaginationNextBack = {
 };
 
 export const ButtonStartOver = {
-  ...ButtonReset,
+  extend: ButtonReset,
   display: "flex",
   alignItems: "center",
   textTransform: "capitalize !important",
