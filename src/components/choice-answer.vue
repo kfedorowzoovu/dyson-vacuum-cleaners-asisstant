@@ -6,16 +6,19 @@
     @beforeEnter="onBeforeEnter"
     @afterEnter="onAfterEnter"
   >
-    <li
+    <div
       v-if="answer && (!answer.disabled || componentConfiguration.showDisabled)"
       :id="answer.mid + '-wrapper'"
       :class="[componentStyle.container, componentStateClasses, answerWrapperClass, animationClass]"
       class="answer"
       tabindex="0"
       :style="answerWrapperStyle"
+      :role="inputType"
+      :aria-checked="answer.selected"
       @keyup.enter="enterPressed"
       @keyup.space="enterPressed"
       @focusin="cleanSelectionMessage"
+      @click="handleAnswerClick"
     >
       <label ref="choiceAnswerLabel" :data-info-text="answer.infoText" :for="answer.mid">
         <span
@@ -38,13 +41,6 @@
             v-if="answer.hasInfoText && infoTextShown && !isMobile"
             class="answer-info-text"
             :text="infoTextContent"
-          />
-          <input
-            :id="answer.mid"
-            :type="inputType"
-            :checked="answer.selected"
-            :disabled="answer.disabled"
-            @click="handleAnswerClick"
           />
           <span class="answer-selection-button"></span>
           <span ref="selectedInfo" role="region" aria-live="assertive" class="hidden-description"></span>
@@ -78,7 +74,7 @@
         <span slot="header" v-dompurify-html="answer.answerText"></span>
         <span slot="body" v-dompurify-html="answer.infoText"></span>
       </component>
-    </li>
+    </div>
   </component>
 </template>
 
@@ -144,6 +140,10 @@ export default class ChoiceAnswerViewExtended extends Vue {
     answer?.parameters[AnswerParameter.AltName] || `${answer.answerText} image`;
 
   imageUrl = (answer: Answer): string => `${answer.images[0]}`;
+
+  hiddenDescription = (answer: Answer): string => {
+    return `${answer.answerText}.`;
+  };
 
   get answerIndex(): number {
     return this.answer.question.answers.indexOf(this.answer);
@@ -212,19 +212,6 @@ export default class ChoiceAnswerViewExtended extends Vue {
       return getTransitionName(this.selectedTransitionStyle);
     }
     return "";
-  }
-
-  hiddenDescription(answer: Answer): string {
-    const answerNumber = `${this.answerIndex + 1} of ${this.numberOfAnswers}`;
-    const answerState = answer.selected
-      ? `${this.$t("message-ada-answer-selected")} ${answerNumber}`
-      : `${this.$t("message-ada-answer")} ${answerNumber}`;
-    const { answerText } = answer;
-
-    return this.$t("message-ada-answer-text", {
-      answerState,
-      answerText,
-    });
   }
 
   disableTransitionDelay(): void {

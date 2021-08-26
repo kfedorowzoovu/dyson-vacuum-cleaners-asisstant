@@ -5,40 +5,21 @@
     class="single-question-wrapper"
   >
     <component :is="questionHeadView" :question="question"></component>
-    <template v-if="question.questionType === QuestionType.CHECKBOX">
-      <ul class="answers-wrapper answer-checkbox-type">
-        <component
-          :is="checkboxAnswerView"
-          v-for="(answer, index) in question.answers"
-          :key="answer.mid"
-          ref="answerElement"
-          :answer="answer"
-          :is-first-answer="isFirstAnswer(index)"
-          :is-last-answer="isLastAnswer(index)"
-          :image-height="imageHeights[answersPerRow[index]]"
-          :answer-text-height="getTextHeight(index, 'answerTextHeight')"
-        />
-      </ul>
-    </template>
-    <template v-else-if="question.questionType === QuestionType.RADIO">
-      <ul class="answers-wrapper answer-radio-type">
-        <component
-          :is="radioButtonAnswerView"
-          v-for="(answer, index) in question.answers"
-          :key="answer.mid"
-          ref="answerElement"
-          :answer="answer"
-          :is-first-answer="isFirstAnswer(index)"
-          :is-last-answer="isLastAnswer(index)"
-          :image-height="imageHeights[answersPerRow[index]]"
-          :answer-text-height="getTextHeight(index, 'answerTextHeight')"
-        >
-        </component>
-      </ul>
-    </template>
-    <template v-else>
-      <h4><i>This question type is not supported yet</i></h4>
-    </template>
+    <fieldset v-if="isChoiceQuestion" class="answers-wrapper">
+      <legend class="hidden-description">{{ questionDetails }}</legend>
+      <component
+        :is="choiceAnswerComponent"
+        v-for="(answer, index) in question.answers"
+        :key="answer.mid"
+        ref="answerElement"
+        :answer="answer"
+        :is-first-answer="isFirstAnswer(index)"
+        :is-last-answer="isLastAnswer(index)"
+        :image-height="imageHeights[answersPerRow[index]]"
+        :answer-text-height="getTextHeight(index, 'answerTextHeight')"
+      />
+    </fieldset>
+    <h4 v-else><i>This question type is not supported yet</i></h4>
   </section>
 </template>
 
@@ -53,9 +34,11 @@ import {
   Vue,
   VueComponent,
   Prop,
+  QuestionType,
 } from "@zoovu/runner-browser-api";
 
 import { ChoiceQuestionView, QuestionConfiguration } from "@zoovu/runner-web-design-base/index";
+import { QuestionParameter } from "@/components/types";
 
 @Component({
   name: "ChoiceQuestionView",
@@ -87,6 +70,28 @@ export default class ChoiceQuestionViewExtended extends Vue {
   public answersPerRow = [];
 
   public imageHeights = [];
+
+  get questionHintText(): string {
+    const parameterQuestionHintText = this.question.parameters[QuestionParameter.HintText];
+    const defaultQuestionHintText =
+      this.question.questionType === QuestionType.CHECKBOX
+        ? this.$t("message-checkbox-hint")
+        : this.$t("message-radio-hint");
+    return parameterQuestionHintText ?? defaultQuestionHintText;
+  }
+
+  get questionDetails(): string {
+    return `${this.question.questionText}. ${this.questionHintText}.`;
+  }
+
+  get choiceAnswerComponent(): VueComponent {
+    if (this.question.questionType === QuestionType.CHECKBOX) return this.checkboxAnswerView;
+    return this.radioButtonAnswerView;
+  }
+
+  get isChoiceQuestion(): boolean {
+    return this.question.questionType === QuestionType.CHECKBOX || this.question.questionType === QuestionType.RADIO;
+  }
 
   mounted(): void {
     this.clearAllHeights();
