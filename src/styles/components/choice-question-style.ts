@@ -1,3 +1,4 @@
+import { visuallyHiddenElement } from "@/styles/partials/accessibility";
 import mediaQuery from "../abstract/media-query";
 import globals from "../partials/global-variables";
 
@@ -6,12 +7,13 @@ export default {
   container: {
     "& .answers-wrapper": {
       alignItems: "stretch",
+      border: "none",
+      boxSizing: "border-box",
       display: "flex",
       flexFlow: "wrap row",
       justifyContent: "center",
-      margin: [0, 0, "48px", 0],
-      boxSizing: "border-box",
       listStyle: "none",
+      margin: [0, 0, "48px", 0],
       padding: 0,
       "&:after": {
         content: "''",
@@ -20,6 +22,9 @@ export default {
       [`@media (${globals.breakpoints.$xs})`]: {
         flexFlow: "wrap column",
         marginBottom: "40px",
+      },
+      "& .hidden-description": {
+        extend: visuallyHiddenElement,
       },
       "& .answer": {
         position: "relative",
