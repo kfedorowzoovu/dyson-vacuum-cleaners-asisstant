@@ -1,5 +1,4 @@
 import { scrollMarginTop } from "@zoovu/runner-web-design-base/src/plugins/data-attributes-reader/webdesign-context";
-import { LocalizationSettings } from "./types";
 
 export function scrollTo(elementY, duration = 300): void {
   const startingY = window.pageYOffset;
@@ -57,5 +56,29 @@ export function scrollToElement(element: Element, scrollDuration = 300): void {
   } else {
     const elementY = window.pageYOffset + element.getBoundingClientRect().top;
     scrollTo(elementY, scrollDuration);
+  }
+}
+
+export function addMediaQueryListener(
+  mediaQueryList: MediaQueryList,
+  callback: (event: MediaQueryListEvent) => void
+): void {
+  if (mediaQueryList.addEventListener) {
+    mediaQueryList.addEventListener("change", callback);
+  } else {
+    // Deprecated 'MediaQueryList' API, Safari < 14, IE, Edge < 16
+    mediaQueryList.addListener(callback);
+  }
+}
+
+export function removeMediaQueryListener(
+  mediaQueryList: MediaQueryList,
+  callback: (event: MediaQueryListEvent) => void
+): void {
+  if (mediaQueryList.removeEventListener) {
+    mediaQueryList.removeEventListener("change", callback);
+  } else {
+    // Deprecated 'MediaQueryList' API, Safari < 14, IE, Edge < 16
+    mediaQueryList.removeListener(callback);
   }
 }

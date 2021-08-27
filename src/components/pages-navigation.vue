@@ -1,5 +1,5 @@
 <template>
-  <div :class="[rootElementClass, componentStyle.container]" :key="isResultsSectionNext">
+  <div :class="[rootElementClass, componentStyle.container]" :key="isResultsSectionNext" :style="smallScreenNavPosition" >
     <!-- info: key is necessary because of some strange approach within sections -->
     <!-- instead of rendering something in HTML it is changed to :key to force re-render of component -->
     <button
@@ -42,8 +42,9 @@ import {
   VueComponent,
 } from "@zoovu/runner-browser-api";
 import { AnswersConfiguration, PagesNavigationView as PagesNavigationViewBase, PagesNavigationAction } from "@zoovu/runner-web-design-base";
-import { scrollToElement } from "./utils";
+import { addMediaQueryListener, removeMediaQueryListener, scrollToElement } from "./utils";
 import { isScrollingDisabledThroughDataAttribute } from "@zoovu/runner-web-design-base/src/plugins/data-attributes-reader/webdesign-context";
+import globals from "@/styles/partials/global-variables";
 
 @Component
 export default class PagesNavigationView extends PagesNavigationViewBase {
@@ -65,6 +66,18 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
 
   fileUploadQuestionsCount = 0;
 
+  deviceHasXsMaxWidth = false;
+
+  reservedScreenHeight = 0;
+
+  smallScreenMediaQuery = globals.breakpoints.$xs
+
+  get smallScreenNavPosition(): Record<PropertyKey, unknown> {
+    return this.deviceHasXsMaxWidth ? {
+      bottom: `${this.reservedScreenHeight}px`,
+      position: "fixed",
+    } : {};
+  }
   get rootElementClass(): string {
     return "pages-navigation-wrapper";
   }
@@ -213,6 +226,12 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
     this.scrollToTop();
   }
 
+  created(): void {
+    const mediaQueryList = window.matchMedia(`(${this.smallScreenMediaQuery})`);
+    this.deviceHasXsMaxWidth = mediaQueryList.matches;
+    addMediaQueryListener(mediaQueryList, (event: MediaQueryListEvent) => this.handleMdMinWidthChange(event));
+  }
+
   mounted() {
     this.$root.$on("files-uploaded", () => {
       this.fileUploadQuestionsCount -= 1;
@@ -220,6 +239,16 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
         this.triggerAction();
       }
     });
+    this.reservedScreenHeight = window.screen.height - window.screen.availHeight;
+  }
+
+  beforeDestroy(): void {
+    const mediaQueryList = window.matchMedia(`(${this.smallScreenMediaQuery})`);
+    removeMediaQueryListener(mediaQueryList, (event: MediaQueryListEvent) => this.handleMdMinWidthChange(event));
+  }
+
+  handleMdMinWidthChange(event: MediaQueryListEvent): void {
+    this.deviceHasXsMaxWidth = event.matches;
   }
 
   hiddenDescription(): string {
@@ -229,13 +258,13 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
     if (this.isResultsSectionNext) {
       return this.$t("message-ada-where-to-go-results", {
         buttonState: `${buttonDisabledText}`
-      });
+      }) as string;
     } else {
       return this.$t("message-ada-where-to-go-next", {
         buttonState: `${buttonDisabledText}`,
         currentStep: currentStepIndex,
         questionText: this.currentNavigation.flowSteps[this.nextStepIndex].questions[0].questionText
-      });
+      }) as string;
     }
   };
 

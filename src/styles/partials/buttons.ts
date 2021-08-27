@@ -158,8 +158,6 @@ export const ButtonPaginationNextBack = {
   },
   [`@media (${globals.breakpoints.$xs})`]: {
     width: "100%",
-    position: "fixed",
-    bottom: 0,
     left: 0,
     zIndex: 999,
   },

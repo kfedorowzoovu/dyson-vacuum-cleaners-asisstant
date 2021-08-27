@@ -11,7 +11,6 @@ export default {
     },
   },
   container: {
-    padding: [0, 0, "20px", 0],
     display: "flex",
     flexFlow: "row wrap",
     justifyContent: "flex-end",
@@ -24,10 +23,10 @@ export default {
       order: -1,
     },
     "& .navigation-next-button, & .navigation-submit-button": {
-      ...ButtonPaginationNextBack,
+      extend: ButtonPaginationNextBack,
     },
     "& .navigation-next-button.navigation-next-in-progress": {
-      ...ButtonNextInProgress,
+      extend: ButtonNextInProgress,
     },
     "& .hidden-description": {
       extend: visuallyHiddenElement,
