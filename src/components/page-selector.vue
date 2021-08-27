@@ -11,13 +11,13 @@
         <IconChevronLeft /> {{ $t("message-questionnaire-back") }}
       </button>
 
-      <span class="page-number" :class="{ 'results-header': isResultPage }" tabindex="-1">
+      <h1 class="page-number" :class="{ 'results-header': isResultPage }" tabindex="-1" aria-hidden="true">
         <template v-if="!isResultPage">
           <span class="hidden-description">{{ currentStepInfo }}</span>
           <span aria-hidden="true">{{ currentStep }} / {{ currentNavigation.numberOfAvailableSteps }}</span>
         </template>
         <template v-else>{{ $t("message-results-mode-button") }}</template>
-      </span>
+      </h1>
       <component :is="startOverButtonView" v-if="!isFirstStep" class="navigation-button" :advisor="advisor" />
     </div>
 
