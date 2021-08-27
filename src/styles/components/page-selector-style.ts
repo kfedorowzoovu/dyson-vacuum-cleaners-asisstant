@@ -52,6 +52,8 @@ export default {
       },
       "& .page-number": {
         color: globals.colors.gray_primary,
+        fontSize: stylesConfig.typography.fontSize(1),
+        fontWeight: 400,
         margin: "auto",
         padding: "12px 35px",
         position: "relative",
