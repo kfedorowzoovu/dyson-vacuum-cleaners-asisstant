@@ -22,12 +22,7 @@
     </div>
 
     <div v-if="currentNavigation.numberOfAvailableSteps > 1" class="page-selector__progress-bar">
-      <progress
-        v-if="!isResultPage"
-        :max="currentNavigation.numberOfAvailableSteps"
-        :value="currentStep"
-        class="page-selector"
-      />
+      <progress :max="currentNavigation.numberOfAvailableSteps" :value="currentStep" class="page-selector" />
     </div>
   </nav>
 </template>
