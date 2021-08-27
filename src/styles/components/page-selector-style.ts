@@ -51,7 +51,7 @@ export default {
         fontSize: "inherit",
       },
       "& .page-number": {
-        color: globals.colors.gray_tertiary,
+        color: globals.colors.gray_primary,
         margin: "auto",
         padding: "12px 35px",
         position: "relative",
