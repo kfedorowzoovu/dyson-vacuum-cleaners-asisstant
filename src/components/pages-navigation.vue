@@ -75,7 +75,9 @@ export default class PagesNavigationView extends PagesNavigationViewBase {
   get smallScreenNavPosition(): Record<PropertyKey, unknown> {
     return this.deviceHasXsMaxWidth ? {
       bottom: `${this.reservedScreenHeight}px`,
+      left: 0,
       position: "fixed",
+      zIndex: 100,
     } : {};
   }
   get rootElementClass(): string {
