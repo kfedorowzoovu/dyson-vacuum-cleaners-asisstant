@@ -153,12 +153,13 @@ export default {
       },
     },
     "& .image-element": {
-      position: "absolute",
-      width: "100%",
-      left: 0,
-      right: 0,
-      backgroundSize: "cover",
       backgroundPosition: "center",
+      backgroundSize: "cover",
+      minHeight: "100%",
+      left: 0,
+      position: "absolute",
+      right: 0,
+      width: "100%",
     },
     "& .answer-text": {
       display: "flex",
