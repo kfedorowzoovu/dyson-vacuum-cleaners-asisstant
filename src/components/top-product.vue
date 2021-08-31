@@ -49,7 +49,7 @@
       <div class="image-wrapper">
         <div class="product-image">
           <component :is="productClickoutLinkView" :product="recommendation">
-            <img :src="recommendation.picture" :alt="recommendation.name" />
+            <img :src="additionalImageUrl || recommendation.picture" :alt="recommendation.name" />
           </component>
         </div>
       </div>
@@ -96,6 +96,10 @@ export default class TopProductViewExtended extends TopProductView {
     return `${this.$t("message-result-top-product-tile-title")} ${this.$t(
       "message-result-top-product-tile-description"
     )}`;
+  }
+
+  get additionalImageUrl(): string {
+    return getPropertyValue(this.recommendation, ProductAttributes.ADDITIONAL_IMAGE_URL);
   }
 }
 </script>
