@@ -37,9 +37,16 @@ export default class ProductProperties extends Vue {
     return this.allProperties.filter((property) => !Object.values(ProductAttributes).includes(property.name));
   }
 
-  get propertiesWithExplicitValue(): ReadonlyArray<ProductProperty> {
+  get shownProperties(): ReadonlyArray<ProductProperty> {
     return this.productRelatedProperties.filter(
-      (property) => !(property.marking === Marking.NEUTRAL && !property.rawValue.value)
+      (property) => property.name !== ProductAttributes.ADDITIONAL_IMAGE_URL
+    );
+  }
+
+  get propertiesWithExplicitValue(): ReadonlyArray<ProductProperty> {
+    return this.shownProperties.filter(
+      (property) => !(
+        property.marking === Marking.NEUTRAL && !property.rawValue.value)
     );
   }
 

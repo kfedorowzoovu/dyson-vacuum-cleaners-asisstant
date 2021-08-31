@@ -9,6 +9,7 @@ export enum ProductAttributes {
   STOCK_STATUS = "stockBand",
   BADGE_THEME = "badgeThemeCode",
   BADGE_TEXT = "badgeText",
+  ADDITIONAL_IMAGE_URL = "additionalImageUrl",
 }
 
 export enum ProductAttributesWithOnlyValueDisplayed {

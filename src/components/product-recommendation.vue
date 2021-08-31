@@ -3,7 +3,7 @@
     <div class="product-details">
       <div class="product-image">
         <component :is="productClickoutLinkView" :product="recommendation">
-          <img :src="recommendation.picture" :alt="recommendation.name" />
+          <img :src="additionalImageUrl || recommendation.picture" :alt="recommendation.name" />
         </component>
       </div>
       <h4 class="product-name">
@@ -71,6 +71,10 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
     const reducedPrice = getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE);
     const regularPrice = this.recommendation.price.rawValue.value;
     return (reducedPrice || regularPrice) * 100;
+  }
+
+  get additionalImageUrl(): string {
+    return getPropertyValue(this.recommendation, ProductAttributes.ADDITIONAL_IMAGE_URL);
   }
 }
 </script>
