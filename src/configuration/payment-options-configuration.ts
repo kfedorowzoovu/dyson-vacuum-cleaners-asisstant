@@ -8,7 +8,8 @@ import * as paymentOptionsConfigurationValues from "../../configuration/payment-
 import { CustomConfigurationValues } from '../types';
 
 /**
- * @additionalProperties true
+ * @title Configurable components
+ * @additionalProperties false
  */
 
 @ValuesConfigurationConstructor(
