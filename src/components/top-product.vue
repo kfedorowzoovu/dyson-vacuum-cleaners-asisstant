@@ -71,15 +71,15 @@ import { TopProductView } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "@/configuration/common-configuration";
 import ProductProperties from "@/components/product-properties.vue";
-import ConfigurableComponentsConfiguration from "@/configuration/configurable-components-configuration";
+import PaymentOptionsConfiguration from "@/configuration/payment-options-configuration";
 import { IconTick } from "./svgs";
 
 @Component({
   components: { IconTick, ProductProperties },
 })
 export default class TopProductViewExtended extends TopProductView {
-  @ComponentConfig(ConfigurableComponentsConfiguration)
-  configurableComponentsConfiguration!: ConfigurableComponentsConfiguration;
+  @ComponentConfig(PaymentOptionsConfiguration)
+  paymentOptionsConfiguration!: PaymentOptionsConfiguration;
 
   getPropertyValue = getPropertyValue;
 
@@ -117,11 +117,11 @@ export default class TopProductViewExtended extends TopProductView {
   }
 
   get shouldShowKlarnaComponent(): boolean {
-    return this.configurableComponentsConfiguration?.klarna;
+    return this.paymentOptionsConfiguration?.klarna;
   }
 
   get shouldShowAffirmComponent(): boolean {
-    return this.configurableComponentsConfiguration?.affirm;
+    return this.paymentOptionsConfiguration?.affirm;
   }
 }
 </script>

@@ -58,7 +58,7 @@ import { Component, ComponentConfig, InjectComponent, VueComponent } from "@zoov
 import ProductProperties from "@/components/product-properties.vue";
 import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "@/configuration/common-configuration";
-import ConfigurableComponentsConfiguration from "@/configuration/configurable-components-configuration";
+import PaymentOptionsConfiguration from "@/configuration/payment-options-configuration";
 
 @Component({
   components: { ProductProperties },
@@ -67,8 +67,8 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   @InjectComponent("ProductPriceView")
   productPriceView: VueComponent
 
-  @ComponentConfig(ConfigurableComponentsConfiguration)
-  configurableComponentsConfiguration!: ConfigurableComponentsConfiguration;
+  @ComponentConfig(PaymentOptionsConfiguration)
+  paymentOptionsConfiguration!: PaymentOptionsConfiguration;
 
   mounted(): void {
     if (this.shouldShowKlarnaComponent) {
@@ -92,11 +92,11 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   }
 
   get shouldShowKlarnaComponent(): boolean {
-    return this.configurableComponentsConfiguration?.klarna;
+    return this.paymentOptionsConfiguration?.klarna;
   }
 
   get shouldShowAffirmComponent(): boolean {
-    return this.configurableComponentsConfiguration?.affirm;
+    return this.paymentOptionsConfiguration?.affirm;
   }
 }
 </script>
