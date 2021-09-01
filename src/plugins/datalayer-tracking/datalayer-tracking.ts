@@ -226,7 +226,7 @@ export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
 
   private _getOneProductObject(product: ProductRecommendation): ProductObject {
     const price =
-      product.price && product.price.rawValue && product.price.rawValue.value
+      product.price?.rawValue?.value
         ? product.price.rawValue.value.toString()
         : this._defaultValue;
     const reviewCount = this._findPropertyByName(product.properties, ProductAttributes.RATING_COUNT);
@@ -242,12 +242,12 @@ export class DatalayerTrackingPlugin implements AdvisorWebDesignPlugin {
       url: product.offerUrl,
       price,
       currency: this._advisor.localizationSettings.currencyCode || "$",
-      review_count: reviewCount.rawValue.value ? reviewCount.rawValue.value.toString() : this._defaultValue,
-      review_average: reviewAverage.rawValue.value ? reviewAverage.rawValue.value.toString() : this._defaultValue,
-      stock_status: stockStatus.rawValue.value ? stockStatus.rawValue.value.toString() : this._defaultValue,
+      review_count: reviewCount?.rawValue.value ? reviewCount.rawValue.value.toString() : this._defaultValue,
+      review_average: reviewAverage?.rawValue.value ? reviewAverage.rawValue.value.toString() : this._defaultValue,
+      stock_status: stockStatus?.rawValue.value ? stockStatus.rawValue.value.toString() : this._defaultValue,
       badge: {
-        text: badgeText.rawValue.value ? badgeText.rawValue.value.toString() : this._defaultValue,
-        theme: badgeTheme.rawValue.value ? badgeTheme.rawValue.value.toString() : this._defaultValue,
+        text: badgeText?.rawValue.value ? badgeText.rawValue.value.toString() : this._defaultValue,
+        theme: badgeTheme?.rawValue.value ? badgeTheme.rawValue.value.toString() : this._defaultValue,
       },
     };
   }

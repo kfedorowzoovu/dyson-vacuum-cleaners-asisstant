@@ -14,3 +14,7 @@ export const whitelistedAttributes = ["target"];
 export interface MobileInfoTextTrigger {
   click?: () => void;
 }
+
+export enum CustomConfigurationValues {
+  ConfigurableComponents = "configurableComponents",
+}

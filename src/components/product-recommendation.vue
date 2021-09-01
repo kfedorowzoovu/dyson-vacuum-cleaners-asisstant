@@ -16,12 +16,20 @@
     <div class="product__cta-group">
       <component :is="productRatingView" class="product__rating" :product="recommendation" />
       <component :is="productPriceView" :recommendation="recommendation" />
-      <div class="klarna-message">
+      <div class="klarna-message" v-if="shouldShowKlarnaComponent">
         <klarna-placement
           data-key="credit-promotion-small"
           :data-locale="locale"
           :data-purchase-amount="currentPrice"
         ></klarna-placement>
+      </div>
+      <div v-if="shouldShowAffirmComponent" class="checkout__affirm-promotion">
+        <p
+          class="affirm-as-low-as"
+          data-page-type="product"
+          data-amount="currentPrice"
+          data-analytics-action-name="text link~learn more"
+        ></p>
       </div>
       <div class="product-footer">
         <component
@@ -46,21 +54,27 @@
 
 <script lang="ts">
 import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
-import { Component, InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
+import { Component, ComponentConfig, InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
 import ProductProperties from "@/components/product-properties.vue";
 import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "@/configuration/common-configuration";
+import ConfigurableComponentsConfiguration from "@/configuration/configurable-components-configuration";
 
 @Component({
   components: { ProductProperties },
 })
 export default class ProductRecommendationViewExtended extends ProductRecommendationView {
   @InjectComponent("ProductPriceView")
-  productPriceView: VueComponent;
+  productPriceView: VueComponent
+
+  @ComponentConfig(ConfigurableComponentsConfiguration)
+  configurableComponentsConfiguration!: ConfigurableComponentsConfiguration;
 
   mounted(): void {
-    window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
-    window.KlarnaOnsiteService.push({ eventName: "refresh-placements" });
+    if (this.shouldShowKlarnaComponent) {
+      window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
+      window.KlarnaOnsiteService.push({ eventName: "refresh-placements" });
+    }
   }
 
   get locale(): string {
@@ -75,6 +89,14 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
 
   get additionalImageUrl(): string {
     return getPropertyValue(this.recommendation, ProductAttributes.ADDITIONAL_IMAGE_URL);
+  }
+
+  get shouldShowKlarnaComponent(): boolean {
+    return this.configurableComponentsConfiguration?.klarna;
+  }
+
+  get shouldShowAffirmComponent(): boolean {
+    return this.configurableComponentsConfiguration?.affirm;
   }
 }
 </script>
