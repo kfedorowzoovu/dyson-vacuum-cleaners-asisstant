@@ -4,7 +4,7 @@ import {
   ConfigurationValues,
 } from "@zoovu/runner-web-design-base";
 import CustomizedValuesConfigurationProvider from "./values/customized-values-configuration-provider";
-import * as configurableComponentsConfigurationDiffValues from "../../configuration/configurable-components-configuration-diff.json";
+import * as paymentOptionsConfigurationValues from "../../configuration/payment-options-configuration.json";
 import { CustomConfigurationValues } from '../types';
 
 /**
@@ -12,11 +12,11 @@ import { CustomConfigurationValues } from '../types';
  */
 
 @ValuesConfigurationConstructor(
-  (CustomConfigurationValues.ConfigurableComponents as unknown) as ConfigurationValues,
-  new CustomizedValuesConfigurationProvider(configurableComponentsConfigurationDiffValues)
+  (CustomConfigurationValues.PaymentOptions as unknown) as ConfigurationValues,
+  new CustomizedValuesConfigurationProvider(paymentOptionsConfigurationValues)
 )
-@ComponentConfigurationClass("configurableComponentsConfiguration")
-export default class ConfigurableComponentsConfiguration {
+@ComponentConfigurationClass("paymentOptionsConfiguration")
+export default class PaymentOptionsConfiguration {
   /**
    *  @title Allow Klarna Payment
    */

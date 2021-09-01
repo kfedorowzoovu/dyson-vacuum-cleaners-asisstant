@@ -16,5 +16,5 @@ export interface MobileInfoTextTrigger {
 }
 
 export enum CustomConfigurationValues {
-  ConfigurableComponents = "configurableComponents",
+  PaymentOptions = "paymentOptions",
 }

@@ -16,8 +16,8 @@ export default class CustomValuesConfigurationProvider extends ValuesConfigurati
 
   public provide(configurationValues: ConfigurationValues | CustomConfigurationValues): unknown {
     switch (configurationValues) {
-      case CustomConfigurationValues.ConfigurableComponents:
-        return this.customConfigurationValues.configurableComponentsConfiguration;
+      case CustomConfigurationValues.PaymentOptions:
+        return this.customConfigurationValues.paymentOptionsConfiguration;
       case ConfigurationValues.StandardTexts:
         return mergeRightAllWithArrays(standardTextsConfigurationValues, this.customConfigurationValues).standardTexts;
       case ConfigurationValues.ProductRating:
