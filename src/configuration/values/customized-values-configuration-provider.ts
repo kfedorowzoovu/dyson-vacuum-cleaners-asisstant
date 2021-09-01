@@ -7,14 +7,17 @@ import {
   recommendationConfigurationValues,
   ValuesConfigurationProvider,
 } from "@zoovu/runner-web-design-base";
+import { CustomConfigurationValues } from "../../types";
 
 export default class CustomValuesConfigurationProvider extends ValuesConfigurationProvider {
   constructor(private readonly customConfigurationValues: { [key: string]: unknown }) {
     super();
   }
 
-  public provide(configurationValues: ConfigurationValues): unknown {
+  public provide(configurationValues: ConfigurationValues | CustomConfigurationValues): unknown {
     switch (configurationValues) {
+      case CustomConfigurationValues.ConfigurableComponents:
+        return this.customConfigurationValues.configurableComponentsConfiguration;
       case ConfigurationValues.StandardTexts:
         return mergeRightAllWithArrays(standardTextsConfigurationValues, this.customConfigurationValues).standardTexts;
       case ConfigurationValues.ProductRating:

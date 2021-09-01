@@ -3,9 +3,9 @@ import stylesConfig from "@/styles/styles.config";
 import { ProductButton, ProductButtonHover } from "@/styles/partials/buttons";
 
 export const ctaGroup = {
-  width: "100%",
   marginBottom: "0",
   marginTop: "auto",
+  width: "100%",
   "& .product__rating": {
     alignItems: "center",
     display: "flex",
@@ -22,9 +22,9 @@ export const ctaGroup = {
       margin: "16px 0",
     },
     "&>span": {
-      fontSize: stylesConfig.typography.fontSize(1),
       color: globals.colors.gray_primary,
       display: "block",
+      fontSize: stylesConfig.typography.fontSize(1),
       [`@media (${globals.breakpoints.$sm})`]: {
         fontSize: stylesConfig.typography.fontSize(0.875),
       },
@@ -32,30 +32,38 @@ export const ctaGroup = {
         textDecoration: "line-through",
       },
       "&.price-current": {
-        fontWeight: 700,
         color: globals.colors.blue,
+        fontWeight: 700,
       },
     },
   },
   "& .klarna-message": {
-    padding: ".5rem",
+    backgroundColor: globals.colors.gray_klarna,
+    border: `1px solid ${globals.colors.gray_product_border}`,
     display: "inline-block",
-    width: "100%",
     marginBottom: "16px",
-    border: "1px solid #ebebeb",
-    backgroundColor: "#fbfbfb",
+    padding: ".5rem",
+    width: "100%",
     [`@media (min-width: 767px)`]: {
-      border: " 1px solid #ebebeb",
-      padding: ".5rem",
       display: "block",
+      marginBottom: "20px",
       width: "65%",
+    },
+  },
+  "& .checkout__affirm-promotion": {
+    marginBottom: "16px",
+    [`@media (min-width: 767px)`]: {
       marginBottom: "20px",
     },
+    "& p": {
+      color: globals.colors.gray_primary,
+      margin: "0",
+    }
   },
   "& .product-footer": {
     display: "flex",
-    width: "100%",
     textAlign: "center",
+    width: "100%",
     [`@media (min-width: 768px)`]: {
       width: "auto",
       alignItems: "flex-end",

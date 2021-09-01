@@ -1,0 +1,6 @@
+{
+  "configurableComponentsConfiguration": {
+    "affirm": false,
+    "klarna": true
+  }
+}
