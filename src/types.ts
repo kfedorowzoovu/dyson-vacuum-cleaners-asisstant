@@ -16,5 +16,5 @@ export interface MobileInfoTextTrigger {
 }
 
 export enum CustomConfigurationValues {
-  PaymentOptions = "paymentOptions",
+  PaymentOptions = "PAYMENT_OPTION",
 }
