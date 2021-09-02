@@ -1,4 +1,4 @@
-import { productAdditionalPriceTextBaseStyles } from "@zoovu/runner-web-design-base";
+import { productAdditionalPriceTextBaseStyles } from "../partials/product-recommendation-base-styles";
 import { ctaGroup } from "@/styles/partials/cta";
 import { productName } from "@/styles/partials/text";
 import globals from "../partials/global-variables";
