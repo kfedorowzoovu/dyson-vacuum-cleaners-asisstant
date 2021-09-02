@@ -31,7 +31,7 @@
             <p
               class="affirm-as-low-as"
               data-page-type="product"
-              data-amount="currentPrice"
+              :data-amount="currentPrice"
               data-analytics-action-name="text link~learn more"
             ></p>
           </div>
