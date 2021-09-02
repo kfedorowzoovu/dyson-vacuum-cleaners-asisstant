@@ -46,6 +46,9 @@ import { AdvisorLocalizationSettingsDefinition, Component } from "@zoovu/runner-
 import { ProductPriceView } from "@zoovu/runner-web-design-base";
 import { formatPrice, getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "@/configuration/common-configuration";
+import {PriceComplementaryTextContent} from "@zoovu/runner-web-design-base/src/components/types";
+import {TextPlacements} from "@zoovu/runner-web-design-base/src/configuration/index";
+import {formatNumberAsCurrency} from "@zoovu/runner-web-design-base/src/components/utils";
 
 @Component({})
 export default class ProductPriceViewExtended extends ProductPriceView {
@@ -68,5 +71,29 @@ export default class ProductPriceViewExtended extends ProductPriceView {
       ),
     };
   }
+
+  get complementaryTexts(): ReadonlyArray<PriceComplementaryTextContent> {
+    if (!this.price || !this.price.settings || !this.price.settings.textPlacements)
+      return [];
+
+    const textPlacements: TextPlacements ={"right":{"label":"Display text after price","labelButton":"Link a data column","labelColumn":"Linked data column after price","text":"rgith dupa","column":{"name":""},"isPrice":false,"isReversed":false},"left":{"label":"Display text before price","labelButton":"Link a data column","labelColumn":"Linked data column before price","text":"left dupa","column":{"name":""},"isPrice":false,"isReversed":false},"top":{"label":"Display text above price","labelButton":"Link a data column","labelColumn":"Linked data column above price","text":"top dupa","column":{"name":""},"isPrice":false,"isReversed":false},"bottom":{"label":"Display text under price","labelButton":"Link a data column","labelColumn":"Linked data column under price","text":"bottom dupa","column":{"name":""},"isPrice":false,"isReversed":false}};
+
+    return Object.entries(textPlacements).map(([placement, { column, isPrice, text, isReversed }]) => {
+      const columnName = column && column.name;
+      const property = columnName && this.getProperty(columnName);
+      const columnValue = property && property.value || "";
+      const columnText = isPrice && columnValue ? formatNumberAsCurrency(columnValue, this.localizationSettings) : columnValue;
+      const isHidden = isPrice && (!columnValue || this.recommendation.price.rawValue.value === columnValue);
+
+      return {
+        staticText: text,
+        columnText,
+        classList: [`price-additional-text--${placement}`, {"is-reversed": isReversed, "price-additional-text--hidden": isHidden}],
+        placement,
+      }
+    }).filter(textContent => textContent.staticText || textContent.columnText);
+  };
+
+
 }
 </script>

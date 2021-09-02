@@ -23,7 +23,7 @@ export const ctaGroup = {
     },
     "&>span": {
       color: globals.colors.gray_primary,
-      display: "block",
+      display: "inline-block",
       fontSize: stylesConfig.typography.fontSize(1),
       [`@media (${globals.breakpoints.$sm})`]: {
         fontSize: stylesConfig.typography.fontSize(0.875),
