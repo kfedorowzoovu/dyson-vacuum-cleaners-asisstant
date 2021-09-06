@@ -67,7 +67,7 @@
 
 <script lang="ts">
 import { Component, ComponentConfig } from "@zoovu/runner-browser-api";
-import { TopProductView } from "@zoovu/runner-web-design-base";
+import { TopProductView as TopProductViewBase } from "@zoovu/runner-web-design-base";
 import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "@/configuration/common-configuration";
 import ProductProperties from "@/components/product-properties.vue";
@@ -77,20 +77,13 @@ import { IconTick } from "./svgs";
 @Component({
   components: { IconTick, ProductProperties },
 })
-export default class TopProductViewExtended extends TopProductView {
+export default class TopProductView extends TopProductViewBase {
   @ComponentConfig(PaymentOptionsConfiguration)
   paymentOptionsConfiguration!: PaymentOptionsConfiguration;
 
   getPropertyValue = getPropertyValue;
 
   ProductAttributes = ProductAttributes;
-
-  mounted(): void {
-    if (this.shouldShowKlarnaComponent) {
-      window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
-      window.KlarnaOnsiteService.push({ eventName: "refresh-placements" });
-    }
-  }
 
   get locale(): string {
     return this.$root.componentViewModel.localizationSettings.locale;
@@ -122,6 +115,19 @@ export default class TopProductViewExtended extends TopProductView {
 
   get shouldShowAffirmComponent(): boolean {
     return this.paymentOptionsConfiguration?.affirm;
+  }
+
+  mounted(): void {
+    if (this.shouldShowKlarnaComponent) {
+      window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
+      window.KlarnaOnsiteService.push({ eventName: "refresh-placements" });
+    }
+    if (this.shouldShowAffirmComponent) {
+      window.affirm = window.affirm || [];
+      window.affirm.ui.ready(function(){
+        window.affirm.ui.refresh();
+      });
+    }
   }
 }
 </script>
