@@ -54,7 +54,7 @@ export default {
         margin: [0, "300px", "30px"],
       },
     },
-    "& h3": {
+    "& h2": {
       margin: "0px 0px 38px",
       fontSize: stylesConfig.typography.fontSize(1.9),
       fontWeight: 300,

@@ -22,12 +22,12 @@
             :id="`${advice.currentPage.mid}-cluster-top-products`"
             class="advice-top-products"
           >
-            <h3 v-dompurify-html="$t('message-result-top-product-header')" class="top-product__header"></h3>
-            <h4
+            <h2 v-dompurify-html="$t('message-result-top-product-header')" class="top-product__header"></h2>
+            <h3
               v-if="hasSubHeaderTop"
               v-dompurify-html="$t('message-result-top-product-subheader')"
               class="top-product__subheader"
-            ></h4>
+            ></h3>
             <component
               :is="TopProductView"
               v-for="topProductRecommendation in topProducts"
