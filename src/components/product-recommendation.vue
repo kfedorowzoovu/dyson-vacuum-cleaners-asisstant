@@ -70,13 +70,6 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   @ComponentConfig(PaymentOptionsConfiguration)
   paymentOptionsConfiguration!: PaymentOptionsConfiguration;
 
-  mounted(): void {
-    if (this.shouldShowKlarnaComponent) {
-      window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
-      window.KlarnaOnsiteService.push({ eventName: "refresh-placements" });
-    }
-  }
-
   get locale(): string {
     return this.$root.componentViewModel.localizationSettings.locale;
   }
@@ -97,6 +90,19 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
 
   get shouldShowAffirmComponent(): boolean {
     return this.paymentOptionsConfiguration?.affirm;
+  }
+
+  mounted(): void {
+    if (this.shouldShowKlarnaComponent) {
+      window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
+      window.KlarnaOnsiteService.push({ eventName: "refresh-placements" });
+    }
+    if (this.shouldShowAffirmComponent) {
+      window.affirm = window.affirm || [];
+      window.affirm.ui.ready(function(){
+        window.affirm.ui.refresh();
+      });
+    }
   }
 }
 </script>
