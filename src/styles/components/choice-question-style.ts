@@ -38,7 +38,7 @@ export default {
           width: "100% !important",
         },
         [mediaQuery.hover]: {
-          "&:hover": {
+          "&:hover,&:focus": {
             transition: ".05s",
             "& .answer-content": {
               boxShadow: `inset 0px 0px 0px 2px ${globals.colors.black}`,
@@ -52,9 +52,6 @@ export default {
               },
             },
           },
-        },
-        "&:focus": {
-          outlineColor: focusOutlineColor,
         },
       },
       "& .answer-image": {
