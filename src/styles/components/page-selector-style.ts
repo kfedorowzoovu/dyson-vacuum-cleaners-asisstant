@@ -7,7 +7,7 @@ const progressBarStyle = {
   borderRadius: "2px",
   borderStyle: "none",
   flexBasis: "100%",
-  height: "4px",
+  height: "3px",
   margin: 0,
   padding: 0,
   position: "relative",
@@ -74,6 +74,7 @@ export default {
       display: "flex",
       "& .page-selector[value]": {
         appearance: "none",
+
         extend: progressBarStyle,
         "&::-webkit-progress-bar": {
           extend: progressBarStyle,
