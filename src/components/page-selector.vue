@@ -1,5 +1,5 @@
 <template>
-  <nav :class="[rootElementClass, componentStyle.container]">
+  <nav :aria-label="`${$t('message-ada-page-selector')}`" :class="[rootElementClass, componentStyle.container]">
     <div class="page-selector__page-info">
       <button
         v-if="!isFirstStep"
