@@ -217,6 +217,16 @@
                 "value": "{answerState}: {answerText}"
               }
             ]
+          },
+          {
+            "id": "message-ada-page-selector",
+            "label": "ADA: Announce page selector label",
+            "localizations": [
+              {
+                "locale": "base",
+                "value": "Help me choose"
+              }
+            ]
           }
         ],
         "name": "General"
