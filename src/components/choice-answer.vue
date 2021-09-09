@@ -18,7 +18,9 @@
       @keyup.enter="enterPressed"
       @keyup.space="enterPressed"
       @keyup.left="focusPreviousAnswer"
+      @keyup.up="focusPreviousAnswer"
       @keyup.right="focusNextAnswer"
+      @keyup.down="focusNextAnswer"
       @focusin="cleanSelectionMessage"
       @click="handleAnswerClick"
     >
