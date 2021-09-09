@@ -82,3 +82,17 @@ export function removeMediaQueryListener(
     mediaQueryList.removeListener(callback);
   }
 }
+
+export function focusNextAnswer(): void {
+  const focusedAnswer = document.querySelector(".answer:focus");
+  if (focusedAnswer?.nextSibling?.focus) {
+    focusedAnswer.nextSibling.focus();
+  }
+}
+
+export function focusPreviousAnswer(): void {
+  const focusedAnswer = document.querySelector(".answer:focus");
+  if (focusedAnswer?.previousSibling?.focus) {
+    focusedAnswer.previousSibling.focus();
+  }
+}
