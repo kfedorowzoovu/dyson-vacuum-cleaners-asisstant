@@ -58,6 +58,7 @@ export const ctaGroup = {
     "& p": {
       color: globals.colors.gray_primary,
       margin: "0",
+      textAlign: "left",
     }
   },
   "& .product-footer": {
