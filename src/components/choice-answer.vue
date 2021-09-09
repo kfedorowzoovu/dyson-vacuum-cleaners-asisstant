@@ -17,6 +17,8 @@
       :aria-checked="answer.selected"
       @keyup.enter="enterPressed"
       @keyup.space="enterPressed"
+      @keyup.left="focusPreviousAnswer"
+      @keyup.right="focusNextAnswer"
       @focusin="cleanSelectionMessage"
       @click="handleAnswerClick"
     >
@@ -103,6 +105,7 @@ import { hideHorizontalOverflow, restoreHorizontalOverflow } from "@/services/ov
 import { AnswerParameter, Nullable } from "@/components/types";
 import InvisibleWrapper from "./invisible-wrapper.vue";
 import { IconTick } from "./svgs";
+import { focusNextAnswer, focusPreviousAnswer } from "./utils";
 
 @Component({
   components: { IconTick },
@@ -114,19 +117,19 @@ import { IconTick } from "./svgs";
 })
 export default class ChoiceAnswerViewExtended extends Vue {
   @InjectComponent("Modal")
-  private modal: VueComponent;
+  modal!: VueComponent;
 
   @ComponentConfig(AnimationsAndTransitionsConfiguration)
-  animationsAndTransitionsConfiguration: AnimationsAndTransitionsConfiguration;
+  animationsAndTransitionsConfiguration!: AnimationsAndTransitionsConfiguration;
 
   @Prop()
-  answer: Answer;
+  answer!: Answer;
 
   @Prop()
-  answerTextHeight: string;
+  answerTextHeight!: string;
 
   @Prop()
-  imageHeight: string;
+  imageHeight!: string;
 
   infoTextShown = false;
 
@@ -135,6 +138,10 @@ export default class ChoiceAnswerViewExtended extends Vue {
   minAnswersPerRow = 1;
 
   transitionDelayEnabled = false;
+
+  focusNextAnswer = focusNextAnswer;
+
+  focusPreviousAnswer = focusPreviousAnswer;
 
   imageAltText = (answer: Answer): string =>
     answer?.parameters[AnswerParameter.AltName] || `${answer.answerText} image`;
