@@ -87,6 +87,8 @@ export function focusNextAnswer(): void {
   const focusedAnswer = document.querySelector(".answer:focus");
   if (focusedAnswer?.nextSibling?.focus) {
     focusedAnswer.nextSibling.focus();
+  } else {
+    document.querySelector(".answer")?.focus();
   }
 }
 
@@ -94,5 +96,7 @@ export function focusPreviousAnswer(): void {
   const focusedAnswer = document.querySelector(".answer:focus");
   if (focusedAnswer?.previousSibling?.focus) {
     focusedAnswer.previousSibling.focus();
+  } else {
+    document.querySelector(".answer:last-child")?.focus();
   }
 }
