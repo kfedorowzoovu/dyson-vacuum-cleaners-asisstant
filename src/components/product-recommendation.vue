@@ -1,20 +1,34 @@
 <template>
-  <div :id="recommendation.mid" :class="componentStyle.container" class="product">
+  <div
+    :id="recommendation.mid"
+    :class="componentStyle.container"
+    class="product"
+  >
     <div class="product-details">
       <div class="product-image">
         <component :is="productClickoutLinkView" :product="recommendation">
-          <img :src="additionalImageUrl || recommendation.picture" :alt="recommendation.name" />
+          <img
+            :src="additionalImageUrl || recommendation.picture"
+            :alt="recommendation.name"
+          />
         </component>
       </div>
-      <h4 class="product-name">
+      <h3 class="product-name">
         <component :is="productClickoutLinkView" :product="recommendation">
           {{ recommendation.name }}
         </component>
-      </h4>
-      <ProductProperties v-if="shouldRenderProperties" :recommendation="recommendation" />
+      </h3>
+      <ProductProperties
+        v-if="shouldRenderProperties"
+        :recommendation="recommendation"
+      />
     </div>
     <div class="product__cta-group">
-      <component :is="productRatingView" class="product__rating" :product="recommendation" />
+      <component
+        :is="productRatingView"
+        class="product__rating"
+        :product="recommendation"
+      />
       <component :is="productPriceView" :recommendation="recommendation" />
       <div class="klarna-message" v-if="shouldShowKlarnaComponent">
         <klarna-placement
@@ -54,7 +68,12 @@
 
 <script lang="ts">
 import { ProductRecommendationView } from "@zoovu/runner-web-design-base";
-import { Component, ComponentConfig, InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
+import {
+  Component,
+  ComponentConfig,
+  InjectComponent,
+  VueComponent,
+} from "@zoovu/runner-browser-api";
 import ProductProperties from "@/components/product-properties.vue";
 import { getPropertyValue } from "@/helpers";
 import { ProductAttributes } from "@/configuration/common-configuration";
@@ -65,7 +84,7 @@ import PaymentOptionsConfiguration from "@/configuration/payment-options-configu
 })
 export default class ProductRecommendationViewExtended extends ProductRecommendationView {
   @InjectComponent("ProductPriceView")
-  productPriceView: VueComponent
+  productPriceView: VueComponent;
 
   @ComponentConfig(PaymentOptionsConfiguration)
   paymentOptionsConfiguration!: PaymentOptionsConfiguration;
@@ -75,13 +94,19 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
   }
 
   get currentPrice(): number {
-    const reducedPrice = getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE);
+    const reducedPrice = getPropertyValue(
+      this.recommendation,
+      ProductAttributes.REDUCED_PRICE
+    );
     const regularPrice = this.recommendation.price.rawValue.value;
     return (reducedPrice || regularPrice) * 100;
   }
 
   get additionalImageUrl(): string {
-    return getPropertyValue(this.recommendation, ProductAttributes.ADDITIONAL_IMAGE_URL);
+    return getPropertyValue(
+      this.recommendation,
+      ProductAttributes.ADDITIONAL_IMAGE_URL
+    );
   }
 
   get shouldShowKlarnaComponent(): boolean {
@@ -99,7 +124,7 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
     }
     if (this.shouldShowAffirmComponent) {
       window.affirm = window.affirm || [];
-      window.affirm.ui.ready(function(){
+      window.affirm.ui.ready(function () {
         window.affirm.ui.refresh();
       });
     }
