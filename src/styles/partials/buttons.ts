@@ -1,5 +1,5 @@
 import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
-import { focusStyle } from "@/styles/partials/accessibility";
+import { buttonsFocusStyle } from "@/styles/partials/accessibility";
 import globals from "./global-variables";
 import stylesConfig from "../styles.config";
 import mediaQuery from "../abstract/media-query";
@@ -125,7 +125,7 @@ export const ButtonPaginationSelected = {
 };
 
 export const ButtonPaginationNextBack = {
-  extend: focusStyle,
+  extend: buttonsFocusStyle,
   paddingLeft: "10px",
   paddingRight: "10px",
   fontWeight: 700,

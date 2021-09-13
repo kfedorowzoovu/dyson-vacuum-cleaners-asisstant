@@ -8,9 +8,23 @@ export const visuallyHiddenElement = {
 };
 
 export const focusStyle = {
+  "&:focus-within": {
+    boxShadow: `inset 0px 0px 0px 2px ${globals.colors.black}`,
+  },
   fallbacks: {
     "&:focus": {
-      border: `2px solid ${globals.colors.gray_primary}`,
+      border: `2px solid ${globals.colors.black}`,
+    },
+  },
+};
+
+export const buttonsFocusStyle = {
+  "&:focus-within": {
+    outline: `5px auto ${globals.colors.black}`,
+  },
+  fallbacks: {
+    "&:focus": {
+      border: `2px solid ${globals.colors.black}`,
     },
   },
 };
