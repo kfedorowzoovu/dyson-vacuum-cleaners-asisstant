@@ -1,32 +1,39 @@
 <template>
   <section :class="[componentStyle.container]">
     <div v-if="showImage" class="question-image">
-      <i v-if="showImage" class="image-element" :style="{ backgroundImage: 'url(' + question.images[0] + ')' }"></i>
-      <h2 class="question-title">
+      <i
+        v-if="showImage"
+        class="image-element"
+        :style="{ backgroundImage: 'url(' + question.images[0] + ')' }"
+      ></i>
+      <h2 class="question-title" tabindex="0">
         <span v-dompurify-html="question.questionText" />
         <i
           v-if="question.infoText"
           v-tooltip="infoTextTooltipConfiguration"
           class="answer-info-text-trigger"
-          tabindex="0"
           v-on="mobileInfoTextTrigger"
         ></i>
       </h2>
     </div>
-    <h2 v-else class="question-title">
+    <h2 v-else class="question-title" tabindex="0">
       <span v-dompurify-html="question.questionText" />
       <i
         v-if="question.infoText"
         v-tooltip="infoTextTooltipConfiguration"
         class="answer-info-text-trigger"
-        tabindex="0"
         v-on="mobileInfoTextTrigger"
       ></i>
     </h2>
 
-    <p v-if="shouldShowHint" v-dompurify-html="questionHintText" class="question-type-hint" />
+    <p
+      v-if="shouldShowHint"
+      v-dompurify-html="questionHintText"
+      class="question-type-hint"
+    />
 
-    <component :is="questionValidationMessageView" :question="question"> </component>
+    <component :is="questionValidationMessageView" :question="question">
+    </component>
 
     <component
       :is="modal"
@@ -44,11 +51,23 @@
 
 <script lang="ts">
 import { isMobile } from "@zoovu/design-system/src/helpers";
-import { Component, InjectComponent, Prop, Question, QuestionType, Vue, VueComponent } from "@zoovu/runner-browser-api";
+import {
+  Component,
+  InjectComponent,
+  Prop,
+  Question,
+  QuestionType,
+  Vue,
+  VueComponent,
+} from "@zoovu/runner-browser-api";
 import { QuestionHeadView } from "@zoovu/runner-web-design-base";
 import { sanitize } from "dompurify";
 import { vTooltip } from "@zoovu/design-system/src/plugins";
-import { TooltipConfiguration, MobileInfoTextTrigger, whitelistedAttributes } from "@/types";
+import {
+  TooltipConfiguration,
+  MobileInfoTextTrigger,
+  whitelistedAttributes,
+} from "@/types";
 import { QuestionParameter } from "@/components/types";
 
 @Component({
@@ -74,7 +93,9 @@ export default class QuestionHeadViewExtended extends Vue {
       ? {}
       : {
           autoHide: false,
-          content: sanitize(this.question.infoText, { ADD_ATTR: whitelistedAttributes }),
+          content: sanitize(this.question.infoText, {
+            ADD_ATTR: whitelistedAttributes,
+          }),
           container: this.containerDivId,
           delay: {
             show: 0,
@@ -92,7 +113,8 @@ export default class QuestionHeadViewExtended extends Vue {
   }
 
   get questionHintText(): string {
-    const parameterQuestionHintText = this.question.parameters[QuestionParameter.HintText];
+    const parameterQuestionHintText =
+      this.question.parameters[QuestionParameter.HintText];
     const defaultQuestionHintText =
       this.question.questionType === QuestionType.CHECKBOX
         ? this.$t("message-checkbox-hint")

@@ -1,5 +1,8 @@
 <template>
-  <nav :aria-label="`${$t('message-ada-page-selector')}`" :class="[rootElementClass, componentStyle.container]">
+  <nav
+    :aria-label="`${$t('message-ada-page-selector')}`"
+    :class="[rootElementClass, componentStyle.container]"
+  >
     <div class="page-selector__page-info">
       <button
         v-if="!isFirstStep"
@@ -11,24 +14,48 @@
         <IconChevronLeft /> {{ $t("message-questionnaire-back") }}
       </button>
 
-      <h1 class="page-number" :class="{ 'results-header': isResultPage }" tabindex="-1" aria-hidden="true">
+      <h1
+        class="page-number"
+        :class="{ 'results-header': isResultPage }"
+        tabindex="0"
+      >
         <template v-if="!isResultPage">
           <span class="hidden-description">{{ currentStepInfo }}</span>
-          <span aria-hidden="true">{{ currentStep }} / {{ currentNavigation.numberOfAvailableSteps }}</span>
+          <span
+            >{{ currentStep }} /
+            {{ currentNavigation.numberOfAvailableSteps }}</span
+          >
         </template>
         <template v-else>{{ $t("message-results-mode-button") }}</template>
       </h1>
-      <component :is="startOverButtonView" v-if="!isFirstStep" class="navigation-button" :advisor="advisor" />
+      <component
+        :is="startOverButtonView"
+        v-if="!isFirstStep"
+        class="navigation-button"
+        :advisor="advisor"
+      />
     </div>
 
-    <div v-if="currentNavigation.numberOfAvailableSteps > 1" class="page-selector__progress-bar">
-      <progress :max="currentNavigation.numberOfAvailableSteps" :value="currentStep" class="page-selector" />
+    <div
+      v-if="currentNavigation.numberOfAvailableSteps > 1"
+      class="page-selector__progress-bar"
+    >
+      <progress
+        :max="currentNavigation.numberOfAvailableSteps"
+        :value="currentStep"
+        class="page-selector"
+      />
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { Component, SectionType, InjectComponent, VueComponent } from "@zoovu/runner-browser-api";
+import {
+  Component,
+  SectionType,
+  InjectComponent,
+  VueComponent,
+} from "@zoovu/runner-browser-api";
 import { PageSelectorView as PageSelectorViewBase } from "@zoovu/runner-web-design-base";
 import { IconChevronLeft } from "@/components/svgs";
 
@@ -54,7 +81,10 @@ export default class PageSelectorView extends PageSelectorViewBase {
   }
 
   get isResultPage(): boolean {
-    return this.advisor.advisorNavigation.currentSection.type === SectionType.RESULTS_PAGE;
+    return (
+      this.advisor.advisorNavigation.currentSection.type ===
+      SectionType.RESULTS_PAGE
+    );
   }
 
   get isFirstStep(): boolean {
@@ -66,7 +96,9 @@ export default class PageSelectorView extends PageSelectorViewBase {
     return this.$t("message-ada-question-number-with-text", {
       currentStep: this.currentStep,
       allSteps: currentNavigation.numberOfAvailableSteps,
-      questionText: currentNavigation.flowSteps[currentNavigation.currentStepIndex].questions[0].questionText,
+      questionText:
+        currentNavigation.flowSteps[currentNavigation.currentStepIndex]
+          .questions[0].questionText,
     });
   }
 
