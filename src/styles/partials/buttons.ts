@@ -1,5 +1,5 @@
 import { ResolvedComponentsConfiguration } from "@zoovu/runner-browser-api";
-import { buttonsFocusStyle } from "@/styles/partials/accessibility";
+import { buttonsFocusStyle,focusStyle } from "@/styles/partials/accessibility";
 import globals from "./global-variables";
 import stylesConfig from "../styles.config";
 import mediaQuery from "../abstract/media-query";
@@ -215,6 +215,7 @@ export const ButtonNextInProgress = {
 };
 
 export const ProductButton = {
+  extend: buttonsFocusStyle,
   minWidth: "200px",
   cursor: "pointer",
   fontSize: stylesConfig.typography.fontSize(1.1),
