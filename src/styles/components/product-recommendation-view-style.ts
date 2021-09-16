@@ -115,6 +115,12 @@ export default {
           },
         },
       },
+      "& .promotion-text": {
+        fontSize: stylesConfig.typography.fontSize(1),
+        color: globals.colors.blue,
+        fontWeight: "bold",
+        paddingBottom: "8px",
+      },
       "& .product-footer": {
         "& .product-button": {
           minWidth: "calc(50% - 8px)",

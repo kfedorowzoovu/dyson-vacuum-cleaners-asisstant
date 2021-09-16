@@ -217,6 +217,13 @@ export default {
           },
         },
       },
+      "& .promotion-text": {
+        fontSize: stylesConfig.typography.fontSize(1),
+        color: globals.colors.blue,
+        fontWeight: "bold",
+        textAlign: "left",
+        paddingBottom: "8px",
+      },
       "& .product-footer": {
         "& .product-button": {
           [`@media (${globals.breakpoints.$xs})`]: {

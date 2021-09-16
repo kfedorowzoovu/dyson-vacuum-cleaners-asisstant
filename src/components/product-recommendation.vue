@@ -45,7 +45,10 @@
           data-analytics-action-name="text link~learn more"
         ></p>
       </div>
-      <div class="product-footer">
+      <div class="promotion-text">
+        <p v-text="getPropertyValue(recommendation, ProductAttributes.BUNDLE_PROMOTION)" ></p>
+        <p v-text="getPropertyValue(recommendation, ProductAttributes.FREE_GIFT)" ></p>
+      </div> <div class="product-footer">
         <component
           :is="productAddToCartLinkView"
           v-if="shouldShowAddToCartButton"
@@ -88,6 +91,10 @@ export default class ProductRecommendationViewExtended extends ProductRecommenda
 
   @ComponentConfig(PaymentOptionsConfiguration)
   paymentOptionsConfiguration!: PaymentOptionsConfiguration;
+
+  getPropertyValue = getPropertyValue;
+
+  ProductAttributes = ProductAttributes;
 
   get locale(): string {
     return this.$root.componentViewModel.localizationSettings.locale;

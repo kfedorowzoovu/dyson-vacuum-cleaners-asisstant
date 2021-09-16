@@ -55,6 +55,10 @@
               data-analytics-action-name="text link~learn more"
             ></p>
           </div>
+          <div class="promotion-text">
+            <p v-text="getPropertyValue(recommendation, ProductAttributes.BUNDLE_PROMOTION)" ></p>
+            <p v-text="getPropertyValue(recommendation, ProductAttributes.FREE_GIFT)" ></p>
+          </div>
           <div class="product-footer">
             <component
               :is="productAddToCartLinkView"
