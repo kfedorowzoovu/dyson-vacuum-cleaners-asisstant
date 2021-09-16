@@ -18,8 +18,8 @@
       {{
         pricing.reducedPrice !== "n/a"
           ? pricing.showWasPrice
-            ? pricing.originalPrice
-            : pricing.reducedPrice
+            ? pricing.reducedPrice
+            : pricing.originalPrice
           : pricing.originalPrice
       }}
     </span>
