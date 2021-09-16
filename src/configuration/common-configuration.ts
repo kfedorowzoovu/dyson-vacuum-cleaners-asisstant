@@ -10,6 +10,8 @@ export enum ProductAttributes {
   BADGE_THEME = "badgeThemeCode",
   BADGE_TEXT = "badgeText",
   ADDITIONAL_IMAGE_URL = "additionalImageUrl",
+  BUNDLE_PROMOTION = "bundle_promotionText",
+  FREE_GIFT = "free_gift_promotion_code",
 }
 
 export enum ProductAttributesWithOnlyValueDisplayed {
