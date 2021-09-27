@@ -2,12 +2,14 @@
   <div :class="[rootElementClass, componentStyle.container]" :key="isResultsSectionNext" :style="smallScreenNavPosition" >
     <!-- info: key is necessary because of some strange approach within sections -->
     <!-- instead of rendering something in HTML it is changed to :key to force re-render of component -->
+
     <button
       v-if="!shouldRenderSubmitButton"
       :class="nextButtonClassList"
       class="navigation-next-button"
       :style="nextButtonStyle"
-      @click="onClickNext"
+      @mousedown.prevent="onClickNext"
+      @keyup.enter="onClickNext"
       type="button"
       tabindex="0"
     >
