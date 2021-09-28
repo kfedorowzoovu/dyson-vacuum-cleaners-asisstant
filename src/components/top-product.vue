@@ -66,6 +66,7 @@
               v-dompurify-html="$t('message-result-add-to-cart')"
               class="product-button add-to-cart-button"
               :product="recommendation"
+              tabindex="0"
             ></component>
             <button class="product-button go-to-product-button">
               <component
@@ -73,6 +74,7 @@
                 v-if="shouldShowGoToProductButton"
                 v-dompurify-html="$t('message-result-go-to-product')"
                 :product="recommendation"
+                tabindex="0"
               />
             </button>
           </div>
