@@ -15,14 +15,15 @@
       :style="answerWrapperStyle"
       :role="inputType"
       :aria-checked="answer.selected"
-      @keyup.enter="enterPressed"
-      @keyup.space="enterPressed"
+      @keyup.enter="onEnterSpacePressed"
+      @keyup.space="onEnterSpacePressed"
       @keyup.left="focusPreviousAnswer"
       @keyup.up="focusPreviousAnswer"
       @keyup.right="focusNextAnswer"
       @keyup.down="focusNextAnswer"
       @focusin="cleanSelectionMessage"
-      @click="handleAnswerClick"
+      @mousedown.prevent=""
+      @mouseup.left.prevent="onAnswerClick"
     >
       <label ref="choiceAnswerLabel" :data-info-text="answer.infoText" :for="answer.mid">
         <span
@@ -260,7 +261,15 @@ export default class ChoiceAnswerViewExtended extends Vue {
     this.infoTextShown = true;
   }
 
-  async handleAnswerClick(): void {
+  async onAnswerClick(): Promise<void> {
+    await this.choseAnswer(false);
+  }
+
+  async onEnterSpacePressed(): Promise<void> {
+    await this.choseAnswer(true);
+  }
+
+  async choseAnswer(withNextButonFocus: boolean): Promise<void> {
     const selectBehavior =
       this.answer.selected && this.inputType !== "radio"
         ? `${this.$t("message-ada-deselecting-answer")}`
@@ -269,7 +278,7 @@ export default class ChoiceAnswerViewExtended extends Vue {
     await this.$nextTick();
     this.$refs.selectedInfo.innerText = `${selectBehavior}: ${this.answer.answerText}`;
     this.$emit("answer-select");
-    if (nextButtonElement && this.inputType === "radio") {
+    if (withNextButonFocus && nextButtonElement && this.inputType === "radio") {
       nextButtonElement.focus();
     }
   }
