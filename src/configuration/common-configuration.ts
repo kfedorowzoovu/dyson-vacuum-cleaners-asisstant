@@ -9,9 +9,14 @@ export enum ProductAttributes {
   STOCK_STATUS = "stockBand",
   BADGE_THEME = "badgeThemeCode",
   BADGE_TEXT = "badgeText",
-  ADDITIONAL_IMAGE_URL = "additionalImageUrl",
+  ADDITIONAL_IMAGE_URL = "additionalImageUrl", // in case change update also ProductAttributesNotDisplayed
   BUNDLE_PROMOTION = "bundle_promotionText",
   FREE_GIFT = "free_gift_promotion_code",
+}
+
+export enum ProductAttributesNotDisplayed {
+  ADDITIONAL_IMAGE_URL = "additionalImageUrl", // in case change update also ProductAttributes
+  BUNDLE_URL_ID = "bundle_urlId",
 }
 
 export enum ProductAttributesWithOnlyValueDisplayed {
