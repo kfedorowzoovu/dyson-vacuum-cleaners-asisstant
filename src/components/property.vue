@@ -1,7 +1,9 @@
 <template>
   <li class="property" :class="componentStyle.container">
     <IconTick />
-    {{ displayPropertyValueOnly ? property.rawValue.value : property.displayValue }}
+    <span class="zv-ada-tabindex" tabindex="0">
+      {{ displayPropertyValueOnly ? property.rawValue.value : property.displayValue }}
+    </span>
   </li>
 </template>
 

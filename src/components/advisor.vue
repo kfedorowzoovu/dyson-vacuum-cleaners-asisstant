@@ -6,14 +6,14 @@
       :show-page-selector-between-navigation-buttons="false"
       :show-page-selector-above-main-section="true"
     />
-    <component :is="resultsSectionView" :advisor="advisor" :show-top-product="true" :show-page-selector="true" />
+    <component :is="resultsSectionView" v-if="isResultSection" :advisor="advisor" :show-top-product="true" :show-page-selector="true" />
     <component :is="comparisonView" :comparison-manager="advisor.comparisonManager" />
     <component :is="pdfContentView" v-if="isPdfMarkupShown" v-show="false" :advisor="advisor" />
   </div>
 </template>
 
 <script lang="ts">
-import { ComponentConfig, Component, ComponentStyle, ComponentStyleDefinition } from "@zoovu/runner-browser-api";
+import { ComponentConfig, Component, ComponentStyle, ComponentStyleDefinition, SectionType } from "@zoovu/runner-browser-api";
 import {
   AdvisorView as BaseAdvisorView,
   ColorsConfiguration,
@@ -50,6 +50,10 @@ export default class AdvisorView extends BaseAdvisorView {
 
   @ComponentConfig(TopProductConfiguration)
   topProductConfiguration: TopProductConfiguration;
+
+  get isResultSection(): boolean {
+    return this.advisor.advisorNavigation.currentSection.type === SectionType.RESULTS_PAGE;
+  }
 }
 </script>
 <style>

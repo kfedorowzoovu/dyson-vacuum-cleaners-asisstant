@@ -8,10 +8,10 @@
     <div class="top-product__wrapper">
       <div class="product-details">
         <h3 class="product-name">
-          <span class="product-top-tile">
+          <span class="product-top-tile zv-ada-tabindex" tabindex="0">
             {{ topTileContent }}
           </span>
-          <component :is="productClickoutLinkView" :product="recommendation">
+          <component :is="productClickoutLinkView" :product="recommendation" class="zv-ada-tabindex" tabindex="0">
             {{ recommendation.name }}
           </component>
         </h3>

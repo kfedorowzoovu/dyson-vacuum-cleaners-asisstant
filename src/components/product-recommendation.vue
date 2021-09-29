@@ -14,7 +14,7 @@
         </component>
       </div>
       <h3 class="product-name">
-        <component :is="productClickoutLinkView" :product="recommendation">
+        <component :is="productClickoutLinkView" :product="recommendation" class="zv-ada-tabindex" tabindex="0">
           {{ recommendation.name }}
         </component>
       </h3>
