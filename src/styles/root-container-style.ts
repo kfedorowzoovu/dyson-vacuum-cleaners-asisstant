@@ -36,5 +36,10 @@ export default {
       border: 0,
       zIndex: "-1",
     },
+    "& .zv-ada-tabindex": {
+      "&:focus-within": {
+        outline: `5px auto ${globals.colors.black}`,
+      },
+    },
   },
 };

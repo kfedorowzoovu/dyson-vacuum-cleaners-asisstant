@@ -11,10 +11,10 @@
         :column-text="complementaryText.columnText"
       />
     </template>
-    <span v-if="pricing.showWasPrice && pricing.reducedPrice !== 'n/a'" class="price-was">
+    <span v-if="pricing.showWasPrice && pricing.reducedPrice !== 'n/a'" class="price-was zv-ada-tabindex" tabindex="0">
       {{ $t("message-price-was") }} {{ pricing.originalPrice }}
     </span>
-    <span class="price-current">
+    <span class="price-current zv-ada-tabindex" tabindex="0">
       {{
         pricing.reducedPrice !== "n/a"
           ? pricing.showWasPrice
@@ -23,9 +23,12 @@
           : pricing.originalPrice
       }}
     </span>
-    <span v-if="pricing.showWasPrice && pricing.reducedPrice !== 'n/a'" class="price-savings">
+    <span
+      v-if="pricing.showWasPrice && pricing.reducedPrice !== 'n/a'"
+      class="price-savings zv-ada-tabindex"
+      tabindex="0"
+    >
       {{ $t("message-price-now") }} {{ pricing.savings }}
-
     </span>
     <template v-if="showComplementaryTexts">
       <component
@@ -64,8 +67,8 @@ export default class ProductPriceViewExtended extends ProductPriceView {
       savings: formatPrice(
         this.localizationSettings,
         this.recommendation.price.rawValue.value -
-          getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE)
-      ),
+        getPropertyValue(this.recommendation, ProductAttributes.REDUCED_PRICE)
+      )
     };
   }
 }

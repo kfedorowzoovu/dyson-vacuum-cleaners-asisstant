@@ -7,15 +7,16 @@
       <button
         v-if="!isFirstStep"
         type="button"
-        class="navigation-button"
+        class="navigation-button zv-ada-tabindex"
         :class="previousButtonClassList"
         @click="onClickBack"
+        tabindex="0"
       >
         <IconChevronLeft /> {{ $t("message-questionnaire-back") }}
       </button>
 
       <h1
-        class="page-number"
+        class="page-number zv-ada-tabindex"
         :class="{ 'results-header': isResultPage }"
         tabindex="0"
       >
@@ -31,8 +32,9 @@
       <component
         :is="startOverButtonView"
         v-if="!isFirstStep"
-        class="navigation-button"
+        class="navigation-button zv-ada-tabindex"
         :advisor="advisor"
+        tabindex="0"
       />
     </div>
 

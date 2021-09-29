@@ -33,13 +33,14 @@
           >
             <h2
               v-dompurify-html="$t('message-result-top-product-header')"
-              class="top-product__header"
+              class="top-product__header zv-ada-tabindex"
               tabindex="0"
             ></h2>
             <h3
               v-if="hasSubHeaderTop"
               v-dompurify-html="$t('message-result-top-product-subheader')"
-              class="top-product__subheader"
+              class="top-product__subheader zv-ada-tabindex"
+              tabindex="0"
             ></h3>
             <component
               :is="TopProductView"
@@ -62,7 +63,7 @@
           >
             <h3
               v-dompurify-html="currentPageClustersExtended[0].clusterHeadline"
-              class="cluster-headline"
+              class="cluster-headline zv-ada-tabindex"
               tabindex="0"
             ></h3>
             <h4
@@ -70,7 +71,8 @@
               v-dompurify-html="
                 currentPageClustersExtended[0].clusterSubHeadline
               "
-              class="cluster-sub-headline"
+              class="cluster-sub-headline zv-ada-tabindex"
+              tabindex="0"
             ></h4>
             <div class="products-wrapper">
               <component
