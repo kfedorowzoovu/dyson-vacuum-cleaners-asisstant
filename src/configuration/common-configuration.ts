@@ -21,6 +21,11 @@ export enum ProductAttributesNotDisplayed {
   FREE_GIFT_DESCRIPTION = "free_gift_promotion_description", // in case change update also ProductAttributes
 }
 
+export enum ProductAttributesNotDisplayed {
+  ADDITIONAL_IMAGE_URL = "additionalImageUrl", // in case change update also ProductAttributes
+  BUNDLE_URL_ID = "bundle_urlId",
+}
+
 export enum ProductAttributesWithOnlyValueDisplayed {
   INCLUDED = "Attachments",
 }
