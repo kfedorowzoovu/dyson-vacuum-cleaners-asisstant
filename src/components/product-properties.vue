@@ -20,7 +20,7 @@ import {
   Vue,
 } from "@zoovu/runner-browser-api";
 import Property from "@/components/property.vue";
-import { ProductAttributes } from "@/configuration/common-configuration";
+import { ProductAttributes, ProductAttributesNotDisplayed } from "@/configuration/common-configuration";
 
 @Component({
   name: "ProductProperties",
@@ -38,9 +38,8 @@ export default class ProductProperties extends Vue {
   }
 
   get shownProperties(): ReadonlyArray<ProductProperty> {
-    return this.productRelatedProperties.filter(
-      (property) => property.name !== ProductAttributes.ADDITIONAL_IMAGE_URL
-    );
+    return this.productRelatedProperties.filter(property =>
+      !Object.values(ProductAttributesNotDisplayed).includes(property.name));
   }
 
   get propertiesWithExplicitValue(): ReadonlyArray<ProductProperty> {

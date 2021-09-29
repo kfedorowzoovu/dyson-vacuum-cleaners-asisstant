@@ -57,7 +57,7 @@
           </div>
           <div class="promotion-text">
             <p v-text="getPropertyValue(recommendation, ProductAttributes.BUNDLE_PROMOTION)" ></p>
-            <p v-text="getPropertyValue(recommendation, ProductAttributes.FREE_GIFT)" ></p>
+            <p v-text="getPropertyValue(recommendation, ProductAttributes.FREE_GIFT_DESCRIPTION)" ></p>
           </div>
           <div class="product-footer">
             <component
