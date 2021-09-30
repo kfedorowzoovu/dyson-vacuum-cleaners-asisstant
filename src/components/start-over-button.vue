@@ -1,29 +1,20 @@
 <template>
-  <button type="button" :class="[rootElementClass, componentStyle.container]" @click="startOver">
+  <button
+    type="button"
+    :class="[rootElementClass, componentStyle.container]"
+    @mousedown.prevent=""
+    @mouseup.left.prevent="startOver"
+    @keyup.enter="startOver"
+    tabindex="0"
+  >
     {{ $t("message-start-over") }}
   </button>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Advisor } from "@zoovu/runner-browser-api";
-import { StartOverButtonView } from "@zoovu/runner-web-design-base";
-import { IconChevronLeft } from "@/components/svgs";
+import { Component } from "@zoovu/runner-browser-api";
+import { StartOverButtonView as StartOverButtonViewBase } from "@zoovu/runner-web-design-base";
 
-@Component({
-  components: {
-    IconChevronLeft,
-  },
-})
-export default class StartOverButtonViewExtended extends StartOverButtonView {
-  @Prop()
-  private advisor: Advisor;
-
-  startOver() {
-    this.advisor.startOver();
-  }
-
-  get rootElementClass(): string {
-    return "start-over-button";
-  }
-}
+@Component({})
+export default class StartOverButtonView extends StartOverButtonViewBase {}
 </script>
