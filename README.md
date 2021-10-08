@@ -1,128 +1,119 @@
-# Custom Design Starter
+# **Technical documentation for Dyson Vacuum Cleaners digital assistant:**
 
-## Todo
 
-### Setup
+# **Prerequisites**
 
-1. Copy everything from the custom design starter project's directory apart from `.git`, `build` and `node_modules` directories and without the `yarn.lock` file to the new project's directory.
 
-2. Execute `yarn` command.
 
-### Source code
+* access to files repository: \
+  [https://github.com/kfedorowzoovu/dyson-vacuum-cleaners](https://github.com/kfedorowzoovu/dyson-vacuum-cleaners)
+* access to public zoovu npm packages - already linked in package.json
+* some IDE or code editor (f.e.: Webstorm, Visual Studio Code)
+* some command line tool (default windows console is not recommended, alternatively use gitbash or powershell, Mac OS Terminal should be fine)
+* node js and npm (nvm is also recommended to switch between node versions - currently the one used in the project is node v14.15.2)
+* yarn package manager (preferred over npm)
+* some server credentials for theme deployment
 
-1. Copy `.env.example` and rename it to `.env`.
 
-2. Update `name`, `webDesignName`, `description` and `version` fields in the `package.json`.
+# **Zoovu NPM packages**
 
-3. Update `webDesignName` in `/src/webdesign.ts` file (best would be the same name as `webDesignName` in package.json)
 
-4. If your deployment method is Azure, change the `deploy` script in the `package.json`.
-    ```json
-    "deploy": "yarn build && zoovu-web-design deploy-to-azure"
-    ```
-5. Review all TODO comments in the project and remove provided example code.
+### **Overview**
 
-6. Remove `/src/assets` directory.
+Every 4.x runner design uses NPM packages which make bootstrapping the project as easy as it possible and helps with maintaining versioning of the runner logic part. There are 3 existing private packages, which are using **@zoovu** domain.
 
-7. Remove `/configuration/another-example-configuration.json` and `/configuration/example-configuration.json` files.
+**Packages names: **
 
-### README.md
 
-1. Rename the [main header](#custom-design-starter).
-2. Leave only contents of the section which describes your deployment method in [deployment section](#deployment).
-3. Update `<name from package.json without "@">/v<version from package.json>` or `<custom server>` placeholders in the list you left in the previous step.
-4. Remove [todo section](#todo).
 
-## Installation
+1. runner-browser-api
+2. runner-browser-test-utils
+3. runner-web-design-base
 
-The package manager used for this project is [yarn](https://yarnpkg.com/en/). The first step is to install all required dependencies by executing:
 
-```console
-yarn
+---
+
+
+### **Zoovu packages usage**
+
+
+```
+There is no need to register the other packages. Since they are used as dependencies for runner-web-design-base they are downloaded to the node_modules' @zoovu domain directory as well.
 ```
 
-## Development setup
 
-In order to run the project in a development mode, execute:
-```console
+Every theme requires a **runner-web-design-base **package to be installed. It must be registered as theme/ design dependency in the package.json file. Which version should be integrated would have to be checked on some up to date theme.
+
+
+```
+"dependencies": {
+    "@zoovu/design-system": "^4.21.1",
+    "@zoovu/runner-browser-api": "~4.28.0",
+    "@zoovu/runner-browser-test-utils": "~4.28.0",
+    "@zoovu/runner-web-design-base": "~4.30.0"
+},
+```
+
+
+
+## **Running 4.x themes/ designs**
+
+
+### **npm/yarn scripts**
+
+Available commands can be found in the package.json file of each design/theme.
+
+
+![alt_text](images/image1.png "image_tooltip")
+
+
+
+### **Getting started**
+
+Once you have your repository cloned and available on your local environment, you need to install all dependencies described in package.json using:
+
+```
+yarn install
+```
+
+
+Next, you need to go to .env file and insert correct ADVISOR_CODE:
+
+
+![alt_text](images/image2.png "image_tooltip")
+
+
+You can check assistant’s code by opening current draft or live version preview from the platform and navigating to load-advisor.js script as shown below:
+
+
+![alt_text](images/image3.png "image_tooltip")
+
+
+
+
+Once you input desired assistant code to .env file, you should run:
+
+
+```
 yarn serve
 ```
 
-> [BrowserSync](https://www.browsersync.io/) is integrated with the theme when it's ran via `yarn serve` for easier development.
 
-To run the theme with an assistant configured on the platform instead of the default one, set `ADVISOR_CODE` and `API_CONTEXT_PATH` fields in the `.env` file. You can create a `.env` file by copying `.env.example` and renaming it to `.env`.
+This will create a full local build of the project and open a local preview in the browser's window.
 
-```conf
-ADVISOR_CODE="YOUR_ADVISOR_CODE"
-API_CONTEXT_PATH="https://api-tiger.zoovu.com"
+**Deployment**
+
+In order to deploy you custom design, you need to run:
+
+
 ```
-
-### Parameters of a dotenv file
-
-Name | Description | Environment specific setting (Tiger/Barracuda)
---- | --- | ---
-PORT | Port under which the theme is available on localhost |
-ADVISOR_CODE | Assistant code provided to the theme on localhost |
-API_CONTEXT_PATH | Assistant's API endpoint | `https://api-tiger.zoovu.com` / `https://api-barracuda.zoovu.com`
-SESSION_PERSISTENCE | Enable assistant's session persistance on localhost |
-SESSION_PERSISTENCE_ENDPOINT | Assistant's session storage API endpoint | `https://staging-runner.zoovu.com/api` / `https://us-runner.zoovu.com/api`
-
-## Updating dependencies
-
-If you want to update only **@zoovu** dependencies, execute:
-
-```console
-yarn upgrade --scope=@zoovu
-```
-
-## Linting
-This project uses ESLint with a [custom configuration](https://gitlab.zoovu.io/custom/zoovu/linting). In order to lint the code, execute:
-
-```console
-yarn lint
-```
-
-## Deployment
-
-### Tiger/AWS S3
-
-1. Set AWS credentials in `.env` file.
-
-```conf
-AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXXXXXXXX"
-AWS_SECRET_ACCESS_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-```
-
-2. Execute:
-
-```console
-yarn deploy
-```
-
-3. After deployment, theme will be available under `https://themes-tiger.zoovu.com/custom-dev/<name from package.json without "@">/v<version from package.json>`.
-
-### Barracuda/Azure
-
-1. Set connection string in `.env` file.
-
-```conf
-AZURE_STORAGE_CONNECTION_STRING="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-```
-
-2. Execute:
-
-```console
-yarn deploy
-```
-
-3. After deployment, theme will be available under `https://barracudacustomdev.blob.core.windows.net/custom-themes/<name from package.json without "@">/v<version from package.json>`.
-
-### Custom server
-
-1. Build the theme by executing:
-
-```console
 yarn build
 ```
 
-2. Copy everything from the `./build/dist` directory to `<custom server>`.
+
+This will create a production package of the project. All of following files must be uploaded to a server and linked to the assistant on Zoovu platform:
+
+
+
+![alt_text](images/image4.png "image_tooltip")
+
