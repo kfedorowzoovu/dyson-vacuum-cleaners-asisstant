@@ -13,7 +13,7 @@
     "clean": "rimraf build target package-lock.json && rimraf node_modules",
     "serve": "zoovu-web-design package-dev && concurrently -r \"zoovu-web-design package-dev-watch\" \"zoovu-web-design browser-sync-serve\"",
     "lint": "eslint --ext .js,.vue,.ts src --fix",
-    "build": "rimraf build/dist && zoovu-web-design package-prod && node ./scripts/append-missing-config-values.js && zoovu-web-design zip-package",
+    "build": "rimraf build/dist && zoovu-web-design package-prod && node ./scripts/append-missing-config-values.js && zoovu-web-design zip-package"
   },
   "dependencies": {
     "@zoovu/runner-browser-api": "^4.55.0",
